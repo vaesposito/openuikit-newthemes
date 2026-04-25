@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cisco Cloud Control</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cisco-teal:    #00BCEB;
+      --cisco-teal-d:  #006B8A;
+      --cisco-blue:    #1E6FD9;
+      --cisco-blue-b:  #2B82F6;
+      --green:         #00B98E;
+      --amber:         #F5A623;
+      --red:           #E2415B;
+      --text-1:        rgba(255,255,255,0.94);
+      --text-2:        rgba(255,255,255,0.55);
+      --text-3:        rgba(255,255,255,0.30);
+      --divider:       rgba(255,255,255,0.07);
+      --card-bg:       rgba(255,255,255,0.035);
+      --card-border:   rgba(255,255,255,0.09);
+    }
+
+    html, body {
+      height: 100%; min-height: 100vh;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 13px;
+      color: var(--text-1);
+      /* Glow lives at the TOP — large atmospheric spotlight from above */
+      background:
+        radial-gradient(ellipse 90% 55% at 50% -5%,  rgba(0, 100, 200, 0.55) 0%, rgba(0, 60, 140, 0.20) 55%, transparent 75%),
+        radial-gradient(ellipse 50% 30% at 20% 0%,   rgba(0, 188, 235, 0.20) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 25% at 80% 5%,   rgba(30, 111, 217, 0.18) 0%, transparent 50%),
+        #05080F;
+      background-attachment: fixed;
+      scrollbar-width: thin;
+      scrollbar-color: #1a2a3a #05080F;
+    }
+
+    /* ─── Shell ─── */
+    .shell { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+
+    /* ─── Top bar ─── */
+    .topbar {
+      height: 48px; flex-shrink: 0;
+      display: flex; align-items: center;
+      padding: 0 16px; gap: 10px;
+      border-bottom: 1px solid var(--divider);
+    }
+    .tb-app {
+      display: flex; align-items: center; gap: 8px;
+      padding: 5px 10px; border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--divider);
+      cursor: pointer; flex-shrink: 0;
+    }
+    .cisco-logo { display: flex; flex-direction: column; gap: 3px; }
+    .cisco-dots { display: flex; gap: 2.5px; }
+    .cisco-dot  { width: 5px; height: 5px; border-radius: 50%; background: var(--cisco-teal); }
+    .cisco-dot:nth-child(2) { opacity:.75; } .cisco-dot:nth-child(3) { opacity:.5; } .cisco-dot:nth-child(4) { opacity:.3; }
+    .cisco-dots.row2 { gap: 2.5px; }
+    .cisco-dots.row2 .cisco-dot { width: 5px; height: 5px; }
+    .tb-app-name { font-size: 0.78rem; font-weight: 600; }
+    .tb-app-icon { font-size: 10px; color: var(--text-3); }
+
+    .tb-ambient {
+      flex: 1; text-align: center;
+      font-size: 0.72rem; color: var(--text-2);
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .ambient-dots { display: flex; gap: 3px; }
+    .ambient-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--cisco-teal);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .ambient-dot:nth-child(2) { animation-delay: 0.3s; }
+    @keyframes pulse { 0%,100%{opacity:.4;transform:scale(1)} 50%{opacity:1;transform:scale(1.2)} }
+
+    .tb-nav {
+      display: flex; background: rgba(255,255,255,0.06);
+      border: 1px solid var(--divider); border-radius: 8px;
+      padding: 3px; gap: 2px; flex-shrink: 0;
+    }
+    .tb-nav-btn {
+      padding: 5px 14px; border-radius: 6px; border: none;
+      font-family: inherit; font-size: 0.75rem; font-weight: 500;
+      cursor: pointer; transition: all 0.15s; color: var(--text-2); background: transparent;
+    }
+    .tb-nav-btn.active { background: rgba(255,255,255,0.10); color: var(--text-1); }
+
+    .tb-search {
+      display: flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--divider);
+      border-radius: 8px; padding: 6px 12px;
+      color: var(--text-3); font-size: 0.75rem; width: 180px;
+      flex-shrink: 0; cursor: text;
+    }
+    .tb-icon-btn {
+      width: 30px; height: 30px; border-radius: 7px;
+      border: none; background: transparent;
+      color: var(--text-3); cursor: pointer; font-size: 15px;
+      display: flex; align-items: center; justify-content: center;
+      transition: color 0.15s; flex-shrink: 0;
+    }
+    .tb-icon-btn:hover { color: var(--text-2); }
+    .tb-user {
+      display: flex; align-items: center; gap: 8px;
+      border: 1px solid var(--divider); border-radius: 8px;
+      padding: 4px 10px; cursor: pointer; flex-shrink: 0;
+    }
+    .tb-avatar {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: linear-gradient(135deg, #006B8A, #00BCEB);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.62rem; font-weight: 700; color: #fff; flex-shrink: 0;
+    }
+    .tb-uname { font-size: 0.72rem; font-weight: 500; line-height: 1.2; }
+    .tb-uname small { color: var(--text-3); font-size: 0.62rem; }
+
+    /* ─── Body ─── */
+    .body { display: flex; flex: 1; overflow: hidden; }
+
+    /* ─── Sidebar ─── */
+    .sidebar {
+      width: 56px; flex-shrink: 0;
+      border-right: 1px solid var(--divider);
+      display: flex; flex-direction: column; align-items: center;
+      padding: 16px 0; gap: 2px;
+      overflow-y: auto;
+    }
+    .s-icon {
+      width: 38px; height: 38px; border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all 0.15s; flex-shrink: 0;
+    }
+    .s-icon svg { width: 18px; height: 18px; fill: none; stroke: var(--text-3); stroke-width: 1.5; transition: stroke 0.15s; }
+    .s-icon:hover { background: rgba(255,255,255,0.06); }
+    .s-icon:hover svg { stroke: var(--text-2); }
+    .s-icon.active { background: rgba(0,188,235,0.12); }
+    .s-icon.active svg { stroke: var(--cisco-teal); }
+    .s-sep { width: 24px; height: 1px; background: var(--divider); margin: 8px 0; flex-shrink: 0; }
+    .s-bottom { margin-top: auto; }
+
+    /* ─── Main ─── */
+    .main {
+      flex: 1; min-width: 0;
+      display: grid; grid-template-columns: 1fr 290px;
+      gap: 0; overflow: hidden;
+    }
+    .main-left { padding: 28px 24px 80px; overflow-y: auto; }
+    .main-right { border-left: 1px solid var(--divider); padding: 20px 16px 80px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+
+    /* ─── Section titles ─── */
+    .sec-title { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 4px; }
+    .sec-sub   { font-size: 0.78rem; color: var(--text-3); margin-bottom: 18px; }
+
+    /* ─── Card ─── */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+    }
+
+    /* ─── Action cards ─── */
+    .action-cards { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+    .action-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      display: flex; align-items: flex-start; gap: 14px;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .action-card:hover { border-color: rgba(0,188,235,0.25); background: rgba(0,188,235,0.03); }
+    .action-card.priority { border-color: rgba(0,188,235,0.30); background: rgba(0,80,140,0.12); }
+
+    .ac-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .ac-body { flex: 1; min-width: 0; }
+    .ac-tags { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; float: right; }
+    .ac-tag {
+      padding: 3px 10px; border-radius: 20px;
+      font-size: 0.65rem; font-weight: 600;
+      background: rgba(255,255,255,0.07); border: 1px solid var(--divider);
+      color: var(--text-2); white-space: nowrap;
+    }
+    .ac-title { font-size: 0.875rem; font-weight: 600; margin-bottom: 4px; }
+    .ac-desc  { font-size: 0.75rem; color: var(--text-2); margin-bottom: 12px; line-height: 1.5; }
+    .ac-actions { display: flex; gap: 8px; }
+    .btn-exec {
+      padding: 6px 16px; border-radius: 7px; border: none;
+      background: var(--cisco-blue-b); color: #fff;
+      font-family: inherit; font-size: 0.75rem; font-weight: 600;
+      cursor: pointer; transition: all 0.15s;
+      display: flex; align-items: center; gap: 5px;
+    }
+    .btn-exec:hover { background: #3B92FF; box-shadow: 0 0 16px rgba(43,130,246,0.35); }
+    .btn-review {
+      padding: 6px 14px; border-radius: 7px;
+      border: 1px solid var(--divider); background: transparent;
+      color: var(--text-2); font-family: inherit; font-size: 0.75rem;
+      font-weight: 500; cursor: pointer; transition: all 0.15s;
+    }
+    .btn-review:hover { border-color: rgba(255,255,255,0.20); color: var(--text-1); }
+
+    /* ─── Timeline ─── */
+    .day-ahead { margin-bottom: 8px; }
+    .timeline-section-label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--text-3); margin-bottom: 4px;
+    }
+    .timeline-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 0; border-bottom: 1px solid var(--divider);
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .tl-time { width: 36px; font-size: 0.72rem; color: var(--text-3); flex-shrink: 0; padding-top: 1px; text-align: right; }
+    .tl-icon-wrap { flex-shrink: 0; }
+    .tl-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px;
+    }
+    .tl-body { flex: 1; min-width: 0; }
+    .tl-title { font-size: 0.825rem; font-weight: 600; margin-bottom: 2px; }
+    .tl-desc  { font-size: 0.72rem; color: var(--text-2); }
+    .tl-right { font-size: 0.72rem; color: var(--text-3); white-space: nowrap; padding-top: 1px; }
+
+    /* ─── Right panel ─── */
+    .panel-title { font-size: 0.875rem; font-weight: 700; text-align: center; margin-bottom: 2px; }
+    .panel-sub   { font-size: 0.68rem; color: var(--text-3); text-align: center; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 14px; }
+
+    /* Security score ring */
+    .score-wrap { display: flex; justify-content: center; margin-bottom: 16px; }
+    .score-ring { position: relative; width: 150px; height: 150px; }
+    .score-ring svg { transform: rotate(-90deg); }
+    .score-center {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .score-num { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.03em; }
+
+    /* Threats mini bar */
+    .threats-row { display: flex; justify-content: space-between; align-items: flex-end; padding: 12px 0; border-top: 1px solid var(--divider); }
+    .threats-left { display: flex; flex-direction: column; }
+    .threats-label { font-size: 0.68rem; color: var(--text-3); margin-bottom: 4px; }
+    .threats-val   { font-size: 1.6rem; font-weight: 700; }
+    .threats-bars  { display: flex; align-items: flex-end; gap: 6px; }
+    .th-col        { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .th-bar        { width: 20px; border-radius: 3px 3px 0 0; }
+    .th-lbl        { font-size: 0.58rem; color: var(--text-3); }
+
+    /* Compliance bar */
+    .compliance-row { padding: 12px 0; border-top: 1px solid var(--divider); }
+    .compliance-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .compliance-label { font-size: 0.72rem; color: var(--text-2); }
+    .compliance-val   { font-size: 0.72rem; font-weight: 700; color: var(--text-1); }
+    .compliance-track { height: 6px; border-radius: 3px; overflow: hidden;
+      background: linear-gradient(90deg, var(--red) 0%, var(--amber) 40%, var(--green) 75%, var(--cisco-teal) 100%); }
+    .compliance-thumb-wrap { position: relative; height: 6px; }
+    .compliance-thumb {
+      position: absolute; top: 50%; right: 1.8%;
+      transform: translateY(-50%);
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #fff; border: 2px solid var(--green);
+      box-shadow: 0 0 6px rgba(0,185,142,0.5);
+    }
+
+    /* Risk trends */
+    .risk-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+    .risk-title  { font-size: 0.825rem; font-weight: 700; }
+    .risk-badge  { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em;
+      padding: 3px 8px; border-radius: 10px;
+      background: rgba(0,185,142,0.15); color: var(--green); border: 1px solid rgba(0,185,142,0.25); }
+    .risk-score-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .risk-score-label { font-size: 0.7rem; color: var(--text-3); }
+    .risk-score-val { display: flex; align-items: baseline; gap: 4px; }
+    .risk-num { font-size: 1rem; font-weight: 700; }
+    .risk-delta { font-size: 0.65rem; color: var(--green); }
+    .area-chart { width: 100%; height: 60px; display: block; border-radius: 4px; }
+    .days-row { display: flex; justify-content: space-between; margin-top: 6px; margin-bottom: 12px; }
+    .day-lbl  { font-size: 0.58rem; color: var(--text-3); }
+    .risk-stats { display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--divider); padding-top: 12px; }
+    .risk-stat-row { display: flex; justify-content: space-between; align-items: center; }
+    .risk-stat-label { font-size: 0.7rem; color: var(--text-2); }
+    .risk-stat-val   { font-size: 0.7rem; font-weight: 700; }
+    .risk-stat-note  { font-size: 0.62rem; color: var(--green); margin-left: 4px; }
+
+    /* ─── Bottom dock ─── */
+    .dock {
+      position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(8,12,22,0.85); backdrop-filter: blur(20px);
+      border: 1px solid var(--divider); border-radius: 14px;
+      padding: 6px 8px; z-index: 100;
+    }
+    .dock-tab {
+      padding: 7px 18px; border-radius: 9px; border: none;
+      font-family: inherit; font-size: 0.78rem; font-weight: 500;
+      cursor: pointer; transition: all 0.15s; color: var(--text-2); background: transparent;
+    }
+    .dock-tab.active { background: rgba(255,255,255,0.08); color: var(--text-1); }
+    .dock-sep { width: 1px; height: 20px; background: var(--divider); }
+    .dock-icon-btn {
+      width: 34px; height: 34px; border-radius: 9px; border: none;
+      background: transparent; cursor: pointer; font-size: 17px;
+      display: flex; align-items: center; justify-content: center; color: var(--text-3);
+      transition: all 0.15s;
+    }
+    .dock-icon-btn:hover { background: rgba(255,255,255,0.07); color: var(--text-2); }
+    .dock-icon-btn.active-dock { background: var(--cisco-teal); color: #05080F; }
+  </style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="tb-app">
+      <div class="cisco-logo">
+        <div class="cisco-dots">
+          <div class="cisco-dot"></div><div class="cisco-dot"></div><div class="cisco-dot"></div><div class="cisco-dot"></div>
+        </div>
+        <div class="cisco-dots row2">
+          <div class="cisco-dot"></div><div class="cisco-dot"></div><div class="cisco-dot"></div><div class="cisco-dot"></div>
+        </div>
+      </div>
+      <span class="tb-app-name">Cloud Control</span>
+      <span class="tb-app-icon">⊡</span>
+    </div>
+
+    <div class="tb-ambient">
+      <div class="ambient-dots">
+        <div class="ambient-dot"></div>
+        <div class="ambient-dot"></div>
+      </div>
+      Ambient mode ready to assist
+    </div>
+
+    <div class="tb-nav">
+      <button class="tb-nav-btn active">Workspace</button>
+      <button class="tb-nav-btn">Control Center</button>
+    </div>
+
+    <div class="tb-search">🔍 Search</div>
+    <button class="tb-icon-btn">?</button>
+    <button class="tb-icon-btn">🔔</button>
+    <div class="tb-user">
+      <div class="tb-avatar">AJ</div>
+      <div class="tb-uname">Alexander<br><small>Business Corp, Inc</small></div>
+      <span style="color:var(--text-3);font-size:10px">▾</span>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <!-- person/network icon -->
+      <div class="s-icon active">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+      </div>
+      <div class="s-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      </div>
+      <div class="s-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="7"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+      </div>
+      <div class="s-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="5" rx="1"/><rect x="3" y="10" width="18" height="5" rx="1"/><rect x="3" y="17" width="18" height="4" rx="1"/></svg>
+      </div>
+      <div class="s-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4.5 8-11.8A8 8 0 0 0 12 2a8 8 0 0 0-8 8.2C4 17.5 12 22 12 22z"/></svg>
+      </div>
+      <div class="s-sep"></div>
+      <div class="s-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <div class="s-icon">
+        <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
+      </div>
+      <div class="s-sep"></div>
+      <div class="s-icon s-bottom">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      </div>
+      <div class="s-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main">
+
+      <!-- Left -->
+      <div class="main-left">
+
+        <!-- Today's Security Actions -->
+        <div class="sec-title">Today's Security Actions</div>
+        <div class="sec-sub">3 high-leverage actions curated for your review</div>
+
+        <div class="action-cards">
+
+          <div class="action-card priority">
+            <div class="ac-icon" style="background:linear-gradient(135deg,#1a3a5c,#0066aa)">🛡</div>
+            <div class="ac-body">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start">
+                <div class="ac-title">Secure Finance VLAN</div>
+                <div class="ac-tags">
+                  <span class="ac-tag">High Impact</span>
+                  <span class="ac-tag">Quick</span>
+                </div>
+              </div>
+              <div class="ac-desc">Isolate suspicious device activity in payroll systems</div>
+              <div class="ac-actions">
+                <button class="btn-exec">⊙ Execute</button>
+                <button class="btn-review">Review Plan</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-card">
+            <div class="ac-icon" style="background:linear-gradient(135deg,#1a2a4a,#2244aa)">📊</div>
+            <div class="ac-body">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start">
+                <div class="ac-title">Patch Critical</div>
+                <div class="ac-tags">
+                  <span class="ac-tag">High Impact</span>
+                  <span class="ac-tag">Medium</span>
+                </div>
+              </div>
+              <div class="ac-desc">Deploy security update to 18 exposed servers</div>
+              <div class="ac-actions">
+                <button class="btn-exec">⊙ Execute</button>
+                <button class="btn-review">Review Plan</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-card">
+            <div class="ac-icon" style="background:linear-gradient(135deg,#2a1a3a,#7744aa)">🔐</div>
+            <div class="ac-body">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start">
+                <div class="ac-title">Review Access Rights</div>
+                <div class="ac-tags">
+                  <span class="ac-tag">High Impact</span>
+                  <span class="ac-tag">Deep</span>
+                </div>
+              </div>
+              <div class="ac-desc">Audit elevated permissions from recent org changes</div>
+              <div class="ac-actions">
+                <button class="btn-exec">⊙ Execute</button>
+                <button class="btn-review">Review Plan</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Your Day Ahead -->
+        <div class="day-ahead">
+          <div class="sec-title" style="font-size:1rem">Your Day Ahead</div>
+          <div class="sec-sub">Security events, meetings, and insights curated for today</div>
+
+          <div class="timeline-section-label">Next few hours</div>
+
+          <div class="timeline-item">
+            <div class="tl-time">11:00</div>
+            <div class="tl-icon-wrap">
+              <div class="tl-icon" style="background:linear-gradient(135deg,#0a2a4a,#0066cc)">🔗</div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-title">Security Review Meeting</div>
+              <div class="tl-desc">Weekly security posture review with IT leadership</div>
+            </div>
+            <div class="tl-right">Device FL-2847</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-time">10:30</div>
+            <div class="tl-icon-wrap">
+              <div class="tl-icon" style="background:linear-gradient(135deg,#0a1a3a,#0044aa)">◉</div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-title">Threat Intelligence Dashboard</div>
+              <div class="tl-desc">Updated threat landscape analysis and recommendations</div>
+            </div>
+            <div class="tl-right">847 Endpoints</div>
+          </div>
+
+          <div class="timeline-section-label" style="margin-top:20px">Earlier today</div>
+
+          <div class="timeline-item">
+            <div class="tl-time">9:15</div>
+            <div class="tl-icon-wrap">
+              <div class="tl-icon" style="background:linear-gradient(135deg,#0a2a1a,#006644)">✓</div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-title">Morning Security Scan Complete</div>
+              <div class="tl-desc">All systems scanned, 3 high-priority items identified</div>
+            </div>
+            <div class="tl-right">847 Endpoints</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-time">8:42</div>
+            <div class="tl-icon-wrap">
+              <div class="tl-icon" style="background:linear-gradient(135deg,#3a1a1a,#aa2244)">⚠</div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-title">Suspicious Activity Detected</div>
+              <div class="tl-desc">Unusual login patterns in Finance VLAN requires attention</div>
+            </div>
+            <div class="tl-right">Device FL-2847</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-time">8:30</div>
+            <div class="tl-icon-wrap">
+              <div class="tl-icon" style="background:linear-gradient(135deg,#0a2a3a,#0088bb)">📂</div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-title">Backup Verification Complete</div>
+              <div class="tl-desc">All critical systems backed up successfully</div>
+            </div>
+            <div class="tl-right">12.4 TB</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="tl-time">6:00</div>
+            <div class="tl-icon-wrap">
+              <div class="tl-icon" style="background:linear-gradient(135deg,#1a1a2a,#334499)">🌙</div>
+            </div>
+            <div class="tl-body">
+              <div class="tl-title">Night Watch Complete</div>
+              <div class="tl-desc">Overnight monitoring complete, no incidents reported</div>
+            </div>
+            <div class="tl-right">All clear</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right panel -->
+      <div class="main-right">
+
+        <!-- Security Status -->
+        <div class="card" style="padding:18px 16px">
+          <div class="panel-title">Security Status</div>
+          <div class="panel-sub">GOOD</div>
+
+          <div class="score-wrap">
+            <div class="score-ring">
+              <svg width="150" height="150" viewBox="0 0 150 150">
+                <defs>
+                  <filter id="ring-glow">
+                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                </defs>
+                <circle cx="75" cy="75" r="60" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="12"/>
+                <!-- 85% arc = 320deg of 360 -->
+                <circle cx="75" cy="75" r="60" fill="none"
+                  stroke="url(#ringGrad)" stroke-width="12"
+                  stroke-dasharray="322 45" stroke-linecap="round"
+                  filter="url(#ring-glow)"/>
+                <defs>
+                  <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%"   stop-color="#00BCEB"/>
+                    <stop offset="100%" stop-color="#2B82F6"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div class="score-center">
+                <div class="score-num">85</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active threats -->
+          <div class="threats-row">
+            <div class="threats-left">
+              <div class="threats-label">Active Threats</div>
+              <div class="threats-val">6</div>
+            </div>
+            <div class="threats-bars">
+              <div class="th-col">
+                <div class="th-bar" style="height:42px;background:var(--red)"></div>
+                <div class="th-lbl">High</div>
+              </div>
+              <div class="th-col">
+                <div class="th-bar" style="height:28px;background:var(--amber)"></div>
+                <div class="th-lbl">Medium</div>
+              </div>
+              <div class="th-col">
+                <div class="th-bar" style="height:16px;background:var(--cisco-teal)"></div>
+                <div class="th-lbl">Low</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Compliance -->
+          <div class="compliance-row">
+            <div class="compliance-header">
+              <span class="compliance-label">Compliance</span>
+              <span class="compliance-val">98.2%</span>
+            </div>
+            <div class="compliance-thumb-wrap">
+              <div class="compliance-track" style="height:6px;border-radius:3px"></div>
+              <div class="compliance-thumb"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Risk Trends -->
+        <div class="card" style="padding:16px">
+          <div class="risk-header">
+            <div class="risk-title">Risk Trends</div>
+            <span class="risk-badge">LOW</span>
+          </div>
+          <div class="risk-score-row">
+            <span class="risk-score-label">7 Day Risk Score</span>
+            <div class="risk-score-val">
+              <span class="risk-num">29</span>
+              <span class="risk-delta">+12%</span>
+            </div>
+          </div>
+
+          <!-- Area chart -->
+          <svg class="area-chart" viewBox="0 0 258 60" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%"   stop-color="#1E6FD9" stop-opacity="0.6"/>
+                <stop offset="100%" stop-color="#1E6FD9" stop-opacity="0.05"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,50 C20,45 40,30 60,35 C80,40 100,20 120,22 C140,24 160,15 180,18 C200,21 220,30 240,25 L258,22 L258,60 L0,60 Z"
+              fill="url(#areaGrad)"/>
+            <path d="M0,50 C20,45 40,30 60,35 C80,40 100,20 120,22 C140,24 160,15 180,18 C200,21 220,30 240,25 L258,22"
+              fill="none" stroke="#2B82F6" stroke-width="1.5"/>
+          </svg>
+
+          <div class="days-row">
+            <span class="day-lbl">Mon</span><span class="day-lbl">Tues</span>
+            <span class="day-lbl">Wed</span><span class="day-lbl">Thur</span>
+            <span class="day-lbl">Fri</span><span class="day-lbl">Sat</span>
+            <span class="day-lbl">Sun</span>
+          </div>
+
+          <div class="risk-stats">
+            <div class="risk-stat-row">
+              <span class="risk-stat-label">This Week</span>
+              <span class="risk-stat-val" style="display:flex;align-items:center;gap:4px">
+                -12 % <span class="risk-stat-note">Improved</span>
+              </span>
+            </div>
+            <div class="risk-stat-row">
+              <span class="risk-stat-label">Critical Issues</span>
+              <span class="risk-stat-val">0 <span class="risk-stat-note">Active</span></span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /main-right -->
+    </div><!-- /main -->
+  </div><!-- /body -->
+</div><!-- /shell -->
+
+<!-- Bottom dock -->
+<div class="dock">
+  <button class="dock-tab active">Workspace</button>
+  <button class="dock-tab">Control center</button>
+  <div class="dock-sep"></div>
+  <button class="dock-icon-btn">⊞</button>
+  <button class="dock-icon-btn active-dock">◉</button>
+</div>
+
+<script>
+  /* Nav button toggle */
+  document.querySelectorAll('.tb-nav-btn').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.tb-nav-btn').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+  }));
+  document.querySelectorAll('.dock-tab').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.dock-tab').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+  }));
+</script>
+</body>
+</html>
