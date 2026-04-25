@@ -45,10 +45,10 @@ const ciscoTextDisabled = "rgba(255, 255, 255, 0.25)";
 // IoC background — ambient glow orbs on the layout level.
 // Cards and surfaces are fully transparent; depth comes from the background.
 export const iocBackground = `
-  radial-gradient(ellipse 80% 50% at 50% 110%, rgba(0, 188, 235, 0.22) 0%, transparent 55%),
-  radial-gradient(ellipse 50% 35% at 20% 100%, rgba(110, 180, 255, 0.14) 0%, transparent 50%),
-  radial-gradient(ellipse 50% 35% at 80% 100%, rgba(0, 160, 209, 0.14) 0%, transparent 50%),
-  #000914
+  radial-gradient(ellipse 70% 55% at -5% 100%, rgba(0, 100, 200, 0.55) 0%, rgba(0, 60, 140, 0.20) 55%, transparent 75%),
+  radial-gradient(ellipse 45% 40% at 10%  85%, rgba(0, 188, 235, 0.22) 0%, transparent 55%),
+  radial-gradient(ellipse 35% 30% at 30% 100%, rgba(30, 111, 217, 0.18) 0%, transparent 50%),
+  #05080F
 `;
 
 // ─── MUI Theme ───────────────────────────────────────────────────────────────

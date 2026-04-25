@@ -22,6 +22,7 @@ export {
   darkTheme,
   glassTheme,
   glassLightTheme,
+  iocTheme,
 } from "./theme-provider/theme-provider";
 
 // Glass theme exports (dark)
@@ -31,6 +32,10 @@ export { glassVars } from "./theme/glass/glass-vars";
 // Glass light theme exports
 export * from "./theme/glass/glass-light-color-palette";
 export { glassLightVars } from "./theme/glass/glass-light-vars";
+
+// IoC theme exports
+export * from "./theme/ioc/ioc-color-palette";
+export { iocVars } from "./theme/ioc/ioc-vars";
 
 export type { GradientsPalette, Gradient } from "./types/palette";
 export type {
