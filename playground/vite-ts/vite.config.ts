@@ -11,6 +11,7 @@ import path from "path";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: "/openuikit-newthemes/",
   resolve: {
     alias: [
       // Sub-path imports from the package (e.g. @open-ui-kit/core/typography.css)
