@@ -342,4 +342,11 @@ export const lightVars: VarsType = {
   accentIWeak: pinkPalette[50],
   accentJDefault: tealPalette[600],
   accentJWeak: tealPalette[50],
+  gradientPrimary:   `linear-gradient(180deg, ${bluePalette[400]} 0%, ${bluePalette[600]} 100%)`,
+  gradientSecondary: `linear-gradient(180deg, ${lightOrangePalette[400]} 0%, ${lightOrangePalette[600]} 100%)`,
+  gradientNegative:  `linear-gradient(180deg, ${redPalette[400]} 0%, ${redPalette[600]} 100%)`,
+  gradientBrand:     `linear-gradient(135deg, ${bluePalette[500]} 0%, ${lightOrangePalette[500]} 100%)`,
+  glowPrimary: "none", glowSecondary: "none", glowSuccess: "none",
+  glowWarning: "none", glowNegative: "none", glowSevere: "none",
+  glowExcellent: "none", glowNeutral: "none",
 };

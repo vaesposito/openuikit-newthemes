@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import React from "react";
 import { useTheme } from "@mui/material";
 import {
   Cell,
@@ -59,20 +60,34 @@ export const DonutChart = ({
   handleClick,
 }: DonutProps): JSX.Element => {
   const theme = useTheme();
+  const isIoc = theme.palette.primary.main === "#00BCEB";
+  const innerRadius = 57;
+  const outerRadius = 66;
+
+  const dominantColor = (data as ChartDataItem[])[0]?.color ?? "#00BCEB";
+  const iocGlowStyle: React.CSSProperties | undefined = isIoc
+    ? {
+        filter: `drop-shadow(0 0 3px ${dominantColor}88)`,
+      }
+    : undefined;
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <PieChart width={132} height={132}>
+        {/* Glow applied at HTML level via customized SVG wrapper isn't possible in Recharts,
+            so we rely on CSS filter on the PieChart SVG wrapper div */}
         <Pie
           onClick={handleClick}
           strokeWidth={0}
           data={data}
-          innerRadius={57}
-          outerRadius={66}
+          innerRadius={innerRadius}
+          outerRadius={outerRadius}
           paddingAngle={3}
           dataKey="value"
           startAngle={450}
           endAngle={90}
           minAngle={10}
+          style={iocGlowStyle}
         >
           {(data as ChartDataItem[]).map(({ color }, index) => (
             <Cell

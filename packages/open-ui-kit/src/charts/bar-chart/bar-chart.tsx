@@ -18,6 +18,35 @@ import { ChartDataItem, ChartProps } from "@/charts";
 import { Stack, Typography, useTheme } from "@mui/material";
 import { styles } from "./styles";
 
+interface GlowBarProps {
+  x?: number;
+  y?: number;
+  width?: number;
+  height?: number;
+  fill?: string;
+  radius?: number;
+  isIoc?: boolean;
+}
+
+const GlowBar = ({ x = 0, y = 0, width = 0, height = 0, fill, radius = 4, isIoc }: GlowBarProps) => {
+  if (!fill || fill === "transparent" || height <= 0) return null;
+  const glowFilter = isIoc && fill
+    ? `drop-shadow(0 0 4px ${fill}99) drop-shadow(0 0 10px ${fill}55)`
+    : undefined;
+  return (
+    <rect
+      x={x}
+      y={y}
+      width={width}
+      height={height}
+      fill={fill}
+      rx={radius}
+      ry={radius}
+      style={glowFilter ? { filter: glowFilter } : undefined}
+    />
+  );
+};
+
 const BAR_SIZE_PX = 8;
 const SPACE_BETWEEN_BARS_PX = 29;
 const EMPTY_BAR: ChartDataItem = {
@@ -55,6 +84,7 @@ export const BarChart = ({
   const [maxBars, setMaxBars] = useState(0);
 
   const theme = useTheme();
+  const isIoc = theme.palette.primary.main === "#00BCEB";
 
   const handleResize = useCallback((width: number) => {
     const maxBars =
@@ -80,9 +110,10 @@ export const BarChart = ({
           radius={4}
           minPointSize={10}
           background={{
-            fill: theme.palette.vars.baseBackgroundMedium,
+            fill: "rgba(128,128,128,0.18)",
             radius: 4,
           }}
+          shape={(props: GlowBarProps) => <GlowBar {...props} isIoc={isIoc} />}
         >
           {adjustedData.map((dataItem, i) => (
             <Cell

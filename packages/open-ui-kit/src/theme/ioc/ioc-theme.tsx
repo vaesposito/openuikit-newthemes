@@ -133,6 +133,21 @@ const iocComponentOverrides = {
         backgroundAttachment: "fixed",
         minHeight: "100vh",
       },
+      // ViewSwitcher: replace orange selected border with teal, elevate selected bg
+      ".osd-view-switcher-option": {
+        backgroundColor: `${iocSurfacePalette[100]} !important`,
+        borderColor: `${iocBorderPalette[200]} !important`,
+        color: `${iocTextSecondary} !important`,
+        "&:hover": {
+          backgroundColor: `${iocSurfacePalette[300]} !important`,
+          color: `${iocTextPrimary} !important`,
+        },
+      },
+      ".osd-view-switcher-option-selected": {
+        backgroundColor: `${iocSurfacePalette[500]} !important`,
+        borderColor: `${iocTealPalette.alpha20} !important`,
+        color: `${iocTextPrimary} !important`,
+      },
       "*::-webkit-scrollbar": { width: "8px", height: "8px" },
       "*::-webkit-scrollbar-track": {
         backgroundColor: iocBackdropPalette[800],
@@ -152,16 +167,18 @@ const iocComponentOverrides = {
     },
   },
 
-  // Cards: transparent, no border, no shadow — depth comes from the background
+  // Cards: glass surface — translucent + blur so the background atmosphere shows through
   MuiCard: {
     styleOverrides: {
       root: {
         backgroundColor: iocSurfacePalette[100],
         backgroundImage: "none",
+        backdropFilter: iocBackdropBlur,
         border: `1px solid ${iocBorderPalette[200]}`,
         borderRadius: "10px",
         boxShadow: "none",
         position: "relative" as const,
+        padding: "16px",
       },
     },
   },
@@ -171,9 +188,11 @@ const iocComponentOverrides = {
       root: {
         backgroundImage: "none",
         backgroundColor: iocSurfacePalette[100],
+        backdropFilter: iocBackdropBlur,
       },
       elevation1: {
         backgroundColor: iocSurfacePalette[100],
+        backdropFilter: iocBackdropBlur,
         boxShadow: iocShadowSm,
       },
       elevation2: {
@@ -190,40 +209,97 @@ const iocComponentOverrides = {
   },
 
   MuiButton: {
+    // Re-declare defaultProps (lost when iocComponentOverrides replaces buttonComponent)
+    defaultProps: {
+      disableRipple: true,
+      variant: "primary",
+      color: "default",
+      size: "medium",
+    } as any,
     styleOverrides: {
       root: {
-        borderRadius: "8px",
+        // Base structural styles (from buttonComponent, lost due to replacement)
         textTransform: "none" as const,
+        borderRadius: "8px",
         fontWeight: 600,
         transition: "all 0.18s ease",
-      },
-      contained: {
-        backgroundColor: iocTealPalette[500],
-        color: iocBackdropPalette[900],
-        "&:hover": {
-          backgroundColor: iocTealPalette[400],
-          boxShadow: `0 0 20px ${iocTealPalette.alpha20}`,
+        color: baseTheme.palette.vars.baseTextInverse,
+        "& .MuiButton-startIcon": { marginLeft: 0 },
+        "& .MuiButton-endIcon": { marginRight: 0 },
+        "&.MuiButton-sizeLarge": { ...baseTheme.typography.subtitle1, height: "40px" },
+        "&.MuiButton-sizeMedium": { ...baseTheme.typography.subtitle2, height: "32px" },
+        "&.MuiButton-sizeSmall": { ...baseTheme.typography.subtitle2, height: "24px", padding: "2px 12px" },
+        "&.MuiButton-primarySizeLarge, &.MuiButton-primarySizeMedium": {
+          paddingRight: "16px",
+          paddingLeft: "16px",
         },
-      },
-      containedSecondary: {
-        backgroundColor: iocBluePalette[500],
-        color: "#ffffff",
-        "&:hover": {
-          backgroundColor: iocBluePalette[400],
-          boxShadow: "0 0 20px rgba(43,130,246,0.25)",
+        // IoC color overrides — target the custom variant class names
+        "&.MuiButton-primary": {
+          background: `linear-gradient(180deg, ${iocTealPalette[400]} 0%, ${iocTealPalette[600]} 100%)`,
+          color: iocBackdropPalette[900],
+          "&.Mui-disabled": { opacity: 0.4 },
+          "&:hover": {
+            background: `linear-gradient(180deg, ${iocTealPalette[300]} 0%, ${iocTealPalette[500]} 100%)`,
+            boxShadow: `0 0 16px ${iocTealPalette.alpha20}`,
+          },
+          "&:active": {
+            background: `linear-gradient(180deg, ${iocTealPalette[500]} 0%, ${iocTealPalette[700]} 100%)`,
+          },
         },
-      },
-      outlined: {
-        borderColor: iocBorderPalette[300],
-        color: iocTealPalette[400],
-        "&:hover": {
-          borderColor: iocTealPalette[500],
-          backgroundColor: iocTealPalette.alpha05,
+        "&.MuiButton-secondary": {
+          background: `linear-gradient(180deg, ${iocBluePalette[500]} 0%, ${iocBluePalette[600]} 100%)`,
+          color: "#ffffff",
+          "&.Mui-disabled": { opacity: 0.4 },
+          "&:hover": {
+            background: `linear-gradient(180deg, ${iocBluePalette[400]} 0%, ${iocBluePalette[500]} 100%)`,
+            boxShadow: "0 0 16px rgba(43,130,246,0.25)",
+          },
+          "&:active": {
+            background: `linear-gradient(180deg, ${iocBluePalette[600]} 0%, #1560c0 100%)`,
+          },
         },
-      },
-      text: {
-        color: iocTealPalette[400],
-        "&:hover": { backgroundColor: iocTealPalette.alpha05 },
+        "&.MuiButton-outlined": {
+          border: `2px solid ${iocBorderPalette[300]}`,
+          background: "none",
+          color: iocTealPalette[400],
+          "&.Mui-disabled": { opacity: 0.35, borderColor: iocBorderPalette[200] },
+          "&:hover": {
+            borderColor: iocTealPalette[500],
+            backgroundColor: iocTealPalette.alpha05,
+          },
+        },
+        "&.MuiButton-tertariary": {
+          background: "none",
+          color: iocTealPalette[400],
+          "&.Mui-disabled": { opacity: 0.35 },
+          "&:hover": { backgroundColor: iocTealPalette.alpha05 },
+        },
+        // Negative variants
+        "&.MuiButton-primaryNegative": {
+          background: `linear-gradient(180deg, ${baseTheme.palette.vars.negativeBackgroundHover} 0%, ${baseTheme.palette.vars.negativeBackgroundDefault} 100%)`,
+          color: "#ffffff",
+          "&.Mui-disabled": { opacity: 0.35 },
+          "&:hover": {
+            background: `linear-gradient(180deg, ${baseTheme.palette.vars.negativeBackgroundWeak ?? baseTheme.palette.vars.negativeBackgroundHover} 0%, ${baseTheme.palette.vars.negativeBackgroundHover} 100%)`,
+          },
+          "&:active": { background: baseTheme.palette.vars.negativeBackgroundActive },
+        },
+        "&.MuiButton-outlinedNegative": {
+          border: `2px solid ${baseTheme.palette.vars.negativeBorderDefault}`,
+          background: "none",
+          color: baseTheme.palette.vars.negativeTextDefault,
+          "&.Mui-disabled": { opacity: 0.35 },
+          "&:hover": {
+            border: `2px solid ${baseTheme.palette.vars.negativeBackgroundHover}`,
+            color: baseTheme.palette.vars.negativeBackgroundHover,
+          },
+        },
+        "&.MuiButton-tertariaryNegative": {
+          background: "none",
+          color: baseTheme.palette.vars.negativeTextDefault,
+          "&.Mui-disabled": { opacity: 0.35 },
+          "&:hover": { color: baseTheme.palette.vars.negativeBackgroundHover },
+        },
       },
     },
   },
@@ -231,6 +307,13 @@ const iocComponentOverrides = {
   MuiTextField: {
     styleOverrides: {
       root: {
+        // Restore base transforms lost when iocComponentOverrides replaces inputComponents.MuiTextField
+        "& .MuiInputLabel-outlined": {
+          transform: "translate(12px, -9px) scale(1)",
+        },
+        "& .MuiInputLabel-filled": {
+          transform: "translate(12px, 3px) scale(1)",
+        },
         "& .MuiOutlinedInput-root": {
           backgroundColor: iocSurfacePalette[50],
           backdropFilter: "blur(12px)",
@@ -395,10 +478,59 @@ const iocComponentOverrides = {
         fontWeight: 500,
         color: iocTextSecondary,
         "&.Mui-selected": { color: iocTealPalette[400] },
-        "&:hover": { backgroundColor: iocSurfacePalette[100] },
         transition: "all 0.15s ease",
       },
     },
+    defaultProps: { loading: false, type: "main" } as any,
+    // Re-declare all base variants (they're lost when iocComponentOverrides replaces tabComponent)
+    // and apply ioc-specific overrides on top.
+    variants: [
+      {
+        props: { type: "main" } as any,
+        style: {
+          ...baseTheme.typography.body1,
+          fontWeight: baseTheme.typography.fontWeightSemiBold,
+          minHeight: "42px",
+          height: "42px",
+          color: iocTextSecondary,
+          padding: "8px 24px",
+          "&:hover": { backgroundColor: iocSurfacePalette[200] },
+          "&.Mui-selected": { color: iocTealPalette[400] },
+        },
+      },
+      {
+        props: { type: "subTab" } as any,
+        style: {
+          ...baseTheme.typography.body2,
+          fontWeight: baseTheme.typography.fontWeightSemiBold,
+          minHeight: "40px",
+          height: "40px",
+          color: iocTextSecondary,
+          padding: "8px 24px",
+          "&:hover": { backgroundColor: iocSurfacePalette[200] },
+          "&.Mui-selected": { color: iocTealPalette[400] },
+        },
+      },
+      {
+        // toggleTab: restore height + borderRadius from base, override colors for ioc
+        props: { type: "toggleTab" } as any,
+        style: {
+          ...baseTheme.typography.caption,
+          fontWeight: baseTheme.typography.fontWeightSemiBold,
+          minHeight: "32px",
+          height: "32px",
+          borderRadius: "20px",
+          padding: "0 16px",
+          backgroundColor: "transparent",
+          color: iocTextSecondary,
+          "&:hover": { backgroundColor: iocSurfacePalette[200] },
+          "&.Mui-selected": {
+            backgroundColor: iocSurfacePalette[500],
+            color: iocTealPalette[400],
+          },
+        },
+      },
+    ],
   },
 
   MuiAccordion: {
@@ -411,6 +543,30 @@ const iocComponentOverrides = {
         boxShadow: "none",
         "&:before": { display: "none" },
         "&.Mui-expanded": { margin: "0 0 8px 0" },
+      },
+    },
+  },
+
+  MuiAccordionSummary: {
+    styleOverrides: {
+      root: {
+        padding: "12px 16px",
+        minHeight: "unset",
+        gap: "4px",
+        "&.Mui-expanded": { minHeight: "unset" },
+      },
+      content: {
+        margin: "0px",
+        gap: "16px",
+        "&.Mui-expanded": { margin: "0px" },
+      },
+    },
+  },
+
+  MuiAccordionDetails: {
+    styleOverrides: {
+      root: {
+        padding: "12px 16px 16px 16px",
       },
     },
   },
@@ -444,7 +600,8 @@ const iocComponentOverrides = {
       root: {
         backgroundColor: iocSurfacePalette[300],
         border: `2px solid ${iocBorderPalette[300]}`,
-        color: iocTealPalette[300],
+        // White text works on any colored background; teal clashes on red/green/orange
+        color: iocTextPrimary,
       },
     },
   },
@@ -478,7 +635,9 @@ const iocComponentOverrides = {
   MuiLinearProgress: {
     styleOverrides: {
       root: { backgroundColor: iocSurfacePalette[200], borderRadius: "4px" },
-      bar: { backgroundColor: iocTealPalette[500], borderRadius: "4px" },
+      // Only override the primary-color bar to teal; let success/warning/error use semantic palette
+      bar: { borderRadius: "4px" },
+      barColorPrimary: { backgroundColor: iocTealPalette[500] },
     },
   },
 };

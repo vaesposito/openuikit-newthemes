@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import React from "react";
 import { Box, Typography, useTheme } from "@mui/material";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 // import { barShadow, boxStyle, gaugeLabel, gaugeWrapper } from "./styles";
@@ -43,6 +44,7 @@ export const GaugeChart = ({
   styleProps,
 }: GaugeChartProps) => {
   const theme = useTheme();
+  const isIoc = theme.palette.primary.main === "#00BCEB";
 
   const [valueItem] = data as ChartDataItem[];
   const gaugeData = [
@@ -54,21 +56,21 @@ export const GaugeChart = ({
     // Background Bar
     {
       value:
-        ((maxValue - Math.min(valueItem.value, maxValue)) / maxValue) * 100, // The remaining part to fill with background
-      fill: theme.palette.vars.controlIconDisabled,
+        ((maxValue - Math.min(valueItem.value, maxValue)) / maxValue) * 100,
+      fill: isIoc ? "rgba(255,255,255,0.06)" : theme.palette.vars.controlIconDisabled,
     },
   ];
 
-  // Gauge Configuration
   const width = styleProps?.customWidth || 132;
   const height = styleProps?.customHeight || 132;
   const cx = width / 2;
   const cy = height / 2;
-  const chartWidth = 9;
+  // ioc uses a noticeably thicker arc to match the reference design
+  const chartWidth = isIoc ? 9 : 9;
   const outerRadius = width / 2;
   const innerRadius = outerRadius - chartWidth;
 
-  // Create all dividers in their appropriate place
+  // Create all dividers in their appropriate place (hidden in ioc — glow replaces them)
   const renderDividers = () => (
     <>
       {Array.from({ length: NUM_DIVIDERS }).map((_, i) => {
@@ -79,14 +81,12 @@ export const GaugeChart = ({
             ? DIVIDER_MARGIN_FROM_CHART + SMALL_DIVIDER_LENGTH
             : DIVIDER_MARGIN_FROM_CHART;
 
-        // Calculate the angle where the divider will be at
         const angle =
           START_ANGLE + (i * (END_ANGLE - START_ANGLE)) / (NUM_DIVIDERS - 1);
         const radian = (angle * Math.PI) / 180;
         const cos = Math.cos(radian);
         const sin = Math.sin(radian);
 
-        // Calculate divider line start and end points
         const x1 = cx + (innerRadius - margin) * cos;
         const y1 = cy - (innerRadius - margin) * sin;
         const x2 = x1 + length * cos;
@@ -99,7 +99,7 @@ export const GaugeChart = ({
             y1={y1}
             x2={x2}
             y2={y2}
-            stroke={theme.palette.vars.inactiveBackgroundDefault}
+            stroke={isIoc ? "transparent" : theme.palette.vars.inactiveBackgroundDefault}
             strokeWidth={strokeWidth}
           />
         );
@@ -107,10 +107,19 @@ export const GaugeChart = ({
     </>
   );
 
+  const iocGlowStyle: React.CSSProperties | undefined = isIoc
+    ? {
+        // Subtle glow at HTML level — not clipped by SVG viewport
+        filter: `drop-shadow(0 0 4px ${gaugeData[0].fill}BB) drop-shadow(0 0 12px ${gaugeData[0].fill}66)`,
+      }
+    : undefined;
+
   return (
     <StyledResponsiveContainer width="100%" height="100%">
       <div style={gaugeWrapper({ height, width })}>
-        <PieChart width={width} height={height}>
+        {/* Glow wrapper — isolates the arc so Typography doesn't inherit the filter */}
+        <div style={iocGlowStyle}>
+          <PieChart width={width} height={height}>
           <Pie
             data={gaugeData}
             cx="50%"
@@ -121,22 +130,20 @@ export const GaugeChart = ({
             outerRadius={outerRadius}
             dataKey="value"
             strokeWidth={0}
+            cornerRadius={isIoc ? chartWidth / 2 : 0}
           >
-            <Cell
-              key={`gauge-main-bar`}
-              strokeLinecap="round"
-              style={barShadow(gaugeData[0].fill)}
-            />
-            <Cell key={`gauge-background-bar`} strokeLinecap="round" />;
-          </Pie>
-          {renderDividers()}
-        </PieChart>
+              <Cell key={`gauge-main-bar`} strokeLinecap="round" />
+              <Cell key={`gauge-background-bar`} strokeLinecap="round" />
+            </Pie>
+            {renderDividers()}
+          </PieChart>
+        </div>
         <Typography
           variant="h4"
           position="absolute"
           top={styleProps?.textTop || "50%"}
           left="50%"
-          color={theme.palette.vars.baseTextDefault}
+          color={theme.palette.vars.baseTextStrong}
           style={gaugeLabel}
         >
           {Math.round(valueItem.value)}
@@ -161,8 +168,11 @@ export const gaugeWrapper = ({
     position: "relative",
   }) as const;
 
-export const barShadow = (barFill: string) => ({
-  filter: `drop-shadow(0 0 4px ${barFill}80) drop-shadow(0 1.97px 1px rgba(0, 0, 0, 0.25))`,
+export const barShadow = (barFill: string, strong = false) => ({
+  filter: strong
+    ? // ioc: wide bloom — tight core + mid halo + wide outer glow
+      `drop-shadow(0 0 4px ${barFill}) drop-shadow(0 0 10px ${barFill}EE) drop-shadow(0 0 22px ${barFill}AA) drop-shadow(0 0 40px ${barFill}66) drop-shadow(0 0 60px ${barFill}33)`
+    : `drop-shadow(0 0 4px ${barFill}80) drop-shadow(0 1.97px 1px rgba(0, 0, 0, 0.25))`,
 });
 
 export const gaugeLabel = {

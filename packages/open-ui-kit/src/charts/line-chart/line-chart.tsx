@@ -102,22 +102,32 @@ export const LineChart = ({
           vertical={false}
           strokeWidth={1}
           stroke={theme.palette.vars.inactiveBackgroundDefault}
+          strokeOpacity={0.35}
           {...gridProps}
         />
-        {categories?.map((category) => (
-          <Line
-            key={category.name}
-            type="monotone"
-            dataKey={category.name}
-            legendType="none"
-            dot={false}
-            activeDot={true}
-            strokeWidth={2}
-            stroke={category.color}
-            name={category.name}
-            {...lineProps}
-          />
-        ))}
+        {categories?.map((category) => {
+          const isIoc = theme.palette.primary.main === "#00BCEB";
+          const glowStyle = isIoc
+            ? {
+                filter: `drop-shadow(0 0 6px ${category.color}99) drop-shadow(0 0 2px ${category.color}66)`,
+              }
+            : undefined;
+          return (
+            <Line
+              key={category.name}
+              type="monotone"
+              dataKey={category.name}
+              legendType="none"
+              dot={false}
+              activeDot={true}
+              strokeWidth={isIoc ? 2.5 : 2}
+              stroke={category.color}
+              name={category.name}
+              style={glowStyle}
+              {...lineProps}
+            />
+          );
+        })}
         {showTooltip && (
           <Tooltip
             content={

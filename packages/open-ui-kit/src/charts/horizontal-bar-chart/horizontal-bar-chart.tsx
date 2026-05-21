@@ -18,6 +18,7 @@ export const HorizontalBarChart = ({
   handleClick,
 }: HorizontalBarChartProps) => {
   const theme = useTheme();
+  const isIoc = theme.palette.primary.main === "#00BCEB";
 
   const chartData = data as ChartDataItem[];
   const maxValue = Math.max(...chartData.map((d) => d.value));
@@ -54,7 +55,9 @@ export const HorizontalBarChart = ({
                 <Typography variant="caption">{d.name}</Typography>
                 <Typography variant="caption">{d.value}</Typography>
               </Box>
-              <Box sx={getBarStyle(d.value, maxValue, d.color)} />
+              <Box sx={styles.barTrack}>
+                <Box sx={getBarStyle(d.value, maxValue, d.color, isIoc)} />
+              </Box>
             </Stack>
           </Stack>
         ))}

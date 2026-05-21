@@ -31,6 +31,7 @@ import {
   iocTextSecondary,
   iocTextTertiary,
   iocTextDisabled,
+  iocPageBackground,
 } from "./ioc-color-palette";
 
 export const iocVars: VarsType = {
@@ -85,10 +86,10 @@ export const iocVars: VarsType = {
   brandTextSecondary: iocTextPrimary,
 
   // Control
-  controlBackgroundDefault: iocSurfacePalette[100],
+  controlBackgroundDefault: iocSurfacePalette[200],
   controlBackgroundDisabled: iocSurfacePalette[50],
-  controlBackgroundWeak: iocSurfacePalette[50],
-  controlBackgroundMedium: iocSurfacePalette[300],
+  controlBackgroundWeak: iocSurfacePalette[300],    // toggle-tab container: clearly visible pill
+  controlBackgroundMedium: iocSurfacePalette[500],  // selected tab: clearly elevated
   controlBorderDefault: iocBorderPalette[300],
   controlBorderStrong: iocBorderPalette[500],
   controlBorderMedium: iocBorderPalette[200],
@@ -161,7 +162,7 @@ export const iocVars: VarsType = {
   successTextHover: greenPalette[200],
   successTextDefault: greenPalette[300],
   successTextInDisabled: greenPalette[10],
-  successTextInDefault: greenPalette[50],
+  successTextInDefault: greyPalette[900],
   successBorderDisabled: greenPalette[40],
   successBorderActive: greenPalette[600],
   successBorderHover: greenPalette[400],
@@ -206,7 +207,7 @@ export const iocVars: VarsType = {
   excellentTextDefault: lightBluePalette[200],
   excellentTextHover: lightBluePalette[100],
   excellentTextActive: lightBluePalette[300],
-  excellentTextInDefault: lightBluePalette[50],
+  excellentTextInDefault: greyPalette[900],
   excellentTextInDisabled: lightBluePalette["alpha10"],
   excellentBorderDefault: lightBluePalette[600],
   excellentBorderHover: lightBluePalette[500],
@@ -231,7 +232,7 @@ export const iocVars: VarsType = {
   neutralTextDefault: iocTealPalette[200],
   neutralTextHover: iocTealPalette[100],
   neutralTextActive: iocTealPalette[300],
-  neutralTextInDefault: iocTealPalette[50],
+  neutralTextInDefault: greyPalette[900],
   neutralTextInDisabled: iocTealPalette.alpha10,
   neutralBorderDefault: iocTealPalette[600],
   neutralBorderHover: iocTealPalette[500],
@@ -256,7 +257,7 @@ export const iocVars: VarsType = {
   infoTextDefault: "#93C5FD",
   infoTextHover: "#BFDBFE",
   infoTextActive: "#60A5FA",
-  infoTextInDefault: "#EFF6FF",
+  infoTextInDefault: greyPalette[900],
   infoTextInDisabled: "rgba(43,130,246,0.10)",
   infoBorderDefault: iocBluePalette[600],
   infoBorderHover: iocBluePalette[500],
@@ -306,7 +307,7 @@ export const iocVars: VarsType = {
   warningTextDefault: lightOrangePalette[200],
   warningTextHover: lightOrangePalette[100],
   warningTextActive: lightOrangePalette[300],
-  warningTextInDefault: lightOrangePalette[50],
+  warningTextInDefault: greyPalette[900],
   warningTextInDisabled: lightOrangePalette["alpha10"],
   warningBorderDefault: lightOrangePalette[500],
   warningBorderHover: lightOrangePalette[400],
@@ -331,7 +332,7 @@ export const iocVars: VarsType = {
   severeWarningTextDefault: orangePalette[200],
   severeWarningTextHover: orangePalette[100],
   severeWarningTextActive: orangePalette[300],
-  severeWarningTextInDefault: orangePalette[50],
+  severeWarningTextInDefault: greyPalette[900],
   severeWarningTextInDisabled: orangePalette["alpha10"],
   severeWarningBorderDefault: orangePalette[500],
   severeWarningBorderHover: orangePalette[400],
@@ -356,7 +357,7 @@ export const iocVars: VarsType = {
   moderateTextDefault: yellowPalette[900],
   moderateTextHover: yellowPalette[800],
   moderateTextActive: yellowPalette[700],
-  moderateTextInDefault: yellowPalette[900],
+  moderateTextInDefault: greyPalette[900],
   moderateTextInDisabled: yellowPalette["alpha10"],
   moderateBorderDefault: yellowPalette[500],
   moderateBorderHover: yellowPalette[400],
@@ -393,4 +394,21 @@ export const iocVars: VarsType = {
   accentIWeak: "rgba(242, 99, 140, 0.15)",
   accentJDefault: tealPalette[400],
   accentJWeak: "rgba(62, 203, 209, 0.15)",
+
+  // Gradients
+  gradientPrimary:   `linear-gradient(180deg, ${iocTealPalette[400]} 0%, ${iocTealPalette[600]} 100%)`,
+  gradientSecondary: `linear-gradient(180deg, ${iocBluePalette[500]} 0%, ${iocBluePalette[600]} 100%)`,
+  gradientNegative:  `linear-gradient(180deg, ${redPalette[400]} 0%, ${redPalette[500]} 100%)`,
+  gradientBrand:     `linear-gradient(135deg, ${iocTealPalette[400]} 0%, ${iocBluePalette[500]} 100%)`,
+  gradientPage:      iocPageBackground,
+
+  // Glows — 3-layer bloom box-shadows for C1D dark surfaces
+  glowPrimary:   `0 0 6px ${iocTealPalette[500]}CC, 0 0 16px ${iocTealPalette[500]}77, 0 0 28px ${iocTealPalette[500]}33`,
+  glowSecondary: `0 0 6px ${iocBluePalette[500]}CC, 0 0 16px ${iocBluePalette[500]}77, 0 0 28px ${iocBluePalette[500]}33`,
+  glowSuccess:   `0 0 6px ${greenPalette[500]}CC, 0 0 16px ${greenPalette[500]}77, 0 0 28px ${greenPalette[500]}33`,
+  glowWarning:   `0 0 6px ${lightOrangePalette[500]}CC, 0 0 16px ${lightOrangePalette[500]}77, 0 0 28px ${lightOrangePalette[500]}33`,
+  glowNegative:  `0 0 6px ${redPalette[500]}CC, 0 0 16px ${redPalette[500]}77, 0 0 28px ${redPalette[500]}33`,
+  glowSevere:    `0 0 6px ${orangePalette[500]}CC, 0 0 16px ${orangePalette[500]}77, 0 0 28px ${orangePalette[500]}33`,
+  glowExcellent: `0 0 6px ${lightBluePalette[500]}CC, 0 0 16px ${lightBluePalette[500]}77, 0 0 28px ${lightBluePalette[500]}33`,
+  glowNeutral:   `0 0 6px ${iocTealPalette[600]}99, 0 0 14px ${iocTealPalette[600]}44`,
 };

@@ -14,10 +14,30 @@ const getBadgeColor = (
 ) => {
   if (isNotification) {
     return "inherit";
-  } else if (type === "default" || type === "warning" || type === "moderate") {
-    return theme.palette.vars.baseTextStrong;
-  } else {
-    return theme.palette.vars.baseTextInverse;
+  }
+  // Use per-type "textIn" tokens so text is legible on each badge background
+  switch (type) {
+    case "warning":
+      return theme.palette.vars.warningTextInDefault;
+    case "moderate":
+      return theme.palette.vars.moderateTextInDefault;
+    case "excellent":
+      return theme.palette.vars.excellentTextInDefault;
+    case "neutral":
+      return theme.palette.vars.neutralTextInDefault;
+    case "error":
+      return theme.palette.vars.negativeTextInDefault;
+    case "info":
+      return theme.palette.vars.infoTextInDefault;
+    case "success":
+      return theme.palette.vars.successTextInDefault;
+    case "inactive":
+      return theme.palette.vars.inactiveTextInDefault;
+    case "severe":
+      return theme.palette.vars.severeWarningTextInDefault;
+    case "default":
+    default:
+      return theme.palette.vars.baseTextStrong;
   }
 };
 

@@ -75,7 +75,16 @@ export const inputComponents = (theme: Theme): Components => {
           ...typography.subtitle2,
           paddingLeft: "1px",
           color: theme.palette.vars.baseTextDefault,
+          // Default transform for standard (non-outlined) variant
           transform: "translate(0, -1.5px) scale(1)",
+          // Outlined labels inside FormControl (e.g. Select) need a different transform
+          // so they float above the border instead of overlapping the input value
+          "&.MuiInputLabel-outlined": {
+            transform: "translate(12px, -9px) scale(1)",
+          },
+          "&.MuiInputLabel-filled": {
+            transform: "translate(12px, 3px) scale(1)",
+          },
           "&.Mui-focused": {
             color: theme.palette.vars.baseTextDefault,
           },

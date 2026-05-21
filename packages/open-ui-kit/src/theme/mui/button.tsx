@@ -185,6 +185,7 @@ export const buttonComponent = (theme: Theme): Components => {
           style: {
             "&.MuiButton-primaryNegative": {
               background: theme.palette.vars.negativeBackgroundDefault,
+              color: theme.palette.vars.negativeTextInDefault,
               "&.Mui-disabled": {
                 opacity: 0.35,
                 background: theme.palette.vars.negativeBackgroundDisabled,

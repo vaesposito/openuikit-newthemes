@@ -321,4 +321,19 @@ export interface VarsType {
   accentIWeak: string;
   accentJDefault: string;
   accentJWeak: string;
+  // Gradients
+  gradientPrimary: string;
+  gradientSecondary: string;
+  gradientNegative: string;
+  gradientBrand: string;
+  gradientPage?: string;
+  // Glows — CSS box-shadow values (use on elements), "none" in non-glow themes
+  glowPrimary: string;
+  glowSecondary: string;
+  glowSuccess: string;
+  glowWarning: string;
+  glowNegative: string;
+  glowSevere: string;
+  glowExcellent: string;
+  glowNeutral: string;
 }

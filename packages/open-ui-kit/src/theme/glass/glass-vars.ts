@@ -6,6 +6,7 @@
 
 import { VarsType } from "@/types/vars";
 import {
+  bluePalette,
   greenPalette,
   greyPalette,
   lightOrangePalette,
@@ -396,4 +397,11 @@ export const glassVars: VarsType = {
   accentIWeak: "rgba(242, 99, 140, 0.15)",
   accentJDefault: tealPalette[400],
   accentJWeak: "rgba(62, 203, 209, 0.15)",
+  gradientPrimary:   `linear-gradient(180deg, ${bluePalette[300]} 0%, ${bluePalette[600]} 100%)`,
+  gradientSecondary: `linear-gradient(180deg, ${lightOrangePalette[300]} 0%, ${lightOrangePalette[600]} 100%)`,
+  gradientNegative:  `linear-gradient(180deg, ${redPalette[300]} 0%, ${redPalette[600]} 100%)`,
+  gradientBrand:     `linear-gradient(135deg, ${tealPalette[400]} 0%, ${bluePalette[500]} 100%)`,
+  glowPrimary: "none", glowSecondary: "none", glowSuccess: "none",
+  glowWarning: "none", glowNegative: "none", glowSevere: "none",
+  glowExcellent: "none", glowNeutral: "none",
 };

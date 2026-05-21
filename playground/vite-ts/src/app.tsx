@@ -6,6 +6,7 @@
 
 import React from "react";
 import { ThemeProvider, ThemeMode } from "@open-ui-kit/core";
+import ComponentDocs from "./component-docs";
 import {
   ThemeProvider as MuiThemeProvider,
   CssBaseline,
@@ -174,7 +175,12 @@ function ThemeShowcase({ isCiscoZen }: { isCiscoZen?: boolean }) {
 }
 
 export default function App() {
+  const [showDocs] = React.useState(true);
   const [themeMode, setThemeMode] = React.useState<ExtendedThemeMode>("ioc");
+
+  if (showDocs) {
+    return <ComponentDocs />;
+  }
   const isCiscoZen = themeMode === "ioc";
 
   const ThemeWrapper = isCiscoZen
@@ -232,7 +238,17 @@ export default function App() {
                 Deep navy foundations with ambient teal glow. Transparent surfaces, depth from light.
               </Typography>
             </Box>
-            <ThemeSelector />
+            <Stack direction="row" spacing={2} alignItems="center">
+              <Button
+                variant="outlined"
+                size="small"
+                onClick={() => setShowDocs(true)}
+                sx={{ whiteSpace: "nowrap" }}
+              >
+                Component Docs
+              </Button>
+              <ThemeSelector />
+            </Stack>
           </Box>
 
           <ThemeShowcase isCiscoZen />
@@ -259,7 +275,17 @@ export default function App() {
           <Typography variant="h4" component="h1">
             Open UI Kit Theme Showcase
           </Typography>
-          <ThemeSelector />
+          <Stack direction="row" spacing={2} alignItems="center">
+            <Button
+              variant="outlined"
+              size="small"
+              onClick={() => setShowDocs(true)}
+              sx={{ whiteSpace: "nowrap" }}
+            >
+              Component Docs
+            </Button>
+            <ThemeSelector />
+          </Stack>
         </Box>
 
         {themeMode === "glass" && (
