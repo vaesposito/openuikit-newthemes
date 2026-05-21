@@ -13,7 +13,8 @@ export const donutLabel = (theme: Theme): CSSProperties => ({
 
 export const styles = (theme: Theme) => ({
   tooltip: {
-    backgroundColor: theme.palette.vars.baseBackgroundWeak,
+    backgroundColor: theme.palette.vars.baseBackgroundStrong,
+    border: `1px solid ${theme.palette.divider}`,
     padding: "2px 8px",
     borderRadius: "4px",
   },

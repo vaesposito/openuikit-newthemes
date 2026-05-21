@@ -755,7 +755,7 @@ function ChartsSection() {
     <>
       <ComponentGroup label="Bar Chart">
         <SectionErrorBoundary name="BarChart">
-          <Box sx={{ height: 220, maxWidth: 500, bgcolor: bg, borderRadius: 2, p: 1 }}>
+          <Box sx={{ height: 220, maxWidth: 500 }}>
             <BarChart data={BAR_DATA} />
           </Box>
         </SectionErrorBoundary>

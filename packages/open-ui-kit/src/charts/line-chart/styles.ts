@@ -10,7 +10,8 @@ export const tooltipStyles = (theme: Theme) => ({
   mainContainer: {
     padding: "8px 12px",
     borderRadius: "4px",
-    background: theme.palette.vars.baseBackgroundMedium,
+    background: theme.palette.vars.baseBackgroundStrong,
+    border: `1px solid ${theme.palette.divider}`,
     ...theme.typography.body2,
   },
   title: {

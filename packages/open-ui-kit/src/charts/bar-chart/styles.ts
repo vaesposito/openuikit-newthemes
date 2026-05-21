@@ -8,7 +8,8 @@ import { Theme } from "@mui/material";
 
 export const styles = (theme: Theme) => ({
   tooltip: {
-    backgroundColor: theme.palette.vars.baseBackgroundMedium,
+    backgroundColor: theme.palette.vars.baseBackgroundStrong,
+    border: `1px solid ${theme.palette.divider}`,
     padding: "2px 8px",
     borderRadius: "4px",
   },
