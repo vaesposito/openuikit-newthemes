@@ -175,7 +175,7 @@ function ThemeShowcase({ isCiscoZen }: { isCiscoZen?: boolean }) {
 }
 
 export default function App() {
-  const [showDocs] = React.useState(true);
+  const [showDocs, setShowDocs] = React.useState(true);
   const [themeMode, setThemeMode] = React.useState<ExtendedThemeMode>("ioc");
 
   if (showDocs) {
