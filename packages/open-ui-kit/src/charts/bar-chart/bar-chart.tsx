@@ -84,7 +84,7 @@ export const BarChart = ({
   const [maxBars, setMaxBars] = useState(0);
 
   const theme = useTheme();
-  const isIoc = theme.palette.primary.main === "#00BCEB";
+  const isIoc = theme.palette.primary.main === "#00BCEB" && theme.palette.mode === "dark";
 
   const handleResize = useCallback((width: number) => {
     const maxBars =

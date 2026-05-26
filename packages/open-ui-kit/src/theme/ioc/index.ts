@@ -7,3 +7,7 @@
 export * from "./ioc-color-palette";
 export { iocVars } from "./ioc-vars";
 export { iocTheme } from "./ioc-theme";
+
+export * from "./ioc-light-color-palette";
+export { iocLightVars } from "./ioc-light-vars";
+export { iocLightTheme } from "./ioc-light-theme";

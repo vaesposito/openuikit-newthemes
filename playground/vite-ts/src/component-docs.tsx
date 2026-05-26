@@ -142,9 +142,10 @@ const HEADER_HEIGHT = 56;
 type DocThemeMode = ThemeMode;
 
 const THEMES: { value: DocThemeMode; label: string; bg: string }[] = [
-  { value: "light", label: "AGNTCY light", bg: "#ffffff" },
-  { value: "dark",  label: "AGNTCY dark",  bg: "#141418" },
-  { value: "ioc",   label: "C1D dark",     bg: "#050C18" },
+  { value: "light",     label: "AGNTCY light", bg: "#ffffff" },
+  { value: "dark",      label: "AGNTCY dark",  bg: "#141418" },
+  { value: "ioc",       label: "C1D dark",     bg: "#050C18" },
+  { value: "ioc-light", label: "C1D light",    bg: "#F0F7FF" },
 ];
 
 const COMPONENT_CATEGORIES = [
@@ -1312,7 +1313,7 @@ function C1DPrimitiveRow({ name, value, description }: { name: string; value: st
 function ColorTokensSection() {
   const theme = useTheme();
   const vars = theme.palette.vars as unknown as Record<string, string>;
-  // agentcyBlue = #00BCEB only in the IoC (C1D dark) theme
+  // agentcyBlue = #00BCEB in both C1D dark and C1D light themes
   const isIoc = vars.agentcyBlue === "#00BCEB";
 
   return (
@@ -1342,7 +1343,7 @@ function ColorTokensSection() {
           ))}
           <Box sx={{ mx: 0, my: 3, borderTop: "1px solid", borderColor: "divider", opacity: 0.4 }} />
           <Typography sx={{ fontSize: "0.7rem", fontWeight: 700, color: "primary.main", textTransform: "uppercase", letterSpacing: "0.1em", mb: 2 }}>
-            Semantic Tokens (C1D dark resolved)
+            C1D Semantic Tokens
           </Typography>
         </Box>
       )}
@@ -1893,7 +1894,9 @@ export default function ComponentDocs() {
     if (mainRef.current) mainRef.current.scrollTop = 0;
   };
 
-  const isIoc = activeTheme === "ioc";
+  const isC1D     = activeTheme === "ioc" || activeTheme === "ioc-light";
+  const isIoc     = isC1D; // alias used throughout for C1D-specific layout/spacing
+  const isIocDark = activeTheme === "ioc"; // dark-only: gradient backdrop, glows
 
   // Nav item style — C1D: full-width teal-tinted rounded highlight, no border
   const navItemSx = (isActive: boolean) =>
@@ -1926,8 +1929,8 @@ export default function ComponentDocs() {
 
   return (
     <ThemeProvider mode={activeTheme}>
-      {/* Fixed gradient backdrop for C1D — sits behind every scrolling layer */}
-      {isIoc && (
+      {/* Fixed gradient backdrop for C1D dark — sits behind every scrolling layer */}
+      {isIocDark && (
         <Box sx={{
           position: "fixed",
           inset: 0,
@@ -1940,7 +1943,7 @@ export default function ComponentDocs() {
           pointerEvents: "none",
         }} />
       )}
-      <Box sx={{ minHeight: "100vh", bgcolor: isIoc ? "transparent" : "background.default", color: "text.primary", display: "flex", flexDirection: "column", overflowX: "hidden" }}>
+      <Box sx={{ minHeight: "100vh", bgcolor: isIocDark ? "transparent" : "background.default", color: "text.primary", display: "flex", flexDirection: "column", overflowX: "hidden" }}>
 
         {/* ── Header ── */}
         <Box
@@ -1952,8 +1955,8 @@ export default function ComponentDocs() {
             left: 0,
             right: 0,
             zIndex: 200,
-            bgcolor: isIoc ? "rgba(7,17,31,0.80)" : "background.paper",
-            backdropFilter: isIoc ? "blur(20px)" : "none",
+            bgcolor: isIocDark ? "rgba(7,17,31,0.80)" : "background.paper",
+            backdropFilter: isIocDark ? "blur(20px)" : "none",
             borderBottom: "1px solid",
             borderColor: "divider",
             display: "flex",
@@ -2039,8 +2042,8 @@ export default function ComponentDocs() {
               top: HEADER_HEIGHT,
               bottom: 0,
               overflowY: "auto",
-              bgcolor: isIoc ? "rgba(7,17,31,0.70)" : "background.paper",
-              backdropFilter: isIoc ? "blur(20px)" : "none",
+              bgcolor: isIocDark ? "rgba(7,17,31,0.70)" : "background.paper",
+              backdropFilter: isIocDark ? "blur(20px)" : "none",
               borderRight: "1px solid",
               borderColor: "divider",
               py: 2,

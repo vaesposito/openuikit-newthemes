@@ -44,7 +44,7 @@ export const GaugeChart = ({
   styleProps,
 }: GaugeChartProps) => {
   const theme = useTheme();
-  const isIoc = theme.palette.primary.main === "#00BCEB";
+  const isIoc = theme.palette.primary.main === "#00BCEB" && theme.palette.mode === "dark";
 
   const [valueItem] = data as ChartDataItem[];
   const gaugeData = [

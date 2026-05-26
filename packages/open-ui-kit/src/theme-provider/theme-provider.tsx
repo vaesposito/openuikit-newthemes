@@ -15,8 +15,9 @@ import { lightTheme } from "@/theme/light/light-theme";
 import { glassTheme } from "@/theme/glass/glass-theme";
 import { glassLightTheme } from "@/theme/glass/glass-light-theme";
 import { iocTheme } from "@/theme/ioc/ioc-theme";
+import { iocLightTheme } from "@/theme/ioc/ioc-light-theme";
 
-export type ThemeMode = "light" | "dark" | "glass" | "glass-light" | "ioc";
+export type ThemeMode = "light" | "dark" | "glass" | "glass-light" | "ioc" | "ioc-light";
 
 export interface ThemeProviderProps {
   children: React.ReactNode;
@@ -45,6 +46,8 @@ const getTheme = (mode: ThemeMode): Theme => {
       return darkTheme;
     case "ioc":
       return iocTheme;
+    case "ioc-light":
+      return iocLightTheme;
     case "light":
     default:
       return lightTheme;
@@ -70,4 +73,4 @@ export const ThemeProvider = ({
 };
 
 // Export individual themes for direct usage
-export { lightTheme, darkTheme, glassTheme, glassLightTheme, iocTheme };
+export { lightTheme, darkTheme, glassTheme, glassLightTheme, iocTheme, iocLightTheme };
