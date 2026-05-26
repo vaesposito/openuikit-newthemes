@@ -1908,12 +1908,14 @@ export default function ComponentDocs() {
           border: "none", outline: "none", cursor: "pointer",
           borderRadius: "8px",
           bgcolor: isActive ? "rgba(0,188,235,0.12)" : "transparent",
-          // Use explicit solid colors — no opacity, so contrast is always predictable
-          color: isActive ? "#00BCEB" : "#C8D6E8",
+          // Dark C1D: light text on dark bg. Light C1D: dark navy/teal on white.
+          color: isActive
+            ? (isIocDark ? "#00BCEB" : "#006B8A")
+            : (isIocDark ? "#C8D6E8" : "#0A1628"),
           transition: "all 0.15s",
           "&:hover": {
             bgcolor: isActive ? "rgba(0,188,235,0.16)" : "rgba(0,188,235,0.06)",
-            color: "#00BCEB",
+            color: isIocDark ? "#00BCEB" : "#006B8A",
           },
         }
       : {

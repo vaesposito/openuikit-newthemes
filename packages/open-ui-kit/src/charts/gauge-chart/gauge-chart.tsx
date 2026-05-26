@@ -44,7 +44,7 @@ export const GaugeChart = ({
   styleProps,
 }: GaugeChartProps) => {
   const theme = useTheme();
-  const isIoc = theme.palette.primary.main === "#00BCEB" && theme.palette.mode === "dark";
+  const isIoc = theme.palette.primary.main === "#00BCEB";
 
   const [valueItem] = data as ChartDataItem[];
   const gaugeData = [
@@ -57,7 +57,9 @@ export const GaugeChart = ({
     {
       value:
         ((maxValue - Math.min(valueItem.value, maxValue)) / maxValue) * 100,
-      fill: isIoc ? "rgba(255,255,255,0.06)" : theme.palette.vars.controlIconDisabled,
+      fill: isIoc
+        ? (theme.palette.mode === "dark" ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.08)")
+        : theme.palette.vars.controlIconDisabled,
     },
   ];
 

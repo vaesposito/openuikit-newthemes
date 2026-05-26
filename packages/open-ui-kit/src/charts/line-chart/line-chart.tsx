@@ -106,7 +106,7 @@ export const LineChart = ({
           {...gridProps}
         />
         {categories?.map((category) => {
-          const isIoc = theme.palette.primary.main === "#00BCEB" && theme.palette.mode === "dark";
+          const isIoc = theme.palette.primary.main === "#00BCEB";
           const glowStyle = isIoc
             ? {
                 filter: `drop-shadow(0 0 6px ${category.color}99) drop-shadow(0 0 2px ${category.color}66)`,

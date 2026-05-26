@@ -60,7 +60,7 @@ export const DonutChart = ({
   handleClick,
 }: DonutProps): JSX.Element => {
   const theme = useTheme();
-  const isIoc = theme.palette.primary.main === "#00BCEB" && theme.palette.mode === "dark";
+  const isIoc = theme.palette.primary.main === "#00BCEB";
   const innerRadius = 57;
   const outerRadius = 66;
 
