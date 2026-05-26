@@ -168,9 +168,10 @@ const iocLightComponentOverrides = {
   MuiCard: {
     styleOverrides: {
       root: {
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "rgba(255,255,255,0.82)",
         backgroundImage: "none",
-        border: `1px solid ${iocLightBorderPalette[300]}`,
+        backdropFilter: "blur(16px)",
+        border: `1px solid ${iocLightBorderPalette[200]}`,
         borderRadius: "10px",
         boxShadow: iocLightShadowSm,
         position: "relative" as const,
@@ -183,10 +184,12 @@ const iocLightComponentOverrides = {
     styleOverrides: {
       root: {
         backgroundImage: "none",
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "rgba(255,255,255,0.82)",
+        backdropFilter: "blur(16px)",
       },
       elevation1: {
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "rgba(255,255,255,0.82)",
+        backdropFilter: "blur(16px)",
         boxShadow: iocLightShadowSm,
       },
       elevation2: {

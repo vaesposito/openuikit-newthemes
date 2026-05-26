@@ -1883,7 +1883,10 @@ const SECTION_META: Record<string, { title: string; description: string; Compone
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function ComponentDocs() {
-  const [activeTheme, setActiveTheme] = useState<DocThemeMode>("light");
+  const urlTheme = new URLSearchParams(window.location.search).get("theme") as DocThemeMode | null;
+  const [activeTheme, setActiveTheme] = useState<DocThemeMode>(
+    urlTheme && THEMES.some((t) => t.value === urlTheme) ? urlTheme : "light"
+  );
   const [activeCategory, setActiveCategory] = useState("buttons");
   const mainRef = useRef<HTMLDivElement>(null);
 
@@ -1931,7 +1934,7 @@ export default function ComponentDocs() {
 
   return (
     <ThemeProvider mode={activeTheme}>
-      {/* Fixed gradient backdrop for C1D dark — sits behind every scrolling layer */}
+      {/* Fixed gradient backdrop for C1D dark */}
       {isIocDark && (
         <Box sx={{
           position: "fixed",
@@ -1945,7 +1948,21 @@ export default function ComponentDocs() {
           pointerEvents: "none",
         }} />
       )}
-      <Box sx={{ minHeight: "100vh", bgcolor: isIocDark ? "transparent" : "background.default", color: "text.primary", display: "flex", flexDirection: "column", overflowX: "hidden" }}>
+      {/* Fixed gradient backdrop for C1D light */}
+      {activeTheme === "ioc-light" && (
+        <Box sx={{
+          position: "fixed",
+          inset: 0,
+          zIndex: -1,
+          background: `
+            radial-gradient(ellipse 120% 80% at -10% -8%, rgba(0,188,235,0.13) 0%, rgba(0,130,200,0.06) 40%, transparent 65%),
+            radial-gradient(ellipse 70% 60% at 100% 100%, rgba(43,130,246,0.07) 0%, transparent 55%),
+            linear-gradient(150deg, #EBF6FF 0%, #F4F9FF 45%, #FAFCFF 100%)
+          `,
+          pointerEvents: "none",
+        }} />
+      )}
+      <Box sx={{ minHeight: "100vh", bgcolor: isC1D ? "transparent" : "background.default", color: "text.primary", display: "flex", flexDirection: "column", overflowX: "hidden" }}>
 
         {/* ── Header ── */}
         <Box
@@ -1957,8 +1974,8 @@ export default function ComponentDocs() {
             left: 0,
             right: 0,
             zIndex: 200,
-            bgcolor: isIocDark ? "rgba(7,17,31,0.80)" : "background.paper",
-            backdropFilter: isIocDark ? "blur(20px)" : "none",
+            bgcolor: isIocDark ? "rgba(7,17,31,0.80)" : activeTheme === "ioc-light" ? "rgba(255,255,255,0.75)" : "background.paper",
+            backdropFilter: isC1D ? "blur(20px)" : "none",
             borderBottom: "1px solid",
             borderColor: "divider",
             display: "flex",
@@ -2044,8 +2061,8 @@ export default function ComponentDocs() {
               top: HEADER_HEIGHT,
               bottom: 0,
               overflowY: "auto",
-              bgcolor: isIocDark ? "rgba(7,17,31,0.70)" : "background.paper",
-              backdropFilter: isIocDark ? "blur(20px)" : "none",
+              bgcolor: isIocDark ? "rgba(7,17,31,0.70)" : activeTheme === "ioc-light" ? "rgba(255,255,255,0.70)" : "background.paper",
+              backdropFilter: isC1D ? "blur(20px)" : "none",
               borderRight: "1px solid",
               borderColor: "divider",
               py: 2,
