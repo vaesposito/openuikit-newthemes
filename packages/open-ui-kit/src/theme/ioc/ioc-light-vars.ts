@@ -403,13 +403,13 @@ export const iocLightVars: VarsType = {
   gradientBrand:     `linear-gradient(135deg, ${iocTealPalette[400]} 0%, ${iocBluePalette[500]} 100%)`,
   gradientPage:      iocLightPageBackground,
 
-  // Glows — softer on light backgrounds (drop-shadow instead of box-shadow bloom)
-  glowPrimary:   `0 0 8px ${iocTealPalette[500]}99, 0 0 20px ${iocTealPalette[500]}44`,
-  glowSecondary: `0 0 8px ${iocBluePalette[500]}99, 0 0 20px ${iocBluePalette[500]}44`,
-  glowSuccess:   `0 0 8px ${greenPalette[500]}99, 0 0 20px ${greenPalette[500]}44`,
-  glowWarning:   `0 0 8px ${lightOrangePalette[500]}99, 0 0 20px ${lightOrangePalette[500]}44`,
-  glowNegative:  `0 0 8px ${redPalette[500]}99, 0 0 20px ${redPalette[500]}44`,
-  glowSevere:    `0 0 8px ${orangePalette[500]}99, 0 0 20px ${orangePalette[500]}44`,
-  glowExcellent: `0 0 8px ${lightBluePalette[500]}99, 0 0 20px ${lightBluePalette[500]}44`,
-  glowNeutral:   `0 0 6px ${iocTealPalette[600]}77, 0 0 14px ${iocTealPalette[600]}33`,
+  // Glows — very subtle on light backgrounds
+  glowPrimary:   `0 0 4px ${iocTealPalette[500]}55, 0 0 10px ${iocTealPalette[500]}22`,
+  glowSecondary: `0 0 4px ${iocBluePalette[500]}55, 0 0 10px ${iocBluePalette[500]}22`,
+  glowSuccess:   `0 0 4px ${greenPalette[500]}55, 0 0 10px ${greenPalette[500]}22`,
+  glowWarning:   `0 0 4px ${lightOrangePalette[500]}55, 0 0 10px ${lightOrangePalette[500]}22`,
+  glowNegative:  `0 0 4px ${redPalette[500]}55, 0 0 10px ${redPalette[500]}22`,
+  glowSevere:    `0 0 4px ${orangePalette[500]}55, 0 0 10px ${orangePalette[500]}22`,
+  glowExcellent: `0 0 4px ${lightBluePalette[500]}55, 0 0 10px ${lightBluePalette[500]}22`,
+  glowNeutral:   `0 0 3px ${iocTealPalette[600]}44, 0 0 8px ${iocTealPalette[600]}18`,
 };
