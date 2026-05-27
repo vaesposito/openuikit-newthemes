@@ -112,7 +112,103 @@ import TableChartIcon from "@mui/icons-material/TableChart";
 import PaletteIcon from "@mui/icons-material/Palette";
 import TextFieldsIcon from "@mui/icons-material/TextFields";
 import LayersIcon from "@mui/icons-material/Layers";
+import AppsIcon from "@mui/icons-material/Apps";
 import Tooltip from "@mui/material/Tooltip";
+
+// ─── Icon catalogue imports ───────────────────────────────────────────────────
+import type { SvgIconComponent } from "@mui/icons-material";
+import HomeIcon from "@mui/icons-material/Home";
+import SettingsIcon from "@mui/icons-material/Settings";
+import SearchIcon from "@mui/icons-material/Search";
+import MenuIcon from "@mui/icons-material/Menu";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import CloseIcon from "@mui/icons-material/Close";
+import CheckIcon from "@mui/icons-material/Check";
+import DeleteIcon from "@mui/icons-material/Delete";
+import SaveIcon from "@mui/icons-material/Save";
+import UploadIcon from "@mui/icons-material/Upload";
+import DownloadIcon from "@mui/icons-material/Download";
+import RefreshIcon from "@mui/icons-material/Refresh";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import FilterListIcon from "@mui/icons-material/FilterList";
+import SortIcon from "@mui/icons-material/Sort";
+import CopyAllIcon from "@mui/icons-material/CopyAll";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import ContentPasteIcon from "@mui/icons-material/ContentPaste";
+import EmailIcon from "@mui/icons-material/Email";
+import ChatIcon from "@mui/icons-material/Chat";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import ErrorIcon from "@mui/icons-material/Error";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import WarningIcon from "@mui/icons-material/Warning";
+import WarningAmberIcon from "@mui/icons-material/WarningAmber";
+import InfoIcon from "@mui/icons-material/Info";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import LockIcon from "@mui/icons-material/Lock";
+import LockOpenIcon from "@mui/icons-material/LockOpen";
+import ShieldIcon from "@mui/icons-material/Shield";
+import SecurityIcon from "@mui/icons-material/Security";
+import BugReportIcon from "@mui/icons-material/BugReport";
+import VerifiedUserIcon from "@mui/icons-material/VerifiedUser";
+import GppBadIcon from "@mui/icons-material/GppBad";
+import GppGoodIcon from "@mui/icons-material/GppGood";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import StarIcon from "@mui/icons-material/Star";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import PersonIcon from "@mui/icons-material/Person";
+import GroupIcon from "@mui/icons-material/Group";
+import GroupsIcon from "@mui/icons-material/Groups";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import ShowChartIcon from "@mui/icons-material/ShowChart";
+import DonutLargeIcon from "@mui/icons-material/DonutLarge";
+import PieChartIcon from "@mui/icons-material/PieChart";
+import TimelineIcon from "@mui/icons-material/Timeline";
+import CodeIcon from "@mui/icons-material/Code";
+import DataObjectIcon from "@mui/icons-material/DataObject";
+import StorageIcon from "@mui/icons-material/Storage";
+import CloudIcon from "@mui/icons-material/Cloud";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
+import RouterIcon from "@mui/icons-material/Router";
+import DnsIcon from "@mui/icons-material/Dns";
+import LanIcon from "@mui/icons-material/Lan";
+import DevicesIcon from "@mui/icons-material/Devices";
+import ComputerIcon from "@mui/icons-material/Computer";
+import FolderIcon from "@mui/icons-material/Folder";
+import FolderOpenIcon from "@mui/icons-material/FolderOpen";
+import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
+import ZoomInIcon from "@mui/icons-material/ZoomIn";
+import ZoomOutIcon from "@mui/icons-material/ZoomOut";
+import FullscreenIcon from "@mui/icons-material/Fullscreen";
+import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import HelpIcon from "@mui/icons-material/Help";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
+import SyncIcon from "@mui/icons-material/Sync";
+import SyncProblemIcon from "@mui/icons-material/SyncProblem";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PauseIcon from "@mui/icons-material/Pause";
+import StopIcon from "@mui/icons-material/Stop";
+import TerminalIcon from "@mui/icons-material/Terminal";
+import ApiIcon from "@mui/icons-material/Api";
+import KeyIcon from "@mui/icons-material/Key";
+import HttpsIcon from "@mui/icons-material/Https";
+import VpnKeyIcon from "@mui/icons-material/VpnKey";
+import FingerprintIcon from "@mui/icons-material/Fingerprint";
 
 // ─── Error Boundary ──────────────────────────────────────────────────────────
 
@@ -182,6 +278,7 @@ const COMPONENT_CATEGORIES = [
   { id: "feedback", label: "Feedback & Status", Icon: NotificationsIcon },
   { id: "layout", label: "Layout", Icon: DashboardIcon },
   { id: "charts", label: "Charts", Icon: BarChartIcon },
+  { id: "icons", label: "Icons", Icon: AppsIcon },
 ];
 
 const TOKEN_CATEGORIES = [
@@ -3323,6 +3420,500 @@ function DashboardSection() {
   );
 }
 
+// ─── Icons Section ────────────────────────────────────────────────────────────
+
+const ICON_CATALOGUE: {
+  category: string;
+  icons: { name: string; component: SvgIconComponent; import: string }[];
+}[] = [
+  {
+    category: "Navigation",
+    icons: [
+      { name: "Home", component: HomeIcon, import: "HomeIcon" },
+      { name: "Dashboard", component: DashboardIcon, import: "DashboardIcon" },
+      { name: "Search", component: SearchIcon, import: "SearchIcon" },
+      { name: "Menu", component: MenuIcon, import: "MenuIcon" },
+      { name: "Settings", component: SettingsIcon, import: "SettingsIcon" },
+      { name: "ArrowBack", component: ArrowBackIcon, import: "ArrowBackIcon" },
+      {
+        name: "ArrowForward",
+        component: ArrowForwardIcon,
+        import: "ArrowForwardIcon",
+      },
+      {
+        name: "ChevronLeft",
+        component: ChevronLeftIcon,
+        import: "ChevronLeftIcon",
+      },
+      {
+        name: "ChevronRight",
+        component: ChevronRightIcon,
+        import: "ChevronRightIcon",
+      },
+      {
+        name: "ExpandMore",
+        component: ExpandMoreIcon,
+        import: "ExpandMoreIcon",
+      },
+      {
+        name: "ExpandLess",
+        component: ExpandLessIcon,
+        import: "ExpandLessIcon",
+      },
+      { name: "OpenInNew", component: OpenInNewIcon, import: "OpenInNewIcon" },
+    ],
+  },
+  {
+    category: "Actions",
+    icons: [
+      { name: "Add", component: AddIcon, import: "AddIcon" },
+      { name: "Edit", component: EditIcon, import: "EditIcon" },
+      { name: "Delete", component: DeleteIcon, import: "DeleteIcon" },
+      { name: "Close", component: CloseIcon, import: "CloseIcon" },
+      { name: "Check", component: CheckIcon, import: "CheckIcon" },
+      { name: "Save", component: SaveIcon, import: "SaveIcon" },
+      { name: "Upload", component: UploadIcon, import: "UploadIcon" },
+      { name: "Download", component: DownloadIcon, import: "DownloadIcon" },
+      { name: "Refresh", component: RefreshIcon, import: "RefreshIcon" },
+      { name: "MoreVert", component: MoreVertIcon, import: "MoreVertIcon" },
+      { name: "MoreHoriz", component: MoreHorizIcon, import: "MoreHorizIcon" },
+      {
+        name: "FilterList",
+        component: FilterListIcon,
+        import: "FilterListIcon",
+      },
+      { name: "Sort", component: SortIcon, import: "SortIcon" },
+      { name: "Share", component: ShareIcon, import: "ShareIcon" },
+      { name: "Print", component: PrintIcon, import: "PrintIcon" },
+      {
+        name: "ContentCopy",
+        component: ContentCopyIcon,
+        import: "ContentCopyIcon",
+      },
+      {
+        name: "ContentPaste",
+        component: ContentPasteIcon,
+        import: "ContentPasteIcon",
+      },
+      { name: "CopyAll", component: CopyAllIcon, import: "CopyAllIcon" },
+      {
+        name: "Visibility",
+        component: VisibilityIcon,
+        import: "VisibilityIcon",
+      },
+      {
+        name: "VisibilityOff",
+        component: VisibilityOffIcon,
+        import: "VisibilityOffIcon",
+      },
+    ],
+  },
+  {
+    category: "Status & Feedback",
+    icons: [
+      {
+        name: "CheckCircle",
+        component: CheckCircleIcon,
+        import: "CheckCircleIcon",
+      },
+      {
+        name: "CheckCircleOutline",
+        component: CheckCircleOutlineIcon,
+        import: "CheckCircleOutlineIcon",
+      },
+      { name: "Error", component: ErrorIcon, import: "ErrorIcon" },
+      {
+        name: "ErrorOutline",
+        component: ErrorOutlineIcon,
+        import: "ErrorOutlineIcon",
+      },
+      { name: "Warning", component: WarningIcon, import: "WarningIcon" },
+      {
+        name: "WarningAmber",
+        component: WarningAmberIcon,
+        import: "WarningAmberIcon",
+      },
+      { name: "Info", component: InfoIcon, import: "InfoIcon" },
+      {
+        name: "InfoOutlined",
+        component: InfoOutlinedIcon,
+        import: "InfoOutlinedIcon",
+      },
+      { name: "Help", component: HelpIcon, import: "HelpIcon" },
+      {
+        name: "HelpOutline",
+        component: HelpOutlineIcon,
+        import: "HelpOutlineIcon",
+      },
+      {
+        name: "Notifications",
+        component: NotificationsIcon,
+        import: "NotificationsIcon",
+      },
+      { name: "Autorenew", component: AutorenewIcon, import: "AutorenewIcon" },
+      { name: "Sync", component: SyncIcon, import: "SyncIcon" },
+      {
+        name: "SyncProblem",
+        component: SyncProblemIcon,
+        import: "SyncProblemIcon",
+      },
+      { name: "PlayArrow", component: PlayArrowIcon, import: "PlayArrowIcon" },
+      { name: "Pause", component: PauseIcon, import: "PauseIcon" },
+      { name: "Stop", component: StopIcon, import: "StopIcon" },
+    ],
+  },
+  {
+    category: "Security",
+    icons: [
+      { name: "Security", component: SecurityIcon, import: "SecurityIcon" },
+      { name: "Shield", component: ShieldIcon, import: "ShieldIcon" },
+      { name: "Lock", component: LockIcon, import: "LockIcon" },
+      { name: "LockOpen", component: LockOpenIcon, import: "LockOpenIcon" },
+      { name: "Key", component: KeyIcon, import: "KeyIcon" },
+      { name: "VpnKey", component: VpnKeyIcon, import: "VpnKeyIcon" },
+      { name: "Https", component: HttpsIcon, import: "HttpsIcon" },
+      {
+        name: "Fingerprint",
+        component: FingerprintIcon,
+        import: "FingerprintIcon",
+      },
+      { name: "BugReport", component: BugReportIcon, import: "BugReportIcon" },
+      {
+        name: "VerifiedUser",
+        component: VerifiedUserIcon,
+        import: "VerifiedUserIcon",
+      },
+      { name: "GppBad", component: GppBadIcon, import: "GppBadIcon" },
+      { name: "GppGood", component: GppGoodIcon, import: "GppGoodIcon" },
+    ],
+  },
+  {
+    category: "People",
+    icons: [
+      { name: "Person", component: PersonIcon, import: "PersonIcon" },
+      { name: "Group", component: GroupIcon, import: "GroupIcon" },
+      { name: "Groups", component: GroupsIcon, import: "GroupsIcon" },
+      {
+        name: "AccountCircle",
+        component: AccountCircleIcon,
+        import: "AccountCircleIcon",
+      },
+      { name: "Star", component: StarIcon, import: "StarIcon" },
+      {
+        name: "StarBorder",
+        component: StarBorderIcon,
+        import: "StarBorderIcon",
+      },
+      { name: "Bookmark", component: BookmarkIcon, import: "BookmarkIcon" },
+      {
+        name: "BookmarkBorder",
+        component: BookmarkBorderIcon,
+        import: "BookmarkBorderIcon",
+      },
+      { name: "Email", component: EmailIcon, import: "EmailIcon" },
+      { name: "Chat", component: ChatIcon, import: "ChatIcon" },
+    ],
+  },
+  {
+    category: "Data & Charts",
+    icons: [
+      { name: "BarChart", component: BarChartIcon, import: "BarChartIcon" },
+      { name: "ShowChart", component: ShowChartIcon, import: "ShowChartIcon" },
+      { name: "PieChart", component: PieChartIcon, import: "PieChartIcon" },
+      {
+        name: "DonutLarge",
+        component: DonutLargeIcon,
+        import: "DonutLargeIcon",
+      },
+      { name: "Timeline", component: TimelineIcon, import: "TimelineIcon" },
+      {
+        name: "TableChart",
+        component: TableChartIcon,
+        import: "TableChartIcon",
+      },
+      {
+        name: "DataObject",
+        component: DataObjectIcon,
+        import: "DataObjectIcon",
+      },
+      { name: "Code", component: CodeIcon, import: "CodeIcon" },
+      { name: "Terminal", component: TerminalIcon, import: "TerminalIcon" },
+      { name: "Api", component: ApiIcon, import: "ApiIcon" },
+    ],
+  },
+  {
+    category: "Infrastructure",
+    icons: [
+      { name: "Storage", component: StorageIcon, import: "StorageIcon" },
+      { name: "Cloud", component: CloudIcon, import: "CloudIcon" },
+      {
+        name: "CloudUpload",
+        component: CloudUploadIcon,
+        import: "CloudUploadIcon",
+      },
+      {
+        name: "CloudDownload",
+        component: CloudDownloadIcon,
+        import: "CloudDownloadIcon",
+      },
+      { name: "Router", component: RouterIcon, import: "RouterIcon" },
+      { name: "Dns", component: DnsIcon, import: "DnsIcon" },
+      { name: "Lan", component: LanIcon, import: "LanIcon" },
+      { name: "Devices", component: DevicesIcon, import: "DevicesIcon" },
+      { name: "Computer", component: ComputerIcon, import: "ComputerIcon" },
+    ],
+  },
+  {
+    category: "Files & Media",
+    icons: [
+      { name: "Folder", component: FolderIcon, import: "FolderIcon" },
+      {
+        name: "FolderOpen",
+        component: FolderOpenIcon,
+        import: "FolderOpenIcon",
+      },
+      {
+        name: "InsertDriveFile",
+        component: InsertDriveFileIcon,
+        import: "InsertDriveFileIcon",
+      },
+      {
+        name: "AttachFile",
+        component: AttachFileIcon,
+        import: "AttachFileIcon",
+      },
+      { name: "GridView", component: GridViewIcon, import: "GridViewIcon" },
+      { name: "ViewList", component: ViewListIcon, import: "ViewListIcon" },
+      { name: "ZoomIn", component: ZoomInIcon, import: "ZoomInIcon" },
+      { name: "ZoomOut", component: ZoomOutIcon, import: "ZoomOutIcon" },
+      {
+        name: "Fullscreen",
+        component: FullscreenIcon,
+        import: "FullscreenIcon",
+      },
+      {
+        name: "FullscreenExit",
+        component: FullscreenExitIcon,
+        import: "FullscreenExitIcon",
+      },
+      { name: "DarkMode", component: DarkModeIcon, import: "DarkModeIcon" },
+      { name: "LightMode", component: LightModeIcon, import: "LightModeIcon" },
+    ],
+  },
+];
+
+function IconsSection() {
+  const theme = useTheme();
+  const [search, setSearch] = useState("");
+  const [copiedName, setCopiedName] = useState<string | null>(null);
+
+  const handleCopy = (importName: string) => {
+    const importLine = `import ${importName} from "@mui/icons-material/${importName.replace(/Icon$/, "")}";`;
+    navigator.clipboard.writeText(importLine).catch(() => {});
+    setCopiedName(importName);
+    setTimeout(() => setCopiedName(null), 1800);
+  };
+
+  const filtered = search.trim().toLowerCase();
+  const matchesSearch = (name: string) =>
+    !filtered || name.toLowerCase().includes(filtered);
+
+  return (
+    <Box>
+      {/* Description row */}
+      <Box
+        sx={{
+          mb: 3,
+          p: 2,
+          borderRadius: 2,
+          bgcolor: "action.hover",
+          border: "1px solid",
+          borderColor: "divider",
+        }}
+      >
+        <Typography variant="body2" sx={{ opacity: 0.85, mb: 0.5 }}>
+          Icons come from{" "}
+          <Box
+            component="code"
+            sx={{
+              fontSize: "0.8em",
+              px: 0.5,
+              bgcolor: "action.selected",
+              borderRadius: 0.5,
+            }}
+          >
+            @mui/icons-material
+          </Box>
+          . Click any icon to copy its import statement. Use them directly in
+          Button{" "}
+          <Box
+            component="code"
+            sx={{
+              fontSize: "0.8em",
+              px: 0.5,
+              bgcolor: "action.selected",
+              borderRadius: 0.5,
+            }}
+          >
+            startIcon
+          </Box>{" "}
+          /{" "}
+          <Box
+            component="code"
+            sx={{
+              fontSize: "0.8em",
+              px: 0.5,
+              bgcolor: "action.selected",
+              borderRadius: 0.5,
+            }}
+          >
+            endIcon
+          </Box>
+          , IconButton, or as standalone{" "}
+          <Box
+            component="code"
+            sx={{
+              fontSize: "0.8em",
+              px: 0.5,
+              bgcolor: "action.selected",
+              borderRadius: 0.5,
+            }}
+          >
+            SvgIcon
+          </Box>
+          .
+        </Typography>
+      </Box>
+
+      {/* Search */}
+      <Box sx={{ mb: 3, maxWidth: 360 }}>
+        <Box
+          component="input"
+          placeholder="Search icons…"
+          value={search}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setSearch(e.target.value)
+          }
+          sx={{
+            width: "100%",
+            px: 2,
+            py: 1.1,
+            borderRadius: 2,
+            border: "1.5px solid",
+            borderColor: "divider",
+            bgcolor: "background.paper",
+            color: "text.primary",
+            fontSize: "0.875rem",
+            outline: "none",
+            transition: "border-color 0.15s",
+            "&:focus": { borderColor: "primary.main" },
+          }}
+        />
+      </Box>
+
+      {/* Icon grid by category */}
+      {ICON_CATALOGUE.map(({ category, icons }) => {
+        const visible = icons.filter(({ name }) => matchesSearch(name));
+        if (!visible.length) return null;
+        return (
+          <ComponentGroup key={category} label={category}>
+            <Box
+              sx={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(96px, 1fr))",
+                gap: 1.5,
+              }}
+            >
+              {visible.map(
+                ({ name, component: IconComp, import: importName }) => {
+                  const isCopied = copiedName === importName;
+                  return (
+                    <Tooltip
+                      key={name}
+                      title={
+                        isCopied
+                          ? "Copied!"
+                          : `import ${importName} from "@mui/icons-material/${importName.replace(/Icon$/, "")}"`
+                      }
+                      placement="top"
+                      arrow
+                    >
+                      <Box
+                        component="button"
+                        onClick={() => handleCopy(importName)}
+                        sx={{
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          gap: 0.75,
+                          p: 1.5,
+                          border: "1.5px solid",
+                          borderColor: isCopied ? "primary.main" : "divider",
+                          borderRadius: 2,
+                          bgcolor: isCopied
+                            ? "action.selected"
+                            : "background.paper",
+                          cursor: "pointer",
+                          outline: "none",
+                          transition: "all 0.15s",
+                          "&:hover": {
+                            borderColor: "primary.main",
+                            bgcolor: "action.hover",
+                            transform: "translateY(-1px)",
+                            boxShadow: `0 4px 12px ${theme.palette.primary.main}22`,
+                          },
+                        }}
+                      >
+                        {isCopied ? (
+                          <CheckCircleIcon
+                            sx={{ fontSize: 28, color: "primary.main" }}
+                          />
+                        ) : (
+                          <IconComp
+                            sx={{
+                              fontSize: 28,
+                              color: "text.primary",
+                              opacity: 0.8,
+                            }}
+                          />
+                        )}
+                        <Typography
+                          variant="caption"
+                          sx={{
+                            fontSize: "0.62rem",
+                            color: isCopied ? "primary.main" : "text.secondary",
+                            textAlign: "center",
+                            lineHeight: 1.25,
+                            wordBreak: "break-word",
+                            fontWeight: isCopied ? 600 : 400,
+                          }}
+                        >
+                          {isCopied ? "Copied!" : name}
+                        </Typography>
+                      </Box>
+                    </Tooltip>
+                  );
+                },
+              )}
+            </Box>
+          </ComponentGroup>
+        );
+      })}
+
+      {filtered &&
+        ICON_CATALOGUE.every(({ icons }) =>
+          icons.every(({ name }) => !name.toLowerCase().includes(filtered)),
+        ) && (
+          <Box sx={{ textAlign: "center", py: 8, opacity: 0.5 }}>
+            <Typography variant="body2">
+              No icons matching "{search}". Try a different keyword.
+            </Typography>
+          </Box>
+        )}
+    </Box>
+  );
+}
+
 // ─── Category renderer ────────────────────────────────────────────────────────
 
 const SECTION_META: Record<
@@ -3369,6 +3960,13 @@ const SECTION_META: Record<
     description:
       "Data visualization components built on Recharts. All charts adapt to the active theme.",
     Component: ChartsSection,
+  },
+  icons: {
+    title: "Icons",
+    description:
+      "Material UI icon library — 100+ icons organized by category. Click any icon to copy its import statement. All icons support size and color props and can be used in buttons, navigation, and any component with an icon slot.",
+    Component: IconsSection,
+    wide: true,
   },
   dashboard: {
     title: "Dashboard Template",
@@ -3849,8 +4447,10 @@ export default function ComponentDocs() {
                 variant="caption"
                 sx={{ color: "text.primary", opacity: 0.4 }}
               >
-                Open UI Kit · Apache 2.0 · {COMPONENT_CATEGORIES.length}{" "}
-                components · {TEMPLATE_CATEGORIES.length} template ·{" "}
+                Open UI Kit · Apache 2.0 · {COMPONENT_CATEGORIES.length - 1}{" "}
+                component sections ·{" "}
+                {ICON_CATALOGUE.reduce((s, c) => s + c.icons.length, 0)} icons ·{" "}
+                {TEMPLATE_CATEGORIES.length} template ·{" "}
                 {TOKEN_CATEGORIES.length} token sections
               </Typography>
             </Box>
