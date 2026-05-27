@@ -94,6 +94,7 @@ import {
   TagStatus,
   LinkColorEnum,
   LinkType,
+  Icons,
 } from "@open-ui-kit/core";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
@@ -3700,6 +3701,3227 @@ const ICON_CATALOGUE: {
       { name: "LightMode", component: LightModeIcon, import: "LightModeIcon" },
     ],
   },
+
+  {
+    category: "Custom Icons",
+    icons: [
+      {
+        name: "API",
+        component: Icons.API as unknown as SvgIconComponent,
+        import: "API",
+      },
+      {
+        name: "API Key",
+        component: Icons.APIKey as unknown as SvgIconComponent,
+        import: "APIKey",
+      },
+      {
+        name: "API Outline",
+        component: Icons.APIOutline as unknown as SvgIconComponent,
+        import: "APIOutline",
+      },
+      {
+        name: "Activity Log",
+        component: Icons.ActivityLog as unknown as SvgIconComponent,
+        import: "ActivityLog",
+      },
+      {
+        name: "All",
+        component: Icons.All as unknown as SvgIconComponent,
+        import: "All",
+      },
+      {
+        name: "All Clear",
+        component: Icons.AllClear as unknown as SvgIconComponent,
+        import: "AllClear",
+      },
+      {
+        name: "All Dots",
+        component: Icons.AllDots as unknown as SvgIconComponent,
+        import: "AllDots",
+      },
+      {
+        name: "Ansible",
+        component: Icons.Ansible as unknown as SvgIconComponent,
+        import: "Ansible",
+      },
+      {
+        name: "Approved",
+        component: Icons.Approved as unknown as SvgIconComponent,
+        import: "Approved",
+      },
+      {
+        name: "Arrow Back IOS",
+        component: Icons.ArrowBackIOS as unknown as SvgIconComponent,
+        import: "ArrowBackIOS",
+      },
+      {
+        name: "Arrow Dotted",
+        component: Icons.ArrowDotted as unknown as SvgIconComponent,
+        import: "ArrowDotted",
+      },
+      {
+        name: "Arrow Forward IOS",
+        component: Icons.ArrowForwardIOS as unknown as SvgIconComponent,
+        import: "ArrowForwardIOS",
+      },
+      {
+        name: "Arrow Forward Icon",
+        component: Icons.ArrowForwardIcon as unknown as SvgIconComponent,
+        import: "ArrowForwardIcon",
+      },
+      {
+        name: "Attack Path",
+        component: Icons.AttackPath as unknown as SvgIconComponent,
+        import: "AttackPath",
+      },
+      {
+        name: "Attack Path Icon",
+        component: Icons.AttackPathIcon as unknown as SvgIconComponent,
+        import: "AttackPathIcon",
+      },
+      {
+        name: "Attack Path Icon V2",
+        component: Icons.AttackPathIconV2 as unknown as SvgIconComponent,
+        import: "AttackPathIconV2",
+      },
+      {
+        name: "Bar",
+        component: Icons.Bar as unknown as SvgIconComponent,
+        import: "Bar",
+      },
+      {
+        name: "Bitbucket",
+        component: Icons.Bitbucket as unknown as SvgIconComponent,
+        import: "Bitbucket",
+      },
+      {
+        name: "Bitbucket Color",
+        component: Icons.BitbucketColor as unknown as SvgIconComponent,
+        import: "BitbucketColor",
+      },
+      {
+        name: "Block",
+        component: Icons.Block as unknown as SvgIconComponent,
+        import: "Block",
+      },
+      {
+        name: "Bug",
+        component: Icons.Bug as unknown as SvgIconComponent,
+        import: "Bug",
+      },
+      {
+        name: "Bug Circle",
+        component: Icons.BugCircle as unknown as SvgIconComponent,
+        import: "BugCircle",
+      },
+      {
+        name: "Bug Outline",
+        component: Icons.BugOutline as unknown as SvgIconComponent,
+        import: "BugOutline",
+      },
+      {
+        name: "Bulb",
+        component: Icons.Bulb as unknown as SvgIconComponent,
+        import: "Bulb",
+      },
+      {
+        name: "CIS Fatal",
+        component: Icons.CISFatal as unknown as SvgIconComponent,
+        import: "CISFatal",
+      },
+      {
+        name: "CIS Info",
+        component: Icons.CISInfo as unknown as SvgIconComponent,
+        import: "CISInfo",
+      },
+      {
+        name: "CIS Warning",
+        component: Icons.CISWarning as unknown as SvgIconComponent,
+        import: "CISWarning",
+      },
+      {
+        name: "Calendar",
+        component: Icons.Calendar as unknown as SvgIconComponent,
+        import: "Calendar",
+      },
+      {
+        name: "Cdr Icon",
+        component: Icons.CdrIcon as unknown as SvgIconComponent,
+        import: "CdrIcon",
+      },
+      {
+        name: "Check",
+        component: Icons.Check as unknown as SvgIconComponent,
+        import: "Check",
+      },
+      {
+        name: "Check Bold",
+        component: Icons.CheckBold as unknown as SvgIconComponent,
+        import: "CheckBold",
+      },
+      {
+        name: "Check Circle Outline",
+        component: Icons.CheckCircleOutline as unknown as SvgIconComponent,
+        import: "CheckCircleOutline",
+      },
+      {
+        name: "Checkbox",
+        component: Icons.Checkbox as unknown as SvgIconComponent,
+        import: "Checkbox",
+      },
+      {
+        name: "Checkbox Full",
+        component: Icons.CheckboxFull as unknown as SvgIconComponent,
+        import: "CheckboxFull",
+      },
+      {
+        name: "Checkmarx",
+        component: Icons.Checkmarx as unknown as SvgIconComponent,
+        import: "Checkmarx",
+      },
+      {
+        name: "Classification Data Labeling",
+        component:
+          Icons.ClassificationDataLabeling as unknown as SvgIconComponent,
+        import: "ClassificationDataLabeling",
+      },
+      {
+        name: "Clock",
+        component: Icons.Clock as unknown as SvgIconComponent,
+        import: "Clock",
+      },
+      {
+        name: "Clock Pending",
+        component: Icons.ClockPending as unknown as SvgIconComponent,
+        import: "ClockPending",
+      },
+      {
+        name: "Close",
+        component: Icons.Close as unknown as SvgIconComponent,
+        import: "Close",
+      },
+      {
+        name: "Close Large",
+        component: Icons.CloseLarge as unknown as SvgIconComponent,
+        import: "CloseLarge",
+      },
+      {
+        name: "Cloud Deployment Manager",
+        component: Icons.CloudDeploymentManager as unknown as SvgIconComponent,
+        import: "CloudDeploymentManager",
+      },
+      {
+        name: "Cloud Install",
+        component: Icons.CloudInstall as unknown as SvgIconComponent,
+        import: "CloudInstall",
+      },
+      {
+        name: "Clusters",
+        component: Icons.Clusters as unknown as SvgIconComponent,
+        import: "Clusters",
+      },
+      {
+        name: "Code",
+        component: Icons.Code as unknown as SvgIconComponent,
+        import: "Code",
+      },
+      {
+        name: "Collapse",
+        component: Icons.Collapse as unknown as SvgIconComponent,
+        import: "Collapse",
+      },
+      {
+        name: "Collapse All",
+        component: Icons.CollapseAll as unknown as SvgIconComponent,
+        import: "CollapseAll",
+      },
+      {
+        name: "Common IAC",
+        component: Icons.CommonIAC as unknown as SvgIconComponent,
+        import: "CommonIAC",
+      },
+      {
+        name: "Compare",
+        component: Icons.Compare as unknown as SvgIconComponent,
+        import: "Compare",
+      },
+      {
+        name: "Compliance",
+        component: Icons.Compliance as unknown as SvgIconComponent,
+        import: "Compliance",
+      },
+      {
+        name: "Compliance Cis",
+        component: Icons.ComplianceCis as unknown as SvgIconComponent,
+        import: "ComplianceCis",
+      },
+      {
+        name: "Compliance Gdpr",
+        component: Icons.ComplianceGdpr as unknown as SvgIconComponent,
+        import: "ComplianceGdpr",
+      },
+      {
+        name: "Compliance Hipaa",
+        component: Icons.ComplianceHipaa as unknown as SvgIconComponent,
+        import: "ComplianceHipaa",
+      },
+      {
+        name: "Compliance Pci",
+        component: Icons.CompliancePci as unknown as SvgIconComponent,
+        import: "CompliancePci",
+      },
+      {
+        name: "Compliance Soc2",
+        component: Icons.ComplianceSoc2 as unknown as SvgIconComponent,
+        import: "ComplianceSoc2",
+      },
+      {
+        name: "Connection",
+        component: Icons.Connection as unknown as SvgIconComponent,
+        import: "Connection",
+      },
+      {
+        name: "Copy",
+        component: Icons.Copy as unknown as SvgIconComponent,
+        import: "Copy",
+      },
+      {
+        name: "Copy Landscape",
+        component: Icons.CopyLandscape as unknown as SvgIconComponent,
+        import: "CopyLandscape",
+      },
+      {
+        name: "Cross Bold",
+        component: Icons.CrossBold as unknown as SvgIconComponent,
+        import: "CrossBold",
+      },
+      {
+        name: "Cross Circle Outline",
+        component: Icons.CrossCircleOutline as unknown as SvgIconComponent,
+        import: "CrossCircleOutline",
+      },
+      {
+        name: "Crossplane",
+        component: Icons.Crossplane as unknown as SvgIconComponent,
+        import: "Crossplane",
+      },
+      {
+        name: "Dashboard1",
+        component: Icons.Dashboard1 as unknown as SvgIconComponent,
+        import: "Dashboard1",
+      },
+      {
+        name: "Dashboard2",
+        component: Icons.Dashboard2 as unknown as SvgIconComponent,
+        import: "Dashboard2",
+      },
+      {
+        name: "Data Label",
+        component: Icons.DataLabel as unknown as SvgIconComponent,
+        import: "DataLabel",
+      },
+      {
+        name: "Database",
+        component: Icons.Database as unknown as SvgIconComponent,
+        import: "Database",
+      },
+      {
+        name: "Database Access",
+        component: Icons.DatabaseAccess as unknown as SvgIconComponent,
+        import: "DatabaseAccess",
+      },
+      {
+        name: "Database Outline",
+        component: Icons.DatabaseOutline as unknown as SvgIconComponent,
+        import: "DatabaseOutline",
+      },
+      {
+        name: "Delete",
+        component: Icons.Delete as unknown as SvgIconComponent,
+        import: "Delete",
+      },
+      {
+        name: "Doc Valid",
+        component: Icons.DocValid as unknown as SvgIconComponent,
+        import: "DocValid",
+      },
+      {
+        name: "Docker",
+        component: Icons.Docker as unknown as SvgIconComponent,
+        import: "Docker",
+      },
+      {
+        name: "Docker2",
+        component: Icons.Docker2 as unknown as SvgIconComponent,
+        import: "Docker2",
+      },
+      {
+        name: "Docker Compose",
+        component: Icons.DockerCompose as unknown as SvgIconComponent,
+        import: "DockerCompose",
+      },
+      {
+        name: "Documentation",
+        component: Icons.Documentation as unknown as SvgIconComponent,
+        import: "Documentation",
+      },
+      {
+        name: "Dot",
+        component: Icons.Dot as unknown as SvgIconComponent,
+        import: "Dot",
+      },
+      {
+        name: "Double Arrow Forward",
+        component: Icons.DoubleArrowForward as unknown as SvgIconComponent,
+        import: "DoubleArrowForward",
+      },
+      {
+        name: "Download Outline",
+        component: Icons.DownloadOutline as unknown as SvgIconComponent,
+        import: "DownloadOutline",
+      },
+      {
+        name: "Drag",
+        component: Icons.Drag as unknown as SvgIconComponent,
+        import: "Drag",
+      },
+      {
+        name: "Duplicate",
+        component: Icons.Duplicate as unknown as SvgIconComponent,
+        import: "Duplicate",
+      },
+      {
+        name: "Edit Outline",
+        component: Icons.EditOutline as unknown as SvgIconComponent,
+        import: "EditOutline",
+      },
+      {
+        name: "Encrypt",
+        component: Icons.Encrypt as unknown as SvgIconComponent,
+        import: "Encrypt",
+      },
+      {
+        name: "Endpoint",
+        component: Icons.Endpoint as unknown as SvgIconComponent,
+        import: "Endpoint",
+      },
+      {
+        name: "Error Circle Outline",
+        component: Icons.ErrorCircleOutline as unknown as SvgIconComponent,
+        import: "ErrorCircleOutline",
+      },
+      {
+        name: "Exchange",
+        component: Icons.Exchange as unknown as SvgIconComponent,
+        import: "Exchange",
+      },
+      {
+        name: "Exclamation",
+        component: Icons.Exclamation as unknown as SvgIconComponent,
+        import: "Exclamation",
+      },
+      {
+        name: "Expand",
+        component: Icons.Expand as unknown as SvgIconComponent,
+        import: "Expand",
+      },
+      {
+        name: "Expand All",
+        component: Icons.ExpandAll as unknown as SvgIconComponent,
+        import: "ExpandAll",
+      },
+      {
+        name: "Expansions",
+        component: Icons.Expansions as unknown as SvgIconComponent,
+        import: "Expansions",
+      },
+      {
+        name: "Export",
+        component: Icons.Export as unknown as SvgIconComponent,
+        import: "Export",
+      },
+      {
+        name: "Falcon",
+        component: Icons.Falcon as unknown as SvgIconComponent,
+        import: "Falcon",
+      },
+      {
+        name: "File",
+        component: Icons.File as unknown as SvgIconComponent,
+        import: "File",
+      },
+      {
+        name: "File System",
+        component: Icons.FileSystem as unknown as SvgIconComponent,
+        import: "FileSystem",
+      },
+      {
+        name: "Filter",
+        component: Icons.Filter as unknown as SvgIconComponent,
+        import: "Filter",
+      },
+      {
+        name: "Filter Outline",
+        component: Icons.FilterOutline as unknown as SvgIconComponent,
+        import: "FilterOutline",
+      },
+      {
+        name: "Fingerprint",
+        component: Icons.Fingerprint as unknown as SvgIconComponent,
+        import: "Fingerprint",
+      },
+      {
+        name: "Folder",
+        component: Icons.Folder as unknown as SvgIconComponent,
+        import: "Folder",
+      },
+      {
+        name: "Framework",
+        component: Icons.Framework as unknown as SvgIconComponent,
+        import: "Framework",
+      },
+      {
+        name: "Git Hub",
+        component: Icons.GitHub as unknown as SvgIconComponent,
+        import: "GitHub",
+      },
+      {
+        name: "Git Hub Group Asset",
+        component: Icons.GitHubGroupAsset as unknown as SvgIconComponent,
+        import: "GitHubGroupAsset",
+      },
+      {
+        name: "Git Hub Repo Asset",
+        component: Icons.GitHubRepoAsset as unknown as SvgIconComponent,
+        import: "GitHubRepoAsset",
+      },
+      {
+        name: "Git Lab",
+        component: Icons.GitLab as unknown as SvgIconComponent,
+        import: "GitLab",
+      },
+      {
+        name: "Git Lab Group Asset",
+        component: Icons.GitLabGroupAsset as unknown as SvgIconComponent,
+        import: "GitLabGroupAsset",
+      },
+      {
+        name: "Git Lab Repo Asset",
+        component: Icons.GitLabRepoAsset as unknown as SvgIconComponent,
+        import: "GitLabRepoAsset",
+      },
+      {
+        name: "Gitlab Color",
+        component: Icons.GitlabColor as unknown as SvgIconComponent,
+        import: "GitlabColor",
+      },
+      {
+        name: "Group",
+        component: Icons.Group as unknown as SvgIconComponent,
+        import: "Group",
+      },
+      {
+        name: "Guard Duty",
+        component: Icons.GuardDuty as unknown as SvgIconComponent,
+        import: "GuardDuty",
+      },
+      {
+        name: "Health",
+        component: Icons.Health as unknown as SvgIconComponent,
+        import: "Health",
+      },
+      {
+        name: "Helm",
+        component: Icons.Helm as unknown as SvgIconComponent,
+        import: "Helm",
+      },
+      {
+        name: "Hide Outline",
+        component: Icons.HideOutline as unknown as SvgIconComponent,
+        import: "HideOutline",
+      },
+      {
+        name: "IAC",
+        component: Icons.IAC as unknown as SvgIconComponent,
+        import: "IAC",
+      },
+      {
+        name: "IAC Security",
+        component: Icons.IACSecurity as unknown as SvgIconComponent,
+        import: "IACSecurity",
+      },
+      {
+        name: "Iac Stack",
+        component: Icons.IacStack as unknown as SvgIconComponent,
+        import: "IacStack",
+      },
+      {
+        name: "Ignore",
+        component: Icons.Ignore as unknown as SvgIconComponent,
+        import: "Ignore",
+      },
+      {
+        name: "Image Valid",
+        component: Icons.ImageValid as unknown as SvgIconComponent,
+        import: "ImageValid",
+      },
+      {
+        name: "Info",
+        component: Icons.Info as unknown as SvgIconComponent,
+        import: "Info",
+      },
+      {
+        name: "Info Bold",
+        component: Icons.InfoBold as unknown as SvgIconComponent,
+        import: "InfoBold",
+      },
+      {
+        name: "Info Circle Outline",
+        component: Icons.InfoCircleOutline as unknown as SvgIconComponent,
+        import: "InfoCircleOutline",
+      },
+      {
+        name: "Inline V",
+        component: Icons.InlineV as unknown as SvgIconComponent,
+        import: "InlineV",
+      },
+      {
+        name: "Inline X",
+        component: Icons.InlineX as unknown as SvgIconComponent,
+        import: "InlineX",
+      },
+      {
+        name: "Insights",
+        component: Icons.Insights as unknown as SvgIconComponent,
+        import: "Insights",
+      },
+      {
+        name: "Internet Scanner",
+        component: Icons.InternetScanner as unknown as SvgIconComponent,
+        import: "InternetScanner",
+      },
+      {
+        name: "Jira",
+        component: Icons.Jira as unknown as SvgIconComponent,
+        import: "Jira",
+      },
+      {
+        name: "Jira Blue",
+        component: Icons.JiraBlue as unknown as SvgIconComponent,
+        import: "JiraBlue",
+      },
+      {
+        name: "Keyboard Arrow Down",
+        component: Icons.KeyboardArrowDown as unknown as SvgIconComponent,
+        import: "KeyboardArrowDown",
+      },
+      {
+        name: "Keyboard Arrow Left",
+        component: Icons.KeyboardArrowLeft as unknown as SvgIconComponent,
+        import: "KeyboardArrowLeft",
+      },
+      {
+        name: "Keyboard Arrow Right",
+        component: Icons.KeyboardArrowRight as unknown as SvgIconComponent,
+        import: "KeyboardArrowRight",
+      },
+      {
+        name: "Keyboard Arrow Up",
+        component: Icons.KeyboardArrowUp as unknown as SvgIconComponent,
+        import: "KeyboardArrowUp",
+      },
+      {
+        name: "Legend",
+        component: Icons.Legend as unknown as SvgIconComponent,
+        import: "Legend",
+      },
+      {
+        name: "Link",
+        component: Icons.Link as unknown as SvgIconComponent,
+        import: "Link",
+      },
+      {
+        name: "List",
+        component: Icons.List as unknown as SvgIconComponent,
+        import: "List",
+      },
+      {
+        name: "Loading",
+        component: Icons.Loading as unknown as SvgIconComponent,
+        import: "Loading",
+      },
+      {
+        name: "Lock Off",
+        component: Icons.LockOff as unknown as SvgIconComponent,
+        import: "LockOff",
+      },
+      {
+        name: "Lock Outline",
+        component: Icons.LockOutline as unknown as SvgIconComponent,
+        import: "LockOutline",
+      },
+      {
+        name: "Logout",
+        component: Icons.Logout as unknown as SvgIconComponent,
+        import: "Logout",
+      },
+      {
+        name: "Malware Icon",
+        component: Icons.MalwareIcon as unknown as SvgIconComponent,
+        import: "MalwareIcon",
+      },
+      {
+        name: "Manage Columns",
+        component: Icons.ManageColumns as unknown as SvgIconComponent,
+        import: "ManageColumns",
+      },
+      {
+        name: "Manual Data Labeling",
+        component: Icons.ManualDataLabeling as unknown as SvgIconComponent,
+        import: "ManualDataLabeling",
+      },
+      {
+        name: "Mcd",
+        component: Icons.Mcd as unknown as SvgIconComponent,
+        import: "Mcd",
+      },
+      {
+        name: "Mcd Gateway",
+        component: Icons.McdGateway as unknown as SvgIconComponent,
+        import: "McdGateway",
+      },
+      {
+        name: "Menu Apisec",
+        component: Icons.MenuApisec as unknown as SvgIconComponent,
+        import: "MenuApisec",
+      },
+      {
+        name: "Menu Attack Path Analysis",
+        component: Icons.MenuAttackPathAnalysis as unknown as SvgIconComponent,
+        import: "MenuAttackPathAnalysis",
+      },
+      {
+        name: "Menu CICD",
+        component: Icons.MenuCICD as unknown as SvgIconComponent,
+        import: "MenuCICD",
+      },
+      {
+        name: "Menu Cloud Inventory",
+        component: Icons.MenuCloudInventory as unknown as SvgIconComponent,
+        import: "MenuCloudInventory",
+      },
+      {
+        name: "Menu Compliance Report",
+        component: Icons.MenuComplianceReport as unknown as SvgIconComponent,
+        import: "MenuComplianceReport",
+      },
+      {
+        name: "Menu Data Security",
+        component: Icons.MenuDataSecurity as unknown as SvgIconComponent,
+        import: "MenuDataSecurity",
+      },
+      {
+        name: "Menu External Attack Surface",
+        component:
+          Icons.MenuExternalAttackSurface as unknown as SvgIconComponent,
+        import: "MenuExternalAttackSurface",
+      },
+      {
+        name: "Menu Integrations",
+        component: Icons.MenuIntegrations as unknown as SvgIconComponent,
+        import: "MenuIntegrations",
+      },
+      {
+        name: "Menu Overview",
+        component: Icons.MenuOverview as unknown as SvgIconComponent,
+        import: "MenuOverview",
+      },
+      {
+        name: "Menu Reports",
+        component: Icons.MenuReports as unknown as SvgIconComponent,
+        import: "MenuReports",
+      },
+      {
+        name: "Menu Runtime Events",
+        component: Icons.MenuRuntimeEvents as unknown as SvgIconComponent,
+        import: "MenuRuntimeEvents",
+      },
+      {
+        name: "Menu Security Graph",
+        component: Icons.MenuSecurityGraph as unknown as SvgIconComponent,
+        import: "MenuSecurityGraph",
+      },
+      {
+        name: "Menu Security Posture",
+        component: Icons.MenuSecurityPosture as unknown as SvgIconComponent,
+        import: "MenuSecurityPosture",
+      },
+      {
+        name: "Menu Settings",
+        component: Icons.MenuSettings as unknown as SvgIconComponent,
+        import: "MenuSettings",
+      },
+      {
+        name: "Menu Software Supply Chain",
+        component: Icons.MenuSoftwareSupplyChain as unknown as SvgIconComponent,
+        import: "MenuSoftwareSupplyChain",
+      },
+      {
+        name: "Menu Vulnerability Management",
+        component:
+          Icons.MenuVulnerabilityManagement as unknown as SvgIconComponent,
+        import: "MenuVulnerabilityManagement",
+      },
+      {
+        name: "Merge",
+        component: Icons.Merge as unknown as SvgIconComponent,
+        import: "Merge",
+      },
+      {
+        name: "Merge Circle",
+        component: Icons.MergeCircle as unknown as SvgIconComponent,
+        import: "MergeCircle",
+      },
+      {
+        name: "Minus Bold",
+        component: Icons.MinusBold as unknown as SvgIconComponent,
+        import: "MinusBold",
+      },
+      {
+        name: "Minus Circle Out",
+        component: Icons.MinusCircleOut as unknown as SvgIconComponent,
+        import: "MinusCircleOut",
+      },
+      {
+        name: "Move Top",
+        component: Icons.MoveTop as unknown as SvgIconComponent,
+        import: "MoveTop",
+      },
+      {
+        name: "Namespace",
+        component: Icons.Namespace as unknown as SvgIconComponent,
+        import: "Namespace",
+      },
+      {
+        name: "Network",
+        component: Icons.Network as unknown as SvgIconComponent,
+        import: "Network",
+      },
+      {
+        name: "Node",
+        component: Icons.Node as unknown as SvgIconComponent,
+        import: "Node",
+      },
+      {
+        name: "Notifications",
+        component: Icons.Notifications as unknown as SvgIconComponent,
+        import: "Notifications",
+      },
+      {
+        name: "Open API",
+        component: Icons.OpenAPI as unknown as SvgIconComponent,
+        import: "OpenAPI",
+      },
+      {
+        name: "Open In New Tab",
+        component: Icons.OpenInNewTab as unknown as SvgIconComponent,
+        import: "OpenInNewTab",
+      },
+      {
+        name: "Open Page",
+        component: Icons.OpenPage as unknown as SvgIconComponent,
+        import: "OpenPage",
+      },
+      {
+        name: "Open Port",
+        component: Icons.OpenPort as unknown as SvgIconComponent,
+        import: "OpenPort",
+      },
+      {
+        name: "Packages",
+        component: Icons.Packages as unknown as SvgIconComponent,
+        import: "Packages",
+      },
+      {
+        name: "Panoptica Full Logo",
+        component: Icons.PanopticaFullLogo as unknown as SvgIconComponent,
+        import: "PanopticaFullLogo",
+      },
+      {
+        name: "Panoptica Icon",
+        component: Icons.PanopticaIcon as unknown as SvgIconComponent,
+        import: "PanopticaIcon",
+      },
+      {
+        name: "Password",
+        component: Icons.Password as unknown as SvgIconComponent,
+        import: "Password",
+      },
+      {
+        name: "Permissions",
+        component: Icons.Permissions as unknown as SvgIconComponent,
+        import: "Permissions",
+      },
+      {
+        name: "Pin",
+        component: Icons.Pin as unknown as SvgIconComponent,
+        import: "Pin",
+      },
+      {
+        name: "Plus Bold",
+        component: Icons.PlusBold as unknown as SvgIconComponent,
+        import: "PlusBold",
+      },
+      {
+        name: "Policy Automated",
+        component: Icons.PolicyAutomated as unknown as SvgIconComponent,
+        import: "PolicyAutomated",
+      },
+      {
+        name: "Policy Secret",
+        component: Icons.PolicySecret as unknown as SvgIconComponent,
+        import: "PolicySecret",
+      },
+      {
+        name: "Policy Version",
+        component: Icons.PolicyVersion as unknown as SvgIconComponent,
+        import: "PolicyVersion",
+      },
+      {
+        name: "Preview",
+        component: Icons.Preview as unknown as SvgIconComponent,
+        import: "Preview",
+      },
+      {
+        name: "Private IP",
+        component: Icons.PrivateIP as unknown as SvgIconComponent,
+        import: "PrivateIP",
+      },
+      {
+        name: "Pull Request",
+        component: Icons.PullRequest as unknown as SvgIconComponent,
+        import: "PullRequest",
+      },
+      {
+        name: "Pulumi",
+        component: Icons.Pulumi as unknown as SvgIconComponent,
+        import: "Pulumi",
+      },
+      {
+        name: "Query Collapse",
+        component: Icons.QueryCollapse as unknown as SvgIconComponent,
+        import: "QueryCollapse",
+      },
+      {
+        name: "Radio Checked",
+        component: Icons.RadioChecked as unknown as SvgIconComponent,
+        import: "RadioChecked",
+      },
+      {
+        name: "Realtime Asset",
+        component: Icons.RealtimeAsset as unknown as SvgIconComponent,
+        import: "RealtimeAsset",
+      },
+      {
+        name: "Recon",
+        component: Icons.Recon as unknown as SvgIconComponent,
+        import: "Recon",
+      },
+      {
+        name: "Reload",
+        component: Icons.Reload as unknown as SvgIconComponent,
+        import: "Reload",
+      },
+      {
+        name: "Repair",
+        component: Icons.Repair as unknown as SvgIconComponent,
+        import: "Repair",
+      },
+      {
+        name: "Replace",
+        component: Icons.Replace as unknown as SvgIconComponent,
+        import: "Replace",
+      },
+      {
+        name: "Repo",
+        component: Icons.Repo as unknown as SvgIconComponent,
+        import: "Repo",
+      },
+      {
+        name: "Repository",
+        component: Icons.Repository as unknown as SvgIconComponent,
+        import: "Repository",
+      },
+      {
+        name: "Rounded Check Circle Outline",
+        component:
+          Icons.RoundedCheckCircleOutline as unknown as SvgIconComponent,
+        import: "RoundedCheckCircleOutline",
+      },
+      {
+        name: "Rule Based Data Labeling",
+        component: Icons.RuleBasedDataLabeling as unknown as SvgIconComponent,
+        import: "RuleBasedDataLabeling",
+      },
+      {
+        name: "SSO",
+        component: Icons.SSO as unknown as SvgIconComponent,
+        import: "SSO",
+      },
+      {
+        name: "S Three Bucket",
+        component: Icons.SThreeBucket as unknown as SvgIconComponent,
+        import: "SThreeBucket",
+      },
+      {
+        name: "Scan",
+        component: Icons.Scan as unknown as SvgIconComponent,
+        import: "Scan",
+      },
+      {
+        name: "Secret",
+        component: Icons.Secret as unknown as SvgIconComponent,
+        import: "Secret",
+      },
+      {
+        name: "Secure Endpoint",
+        component: Icons.SecureEndpoint as unknown as SvgIconComponent,
+        import: "SecureEndpoint",
+      },
+      {
+        name: "Security Posture Icon",
+        component: Icons.SecurityPostureIcon as unknown as SvgIconComponent,
+        import: "SecurityPostureIcon",
+      },
+      {
+        name: "Send",
+        component: Icons.Send as unknown as SvgIconComponent,
+        import: "Send",
+      },
+      {
+        name: "Sensitive Data",
+        component: Icons.SensitiveData as unknown as SvgIconComponent,
+        import: "SensitiveData",
+      },
+      {
+        name: "Serverless",
+        component: Icons.Serverless as unknown as SvgIconComponent,
+        import: "Serverless",
+      },
+      {
+        name: "Service Now",
+        component: Icons.ServiceNow as unknown as SvgIconComponent,
+        import: "ServiceNow",
+      },
+      {
+        name: "Settings",
+        component: Icons.Settings as unknown as SvgIconComponent,
+        import: "Settings",
+      },
+      {
+        name: "Settings Menu API Keys",
+        component: Icons.SettingsMenuAPIKeys as unknown as SvgIconComponent,
+        import: "SettingsMenuAPIKeys",
+      },
+      {
+        name: "Settings Menu API Security",
+        component: Icons.SettingsMenuAPISecurity as unknown as SvgIconComponent,
+        import: "SettingsMenuAPISecurity",
+      },
+      {
+        name: "Settings Menu Accounts",
+        component: Icons.SettingsMenuAccounts as unknown as SvgIconComponent,
+        import: "SettingsMenuAccounts",
+      },
+      {
+        name: "Settings Menu Alerts",
+        component: Icons.SettingsMenuAlerts as unknown as SvgIconComponent,
+        import: "SettingsMenuAlerts",
+      },
+      {
+        name: "Settings Menu Audit Log",
+        component: Icons.SettingsMenuAuditLog as unknown as SvgIconComponent,
+        import: "SettingsMenuAuditLog",
+      },
+      {
+        name: "Settings Menu External Attack Surface",
+        component:
+          Icons.SettingsMenuExternalAttackSurface as unknown as SvgIconComponent,
+        import: "SettingsMenuExternalAttackSurface",
+      },
+      {
+        name: "Settings Menu Gen AI Security",
+        component:
+          Icons.SettingsMenuGenAISecurity as unknown as SvgIconComponent,
+        import: "SettingsMenuGenAISecurity",
+      },
+      {
+        name: "Settings Menu Integrations",
+        component:
+          Icons.SettingsMenuIntegrations as unknown as SvgIconComponent,
+        import: "SettingsMenuIntegrations",
+      },
+      {
+        name: "Settings Menu Profile",
+        component: Icons.SettingsMenuProfile as unknown as SvgIconComponent,
+        import: "SettingsMenuProfile",
+      },
+      {
+        name: "Settings Menu SCM",
+        component: Icons.SettingsMenuSCM as unknown as SvgIconComponent,
+        import: "SettingsMenuSCM",
+      },
+      {
+        name: "Settings Menu Users Scopes",
+        component: Icons.SettingsMenuUsersScopes as unknown as SvgIconComponent,
+        import: "SettingsMenuUsersScopes",
+      },
+      {
+        name: "Settings Outline",
+        component: Icons.SettingsOutline as unknown as SvgIconComponent,
+        import: "SettingsOutline",
+      },
+      {
+        name: "Severity Bar",
+        component: Icons.SeverityBar as unknown as SvgIconComponent,
+        import: "SeverityBar",
+      },
+      {
+        name: "Shadow",
+        component: Icons.Shadow as unknown as SvgIconComponent,
+        import: "Shadow",
+      },
+      {
+        name: "Share",
+        component: Icons.Share as unknown as SvgIconComponent,
+        import: "Share",
+      },
+      {
+        name: "Size Down",
+        component: Icons.SizeDown as unknown as SvgIconComponent,
+        import: "SizeDown",
+      },
+      {
+        name: "Size Up",
+        component: Icons.SizeUp as unknown as SvgIconComponent,
+        import: "SizeUp",
+      },
+      {
+        name: "Skip Next",
+        component: Icons.SkipNext as unknown as SvgIconComponent,
+        import: "SkipNext",
+      },
+      {
+        name: "Skip Previous",
+        component: Icons.SkipPrevious as unknown as SvgIconComponent,
+        import: "SkipPrevious",
+      },
+      {
+        name: "Slack",
+        component: Icons.Slack as unknown as SvgIconComponent,
+        import: "Slack",
+      },
+      {
+        name: "Snyk",
+        component: Icons.Snyk as unknown as SvgIconComponent,
+        import: "Snyk",
+      },
+      {
+        name: "Sort Arrow Down",
+        component: Icons.SortArrowDown as unknown as SvgIconComponent,
+        import: "SortArrowDown",
+      },
+      {
+        name: "Sort Arrow Up",
+        component: Icons.SortArrowUp as unknown as SvgIconComponent,
+        import: "SortArrowUp",
+      },
+      {
+        name: "Sort Double Arrow",
+        component: Icons.SortDoubleArrow as unknown as SvgIconComponent,
+        import: "SortDoubleArrow",
+      },
+      {
+        name: "Sort Group",
+        component: Icons.SortGroup as unknown as SvgIconComponent,
+        import: "SortGroup",
+      },
+      {
+        name: "Sort Inverted",
+        component: Icons.SortInverted as unknown as SvgIconComponent,
+        import: "SortInverted",
+      },
+      {
+        name: "Spark",
+        component: Icons.Spark as unknown as SvgIconComponent,
+        import: "Spark",
+      },
+      {
+        name: "Star",
+        component: Icons.Star as unknown as SvgIconComponent,
+        import: "Star",
+      },
+      {
+        name: "Star Outline",
+        component: Icons.StarOutline as unknown as SvgIconComponent,
+        import: "StarOutline",
+      },
+      {
+        name: "Structure",
+        component: Icons.Structure as unknown as SvgIconComponent,
+        import: "Structure",
+      },
+      {
+        name: "Swagger",
+        component: Icons.Swagger as unknown as SvgIconComponent,
+        import: "Swagger",
+      },
+      {
+        name: "Swagger Outline",
+        component: Icons.SwaggerOutline as unknown as SvgIconComponent,
+        import: "SwaggerOutline",
+      },
+      {
+        name: "Table",
+        component: Icons.Table as unknown as SvgIconComponent,
+        import: "Table",
+      },
+      {
+        name: "Target",
+        component: Icons.Target as unknown as SvgIconComponent,
+        import: "Target",
+      },
+      {
+        name: "Target Sensitive",
+        component: Icons.TargetSensitive as unknown as SvgIconComponent,
+        import: "TargetSensitive",
+      },
+      {
+        name: "Teams",
+        component: Icons.Teams as unknown as SvgIconComponent,
+        import: "Teams",
+      },
+      {
+        name: "Tenable",
+        component: Icons.Tenable as unknown as SvgIconComponent,
+        import: "Tenable",
+      },
+      {
+        name: "Terraform",
+        component: Icons.Terraform as unknown as SvgIconComponent,
+        import: "Terraform",
+      },
+      {
+        name: "Test",
+        component: Icons.Test as unknown as SvgIconComponent,
+        import: "Test",
+      },
+      {
+        name: "Tray",
+        component: Icons.Tray as unknown as SvgIconComponent,
+        import: "Tray",
+      },
+      {
+        name: "Trend",
+        component: Icons.Trend as unknown as SvgIconComponent,
+        import: "Trend",
+      },
+      {
+        name: "Trend Arrow",
+        component: Icons.TrendArrow as unknown as SvgIconComponent,
+        import: "TrendArrow",
+      },
+      {
+        name: "Triangle Up Outline",
+        component: Icons.TriangleUpOutline as unknown as SvgIconComponent,
+        import: "TriangleUpOutline",
+      },
+      {
+        name: "Twist Lock",
+        component: Icons.TwistLock as unknown as SvgIconComponent,
+        import: "TwistLock",
+      },
+      {
+        name: "Un Ignore",
+        component: Icons.UnIgnore as unknown as SvgIconComponent,
+        import: "UnIgnore",
+      },
+      {
+        name: "Undo",
+        component: Icons.Undo as unknown as SvgIconComponent,
+        import: "Undo",
+      },
+      {
+        name: "Uninstall",
+        component: Icons.Uninstall as unknown as SvgIconComponent,
+        import: "Uninstall",
+      },
+      {
+        name: "Union",
+        component: Icons.Union as unknown as SvgIconComponent,
+        import: "Union",
+      },
+      {
+        name: "Unlock",
+        component: Icons.Unlock as unknown as SvgIconComponent,
+        import: "Unlock",
+      },
+      {
+        name: "User",
+        component: Icons.User as unknown as SvgIconComponent,
+        import: "User",
+      },
+      {
+        name: "User Circle",
+        component: Icons.UserCircle as unknown as SvgIconComponent,
+        import: "UserCircle",
+      },
+      {
+        name: "Vul Arrow Up",
+        component: Icons.VulArrowUp as unknown as SvgIconComponent,
+        import: "VulArrowUp",
+      },
+      {
+        name: "Vul Cisa",
+        component: Icons.VulCisa as unknown as SvgIconComponent,
+        import: "VulCisa",
+      },
+      {
+        name: "Vul Container",
+        component: Icons.VulContainer as unknown as SvgIconComponent,
+        import: "VulContainer",
+      },
+      {
+        name: "Vul Exploitable",
+        component: Icons.VulExploitable as unknown as SvgIconComponent,
+        import: "VulExploitable",
+      },
+      {
+        name: "Vul Panoptica",
+        component: Icons.VulPanoptica as unknown as SvgIconComponent,
+        import: "VulPanoptica",
+      },
+      {
+        name: "Vul Partial",
+        component: Icons.VulPartial as unknown as SvgIconComponent,
+        import: "VulPartial",
+      },
+      {
+        name: "Vul Public",
+        component: Icons.VulPublic as unknown as SvgIconComponent,
+        import: "VulPublic",
+      },
+      {
+        name: "Vul Serverless",
+        component: Icons.VulServerless as unknown as SvgIconComponent,
+        import: "VulServerless",
+      },
+      {
+        name: "Vul Snyk",
+        component: Icons.VulSnyk as unknown as SvgIconComponent,
+        import: "VulSnyk",
+      },
+      {
+        name: "Vul Stackrox",
+        component: Icons.VulStackrox as unknown as SvgIconComponent,
+        import: "VulStackrox",
+      },
+      {
+        name: "Vul Tenable",
+        component: Icons.VulTenable as unknown as SvgIconComponent,
+        import: "VulTenable",
+      },
+      {
+        name: "Vul Twist Lock",
+        component: Icons.VulTwistLock as unknown as SvgIconComponent,
+        import: "VulTwistLock",
+      },
+      {
+        name: "Vulnerabilities Icon",
+        component: Icons.VulnerabilitiesIcon as unknown as SvgIconComponent,
+        import: "VulnerabilitiesIcon",
+      },
+      {
+        name: "Warning Accounts",
+        component: Icons.WarningAccounts as unknown as SvgIconComponent,
+        import: "WarningAccounts",
+      },
+      {
+        name: "Warning Question",
+        component: Icons.WarningQuestion as unknown as SvgIconComponent,
+        import: "WarningQuestion",
+      },
+      {
+        name: "Webex",
+        component: Icons.Webex as unknown as SvgIconComponent,
+        import: "Webex",
+      },
+      {
+        name: "Zombie",
+        component: Icons.Zombie as unknown as SvgIconComponent,
+        import: "Zombie",
+      },
+      {
+        name: "g RPC",
+        component: Icons.gRPC as unknown as SvgIconComponent,
+        import: "gRPC",
+      },
+    ],
+  },
+  {
+    category: "AWS Categories",
+    icons: [
+      {
+        name: "AWS Category Analytics",
+        component: Icons.AWSCategoryAnalytics as unknown as SvgIconComponent,
+        import: "AWSCategoryAnalytics",
+      },
+      {
+        name: "AWS Category Compute",
+        component: Icons.AWSCategoryCompute as unknown as SvgIconComponent,
+        import: "AWSCategoryCompute",
+      },
+      {
+        name: "AWS Category Containers",
+        component: Icons.AWSCategoryContainers as unknown as SvgIconComponent,
+        import: "AWSCategoryContainers",
+      },
+      {
+        name: "AWS Category Database",
+        component: Icons.AWSCategoryDatabase as unknown as SvgIconComponent,
+        import: "AWSCategoryDatabase",
+      },
+      {
+        name: "AWS Category Identity Security",
+        component:
+          Icons.AWSCategoryIdentitySecurity as unknown as SvgIconComponent,
+        import: "AWSCategoryIdentitySecurity",
+      },
+      {
+        name: "AWS Category Identity Security1",
+        component:
+          Icons.AWSCategoryIdentitySecurity1 as unknown as SvgIconComponent,
+        import: "AWSCategoryIdentitySecurity1",
+      },
+      {
+        name: "AWS Category Machine Learning",
+        component:
+          Icons.AWSCategoryMachineLearning as unknown as SvgIconComponent,
+        import: "AWSCategoryMachineLearning",
+      },
+      {
+        name: "AWS Category Management Governance",
+        component:
+          Icons.AWSCategoryManagementGovernance as unknown as SvgIconComponent,
+        import: "AWSCategoryManagementGovernance",
+      },
+      {
+        name: "AWS Category Networking",
+        component: Icons.AWSCategoryNetworking as unknown as SvgIconComponent,
+        import: "AWSCategoryNetworking",
+      },
+      {
+        name: "AWS Category None",
+        component: Icons.AWSCategoryNone as unknown as SvgIconComponent,
+        import: "AWSCategoryNone",
+      },
+      {
+        name: "AWS Category Storage",
+        component: Icons.AWSCategoryStorage as unknown as SvgIconComponent,
+        import: "AWSCategoryStorage",
+      },
+      {
+        name: "AWS Category Undefined",
+        component: Icons.AWSCategoryUndefined as unknown as SvgIconComponent,
+        import: "AWSCategoryUndefined",
+      },
+      {
+        name: "AWS Category Web Mobile",
+        component: Icons.AWSCategoryWebMobile as unknown as SvgIconComponent,
+        import: "AWSCategoryWebMobile",
+      },
+    ],
+  },
+  {
+    category: "AWS Services",
+    icons: [
+      {
+        name: "AWS Cloud Formation",
+        component: Icons.AWSCloudFormation as unknown as SvgIconComponent,
+        import: "AWSCloudFormation",
+      },
+      {
+        name: "AWS Icon",
+        component: Icons.AWSIcon as unknown as SvgIconComponent,
+        import: "AWSIcon",
+      },
+      {
+        name: "AWS Services ACM",
+        component: Icons.AWSServicesACM as unknown as SvgIconComponent,
+        import: "AWSServicesACM",
+      },
+      {
+        name: "AWS Services AMI",
+        component: Icons.AWSServicesAMI as unknown as SvgIconComponent,
+        import: "AWSServicesAMI",
+      },
+      {
+        name: "AWS Services API Gateway",
+        component: Icons.AWSServicesAPIGateway as unknown as SvgIconComponent,
+        import: "AWSServicesAPIGateway",
+      },
+      {
+        name: "AWS Services AWS Config",
+        component: Icons.AWSServicesAWSConfig as unknown as SvgIconComponent,
+        import: "AWSServicesAWSConfig",
+      },
+      {
+        name: "AWS Services AWS Transfer Family",
+        component:
+          Icons.AWSServicesAWSTransferFamily as unknown as SvgIconComponent,
+        import: "AWSServicesAWSTransferFamily",
+      },
+      {
+        name: "AWS Services AWS Transfer Family1",
+        component:
+          Icons.AWSServicesAWSTransferFamily1 as unknown as SvgIconComponent,
+        import: "AWSServicesAWSTransferFamily1",
+      },
+      {
+        name: "AWS Services Amazon Memory DB For Redis",
+        component:
+          Icons.AWSServicesAmazonMemoryDBForRedis as unknown as SvgIconComponent,
+        import: "AWSServicesAmazonMemoryDBForRedis",
+      },
+      {
+        name: "AWS Services Athena",
+        component: Icons.AWSServicesAthena as unknown as SvgIconComponent,
+        import: "AWSServicesAthena",
+      },
+      {
+        name: "AWS Services Auto Scaling Group",
+        component:
+          Icons.AWSServicesAutoScalingGroup as unknown as SvgIconComponent,
+        import: "AWSServicesAutoScalingGroup",
+      },
+      {
+        name: "AWS Services Auto Scaling Group1",
+        component:
+          Icons.AWSServicesAutoScalingGroup1 as unknown as SvgIconComponent,
+        import: "AWSServicesAutoScalingGroup1",
+      },
+      {
+        name: "AWS Services Backup",
+        component: Icons.AWSServicesBackup as unknown as SvgIconComponent,
+        import: "AWSServicesBackup",
+      },
+      {
+        name: "AWS Services CIS",
+        component: Icons.AWSServicesCIS as unknown as SvgIconComponent,
+        import: "AWSServicesCIS",
+      },
+      {
+        name: "AWS Services Certificate Manager",
+        component:
+          Icons.AWSServicesCertificateManager as unknown as SvgIconComponent,
+        import: "AWSServicesCertificateManager",
+      },
+      {
+        name: "AWS Services Client VPN",
+        component: Icons.AWSServicesClientVPN as unknown as SvgIconComponent,
+        import: "AWSServicesClientVPN",
+      },
+      {
+        name: "AWS Services Cloud Formation",
+        component:
+          Icons.AWSServicesCloudFormation as unknown as SvgIconComponent,
+        import: "AWSServicesCloudFormation",
+      },
+      {
+        name: "AWS Services Cloud Formation Stack",
+        component:
+          Icons.AWSServicesCloudFormationStack as unknown as SvgIconComponent,
+        import: "AWSServicesCloudFormationStack",
+      },
+      {
+        name: "AWS Services Cloud Formation Stack Set",
+        component:
+          Icons.AWSServicesCloudFormationStackSet as unknown as SvgIconComponent,
+        import: "AWSServicesCloudFormationStackSet",
+      },
+      {
+        name: "AWS Services Cloud Trail",
+        component: Icons.AWSServicesCloudTrail as unknown as SvgIconComponent,
+        import: "AWSServicesCloudTrail",
+      },
+      {
+        name: "AWS Services Cloud Watch",
+        component: Icons.AWSServicesCloudWatch as unknown as SvgIconComponent,
+        import: "AWSServicesCloudWatch",
+      },
+      {
+        name: "AWS Services Cloudfront",
+        component: Icons.AWSServicesCloudfront as unknown as SvgIconComponent,
+        import: "AWSServicesCloudfront",
+      },
+      {
+        name: "AWS Services Cognito",
+        component: Icons.AWSServicesCognito as unknown as SvgIconComponent,
+        import: "AWSServicesCognito",
+      },
+      {
+        name: "AWS Services Compliance",
+        component: Icons.AWSServicesCompliance as unknown as SvgIconComponent,
+        import: "AWSServicesCompliance",
+      },
+      {
+        name: "AWS Services Config Recorders",
+        component:
+          Icons.AWSServicesConfigRecorders as unknown as SvgIconComponent,
+        import: "AWSServicesConfigRecorders",
+      },
+      {
+        name: "AWS Services Config Rules",
+        component: Icons.AWSServicesConfigRules as unknown as SvgIconComponent,
+        import: "AWSServicesConfigRules",
+      },
+      {
+        name: "AWS Services DB",
+        component: Icons.AWSServicesDB as unknown as SvgIconComponent,
+        import: "AWSServicesDB",
+      },
+      {
+        name: "AWS Services Data Pipeline",
+        component: Icons.AWSServicesDataPipeline as unknown as SvgIconComponent,
+        import: "AWSServicesDataPipeline",
+      },
+      {
+        name: "AWS Services Database Migration",
+        component:
+          Icons.AWSServicesDatabaseMigration as unknown as SvgIconComponent,
+        import: "AWSServicesDatabaseMigration",
+      },
+      {
+        name: "AWS Services Docker Image",
+        component: Icons.AWSServicesDockerImage as unknown as SvgIconComponent,
+        import: "AWSServicesDockerImage",
+      },
+      {
+        name: "AWS Services Dynamo DB",
+        component: Icons.AWSServicesDynamoDB as unknown as SvgIconComponent,
+        import: "AWSServicesDynamoDB",
+      },
+      {
+        name: "AWS Services EBS",
+        component: Icons.AWSServicesEBS as unknown as SvgIconComponent,
+        import: "AWSServicesEBS",
+      },
+      {
+        name: "AWS Services EC2",
+        component: Icons.AWSServicesEC2 as unknown as SvgIconComponent,
+        import: "AWSServicesEC2",
+      },
+      {
+        name: "AWS Services EC2 Snapshot",
+        component: Icons.AWSServicesEC2Snapshot as unknown as SvgIconComponent,
+        import: "AWSServicesEC2Snapshot",
+      },
+      {
+        name: "AWS Services ECS Task",
+        component: Icons.AWSServicesECSTask as unknown as SvgIconComponent,
+        import: "AWSServicesECSTask",
+      },
+      {
+        name: "AWS Services ECS Task Definition",
+        component:
+          Icons.AWSServicesECSTaskDefinition as unknown as SvgIconComponent,
+        import: "AWSServicesECSTaskDefinition",
+      },
+      {
+        name: "AWS Services EFS",
+        component: Icons.AWSServicesEFS as unknown as SvgIconComponent,
+        import: "AWSServicesEFS",
+      },
+      {
+        name: "AWS Services EKS Cluster",
+        component: Icons.AWSServicesEKSCluster as unknown as SvgIconComponent,
+        import: "AWSServicesEKSCluster",
+      },
+      {
+        name: "AWS Services ELB Policy",
+        component: Icons.AWSServicesELBPolicy as unknown as SvgIconComponent,
+        import: "AWSServicesELBPolicy",
+      },
+      {
+        name: "AWS Services EL Bv2 Listener",
+        component:
+          Icons.AWSServicesELBv2Listener as unknown as SvgIconComponent,
+        import: "AWSServicesELBv2Listener",
+      },
+      {
+        name: "AWS Services EMR",
+        component: Icons.AWSServicesEMR as unknown as SvgIconComponent,
+        import: "AWSServicesEMR",
+      },
+      {
+        name: "AWS Services Egress Only Interent Gateway",
+        component:
+          Icons.AWSServicesEgressOnlyInterentGateway as unknown as SvgIconComponent,
+        import: "AWSServicesEgressOnlyInterentGateway",
+      },
+      {
+        name: "AWS Services Elasti Cache",
+        component: Icons.AWSServicesElastiCache as unknown as SvgIconComponent,
+        import: "AWSServicesElastiCache",
+      },
+      {
+        name: "AWS Services Elastic Beanstalk",
+        component:
+          Icons.AWSServicesElasticBeanstalk as unknown as SvgIconComponent,
+        import: "AWSServicesElasticBeanstalk",
+      },
+      {
+        name: "AWS Services Elastic Container Registry ECR",
+        component:
+          Icons.AWSServicesElasticContainerRegistryECR as unknown as SvgIconComponent,
+        import: "AWSServicesElasticContainerRegistryECR",
+      },
+      {
+        name: "AWS Services Elastic Container Service ECS",
+        component:
+          Icons.AWSServicesElasticContainerServiceECS as unknown as SvgIconComponent,
+        import: "AWSServicesElasticContainerServiceECS",
+      },
+      {
+        name: "AWS Services Elastic IP",
+        component: Icons.AWSServicesElasticIP as unknown as SvgIconComponent,
+        import: "AWSServicesElasticIP",
+      },
+      {
+        name: "AWS Services Elastic IP1",
+        component: Icons.AWSServicesElasticIP1 as unknown as SvgIconComponent,
+        import: "AWSServicesElasticIP1",
+      },
+      {
+        name: "AWS Services Elastic Kubernetes Service EKS",
+        component:
+          Icons.AWSServicesElasticKubernetesServiceEKS as unknown as SvgIconComponent,
+        import: "AWSServicesElasticKubernetesServiceEKS",
+      },
+      {
+        name: "AWS Services Elastic Load Balancing",
+        component:
+          Icons.AWSServicesElasticLoadBalancing as unknown as SvgIconComponent,
+        import: "AWSServicesElasticLoadBalancing",
+      },
+      {
+        name: "AWS Services Elastic Network Interface",
+        component:
+          Icons.AWSServicesElasticNetworkInterface as unknown as SvgIconComponent,
+        import: "AWSServicesElasticNetworkInterface",
+      },
+      {
+        name: "AWS Services Elasticsearch",
+        component:
+          Icons.AWSServicesElasticsearch as unknown as SvgIconComponent,
+        import: "AWSServicesElasticsearch",
+      },
+      {
+        name: "AWS Services Event Source Mapping",
+        component:
+          Icons.AWSServicesEventSourceMapping as unknown as SvgIconComponent,
+        import: "AWSServicesEventSourceMapping",
+      },
+      {
+        name: "AWS Services Global Accelerator",
+        component:
+          Icons.AWSServicesGlobalAccelerator as unknown as SvgIconComponent,
+        import: "AWSServicesGlobalAccelerator",
+      },
+      {
+        name: "AWS Services Glue",
+        component: Icons.AWSServicesGlue as unknown as SvgIconComponent,
+        import: "AWSServicesGlue",
+      },
+      {
+        name: "AWS Services Group",
+        component: Icons.AWSServicesGroup as unknown as SvgIconComponent,
+        import: "AWSServicesGroup",
+      },
+      {
+        name: "AWS Services Guard Duty",
+        component: Icons.AWSServicesGuardDuty as unknown as SvgIconComponent,
+        import: "AWSServicesGuardDuty",
+      },
+      {
+        name: "AWS Services IAM Access Key",
+        component: Icons.AWSServicesIAMAccessKey as unknown as SvgIconComponent,
+        import: "AWSServicesIAMAccessKey",
+      },
+      {
+        name: "AWS Services IAM Account",
+        component: Icons.AWSServicesIAMAccount as unknown as SvgIconComponent,
+        import: "AWSServicesIAMAccount",
+      },
+      {
+        name: "AWS Services IAM Credential Report",
+        component:
+          Icons.AWSServicesIAMCredentialReport as unknown as SvgIconComponent,
+        import: "AWSServicesIAMCredentialReport",
+      },
+      {
+        name: "AWS Services IAM Organizational Policy",
+        component:
+          Icons.AWSServicesIAMOrganizationalPolicy as unknown as SvgIconComponent,
+        import: "AWSServicesIAMOrganizationalPolicy",
+      },
+      {
+        name: "AWS Services IAM Password Policy",
+        component:
+          Icons.AWSServicesIAMPasswordPolicy as unknown as SvgIconComponent,
+        import: "AWSServicesIAMPasswordPolicy",
+      },
+      {
+        name: "AWS Services IAM Virtual MFA Devices",
+        component:
+          Icons.AWSServicesIAMVirtualMFADevices as unknown as SvgIconComponent,
+        import: "AWSServicesIAMVirtualMFADevices",
+      },
+      {
+        name: "AWS Services Image",
+        component: Icons.AWSServicesImage as unknown as SvgIconComponent,
+        import: "AWSServicesImage",
+      },
+      {
+        name: "AWS Services Inspector",
+        component: Icons.AWSServicesInspector as unknown as SvgIconComponent,
+        import: "AWSServicesInspector",
+      },
+      {
+        name: "AWS Services Internet Gateway",
+        component:
+          Icons.AWSServicesInternetGateway as unknown as SvgIconComponent,
+        import: "AWSServicesInternetGateway",
+      },
+      {
+        name: "AWS Services Internet Gateway1",
+        component:
+          Icons.AWSServicesInternetGateway1 as unknown as SvgIconComponent,
+        import: "AWSServicesInternetGateway1",
+      },
+      {
+        name: "AWS Services KMS Key",
+        component: Icons.AWSServicesKMSKey as unknown as SvgIconComponent,
+        import: "AWSServicesKMSKey",
+      },
+      {
+        name: "AWS Services Key Pairs",
+        component: Icons.AWSServicesKeyPairs as unknown as SvgIconComponent,
+        import: "AWSServicesKeyPairs",
+      },
+      {
+        name: "AWS Services Kinesis",
+        component: Icons.AWSServicesKinesis as unknown as SvgIconComponent,
+        import: "AWSServicesKinesis",
+      },
+      {
+        name: "AWS Services Lambda",
+        component: Icons.AWSServicesLambda as unknown as SvgIconComponent,
+        import: "AWSServicesLambda",
+      },
+      {
+        name: "AWS Services Launch Template",
+        component:
+          Icons.AWSServicesLaunchTemplate as unknown as SvgIconComponent,
+        import: "AWSServicesLaunchTemplate",
+      },
+      {
+        name: "AWS Services MFA Device",
+        component: Icons.AWSServicesMFADevice as unknown as SvgIconComponent,
+        import: "AWSServicesMFADevice",
+      },
+      {
+        name: "AWS Services Macie",
+        component: Icons.AWSServicesMacie as unknown as SvgIconComponent,
+        import: "AWSServicesMacie",
+      },
+      {
+        name: "AWS Services NAT Gateway",
+        component: Icons.AWSServicesNATGateway as unknown as SvgIconComponent,
+        import: "AWSServicesNATGateway",
+      },
+      {
+        name: "AWS Services NAT Gateway1",
+        component: Icons.AWSServicesNATGateway1 as unknown as SvgIconComponent,
+        import: "AWSServicesNATGateway1",
+      },
+      {
+        name: "AWS Services Neptune",
+        component: Icons.AWSServicesNeptune as unknown as SvgIconComponent,
+        import: "AWSServicesNeptune",
+      },
+      {
+        name: "AWS Services Network ACL",
+        component: Icons.AWSServicesNetworkACL as unknown as SvgIconComponent,
+        import: "AWSServicesNetworkACL",
+      },
+      {
+        name: "AWS Services Organizational Unit",
+        component:
+          Icons.AWSServicesOrganizationalUnit as unknown as SvgIconComponent,
+        import: "AWSServicesOrganizationalUnit",
+      },
+      {
+        name: "AWS Services Policy",
+        component: Icons.AWSServicesPolicy as unknown as SvgIconComponent,
+        import: "AWSServicesPolicy",
+      },
+      {
+        name: "AWS Services RDS",
+        component: Icons.AWSServicesRDS as unknown as SvgIconComponent,
+        import: "AWSServicesRDS",
+      },
+      {
+        name: "AWS Services RDS Cluster",
+        component: Icons.AWSServicesRDSCluster as unknown as SvgIconComponent,
+        import: "AWSServicesRDSCluster",
+      },
+      {
+        name: "AWS Services RDS Cluster1",
+        component: Icons.AWSServicesRDSCluster1 as unknown as SvgIconComponent,
+        import: "AWSServicesRDSCluster1",
+      },
+      {
+        name: "AWS Services Redshift",
+        component: Icons.AWSServicesRedshift as unknown as SvgIconComponent,
+        import: "AWSServicesRedshift",
+      },
+      {
+        name: "AWS Services Role",
+        component: Icons.AWSServicesRole as unknown as SvgIconComponent,
+        import: "AWSServicesRole",
+      },
+      {
+        name: "AWS Services Route53",
+        component: Icons.AWSServicesRoute53 as unknown as SvgIconComponent,
+        import: "AWSServicesRoute53",
+      },
+      {
+        name: "AWS Services Route53 Route Table",
+        component:
+          Icons.AWSServicesRoute53RouteTable as unknown as SvgIconComponent,
+        import: "AWSServicesRoute53RouteTable",
+      },
+      {
+        name: "AWS Services Route53 Route Table1",
+        component:
+          Icons.AWSServicesRoute53RouteTable1 as unknown as SvgIconComponent,
+        import: "AWSServicesRoute53RouteTable1",
+      },
+      {
+        name: "AWS Services S3 Bucket",
+        component: Icons.AWSServicesS3Bucket as unknown as SvgIconComponent,
+        import: "AWSServicesS3Bucket",
+      },
+      {
+        name: "AWS Services Sage Maker",
+        component: Icons.AWSServicesSageMaker as unknown as SvgIconComponent,
+        import: "AWSServicesSageMaker",
+      },
+      {
+        name: "AWS Services Sage Maker Notebook",
+        component:
+          Icons.AWSServicesSageMakerNotebook as unknown as SvgIconComponent,
+        import: "AWSServicesSageMakerNotebook",
+      },
+      {
+        name: "AWS Services Secrets Manager",
+        component:
+          Icons.AWSServicesSecretsManager as unknown as SvgIconComponent,
+        import: "AWSServicesSecretsManager",
+      },
+      {
+        name: "AWS Services Security Hub",
+        component: Icons.AWSServicesSecurityHub as unknown as SvgIconComponent,
+        import: "AWSServicesSecurityHub",
+      },
+      {
+        name: "AWS Services Security Hub1",
+        component: Icons.AWSServicesSecurityHub1 as unknown as SvgIconComponent,
+        import: "AWSServicesSecurityHub1",
+      },
+      {
+        name: "AWS Services Server Certificate",
+        component:
+          Icons.AWSServicesServerCertificate as unknown as SvgIconComponent,
+        import: "AWSServicesServerCertificate",
+      },
+      {
+        name: "AWS Services Simple Notification Service",
+        component:
+          Icons.AWSServicesSimpleNotificationService as unknown as SvgIconComponent,
+        import: "AWSServicesSimpleNotificationService",
+      },
+      {
+        name: "AWS Services Simple Queue Service SQS",
+        component:
+          Icons.AWSServicesSimpleQueueServiceSQS as unknown as SvgIconComponent,
+        import: "AWSServicesSimpleQueueServiceSQS",
+      },
+      {
+        name: "AWS Services Spot Fleet",
+        component: Icons.AWSServicesSpotFleet as unknown as SvgIconComponent,
+        import: "AWSServicesSpotFleet",
+      },
+      {
+        name: "AWS Services Spot Instance",
+        component: Icons.AWSServicesSpotInstance as unknown as SvgIconComponent,
+        import: "AWSServicesSpotInstance",
+      },
+      {
+        name: "AWS Services Subnet",
+        component: Icons.AWSServicesSubnet as unknown as SvgIconComponent,
+        import: "AWSServicesSubnet",
+      },
+      {
+        name: "AWS Services Systems Manager",
+        component:
+          Icons.AWSServicesSystemsManager as unknown as SvgIconComponent,
+        import: "AWSServicesSystemsManager",
+      },
+      {
+        name: "AWS Services Systems Manager SSM",
+        component:
+          Icons.AWSServicesSystemsManagerSSM as unknown as SvgIconComponent,
+        import: "AWSServicesSystemsManagerSSM",
+      },
+      {
+        name: "AWS Services Target Group",
+        component: Icons.AWSServicesTargetGroup as unknown as SvgIconComponent,
+        import: "AWSServicesTargetGroup",
+      },
+      {
+        name: "AWS Services Transit Gateway",
+        component:
+          Icons.AWSServicesTransitGateway as unknown as SvgIconComponent,
+        import: "AWSServicesTransitGateway",
+      },
+      {
+        name: "AWS Services Unknown Asset",
+        component: Icons.AWSServicesUnknownAsset as unknown as SvgIconComponent,
+        import: "AWSServicesUnknownAsset",
+      },
+      {
+        name: "AWS Services User",
+        component: Icons.AWSServicesUser as unknown as SvgIconComponent,
+        import: "AWSServicesUser",
+      },
+      {
+        name: "AWS Services V Elastic Container Service",
+        component:
+          Icons.AWSServicesVElasticContainerService as unknown as SvgIconComponent,
+        import: "AWSServicesVElasticContainerService",
+      },
+      {
+        name: "AWS Services VPC Endpoints",
+        component: Icons.AWSServicesVPCEndpoints as unknown as SvgIconComponent,
+        import: "AWSServicesVPCEndpoints",
+      },
+      {
+        name: "AWS Services VPC Flow Logs",
+        component: Icons.AWSServicesVPCFlowLogs as unknown as SvgIconComponent,
+        import: "AWSServicesVPCFlowLogs",
+      },
+      {
+        name: "AWS Services VPC Network Access Analyzer",
+        component:
+          Icons.AWSServicesVPCNetworkAccessAnalyzer as unknown as SvgIconComponent,
+        import: "AWSServicesVPCNetworkAccessAnalyzer",
+      },
+      {
+        name: "AWS Services VPC Peering Connection",
+        component:
+          Icons.AWSServicesVPCPeeringConnection as unknown as SvgIconComponent,
+        import: "AWSServicesVPCPeeringConnection",
+      },
+      {
+        name: "AWS Services VPCVPN Gateway",
+        component:
+          Icons.AWSServicesVPCVPNGateway as unknown as SvgIconComponent,
+        import: "AWSServicesVPCVPNGateway",
+      },
+      {
+        name: "AWS Services Virtual Private Cloud",
+        component:
+          Icons.AWSServicesVirtualPrivateCloud as unknown as SvgIconComponent,
+        import: "AWSServicesVirtualPrivateCloud",
+      },
+      {
+        name: "AWS Services WAF",
+        component: Icons.AWSServicesWAF as unknown as SvgIconComponent,
+        import: "AWSServicesWAF",
+      },
+      {
+        name: "AWS Services WAF2",
+        component: Icons.AWSServicesWAF2 as unknown as SvgIconComponent,
+        import: "AWSServicesWAF2",
+      },
+    ],
+  },
+  {
+    category: "Azure",
+    icons: [
+      {
+        name: "AZURE Icon",
+        component: Icons.AZUREIcon as unknown as SvgIconComponent,
+        import: "AZUREIcon",
+      },
+      {
+        name: "Azure Category Analytics",
+        component: Icons.AzureCategoryAnalytics as unknown as SvgIconComponent,
+        import: "AzureCategoryAnalytics",
+      },
+      {
+        name: "Azure Category Azure Action Group",
+        component:
+          Icons.AzureCategoryAzureActionGroup as unknown as SvgIconComponent,
+        import: "AzureCategoryAzureActionGroup",
+      },
+      {
+        name: "Azure Category Compute",
+        component: Icons.AzureCategoryCompute as unknown as SvgIconComponent,
+        import: "AzureCategoryCompute",
+      },
+      {
+        name: "Azure Category Containers",
+        component: Icons.AzureCategoryContainers as unknown as SvgIconComponent,
+        import: "AzureCategoryContainers",
+      },
+      {
+        name: "Azure Category Database",
+        component: Icons.AzureCategoryDatabase as unknown as SvgIconComponent,
+        import: "AzureCategoryDatabase",
+      },
+      {
+        name: "Azure Category Database1",
+        component: Icons.AzureCategoryDatabase1 as unknown as SvgIconComponent,
+        import: "AzureCategoryDatabase1",
+      },
+      {
+        name: "Azure Category Identity Security",
+        component:
+          Icons.AzureCategoryIdentitySecurity as unknown as SvgIconComponent,
+        import: "AzureCategoryIdentitySecurity",
+      },
+      {
+        name: "Azure Category Machine Learning",
+        component:
+          Icons.AzureCategoryMachineLearning as unknown as SvgIconComponent,
+        import: "AzureCategoryMachineLearning",
+      },
+      {
+        name: "Azure Category Management Governance",
+        component:
+          Icons.AzureCategoryManagementGovernance as unknown as SvgIconComponent,
+        import: "AzureCategoryManagementGovernance",
+      },
+      {
+        name: "Azure Category Networking",
+        component: Icons.AzureCategoryNetworking as unknown as SvgIconComponent,
+        import: "AzureCategoryNetworking",
+      },
+      {
+        name: "Azure Category None",
+        component: Icons.AzureCategoryNone as unknown as SvgIconComponent,
+        import: "AzureCategoryNone",
+      },
+      {
+        name: "Azure Category Storage",
+        component: Icons.AzureCategoryStorage as unknown as SvgIconComponent,
+        import: "AzureCategoryStorage",
+      },
+      {
+        name: "Azure Category Web Mobile",
+        component: Icons.AzureCategoryWebMobile as unknown as SvgIconComponent,
+        import: "AzureCategoryWebMobile",
+      },
+      {
+        name: "Azure Devops",
+        component: Icons.AzureDevops as unknown as SvgIconComponent,
+        import: "AzureDevops",
+      },
+      {
+        name: "Azure Group Asset",
+        component: Icons.AzureGroupAsset as unknown as SvgIconComponent,
+        import: "AzureGroupAsset",
+      },
+      {
+        name: "Azure Repo Asset",
+        component: Icons.AzureRepoAsset as unknown as SvgIconComponent,
+        import: "AzureRepoAsset",
+      },
+      {
+        name: "Azure Resource Manager",
+        component: Icons.AzureResourceManager as unknown as SvgIconComponent,
+        import: "AzureResourceManager",
+      },
+      {
+        name: "Azure Services AD Domain",
+        component: Icons.AzureServicesADDomain as unknown as SvgIconComponent,
+        import: "AzureServicesADDomain",
+      },
+      {
+        name: "Azure Services Azure AD",
+        component: Icons.AzureServicesAzureAD as unknown as SvgIconComponent,
+        import: "AzureServicesAzureAD",
+      },
+      {
+        name: "Azure Services Azure AD Role",
+        component:
+          Icons.AzureServicesAzureADRole as unknown as SvgIconComponent,
+        import: "AzureServicesAzureADRole",
+      },
+      {
+        name: "Azure Services Azure API For FHIR",
+        component:
+          Icons.AzureServicesAzureAPIForFHIR as unknown as SvgIconComponent,
+        import: "AzureServicesAzureAPIForFHIR",
+      },
+      {
+        name: "Azure Services Azure Advanced Threat Protection",
+        component:
+          Icons.AzureServicesAzureAdvancedThreatProtection as unknown as SvgIconComponent,
+        import: "AzureServicesAzureAdvancedThreatProtection",
+      },
+      {
+        name: "Azure Services Azure Api Management",
+        component:
+          Icons.AzureServicesAzureApiManagement as unknown as SvgIconComponent,
+        import: "AzureServicesAzureApiManagement",
+      },
+      {
+        name: "Azure Services Azure App Configuration",
+        component:
+          Icons.AzureServicesAzureAppConfiguration as unknown as SvgIconComponent,
+        import: "AzureServicesAzureAppConfiguration",
+      },
+      {
+        name: "Azure Services Azure App Service",
+        component:
+          Icons.AzureServicesAzureAppService as unknown as SvgIconComponent,
+        import: "AzureServicesAzureAppService",
+      },
+      {
+        name: "Azure Services Azure Attestation",
+        component:
+          Icons.AzureServicesAzureAttestation as unknown as SvgIconComponent,
+        import: "AzureServicesAzureAttestation",
+      },
+      {
+        name: "Azure Services Azure Automation",
+        component:
+          Icons.AzureServicesAzureAutomation as unknown as SvgIconComponent,
+        import: "AzureServicesAzureAutomation",
+      },
+      {
+        name: "Azure Services Azure Backup",
+        component:
+          Icons.AzureServicesAzureBackup as unknown as SvgIconComponent,
+        import: "AzureServicesAzureBackup",
+      },
+      {
+        name: "Azure Services Azure Bot Service",
+        component:
+          Icons.AzureServicesAzureBotService as unknown as SvgIconComponent,
+        import: "AzureServicesAzureBotService",
+      },
+      {
+        name: "Azure Services Azure Cognitive Search",
+        component:
+          Icons.AzureServicesAzureCognitiveSearch as unknown as SvgIconComponent,
+        import: "AzureServicesAzureCognitiveSearch",
+      },
+      {
+        name: "Azure Services Azure Container Registry",
+        component:
+          Icons.AzureServicesAzureContainerRegistry as unknown as SvgIconComponent,
+        import: "AzureServicesAzureContainerRegistry",
+      },
+      {
+        name: "Azure Services Azure Cosmos DB",
+        component:
+          Icons.AzureServicesAzureCosmosDB as unknown as SvgIconComponent,
+        import: "AzureServicesAzureCosmosDB",
+      },
+      {
+        name: "Azure Services Azure Data Factory",
+        component:
+          Icons.AzureServicesAzureDataFactory as unknown as SvgIconComponent,
+        import: "AzureServicesAzureDataFactory",
+      },
+      {
+        name: "Azure Services Azure Data Lake",
+        component:
+          Icons.AzureServicesAzureDataLake as unknown as SvgIconComponent,
+        import: "AzureServicesAzureDataLake",
+      },
+      {
+        name: "Azure Services Azure Databricks",
+        component:
+          Icons.AzureServicesAzureDatabricks as unknown as SvgIconComponent,
+        import: "AzureServicesAzureDatabricks",
+      },
+      {
+        name: "Azure Services Azure Digital Twins",
+        component:
+          Icons.AzureServicesAzureDigitalTwins as unknown as SvgIconComponent,
+        import: "AzureServicesAzureDigitalTwins",
+      },
+      {
+        name: "Azure Services Azure Event Grid",
+        component:
+          Icons.AzureServicesAzureEventGrid as unknown as SvgIconComponent,
+        import: "AzureServicesAzureEventGrid",
+      },
+      {
+        name: "Azure Services Azure Event Hub",
+        component:
+          Icons.AzureServicesAzureEventHub as unknown as SvgIconComponent,
+        import: "AzureServicesAzureEventHub",
+      },
+      {
+        name: "Azure Services Azure Front Door",
+        component:
+          Icons.AzureServicesAzureFrontDoor as unknown as SvgIconComponent,
+        import: "AzureServicesAzureFrontDoor",
+      },
+      {
+        name: "Azure Services Azure HD Insight",
+        component:
+          Icons.AzureServicesAzureHDInsight as unknown as SvgIconComponent,
+        import: "AzureServicesAzureHDInsight",
+      },
+      {
+        name: "Azure Services Azure Identity",
+        component:
+          Icons.AzureServicesAzureIdentity as unknown as SvgIconComponent,
+        import: "AzureServicesAzureIdentity",
+      },
+      {
+        name: "Azure Services Azure Io T Hub",
+        component:
+          Icons.AzureServicesAzureIoTHub as unknown as SvgIconComponent,
+        import: "AzureServicesAzureIoTHub",
+      },
+      {
+        name: "Azure Services Azure Key Vault",
+        component:
+          Icons.AzureServicesAzureKeyVault as unknown as SvgIconComponent,
+        import: "AzureServicesAzureKeyVault",
+      },
+      {
+        name: "Azure Services Azure Kubernetes Service",
+        component:
+          Icons.AzureServicesAzureKubernetesService as unknown as SvgIconComponent,
+        import: "AzureServicesAzureKubernetesService",
+      },
+      {
+        name: "Azure Services Azure Machine Learning",
+        component:
+          Icons.AzureServicesAzureMachineLearning as unknown as SvgIconComponent,
+        import: "AzureServicesAzureMachineLearning",
+      },
+      {
+        name: "Azure Services Azure Monitor",
+        component:
+          Icons.AzureServicesAzureMonitor as unknown as SvgIconComponent,
+        import: "AzureServicesAzureMonitor",
+      },
+      {
+        name: "Azure Services Azure Postgre SQL",
+        component:
+          Icons.AzureServicesAzurePostgreSQL as unknown as SvgIconComponent,
+        import: "AzureServicesAzurePostgreSQL",
+      },
+      {
+        name: "Azure Services Azure SQL",
+        component: Icons.AzureServicesAzureSQL as unknown as SvgIconComponent,
+        import: "AzureServicesAzureSQL",
+      },
+      {
+        name: "Azure Services Azure Security Center",
+        component:
+          Icons.AzureServicesAzureSecurityCenter as unknown as SvgIconComponent,
+        import: "AzureServicesAzureSecurityCenter",
+      },
+      {
+        name: "Azure Services Azure Service Bus",
+        component:
+          Icons.AzureServicesAzureServiceBus as unknown as SvgIconComponent,
+        import: "AzureServicesAzureServiceBus",
+      },
+      {
+        name: "Azure Services Azure Signal R",
+        component:
+          Icons.AzureServicesAzureSignalR as unknown as SvgIconComponent,
+        import: "AzureServicesAzureSignalR",
+      },
+      {
+        name: "Azure Services Azure Stack",
+        component: Icons.AzureServicesAzureStack as unknown as SvgIconComponent,
+        import: "AzureServicesAzureStack",
+      },
+      {
+        name: "Azure Services Azure Storage",
+        component:
+          Icons.AzureServicesAzureStorage as unknown as SvgIconComponent,
+        import: "AzureServicesAzureStorage",
+      },
+      {
+        name: "Azure Services Azure Traffic Manager",
+        component:
+          Icons.AzureServicesAzureTrafficManager as unknown as SvgIconComponent,
+        import: "AzureServicesAzureTrafficManager",
+      },
+      {
+        name: "Azure Services Azure Web Apps",
+        component:
+          Icons.AzureServicesAzureWebApps as unknown as SvgIconComponent,
+        import: "AzureServicesAzureWebApps",
+      },
+      {
+        name: "Azure Services CDN Profile",
+        component: Icons.AzureServicesCDNProfile as unknown as SvgIconComponent,
+        import: "AzureServicesCDNProfile",
+      },
+      {
+        name: "Azure Services Container Instances",
+        component:
+          Icons.AzureServicesContainerInstances as unknown as SvgIconComponent,
+        import: "AzureServicesContainerInstances",
+      },
+      {
+        name: "Azure Services Database Account",
+        component:
+          Icons.AzureServicesDatabaseAccount as unknown as SvgIconComponent,
+        import: "AzureServicesDatabaseAccount",
+      },
+      {
+        name: "Azure Services Defender",
+        component: Icons.AzureServicesDefender as unknown as SvgIconComponent,
+        import: "AzureServicesDefender",
+      },
+      {
+        name: "Azure Services Disks",
+        component: Icons.AzureServicesDisks as unknown as SvgIconComponent,
+        import: "AzureServicesDisks",
+      },
+      {
+        name: "Azure Services Docker Image",
+        component:
+          Icons.AzureServicesDockerImage as unknown as SvgIconComponent,
+        import: "AzureServicesDockerImage",
+      },
+      {
+        name: "Azure Services Grafana",
+        component: Icons.AzureServicesGrafana as unknown as SvgIconComponent,
+        import: "AzureServicesGrafana",
+      },
+      {
+        name: "Azure Services Group",
+        component: Icons.AzureServicesGroup as unknown as SvgIconComponent,
+        import: "AzureServicesGroup",
+      },
+      {
+        name: "Azure Services Load Balancers",
+        component:
+          Icons.AzureServicesLoadBalancers as unknown as SvgIconComponent,
+        import: "AzureServicesLoadBalancers",
+      },
+      {
+        name: "Azure Services Logic Apps",
+        component: Icons.AzureServicesLogicApps as unknown as SvgIconComponent,
+        import: "AzureServicesLogicApps",
+      },
+      {
+        name: "Azure Services Machine Learning",
+        component:
+          Icons.AzureServicesMachineLearning as unknown as SvgIconComponent,
+        import: "AzureServicesMachineLearning",
+      },
+      {
+        name: "Azure Services Microsoft Azure Fluid Relay",
+        component:
+          Icons.AzureServicesMicrosoftAzureFluidRelay as unknown as SvgIconComponent,
+        import: "AzureServicesMicrosoftAzureFluidRelay",
+      },
+      {
+        name: "Azure Services My SQL",
+        component: Icons.AzureServicesMySQL as unknown as SvgIconComponent,
+        import: "AzureServicesMySQL",
+      },
+      {
+        name: "Azure Services Network Interfaces",
+        component:
+          Icons.AzureServicesNetworkInterfaces as unknown as SvgIconComponent,
+        import: "AzureServicesNetworkInterfaces",
+      },
+      {
+        name: "Azure Services Network Policy",
+        component:
+          Icons.AzureServicesNetworkPolicy as unknown as SvgIconComponent,
+        import: "AzureServicesNetworkPolicy",
+      },
+      {
+        name: "Azure Services Network Security Groups",
+        component:
+          Icons.AzureServicesNetworkSecurityGroups as unknown as SvgIconComponent,
+        import: "AzureServicesNetworkSecurityGroups",
+      },
+      {
+        name: "Azure Services Power BI",
+        component: Icons.AzureServicesPowerBI as unknown as SvgIconComponent,
+        import: "AzureServicesPowerBI",
+      },
+      {
+        name: "Azure Services Public IP",
+        component: Icons.AzureServicesPublicIP as unknown as SvgIconComponent,
+        import: "AzureServicesPublicIP",
+      },
+      {
+        name: "Azure Services Resource Group",
+        component:
+          Icons.AzureServicesResourceGroup as unknown as SvgIconComponent,
+        import: "AzureServicesResourceGroup",
+      },
+      {
+        name: "Azure Services Resources",
+        component: Icons.AzureServicesResources as unknown as SvgIconComponent,
+        import: "AzureServicesResources",
+      },
+      {
+        name: "Azure Services Role Assignment",
+        component:
+          Icons.AzureServicesRoleAssignment as unknown as SvgIconComponent,
+        import: "AzureServicesRoleAssignment",
+      },
+      {
+        name: "Azure Services SQL Database",
+        component:
+          Icons.AzureServicesSQLDatabase as unknown as SvgIconComponent,
+        import: "AzureServicesSQLDatabase",
+      },
+      {
+        name: "Azure Services SSH Keys",
+        component: Icons.AzureServicesSSHKeys as unknown as SvgIconComponent,
+        import: "AzureServicesSSHKeys",
+      },
+      {
+        name: "Azure Services Security Center",
+        component:
+          Icons.AzureServicesSecurityCenter as unknown as SvgIconComponent,
+        import: "AzureServicesSecurityCenter",
+      },
+      {
+        name: "Azure Services Service Fabric",
+        component:
+          Icons.AzureServicesServiceFabric as unknown as SvgIconComponent,
+        import: "AzureServicesServiceFabric",
+      },
+      {
+        name: "Azure Services Service Principal",
+        component:
+          Icons.AzureServicesServicePrincipal as unknown as SvgIconComponent,
+        import: "AzureServicesServicePrincipal",
+      },
+      {
+        name: "Azure Services Services",
+        component: Icons.AzureServicesServices as unknown as SvgIconComponent,
+        import: "AzureServicesServices",
+      },
+      {
+        name: "Azure Services Storage Sync Services",
+        component:
+          Icons.AzureServicesStorageSyncServices as unknown as SvgIconComponent,
+        import: "AzureServicesStorageSyncServices",
+      },
+      {
+        name: "Azure Services Subscriptions",
+        component:
+          Icons.AzureServicesSubscriptions as unknown as SvgIconComponent,
+        import: "AzureServicesSubscriptions",
+      },
+      {
+        name: "Azure Services Unknown",
+        component: Icons.AzureServicesUnknown as unknown as SvgIconComponent,
+        import: "AzureServicesUnknown",
+      },
+      {
+        name: "Azure Services Virtual Machine",
+        component:
+          Icons.AzureServicesVirtualMachine as unknown as SvgIconComponent,
+        import: "AzureServicesVirtualMachine",
+      },
+    ],
+  },
+  {
+    category: "GCP",
+    icons: [
+      {
+        name: "GCP Category Analytics",
+        component: Icons.GCPCategoryAnalytics as unknown as SvgIconComponent,
+        import: "GCPCategoryAnalytics",
+      },
+      {
+        name: "GCP Category Compute",
+        component: Icons.GCPCategoryCompute as unknown as SvgIconComponent,
+        import: "GCPCategoryCompute",
+      },
+      {
+        name: "GCP Category Containers",
+        component: Icons.GCPCategoryContainers as unknown as SvgIconComponent,
+        import: "GCPCategoryContainers",
+      },
+      {
+        name: "GCP Category Containers1",
+        component: Icons.GCPCategoryContainers1 as unknown as SvgIconComponent,
+        import: "GCPCategoryContainers1",
+      },
+      {
+        name: "GCP Category Identity Security",
+        component:
+          Icons.GCPCategoryIdentitySecurity as unknown as SvgIconComponent,
+        import: "GCPCategoryIdentitySecurity",
+      },
+      {
+        name: "GCP Category Identity Security1",
+        component:
+          Icons.GCPCategoryIdentitySecurity1 as unknown as SvgIconComponent,
+        import: "GCPCategoryIdentitySecurity1",
+      },
+      {
+        name: "GCP Category Machine Learning",
+        component:
+          Icons.GCPCategoryMachineLearning as unknown as SvgIconComponent,
+        import: "GCPCategoryMachineLearning",
+      },
+      {
+        name: "GCP Category Management Governance",
+        component:
+          Icons.GCPCategoryManagementGovernance as unknown as SvgIconComponent,
+        import: "GCPCategoryManagementGovernance",
+      },
+      {
+        name: "GCP Category Memory Store",
+        component: Icons.GCPCategoryMemoryStore as unknown as SvgIconComponent,
+        import: "GCPCategoryMemoryStore",
+      },
+      {
+        name: "GCP Category Networking",
+        component: Icons.GCPCategoryNetworking as unknown as SvgIconComponent,
+        import: "GCPCategoryNetworking",
+      },
+      {
+        name: "GCP Category None",
+        component: Icons.GCPCategoryNone as unknown as SvgIconComponent,
+        import: "GCPCategoryNone",
+      },
+      {
+        name: "GCP Category Storage",
+        component: Icons.GCPCategoryStorage as unknown as SvgIconComponent,
+        import: "GCPCategoryStorage",
+      },
+      {
+        name: "GCP Category Undefined",
+        component: Icons.GCPCategoryUndefined as unknown as SvgIconComponent,
+        import: "GCPCategoryUndefined",
+      },
+      {
+        name: "GCP Category Web Mobile",
+        component: Icons.GCPCategoryWebMobile as unknown as SvgIconComponent,
+        import: "GCPCategoryWebMobile",
+      },
+      {
+        name: "GCP Icon",
+        component: Icons.GCPIcon as unknown as SvgIconComponent,
+        import: "GCPIcon",
+      },
+      {
+        name: "GCP Services Apigee API Platform",
+        component:
+          Icons.GCPServicesApigeeAPIPlatform as unknown as SvgIconComponent,
+        import: "GCPServicesApigeeAPIPlatform",
+      },
+      {
+        name: "GCP Services App Engine",
+        component: Icons.GCPServicesAppEngine as unknown as SvgIconComponent,
+        import: "GCPServicesAppEngine",
+      },
+      {
+        name: "GCP Services Bigquery",
+        component: Icons.GCPServicesBigquery as unknown as SvgIconComponent,
+        import: "GCPServicesBigquery",
+      },
+      {
+        name: "GCP Services Bigtable",
+        component: Icons.GCPServicesBigtable as unknown as SvgIconComponent,
+        import: "GCPServicesBigtable",
+      },
+      {
+        name: "GCP Services Cloud API Gateway",
+        component:
+          Icons.GCPServicesCloudAPIGateway as unknown as SvgIconComponent,
+        import: "GCPServicesCloudAPIGateway",
+      },
+      {
+        name: "GCP Services Cloud Build",
+        component: Icons.GCPServicesCloudBuild as unknown as SvgIconComponent,
+        import: "GCPServicesCloudBuild",
+      },
+      {
+        name: "GCP Services Cloud CDN",
+        component: Icons.GCPServicesCloudCDN as unknown as SvgIconComponent,
+        import: "GCPServicesCloudCDN",
+      },
+      {
+        name: "GCP Services Cloud DNS",
+        component: Icons.GCPServicesCloudDNS as unknown as SvgIconComponent,
+        import: "GCPServicesCloudDNS",
+      },
+      {
+        name: "GCP Services Cloud Load Balancing",
+        component:
+          Icons.GCPServicesCloudLoadBalancing as unknown as SvgIconComponent,
+        import: "GCPServicesCloudLoadBalancing",
+      },
+      {
+        name: "GCP Services Cloud Logging",
+        component: Icons.GCPServicesCloudLogging as unknown as SvgIconComponent,
+        import: "GCPServicesCloudLogging",
+      },
+      {
+        name: "GCP Services Cloud Monitoring",
+        component:
+          Icons.GCPServicesCloudMonitoring as unknown as SvgIconComponent,
+        import: "GCPServicesCloudMonitoring",
+      },
+      {
+        name: "GCP Services Cloud Run",
+        component: Icons.GCPServicesCloudRun as unknown as SvgIconComponent,
+        import: "GCPServicesCloudRun",
+      },
+      {
+        name: "GCP Services Cloud Sql",
+        component: Icons.GCPServicesCloudSql as unknown as SvgIconComponent,
+        import: "GCPServicesCloudSql",
+      },
+      {
+        name: "GCP Services Cloud Storage",
+        component: Icons.GCPServicesCloudStorage as unknown as SvgIconComponent,
+        import: "GCPServicesCloudStorage",
+      },
+      {
+        name: "GCP Services Cloud Storage2",
+        component:
+          Icons.GCPServicesCloudStorage2 as unknown as SvgIconComponent,
+        import: "GCPServicesCloudStorage2",
+      },
+      {
+        name: "GCP Services Compute Engine",
+        component:
+          Icons.GCPServicesComputeEngine as unknown as SvgIconComponent,
+        import: "GCPServicesComputeEngine",
+      },
+      {
+        name: "GCP Services Compute Image",
+        component: Icons.GCPServicesComputeImage as unknown as SvgIconComponent,
+        import: "GCPServicesComputeImage",
+      },
+      {
+        name: "GCP Services Container Registry",
+        component:
+          Icons.GCPServicesContainerRegistry as unknown as SvgIconComponent,
+        import: "GCPServicesContainerRegistry",
+      },
+      {
+        name: "GCP Services Dataflow",
+        component: Icons.GCPServicesDataflow as unknown as SvgIconComponent,
+        import: "GCPServicesDataflow",
+      },
+      {
+        name: "GCP Services Dataproc",
+        component: Icons.GCPServicesDataproc as unknown as SvgIconComponent,
+        import: "GCPServicesDataproc",
+      },
+      {
+        name: "GCP Services Disks",
+        component: Icons.GCPServicesDisks as unknown as SvgIconComponent,
+        import: "GCPServicesDisks",
+      },
+      {
+        name: "GCP Services Docker Image",
+        component: Icons.GCPServicesDockerImage as unknown as SvgIconComponent,
+        import: "GCPServicesDockerImage",
+      },
+      {
+        name: "GCP Services Filestore",
+        component: Icons.GCPServicesFilestore as unknown as SvgIconComponent,
+        import: "GCPServicesFilestore",
+      },
+      {
+        name: "GCP Services Firestore",
+        component: Icons.GCPServicesFirestore as unknown as SvgIconComponent,
+        import: "GCPServicesFirestore",
+      },
+      {
+        name: "GCP Services GKE",
+        component: Icons.GCPServicesGKE as unknown as SvgIconComponent,
+        import: "GCPServicesGKE",
+      },
+      {
+        name: "GCP Services GKE Node Pool",
+        component: Icons.GCPServicesGKENodePool as unknown as SvgIconComponent,
+        import: "GCPServicesGKENodePool",
+      },
+      {
+        name: "GCP Services IAM Principal",
+        component: Icons.GCPServicesIAMPrincipal as unknown as SvgIconComponent,
+        import: "GCPServicesIAMPrincipal",
+      },
+      {
+        name: "GCP Services IAM Roles",
+        component: Icons.GCPServicesIAMRoles as unknown as SvgIconComponent,
+        import: "GCPServicesIAMRoles",
+      },
+      {
+        name: "GCP Services Identity And Access Management",
+        component:
+          Icons.GCPServicesIdentityAndAccessManagement as unknown as SvgIconComponent,
+        import: "GCPServicesIdentityAndAccessManagement",
+      },
+      {
+        name: "GCP Services Instance Group",
+        component:
+          Icons.GCPServicesInstanceGroup as unknown as SvgIconComponent,
+        import: "GCPServicesInstanceGroup",
+      },
+      {
+        name: "GCP Services KMS Key",
+        component: Icons.GCPServicesKMSKey as unknown as SvgIconComponent,
+        import: "GCPServicesKMSKey",
+      },
+      {
+        name: "GCP Services Load Balancer",
+        component: Icons.GCPServicesLoadBalancer as unknown as SvgIconComponent,
+        import: "GCPServicesLoadBalancer",
+      },
+      {
+        name: "GCP Services Local SSD",
+        component: Icons.GCPServicesLocalSSD as unknown as SvgIconComponent,
+        import: "GCPServicesLocalSSD",
+      },
+      {
+        name: "GCP Services Managed Instance Group",
+        component:
+          Icons.GCPServicesManagedInstanceGroup as unknown as SvgIconComponent,
+        import: "GCPServicesManagedInstanceGroup",
+      },
+      {
+        name: "GCP Services Network Endpoint Group",
+        component:
+          Icons.GCPServicesNetworkEndpointGroup as unknown as SvgIconComponent,
+        import: "GCPServicesNetworkEndpointGroup",
+      },
+      {
+        name: "GCP Services Network Firewall",
+        component:
+          Icons.GCPServicesNetworkFirewall as unknown as SvgIconComponent,
+        import: "GCPServicesNetworkFirewall",
+      },
+      {
+        name: "GCP Services Project",
+        component: Icons.GCPServicesProject as unknown as SvgIconComponent,
+        import: "GCPServicesProject",
+      },
+      {
+        name: "GCP Services Pubsub",
+        component: Icons.GCPServicesPubsub as unknown as SvgIconComponent,
+        import: "GCPServicesPubsub",
+      },
+      {
+        name: "GCP Services SQL Database",
+        component: Icons.GCPServicesSQLDatabase as unknown as SvgIconComponent,
+        import: "GCPServicesSQLDatabase",
+      },
+      {
+        name: "GCP Services Secret Manager",
+        component:
+          Icons.GCPServicesSecretManager as unknown as SvgIconComponent,
+        import: "GCPServicesSecretManager",
+      },
+      {
+        name: "GCP Services Security Center",
+        component:
+          Icons.GCPServicesSecurityCenter as unknown as SvgIconComponent,
+        import: "GCPServicesSecurityCenter",
+      },
+      {
+        name: "GCP Services Service Account",
+        component:
+          Icons.GCPServicesServiceAccount as unknown as SvgIconComponent,
+        import: "GCPServicesServiceAccount",
+      },
+      {
+        name: "GCP Services Storage Bucket",
+        component:
+          Icons.GCPServicesStorageBucket as unknown as SvgIconComponent,
+        import: "GCPServicesStorageBucket",
+      },
+      {
+        name: "GCP Services Target Instance",
+        component:
+          Icons.GCPServicesTargetInstance as unknown as SvgIconComponent,
+        import: "GCPServicesTargetInstance",
+      },
+      {
+        name: "GCP Services Target Pool",
+        component: Icons.GCPServicesTargetPool as unknown as SvgIconComponent,
+        import: "GCPServicesTargetPool",
+      },
+      {
+        name: "GCP Services Target Pool1",
+        component: Icons.GCPServicesTargetPool1 as unknown as SvgIconComponent,
+        import: "GCPServicesTargetPool1",
+      },
+      {
+        name: "GCP Services Unknown",
+        component: Icons.GCPServicesUnknown as unknown as SvgIconComponent,
+        import: "GCPServicesUnknown",
+      },
+      {
+        name: "GCP Services Vault",
+        component: Icons.GCPServicesVault as unknown as SvgIconComponent,
+        import: "GCPServicesVault",
+      },
+      {
+        name: "GCP Services Vertex AI",
+        component: Icons.GCPServicesVertexAI as unknown as SvgIconComponent,
+        import: "GCPServicesVertexAI",
+      },
+      {
+        name: "GCP Services Virtual Private Cloud",
+        component:
+          Icons.GCPServicesVirtualPrivateCloud as unknown as SvgIconComponent,
+        import: "GCPServicesVirtualPrivateCloud",
+      },
+      {
+        name: "GCP Services Virtual Private Cloud1",
+        component:
+          Icons.GCPServicesVirtualPrivateCloud1 as unknown as SvgIconComponent,
+        import: "GCPServicesVirtualPrivateCloud1",
+      },
+    ],
+  },
+  {
+    category: "Kubernetes",
+    icons: [
+      {
+        name: "KUBE Icon",
+        component: Icons.KUBEIcon as unknown as SvgIconComponent,
+        import: "KUBEIcon",
+      },
+      {
+        name: "Kubernetes",
+        component: Icons.Kubernetes as unknown as SvgIconComponent,
+        import: "Kubernetes",
+      },
+      {
+        name: "Kubernetes Category Compute",
+        component:
+          Icons.KubernetesCategoryCompute as unknown as SvgIconComponent,
+        import: "KubernetesCategoryCompute",
+      },
+      {
+        name: "Kubernetes Category Identity Security",
+        component:
+          Icons.KubernetesCategoryIdentitySecurity as unknown as SvgIconComponent,
+        import: "KubernetesCategoryIdentitySecurity",
+      },
+      {
+        name: "Kubernetes Category Management Governance",
+        component:
+          Icons.KubernetesCategoryManagementGovernance as unknown as SvgIconComponent,
+        import: "KubernetesCategoryManagementGovernance",
+      },
+      {
+        name: "Kubernetes Category Networking",
+        component:
+          Icons.KubernetesCategoryNetworking as unknown as SvgIconComponent,
+        import: "KubernetesCategoryNetworking",
+      },
+      {
+        name: "Kubernetes Category None",
+        component: Icons.KubernetesCategoryNone as unknown as SvgIconComponent,
+        import: "KubernetesCategoryNone",
+      },
+      {
+        name: "Kubernetes Category Storage",
+        component:
+          Icons.KubernetesCategoryStorage as unknown as SvgIconComponent,
+        import: "KubernetesCategoryStorage",
+      },
+      {
+        name: "Kubernetes Icon",
+        component: Icons.KubernetesIcon as unknown as SvgIconComponent,
+        import: "KubernetesIcon",
+      },
+      {
+        name: "Kubernetes Services Cluster",
+        component:
+          Icons.KubernetesServicesCluster as unknown as SvgIconComponent,
+        import: "KubernetesServicesCluster",
+      },
+      {
+        name: "Kubernetes Services Cluster Role",
+        component:
+          Icons.KubernetesServicesClusterRole as unknown as SvgIconComponent,
+        import: "KubernetesServicesClusterRole",
+      },
+      {
+        name: "Kubernetes Services Cluster Role Binding",
+        component:
+          Icons.KubernetesServicesClusterRoleBinding as unknown as SvgIconComponent,
+        import: "KubernetesServicesClusterRoleBinding",
+      },
+      {
+        name: "Kubernetes Services Config Map",
+        component:
+          Icons.KubernetesServicesConfigMap as unknown as SvgIconComponent,
+        import: "KubernetesServicesConfigMap",
+      },
+      {
+        name: "Kubernetes Services Daemon Set",
+        component:
+          Icons.KubernetesServicesDaemonSet as unknown as SvgIconComponent,
+        import: "KubernetesServicesDaemonSet",
+      },
+      {
+        name: "Kubernetes Services Deployment",
+        component:
+          Icons.KubernetesServicesDeployment as unknown as SvgIconComponent,
+        import: "KubernetesServicesDeployment",
+      },
+      {
+        name: "Kubernetes Services Docker Image",
+        component:
+          Icons.KubernetesServicesDockerImage as unknown as SvgIconComponent,
+        import: "KubernetesServicesDockerImage",
+      },
+      {
+        name: "Kubernetes Services Endpoint",
+        component:
+          Icons.KubernetesServicesEndpoint as unknown as SvgIconComponent,
+        import: "KubernetesServicesEndpoint",
+      },
+      {
+        name: "Kubernetes Services K8 Service",
+        component:
+          Icons.KubernetesServicesK8Service as unknown as SvgIconComponent,
+        import: "KubernetesServicesK8Service",
+      },
+      {
+        name: "Kubernetes Services Namespace",
+        component:
+          Icons.KubernetesServicesNamespace as unknown as SvgIconComponent,
+        import: "KubernetesServicesNamespace",
+      },
+      {
+        name: "Kubernetes Services Network Policy",
+        component:
+          Icons.KubernetesServicesNetworkPolicy as unknown as SvgIconComponent,
+        import: "KubernetesServicesNetworkPolicy",
+      },
+      {
+        name: "Kubernetes Services Node",
+        component: Icons.KubernetesServicesNode as unknown as SvgIconComponent,
+        import: "KubernetesServicesNode",
+      },
+      {
+        name: "Kubernetes Services Pod",
+        component: Icons.KubernetesServicesPod as unknown as SvgIconComponent,
+        import: "KubernetesServicesPod",
+      },
+      {
+        name: "Kubernetes Services Replica Set",
+        component:
+          Icons.KubernetesServicesReplicaSet as unknown as SvgIconComponent,
+        import: "KubernetesServicesReplicaSet",
+      },
+      {
+        name: "Kubernetes Services Role",
+        component: Icons.KubernetesServicesRole as unknown as SvgIconComponent,
+        import: "KubernetesServicesRole",
+      },
+      {
+        name: "Kubernetes Services Role Binding",
+        component:
+          Icons.KubernetesServicesRoleBinding as unknown as SvgIconComponent,
+        import: "KubernetesServicesRoleBinding",
+      },
+      {
+        name: "Kubernetes Services Service Account",
+        component:
+          Icons.KubernetesServicesServiceAccount as unknown as SvgIconComponent,
+        import: "KubernetesServicesServiceAccount",
+      },
+      {
+        name: "Kubernetes Services Stateful Set",
+        component:
+          Icons.KubernetesServicesStatefulSet as unknown as SvgIconComponent,
+        import: "KubernetesServicesStatefulSet",
+      },
+      {
+        name: "Kubernetes Services Unknown",
+        component:
+          Icons.KubernetesServicesUnknown as unknown as SvgIconComponent,
+        import: "KubernetesServicesUnknown",
+      },
+    ],
+  },
+  {
+    category: "Oracle",
+    icons: [
+      {
+        name: "OCI Icon",
+        component: Icons.OCIIcon as unknown as SvgIconComponent,
+        import: "OCIIcon",
+      },
+      {
+        name: "Oracle Category Compute",
+        component: Icons.OracleCategoryCompute as unknown as SvgIconComponent,
+        import: "OracleCategoryCompute",
+      },
+      {
+        name: "Oracle Category Developer Services",
+        component:
+          Icons.OracleCategoryDeveloperServices as unknown as SvgIconComponent,
+        import: "OracleCategoryDeveloperServices",
+      },
+      {
+        name: "Oracle Category Identity Security",
+        component:
+          Icons.OracleCategoryIdentitySecurity as unknown as SvgIconComponent,
+        import: "OracleCategoryIdentitySecurity",
+      },
+      {
+        name: "Oracle Category Networking",
+        component:
+          Icons.OracleCategoryNetworking as unknown as SvgIconComponent,
+        import: "OracleCategoryNetworking",
+      },
+      {
+        name: "Oracle Category None",
+        component: Icons.OracleCategoryNone as unknown as SvgIconComponent,
+        import: "OracleCategoryNone",
+      },
+      {
+        name: "Oracle Category Storage",
+        component: Icons.OracleCategoryStorage as unknown as SvgIconComponent,
+        import: "OracleCategoryStorage",
+      },
+      {
+        name: "Oracle Icon",
+        component: Icons.OracleIcon as unknown as SvgIconComponent,
+        import: "OracleIcon",
+      },
+      {
+        name: "Oracle Services Compartment",
+        component:
+          Icons.OracleServicesCompartment as unknown as SvgIconComponent,
+        import: "OracleServicesCompartment",
+      },
+      {
+        name: "Oracle Services Dynamic Groups",
+        component:
+          Icons.OracleServicesDynamicGroups as unknown as SvgIconComponent,
+        import: "OracleServicesDynamicGroups",
+      },
+      {
+        name: "Oracle Services Group",
+        component: Icons.OracleServicesGroup as unknown as SvgIconComponent,
+        import: "OracleServicesGroup",
+      },
+      {
+        name: "Oracle Services Identity Domain",
+        component:
+          Icons.OracleServicesIdentityDomain as unknown as SvgIconComponent,
+        import: "OracleServicesIdentityDomain",
+      },
+      {
+        name: "Oracle Services Internet Gateway",
+        component:
+          Icons.OracleServicesInternetGateway as unknown as SvgIconComponent,
+        import: "OracleServicesInternetGateway",
+      },
+      {
+        name: "Oracle Services Network Load Balancer",
+        component:
+          Icons.OracleServicesNetworkLoadBalancer as unknown as SvgIconComponent,
+        import: "OracleServicesNetworkLoadBalancer",
+      },
+      {
+        name: "Oracle Services Network Security Group",
+        component:
+          Icons.OracleServicesNetworkSecurityGroup as unknown as SvgIconComponent,
+        import: "OracleServicesNetworkSecurityGroup",
+      },
+      {
+        name: "Oracle Services Object Storage",
+        component:
+          Icons.OracleServicesObjectStorage as unknown as SvgIconComponent,
+        import: "OracleServicesObjectStorage",
+      },
+      {
+        name: "Oracle Services Oracle Instance",
+        component:
+          Icons.OracleServicesOracleInstance as unknown as SvgIconComponent,
+        import: "OracleServicesOracleInstance",
+      },
+      {
+        name: "Oracle Services Policy",
+        component: Icons.OracleServicesPolicy as unknown as SvgIconComponent,
+        import: "OracleServicesPolicy",
+      },
+      {
+        name: "Oracle Services Public IP",
+        component: Icons.OracleServicesPublicIP as unknown as SvgIconComponent,
+        import: "OracleServicesPublicIP",
+      },
+      {
+        name: "Oracle Services Security Lists",
+        component:
+          Icons.OracleServicesSecurityLists as unknown as SvgIconComponent,
+        import: "OracleServicesSecurityLists",
+      },
+      {
+        name: "Oracle Services Subnet",
+        component: Icons.OracleServicesSubnet as unknown as SvgIconComponent,
+        import: "OracleServicesSubnet",
+      },
+      {
+        name: "Oracle Services User",
+        component: Icons.OracleServicesUser as unknown as SvgIconComponent,
+        import: "OracleServicesUser",
+      },
+      {
+        name: "Oracle Services Virtual Network",
+        component:
+          Icons.OracleServicesVirtualNetwork as unknown as SvgIconComponent,
+        import: "OracleServicesVirtualNetwork",
+      },
+    ],
+  },
 ];
 
 function IconsSection() {
@@ -3707,8 +6929,23 @@ function IconsSection() {
   const [search, setSearch] = useState("");
   const [copiedName, setCopiedName] = useState<string | null>(null);
 
+  const muiIconNames = new Set(
+    ICON_CATALOGUE.filter((c) =>
+      [
+        "Navigation",
+        "Actions",
+        "Status & Feedback",
+        "Data & Files",
+        "Communication",
+        "UI & Layout",
+      ].includes(c.category),
+    ).flatMap((c) => c.icons.map((i) => i.import)),
+  );
+
   const handleCopy = (importName: string) => {
-    const importLine = `import ${importName} from "@mui/icons-material/${importName.replace(/Icon$/, "")}";`;
+    const importLine = muiIconNames.has(importName)
+      ? `import ${importName} from "@mui/icons-material/${importName.replace(/Icon$/, "")}";`
+      : `import { ${importName} } from "@open-ui-kit/core";`;
     navigator.clipboard.writeText(importLine).catch(() => {});
     setCopiedName(importName);
     setTimeout(() => setCopiedName(null), 1800);
@@ -3743,6 +6980,18 @@ function IconsSection() {
             }}
           >
             @mui/icons-material
+          </Box>{" "}
+          and{" "}
+          <Box
+            component="code"
+            sx={{
+              fontSize: "0.8em",
+              px: 0.5,
+              bgcolor: "action.selected",
+              borderRadius: 0.5,
+            }}
+          >
+            @open-ui-kit/core
           </Box>
           . Click any icon to copy its import statement. Use them directly in
           Button{" "}
