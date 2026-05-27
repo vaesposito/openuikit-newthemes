@@ -7,39 +7,60 @@
 import React from "react";
 import figma from "@figma/code-connect";
 import { Button } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 
 figma.connect(
   Button,
-  "https://www.figma.com/design/tr8d5x1nW9yKXvJ14Sjuag?node-id=8:13",
+  "https://www.figma.com/design/tr8d5x1nW9yKXvJ14Sjuag?node-id=147:182",
   {
-    example: () => <Button variant="contained">Primary</Button>,
-  },
-);
-
-figma.connect(
-  Button,
-  "https://www.figma.com/design/tr8d5x1nW9yKXvJ14Sjuag?node-id=8:38",
-  {
-    example: () => (
-      <Button variant="contained" color="secondary">
-        Secondary
+    props: {
+      variant: figma.enum("Variant", {
+        Primary: "contained",
+        Secondary: "outlined",
+        Ghost: "text",
+        Danger: "contained",
+      }),
+      size: figma.enum("Size", {
+        Small: "small",
+        Medium: "medium",
+        Large: "large",
+      }),
+      disabled: figma.enum("State", {
+        Disabled: true,
+      }),
+      color: figma.enum("Variant", {
+        Danger: "error",
+      }),
+    },
+    example: ({ variant, size, disabled, color }) => (
+      <Button
+        variant={variant ?? "contained"}
+        size={size ?? "medium"}
+        disabled={disabled}
+        color={color}
+      >
+        Button
       </Button>
     ),
   },
 );
 
-figma.connect(
-  Button,
-  "https://www.figma.com/design/tr8d5x1nW9yKXvJ14Sjuag?node-id=8:63",
-  {
-    example: () => <Button variant="outlined">Outlined</Button>,
-  },
-);
-
-figma.connect(
-  Button,
-  "https://www.figma.com/design/tr8d5x1nW9yKXvJ14Sjuag?node-id=8:88",
-  {
-    example: () => <Button variant="text">Tertiary</Button>,
-  },
-);
+/**
+ * Buttons with a leading icon — use the startIcon prop:
+ *
+ * <Button variant="contained" size="medium" startIcon={<AddIcon />}>
+ *   Button
+ * </Button>
+ *
+ * Buttons with a trailing icon — use the endIcon prop:
+ *
+ * <Button variant="contained" size="medium" endIcon={<AddIcon />}>
+ *   Button
+ * </Button>
+ *
+ * Icon-only button — use IconButton instead:
+ *
+ * <IconButton size="medium" color="primary">
+ *   <AddIcon />
+ * </IconButton>
+ */
