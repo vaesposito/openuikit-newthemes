@@ -2131,11 +2131,9 @@ function ColorTokensSection() {
         </Box>
       ))}
 
-      {/* Glow tokens */}
-      <Box sx={{ mb: 4 }}>
-        <Box
-          sx={{ display: "flex", alignItems: "baseline", gap: 1.5, mb: 1.5 }}
-        >
+      {/* Glow tokens — C1D only */}
+      {isIoc && (
+        <Box sx={{ mb: 4 }}>
           <Typography
             sx={{
               fontSize: "0.7rem",
@@ -2143,136 +2141,120 @@ function ColorTokensSection() {
               color: "primary.main",
               textTransform: "uppercase",
               letterSpacing: "0.1em",
+              mb: 1.5,
             }}
           >
             Glows
           </Typography>
-          <Typography
-            sx={{ fontSize: "0.6rem", color: "text.secondary", opacity: 0.6 }}
+          <Box
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+              gap: 1.5,
+            }}
           >
-            C1D Dark &amp; Light only — "none" on AGNTCY themes
-          </Typography>
-        </Box>
-        {/* Card grid: each token gets its own dark-backdrop card so the glow is always visible */}
-        <Box
-          sx={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
-            gap: 1.5,
-          }}
-        >
-          {(
-            [
-              "glowPrimary",
-              "glowSecondary",
-              "glowSuccess",
-              "glowWarning",
-              "glowNegative",
-              "glowSevere",
-              "glowExcellent",
-              "glowNeutral",
-            ] as const
-          ).map((key) => {
-            const value = (vars as Record<string, string>)[key] ?? "none";
-            const label = key
-              .replace("glow", "")
-              .replace(/([A-Z])/g, " $1")
-              .trim();
-            const isNone = value === "none";
-            // Extract the base colour (strip alpha) for the dot fill
-            const colorMatch = value.match(/#[0-9a-fA-F]{6,8}|rgba?\([^)]+\)/);
-            const baseHex = colorMatch
-              ? colorMatch[0].replace(/[A-Fa-f0-9]{2}$/, "")
-              : "#888";
-            return (
-              <Box
-                key={key}
-                sx={{
-                  borderRadius: 2,
-                  border: "1px solid",
-                  borderColor: "divider",
-                  overflow: "hidden",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                {/* Dark stage — always #0d1117 so the glow pops regardless of theme */}
+            {(
+              [
+                "glowPrimary",
+                "glowSecondary",
+                "glowSuccess",
+                "glowWarning",
+                "glowNegative",
+                "glowSevere",
+                "glowExcellent",
+                "glowNeutral",
+              ] as const
+            ).map((key) => {
+              const value = (vars as Record<string, string>)[key] ?? "none";
+              const label = key
+                .replace("glow", "")
+                .replace(/([A-Z])/g, " $1")
+                .trim();
+              // Extract the base colour (strip trailing alpha) for the dot fill
+              const colorMatch = value.match(
+                /#[0-9a-fA-F]{6,8}|rgba?\([^)]+\)/,
+              );
+              const baseHex = colorMatch
+                ? colorMatch[0].replace(/[A-Fa-f0-9]{2}$/, "")
+                : "#888";
+              // Stage bg matches the actual theme so glows look as designed
+              const stageBg = theme.palette.background.default;
+              const dotColor = theme.palette.mode === "dark" ? "#fff" : baseHex;
+              return (
                 <Box
+                  key={key}
                   sx={{
-                    bgcolor: "#0d1117",
+                    borderRadius: 2,
+                    border: "1px solid",
+                    borderColor: "divider",
+                    overflow: "hidden",
                     display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    height: 80,
-                    position: "relative",
+                    flexDirection: "column",
                   }}
                 >
-                  {isNone ? (
-                    <Typography
-                      sx={{
-                        fontSize: "0.65rem",
-                        color: "#fff",
-                        opacity: 0.2,
-                        fontFamily: "monospace",
-                      }}
-                    >
-                      none
-                    </Typography>
-                  ) : (
-                    /* Dot with the token applied as box-shadow */
+                  {/* Stage — uses the theme's real background so the glow renders as in production */}
+                  <Box
+                    sx={{
+                      bgcolor: stageBg,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      height: 80,
+                    }}
+                  >
                     <Box
                       sx={{
                         width: 18,
                         height: 18,
                         borderRadius: "50%",
-                        bgcolor: baseHex,
+                        bgcolor: dotColor,
                         boxShadow: value,
                       }}
                     />
-                  )}
-                </Box>
-                {/* Label row */}
-                <Box
-                  sx={{
-                    px: 1.5,
-                    py: 1,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    bgcolor: "background.paper",
-                  }}
-                >
-                  <Box>
-                    <Typography
-                      sx={{
-                        fontFamily: "monospace",
-                        fontSize: "0.65rem",
-                        fontWeight: 600,
-                        color: "text.primary",
-                      }}
-                    >
-                      vars.{key}
-                    </Typography>
-                    <Typography
-                      sx={{
-                        fontSize: "0.58rem",
-                        color: "text.secondary",
-                        opacity: 0.55,
-                        mt: 0.25,
-                      }}
-                    >
-                      {label}
-                    </Typography>
                   </Box>
-                  {!isNone && (
+                  {/* Label row */}
+                  <Box
+                    sx={{
+                      px: 1.5,
+                      py: 1,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      bgcolor: "background.paper",
+                      borderTop: "1px solid",
+                      borderColor: "divider",
+                    }}
+                  >
+                    <Box>
+                      <Typography
+                        sx={{
+                          fontFamily: "monospace",
+                          fontSize: "0.65rem",
+                          fontWeight: 600,
+                          color: "text.primary",
+                        }}
+                      >
+                        vars.{key}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          fontSize: "0.58rem",
+                          color: "text.secondary",
+                          opacity: 0.55,
+                          mt: 0.25,
+                        }}
+                      >
+                        {label}
+                      </Typography>
+                    </Box>
                     <TokenCopyChip text={`theme.palette.vars.${key}`} />
-                  )}
+                  </Box>
                 </Box>
-              </Box>
-            );
-          })}
+              );
+            })}
+          </Box>
         </Box>
-      </Box>
+      )}
 
       {/* Gradient tokens */}
       <Box sx={{ mb: 4 }}>
