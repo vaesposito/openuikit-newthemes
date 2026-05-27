@@ -1,0 +1,13 @@
+{
+  "codeConnect": {
+    "parser": "react",
+    "importPaths": {
+      "@open-ui-kit/core": "packages/open-ui-kit/src",
+      "@/common": "packages/open-ui-kit/src/common"
+    },
+    "include": [
+      "packages/open-ui-kit/src/**/*.figma.tsx",
+      "packages/open-ui-kit/src/charts/**/*.figma.tsx"
+    ]
+  }
+}

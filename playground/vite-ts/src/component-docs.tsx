@@ -6,8 +6,13 @@
 
 import React, { useState, useRef, Component } from "react";
 import {
-  AreaChart, Area, XAxis as RXAxis, YAxis as RYAxis, CartesianGrid as RGrid,
-  Tooltip as RTooltip, ResponsiveContainer as RRC,
+  AreaChart,
+  Area,
+  XAxis as RXAxis,
+  YAxis as RYAxis,
+  CartesianGrid as RGrid,
+  Tooltip as RTooltip,
+  ResponsiveContainer as RRC,
 } from "recharts";
 import { MemoryRouter } from "react-router-dom";
 import {
@@ -116,15 +121,36 @@ class SectionErrorBoundary extends Component<
   { error: Error | null }
 > {
   state = { error: null };
-  static getDerivedStateFromError(error: Error) { return { error }; }
+  static getDerivedStateFromError(error: Error) {
+    return { error };
+  }
   render() {
     if (this.state.error) {
       return (
-        <Box sx={{ p: 3, borderRadius: 2, border: "1px dashed", borderColor: "error.light", bgcolor: "action.hover" }}>
-          <Typography variant="body2" color="error.main" sx={{ fontWeight: 600, mb: 0.5 }}>
+        <Box
+          sx={{
+            p: 3,
+            borderRadius: 2,
+            border: "1px dashed",
+            borderColor: "error.light",
+            bgcolor: "action.hover",
+          }}
+        >
+          <Typography
+            variant="body2"
+            color="error.main"
+            sx={{ fontWeight: 600, mb: 0.5 }}
+          >
             Failed to render {this.props.name}
           </Typography>
-          <Typography variant="caption" sx={{ color: "text.primary", opacity: 0.6, fontFamily: "monospace" }}>
+          <Typography
+            variant="caption"
+            sx={{
+              color: "text.primary",
+              opacity: 0.6,
+              fontFamily: "monospace",
+            }}
+          >
             {(this.state.error as Error).message}
           </Typography>
         </Box>
@@ -142,27 +168,27 @@ const HEADER_HEIGHT = 56;
 type DocThemeMode = ThemeMode;
 
 const THEMES: { value: DocThemeMode; label: string; bg: string }[] = [
-  { value: "light",     label: "AGNTCY light", bg: "#ffffff" },
-  { value: "dark",      label: "AGNTCY dark",  bg: "#141418" },
-  { value: "ioc",       label: "C1D dark",     bg: "#050C18" },
-  { value: "ioc-light", label: "C1D light",    bg: "#F0F7FF" },
+  { value: "light", label: "AGNTCY light", bg: "#ffffff" },
+  { value: "dark", label: "AGNTCY dark", bg: "#141418" },
+  { value: "ioc", label: "C1D dark", bg: "#050C18" },
+  { value: "ioc-light", label: "C1D light", bg: "#F0F7FF" },
 ];
 
 const COMPONENT_CATEGORIES = [
-  { id: "buttons",    label: "Buttons & Actions", Icon: TouchAppIcon },
-  { id: "forms",      label: "Form Controls",     Icon: TuneIcon },
-  { id: "data",       label: "Data Display",      Icon: LabelIcon },
-  { id: "navigation", label: "Navigation",        Icon: ExploreIcon },
-  { id: "feedback",   label: "Feedback & Status", Icon: NotificationsIcon },
-  { id: "layout",     label: "Layout",            Icon: DashboardIcon },
-  { id: "charts",     label: "Charts",            Icon: BarChartIcon },
+  { id: "buttons", label: "Buttons & Actions", Icon: TouchAppIcon },
+  { id: "forms", label: "Form Controls", Icon: TuneIcon },
+  { id: "data", label: "Data Display", Icon: LabelIcon },
+  { id: "navigation", label: "Navigation", Icon: ExploreIcon },
+  { id: "feedback", label: "Feedback & Status", Icon: NotificationsIcon },
+  { id: "layout", label: "Layout", Icon: DashboardIcon },
+  { id: "charts", label: "Charts", Icon: BarChartIcon },
 ];
 
 const TOKEN_CATEGORIES = [
-  { id: "color",      label: "Color",       Icon: PaletteIcon },
-  { id: "typography", label: "Typography",  Icon: TextFieldsIcon },
-  { id: "shadows",    label: "Shadows",     Icon: LayersIcon },
-  { id: "spacing",    label: "Spacing",     Icon: DashboardIcon },
+  { id: "color", label: "Color", Icon: PaletteIcon },
+  { id: "typography", label: "Typography", Icon: TextFieldsIcon },
+  { id: "shadows", label: "Shadows", Icon: LayersIcon },
+  { id: "spacing", label: "Spacing", Icon: DashboardIcon },
 ];
 
 const TEMPLATE_CATEGORIES = [
@@ -173,17 +199,17 @@ const TEMPLATE_CATEGORIES = [
 
 const BAR_DATA = [
   { name: "Critical", value: 42, color: "#ef4444" },
-  { name: "High",     value: 87, color: "#f97316" },
-  { name: "Medium",   value: 134, color: "#f59e0b" },
-  { name: "Low",      value: 61, color: "#3b82f6" },
-  { name: "Info",     value: 28, color: "#6b7280" },
+  { name: "High", value: 87, color: "#f97316" },
+  { name: "Medium", value: 134, color: "#f59e0b" },
+  { name: "Low", value: 61, color: "#3b82f6" },
+  { name: "Info", value: 28, color: "#6b7280" },
 ];
 
 const DONUT_DATA = [
-  { name: "Critical", value: 42,  color: "#ef4444" },
-  { name: "High",     value: 87,  color: "#f97316" },
-  { name: "Medium",   value: 134, color: "#f59e0b" },
-  { name: "Low",      value: 61,  color: "#3b82f6" },
+  { name: "Critical", value: 42, color: "#ef4444" },
+  { name: "High", value: 87, color: "#f97316" },
+  { name: "Medium", value: 134, color: "#f59e0b" },
+  { name: "Low", value: 61, color: "#3b82f6" },
 ];
 
 const LINE_DATA = [
@@ -196,21 +222,23 @@ const LINE_DATA = [
 ];
 const LINE_MONTH_FMT = (v: unknown) => {
   const d = new Date(String(v));
-  return isNaN(d.getTime()) ? String(v) : d.toLocaleString("en", { month: "short" });
+  return isNaN(d.getTime())
+    ? String(v)
+    : d.toLocaleString("en", { month: "short" });
 };
 
 const LINE_CATEGORIES = [
   { name: "Critical", color: "#ef4444" },
-  { name: "High",     color: "#f97316" },
+  { name: "High", color: "#f97316" },
   { name: "Resolved", color: "#22c55e" },
 ];
 
 const HBAR_DATA = [
-  { name: "Cryptomining",      value: 10, color: "#3b82f6" },
-  { name: "Ransomware",        value: 7,  color: "#3b82f6" },
-  { name: "Data Destruction",  value: 5,  color: "#3b82f6" },
-  { name: "Data Exfiltration", value: 3,  color: "#3b82f6" },
-  { name: "Recon",             value: 1,  color: "#3b82f6" },
+  { name: "Cryptomining", value: 10, color: "#3b82f6" },
+  { name: "Ransomware", value: 7, color: "#3b82f6" },
+  { name: "Data Destruction", value: 5, color: "#3b82f6" },
+  { name: "Data Exfiltration", value: 3, color: "#3b82f6" },
+  { name: "Recon", value: 1, color: "#3b82f6" },
 ];
 
 // ─── Layout helpers ───────────────────────────────────────────────────────────
@@ -260,39 +288,72 @@ function ButtonsSection() {
           <Button variant="secondary">Secondary</Button>
           <Button variant="outlined">Outlined</Button>
           <Button variant="tertariary">Text</Button>
-          <Button variant="primary" disabled>Disabled</Button>
+          <Button variant="primary" disabled>
+            Disabled
+          </Button>
         </Stack>
       </ComponentGroup>
 
       <ComponentGroup label="Button — Negative Color">
         <Stack direction="row" spacing={2} flexWrap="wrap" useFlexGap>
-          <Button variant="primary" color="negative">Primary Negative</Button>
-          <Button variant="secondary" color="negative">Secondary Negative</Button>
-          <Button variant="outlined" color="negative">Outlined Negative</Button>
+          <Button variant="primary" color="negative">
+            Primary Negative
+          </Button>
+          <Button variant="secondary" color="negative">
+            Secondary Negative
+          </Button>
+          <Button variant="outlined" color="negative">
+            Outlined Negative
+          </Button>
         </Stack>
       </ComponentGroup>
 
       <ComponentGroup label="Button — Sizes">
-        <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap" useFlexGap>
-          <Button variant="primary" size="small">Small</Button>
-          <Button variant="primary" size="medium">Medium</Button>
-          <Button variant="primary" size="large">Large</Button>
+        <Stack
+          direction="row"
+          spacing={2}
+          alignItems="center"
+          flexWrap="wrap"
+          useFlexGap
+        >
+          <Button variant="primary" size="small">
+            Small
+          </Button>
+          <Button variant="primary" size="medium">
+            Medium
+          </Button>
+          <Button variant="primary" size="large">
+            Large
+          </Button>
         </Stack>
       </ComponentGroup>
 
       <ComponentGroup label="Icon Button">
         <Stack direction="row" spacing={2} alignItems="center">
-          <IconButton color="primary"><EditIcon /></IconButton>
-          <IconButton color="default"><ShareIcon /></IconButton>
-          <IconButton disabled><PrintIcon /></IconButton>
+          <IconButton color="primary">
+            <EditIcon />
+          </IconButton>
+          <IconButton color="default">
+            <ShareIcon />
+          </IconButton>
+          <IconButton disabled>
+            <PrintIcon />
+          </IconButton>
         </Stack>
       </ComponentGroup>
 
       <ComponentGroup label="Floating Action Button">
         <Stack direction="row" spacing={2} alignItems="center">
-          <Fab color="primary" size="small"><AddIcon /></Fab>
-          <Fab color="primary"><AddIcon /></Fab>
-          <Fab variant="extended" color="primary"><AddIcon sx={{ mr: 1 }} />New Item</Fab>
+          <Fab color="primary" size="small">
+            <AddIcon />
+          </Fab>
+          <Fab color="primary">
+            <AddIcon />
+          </Fab>
+          <Fab variant="extended" color="primary">
+            <AddIcon sx={{ mr: 1 }} />
+            New Item
+          </Fab>
         </Stack>
       </ComponentGroup>
 
@@ -309,7 +370,11 @@ function ButtonsSection() {
               { icon: <PrintIcon />, name: "Print" },
               { icon: <ShareIcon />, name: "Share" },
             ].map((a) => (
-              <SpeedDialAction key={a.name} icon={a.icon} tooltipTitle={a.name} />
+              <SpeedDialAction
+                key={a.name}
+                icon={a.icon}
+                tooltipTitle={a.name}
+              />
             ))}
           </SpeedDial>
         </Box>
@@ -318,7 +383,12 @@ function ButtonsSection() {
       <ComponentGroup label="Copy Button">
         <Stack direction="row" spacing={2} alignItems="center">
           <CopyButton text="npm install @open-ui-kit/core" />
-          <Typography variant="body2" sx={{ color: "text.primary", opacity: 0.65 }}>Click to copy</Typography>
+          <Typography
+            variant="body2"
+            sx={{ color: "text.primary", opacity: 0.65 }}
+          >
+            Click to copy
+          </Typography>
         </Stack>
       </ComponentGroup>
 
@@ -329,7 +399,10 @@ function ButtonsSection() {
             isChecked={favActive}
             withBackground
           />
-          <Typography variant="body2" sx={{ color: "text.primary", opacity: 0.65 }}>
+          <Typography
+            variant="body2"
+            sx={{ color: "text.primary", opacity: 0.65 }}
+          >
             {favActive ? "Saved to favorites" : "Click to favorite"}
           </Typography>
         </Stack>
@@ -351,9 +424,17 @@ function FormsSection() {
       <ComponentGroup label="Toggle (Switch)">
         <Stack direction="row" spacing={4} alignItems="center">
           <FormControlLabel
-            control={<Toggle checked={toggleOn} onChange={(e) => setToggleOn(e.target.checked)} />}
+            control={
+              <Toggle
+                checked={toggleOn}
+                onChange={(e) => setToggleOn(e.target.checked)}
+              />
+            }
             label={toggleOn ? "On" : "Off"}
-            sx={{ gap: 1, "& .MuiFormControlLabel-label": { fontSize: "0.875rem" } }}
+            sx={{
+              gap: 1,
+              "& .MuiFormControlLabel-label": { fontSize: "0.875rem" },
+            }}
           />
           <Toggle checked={false} />
           <Toggle disabled />
@@ -363,29 +444,64 @@ function FormsSection() {
       <ComponentGroup label="Checkbox">
         <Stack direction="row" spacing={2} alignItems="center">
           <FormControlLabel
-            control={<Checkbox checked={checked} onChange={(e) => setChecked(e.target.checked)} />}
+            control={
+              <Checkbox
+                checked={checked}
+                onChange={(e) => setChecked(e.target.checked)}
+              />
+            }
             label="Checked"
           />
           <FormControlLabel control={<Checkbox />} label="Unchecked" />
-          <FormControlLabel control={<Checkbox indeterminate />} label="Indeterminate" />
+          <FormControlLabel
+            control={<Checkbox indeterminate />}
+            label="Indeterminate"
+          />
           <FormControlLabel control={<Checkbox disabled />} label="Disabled" />
         </Stack>
       </ComponentGroup>
 
       <ComponentGroup label="Radio Group">
-        <RadioGroup row value={radioVal} onChange={(e) => setRadioVal(e.target.value)}>
+        <RadioGroup
+          row
+          value={radioVal}
+          onChange={(e) => setRadioVal(e.target.value)}
+        >
           <FormControlLabel value="a" control={<Radio />} label="Option A" />
           <FormControlLabel value="b" control={<Radio />} label="Option B" />
           <FormControlLabel value="c" control={<Radio />} label="Option C" />
-          <FormControlLabel value="d" control={<Radio disabled />} label="Disabled" />
+          <FormControlLabel
+            value="d"
+            control={<Radio disabled />}
+            label="Disabled"
+          />
         </RadioGroup>
       </ComponentGroup>
 
       <ComponentGroup label="Slider">
         <Box sx={{ maxWidth: 480, px: 1 }}>
-          <Typography variant="caption" sx={{ color: "text.primary", opacity: 0.6 }}>Single value</Typography>
-          <Slider value={sliderVal} onChange={(_, v) => setSliderVal(v as number)} valueLabelDisplay="auto" />
-          <Typography variant="caption" sx={{ mt: 2, display: "block", color: "text.primary", opacity: 0.6 }}>Range</Typography>
+          <Typography
+            variant="caption"
+            sx={{ color: "text.primary", opacity: 0.6 }}
+          >
+            Single value
+          </Typography>
+          <Slider
+            value={sliderVal}
+            onChange={(_, v) => setSliderVal(v as number)}
+            valueLabelDisplay="auto"
+          />
+          <Typography
+            variant="caption"
+            sx={{
+              mt: 2,
+              display: "block",
+              color: "text.primary",
+              opacity: 0.6,
+            }}
+          >
+            Range
+          </Typography>
           <Slider value={[20, 70]} valueLabelDisplay="auto" />
         </Box>
       </ComponentGroup>
@@ -403,7 +519,11 @@ function FormsSection() {
       <ComponentGroup label="Select">
         <FormControl size="small" sx={{ minWidth: 220 }}>
           <InputLabel>Select option</InputLabel>
-          <Select value={selectVal} label="Select option" onChange={(e) => setSelectVal(e.target.value)}>
+          <Select
+            value={selectVal}
+            label="Select option"
+            onChange={(e) => setSelectVal(e.target.value)}
+          >
             <MenuItem value="option1">Option 1</MenuItem>
             <MenuItem value="option2">Option 2</MenuItem>
             <MenuItem value="option3">Option 3</MenuItem>
@@ -414,9 +534,26 @@ function FormsSection() {
       <ComponentGroup label="Text Field">
         <Stack direction="row" spacing={2} flexWrap="wrap" useFlexGap>
           <TextField label="Outlined" variant="outlined" size="small" />
-          <TextField label="Filled" variant="filled" size="small" defaultValue="Value" />
-          <TextField label="Error" variant="outlined" size="small" error helperText="Required" />
-          <TextField label="Disabled" variant="outlined" size="small" disabled value="Disabled" />
+          <TextField
+            label="Filled"
+            variant="filled"
+            size="small"
+            defaultValue="Value"
+          />
+          <TextField
+            label="Error"
+            variant="outlined"
+            size="small"
+            error
+            helperText="Required"
+          />
+          <TextField
+            label="Disabled"
+            variant="outlined"
+            size="small"
+            disabled
+            value="Disabled"
+          />
         </Stack>
       </ComponentGroup>
     </>
@@ -429,13 +566,23 @@ function DataDisplaySection() {
       <ComponentGroup label="Typography Scale">
         <Stack spacing={0.5}>
           {(["h1", "h2", "h3", "h4", "h5", "h6"] as const).map((v) => (
-            <Typography key={v} variant={v}>{v.toUpperCase()} — The quick brown fox</Typography>
+            <Typography key={v} variant={v}>
+              {v.toUpperCase()} — The quick brown fox
+            </Typography>
           ))}
           <Divider sx={{ my: 1 }} />
-          <Typography variant="subtitle1">subtitle1 — Supporting subtitle text</Typography>
-          <Typography variant="body1">body1 — Regular paragraph text used for main content areas.</Typography>
-          <Typography variant="body2">body2 — Smaller body text for secondary information.</Typography>
-          <Typography variant="caption">caption — Caption text for labels</Typography>
+          <Typography variant="subtitle1">
+            subtitle1 — Supporting subtitle text
+          </Typography>
+          <Typography variant="body1">
+            body1 — Regular paragraph text used for main content areas.
+          </Typography>
+          <Typography variant="body2">
+            body2 — Smaller body text for secondary information.
+          </Typography>
+          <Typography variant="caption">
+            caption — Caption text for labels
+          </Typography>
           <Typography variant="overline">overline — SECTION LABEL</Typography>
         </Stack>
       </ComponentGroup>
@@ -446,16 +593,47 @@ function DataDisplaySection() {
           <Avatar sx={{ bgcolor: "secondary.main" }}>BC</Avatar>
           <Avatar sx={{ bgcolor: "error.main" }}>X</Avatar>
           <Avatar sx={{ bgcolor: "success.main" }} />
-          <Avatar sx={{ width: 56, height: 56, bgcolor: "warning.main", color: "rgba(0,0,0,0.87) !important" }}>LG</Avatar>
+          <Avatar
+            sx={{
+              width: 56,
+              height: 56,
+              bgcolor: "warning.main",
+              color: "rgba(0,0,0,0.87) !important",
+            }}
+          >
+            LG
+          </Avatar>
         </Stack>
       </ComponentGroup>
 
       <ComponentGroup label="Badge — All 10 Types">
         <Stack direction="row" spacing={3} flexWrap="wrap" useFlexGap>
-          {(["default", "excellent", "neutral", "error", "warning", "info", "success", "inactive", "moderate", "severe"] as const).map((type) => (
+          {(
+            [
+              "default",
+              "excellent",
+              "neutral",
+              "error",
+              "warning",
+              "info",
+              "success",
+              "inactive",
+              "moderate",
+              "severe",
+            ] as const
+          ).map((type) => (
             <Stack key={type} alignItems="center" spacing={1}>
               <Badge type={type} content={1} />
-              <Typography variant="caption" sx={{ color: "text.primary", opacity: 0.6, fontSize: "0.68rem" }}>{type}</Typography>
+              <Typography
+                variant="caption"
+                sx={{
+                  color: "text.primary",
+                  opacity: 0.6,
+                  fontSize: "0.68rem",
+                }}
+              >
+                {type}
+              </Typography>
             </Stack>
           ))}
         </Stack>
@@ -464,7 +642,14 @@ function DataDisplaySection() {
       <ComponentGroup label="Tag — Color Variants">
         <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
           {Object.keys(TagBackgroundColorVariants).map((key) => (
-            <Tag key={key} color={TagBackgroundColorVariants[key as keyof typeof TagBackgroundColorVariants]}>
+            <Tag
+              key={key}
+              color={
+                TagBackgroundColorVariants[
+                  key as keyof typeof TagBackgroundColorVariants
+                ]
+              }
+            >
               {key}
             </Tag>
           ))}
@@ -474,17 +659,34 @@ function DataDisplaySection() {
       <ComponentGroup label="Tag — Status Variants">
         <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
           {Object.values(TagStatus).map((status) => (
-            <Tag key={status} status={status as TagStatus}>{status}</Tag>
+            <Tag key={status} status={status as TagStatus}>
+              {status}
+            </Tag>
           ))}
         </Stack>
       </ComponentGroup>
 
       <ComponentGroup label="Severity Badge">
-        <Stack direction="row" spacing={3} alignItems="center" flexWrap="wrap" useFlexGap>
+        <Stack
+          direction="row"
+          spacing={3}
+          alignItems="center"
+          flexWrap="wrap"
+          useFlexGap
+        >
           {Object.values(Severity).map((sev) => (
             <Stack key={sev} alignItems="center" spacing={1}>
               <SeverityBadge severity={sev} />
-              <Typography variant="caption" sx={{ color: "text.primary", opacity: 0.6, fontSize: "0.68rem" }}>{sev}</Typography>
+              <Typography
+                variant="caption"
+                sx={{
+                  color: "text.primary",
+                  opacity: 0.6,
+                  fontSize: "0.68rem",
+                }}
+              >
+                {sev}
+              </Typography>
             </Stack>
           ))}
         </Stack>
@@ -499,11 +701,31 @@ function DataDisplaySection() {
       </ComponentGroup>
 
       <ComponentGroup label="Severity Bar">
-        <Stack direction="row" spacing={4} alignItems="flex-end" flexWrap="wrap" useFlexGap>
+        <Stack
+          direction="row"
+          spacing={4}
+          alignItems="flex-end"
+          flexWrap="wrap"
+          useFlexGap
+        >
           {Object.values(Severity).map((sev) => (
             <Stack key={sev} alignItems="center" spacing={1}>
-              <SeverityBar severity={sev} sx={{ width: "6px", height: "40px" }} />
-              <Typography variant="caption" sx={{ color: "text.primary", opacity: 0.6, fontSize: "0.68rem", textTransform: "uppercase", letterSpacing: "0.05em" }}>{sev}</Typography>
+              <SeverityBar
+                severity={sev}
+                sx={{ width: "6px", height: "40px" }}
+              />
+              <Typography
+                variant="caption"
+                sx={{
+                  color: "text.primary",
+                  opacity: 0.6,
+                  fontSize: "0.68rem",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em",
+                }}
+              >
+                {sev}
+              </Typography>
             </Stack>
           ))}
         </Stack>
@@ -511,16 +733,27 @@ function DataDisplaySection() {
 
       <ComponentGroup label="Indicator Badge (0–4)">
         <Stack direction="row" spacing={4} flexWrap="wrap" useFlexGap>
-          {([
-            { val: 0, color: "#9ca3af", label: "None" },
-            { val: 1, color: "#60a5fa", label: "Low" },
-            { val: 2, color: "#fbbf24", label: "Medium" },
-            { val: 3, color: "#f97316", label: "High" },
-            { val: 4, color: "#ef4444", label: "Critical" },
-          ] as const).map(({ val, color, label }) => (
+          {(
+            [
+              { val: 0, color: "#9ca3af", label: "None" },
+              { val: 1, color: "#60a5fa", label: "Low" },
+              { val: 2, color: "#fbbf24", label: "Medium" },
+              { val: 3, color: "#f97316", label: "High" },
+              { val: 4, color: "#ef4444", label: "Critical" },
+            ] as const
+          ).map(({ val, color, label }) => (
             <Stack key={val} alignItems="center" spacing={1}>
               <IndicatorBadge value={val} color={color} />
-              <Typography variant="caption" sx={{ color: "text.primary", opacity: 0.6, fontSize: "0.68rem" }}>{label}</Typography>
+              <Typography
+                variant="caption"
+                sx={{
+                  color: "text.primary",
+                  opacity: 0.6,
+                  fontSize: "0.68rem",
+                }}
+              >
+                {label}
+              </Typography>
             </Stack>
           ))}
         </Stack>
@@ -560,7 +793,10 @@ function NavigationSection() {
           <Tab label="Disabled" disabled />
         </Tabs>
         <Box sx={{ pt: 2 }}>
-          <Typography variant="body2" sx={{ color: "text.primary", opacity: 0.65 }}>
+          <Typography
+            variant="body2"
+            sx={{ color: "text.primary", opacity: 0.65 }}
+          >
             Active: {["Overview", "Details", "Settings"][tabMain]}
           </Typography>
         </Box>
@@ -575,7 +811,11 @@ function NavigationSection() {
       </ComponentGroup>
 
       <ComponentGroup label="Tabs — Toggle Tab">
-        <Tabs value={tabToggle} onChange={(_, v) => setTabToggle(v)} type="toggleTab">
+        <Tabs
+          value={tabToggle}
+          onChange={(_, v) => setTabToggle(v)}
+          type="toggleTab"
+        >
           <Tab label="List" />
           <Tab label="Grid" />
           <Tab label="Map" />
@@ -585,17 +825,49 @@ function NavigationSection() {
       <ComponentGroup label="Link">
         <MemoryRouter>
           <Stack direction="row" spacing={3} flexWrap="wrap" useFlexGap>
-            <Link href="#" color={LinkColorEnum.Primary} linkType={LinkType.UnderlineRegular}>Underline Regular</Link>
-            <Link href="#" color={LinkColorEnum.Primary} linkType={LinkType.StandaloneRegular}>Standalone Regular</Link>
-            <Link href="#" color={LinkColorEnum.Primary} linkType={LinkType.StandaloneBold}>Standalone Bold</Link>
-            <Link href="#" color={LinkColorEnum.Secondary} linkType={LinkType.UnderlineRegular}>Secondary Color</Link>
-            <Link href="#" color={LinkColorEnum.Primary} disabled>Disabled</Link>
+            <Link
+              href="#"
+              color={LinkColorEnum.Primary}
+              linkType={LinkType.UnderlineRegular}
+            >
+              Underline Regular
+            </Link>
+            <Link
+              href="#"
+              color={LinkColorEnum.Primary}
+              linkType={LinkType.StandaloneRegular}
+            >
+              Standalone Regular
+            </Link>
+            <Link
+              href="#"
+              color={LinkColorEnum.Primary}
+              linkType={LinkType.StandaloneBold}
+            >
+              Standalone Bold
+            </Link>
+            <Link
+              href="#"
+              color={LinkColorEnum.Secondary}
+              linkType={LinkType.UnderlineRegular}
+            >
+              Secondary Color
+            </Link>
+            <Link href="#" color={LinkColorEnum.Primary} disabled>
+              Disabled
+            </Link>
           </Stack>
         </MemoryRouter>
       </ComponentGroup>
 
       <ComponentGroup label="Pagination">
-        <Pagination count={10} page={page} onChange={(_, v) => setPage(v)} showFirstButton showLastButton />
+        <Pagination
+          count={10}
+          page={page}
+          onChange={(_, v) => setPage(v)}
+          showFirstButton
+          showLastButton
+        />
       </ComponentGroup>
 
       <ComponentGroup label="Stepper">
@@ -607,10 +879,20 @@ function NavigationSection() {
           ))}
         </Stepper>
         <Stack direction="row" spacing={1} sx={{ mt: 2 }}>
-          <Button variant="outlined" size="small" onClick={() => setStepperActive((v) => Math.max(0, v - 1))} disabled={stepperActive === 0}>
+          <Button
+            variant="outlined"
+            size="small"
+            onClick={() => setStepperActive((v) => Math.max(0, v - 1))}
+            disabled={stepperActive === 0}
+          >
             Back
           </Button>
-          <Button variant="primary" size="small" onClick={() => setStepperActive((v) => Math.min(4, v + 1))} disabled={stepperActive === 4}>
+          <Button
+            variant="primary"
+            size="small"
+            onClick={() => setStepperActive((v) => Math.min(4, v + 1))}
+            disabled={stepperActive === 4}
+          >
             Next
           </Button>
         </Stack>
@@ -645,7 +927,12 @@ function FeedbackSection() {
           {[16, 24, 40, 64].map((size) => (
             <Stack key={size} alignItems="center" spacing={1}>
               <Spinner size={size} />
-              <Typography variant="caption" sx={{ color: "text.primary", opacity: 0.6 }}>{size}px</Typography>
+              <Typography
+                variant="caption"
+                sx={{ color: "text.primary", opacity: 0.6 }}
+              >
+                {size}px
+              </Typography>
             </Stack>
           ))}
         </Stack>
@@ -663,33 +950,65 @@ function FeedbackSection() {
               <Skeleton variant="rectangular" height={14} width="72%" />
             </Stack>
           </Stack>
-          <Skeleton variant="rectangular" height={80} sx={{ borderRadius: 1 }} />
+          <Skeleton
+            variant="rectangular"
+            height={80}
+            sx={{ borderRadius: 1 }}
+          />
         </Stack>
       </ComponentGroup>
 
       <ComponentGroup label="Banner — All Statuses">
         <Stack spacing={2}>
-          <Banner status="info"      text="Informational banner — context and guidance." showCloseButton={false} />
-          <Banner status="success"   text="Success banner — operation completed successfully." showCloseButton={false} />
-          <Banner status="excellent" text="Excellent banner — all systems running optimally." showCloseButton={false} />
-          <Banner status="warning"   text="Warning banner — review before proceeding." showCloseButton={false} />
-          <Banner status="negative"  text="Negative banner — an error occurred, please retry." showCloseButton={false} />
+          <Banner
+            status="info"
+            text="Informational banner — context and guidance."
+            showCloseButton={false}
+          />
+          <Banner
+            status="success"
+            text="Success banner — operation completed successfully."
+            showCloseButton={false}
+          />
+          <Banner
+            status="excellent"
+            text="Excellent banner — all systems running optimally."
+            showCloseButton={false}
+          />
+          <Banner
+            status="warning"
+            text="Warning banner — review before proceeding."
+            showCloseButton={false}
+          />
+          <Banner
+            status="negative"
+            text="Negative banner — an error occurred, please retry."
+            showCloseButton={false}
+          />
         </Stack>
       </ComponentGroup>
 
       <ComponentGroup label="Accordion">
         <Stack spacing={1} sx={{ maxWidth: 620 }}>
-          <Accordion title="Getting Started" subTitle="Learn the basics" defaultExpanded>
+          <Accordion
+            title="Getting Started"
+            subTitle="Learn the basics"
+            defaultExpanded
+          >
             <Typography variant="body2">
-              Accordions organize content into collapsible sections to reduce visual noise.
-              This one is open by default.
+              Accordions organize content into collapsible sections to reduce
+              visual noise. This one is open by default.
             </Typography>
           </Accordion>
           <Accordion title="Configuration Options" subTitle="Advanced settings">
-            <Typography variant="body2">Advanced configuration options hidden to reduce clutter.</Typography>
+            <Typography variant="body2">
+              Advanced configuration options hidden to reduce clutter.
+            </Typography>
           </Accordion>
           <Accordion title="Contained Variant" contained>
-            <Typography variant="body2">The contained prop adds a border and background surface.</Typography>
+            <Typography variant="body2">
+              The contained prop adds a border and background surface.
+            </Typography>
           </Accordion>
         </Stack>
       </ComponentGroup>
@@ -704,21 +1023,39 @@ function LayoutSection() {
         <Stack direction="row" spacing={2} flexWrap="wrap" useFlexGap>
           <Card sx={{ minWidth: 220, maxWidth: 260 }}>
             <CardContent>
-              <Typography variant="h6" gutterBottom>Card Title</Typography>
-              <Typography variant="body2" sx={{ color: "text.primary", opacity: 0.65 }}>
+              <Typography variant="h6" gutterBottom>
+                Card Title
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{ color: "text.primary", opacity: 0.65 }}
+              >
                 A themed MUI card with body content and elevation.
               </Typography>
             </CardContent>
           </Card>
           <Paper sx={{ p: 2.5, minWidth: 220, maxWidth: 260 }} elevation={2}>
-            <Typography variant="subtitle1" gutterBottom>Paper (elevation 2)</Typography>
-            <Typography variant="body2" sx={{ color: "text.primary", opacity: 0.65 }}>
+            <Typography variant="subtitle1" gutterBottom>
+              Paper (elevation 2)
+            </Typography>
+            <Typography
+              variant="body2"
+              sx={{ color: "text.primary", opacity: 0.65 }}
+            >
               MUI Paper with shadow elevation.
             </Typography>
           </Paper>
-          <Paper sx={{ p: 2.5, minWidth: 220, maxWidth: 260 }} variant="outlined">
-            <Typography variant="subtitle1" gutterBottom>Paper (outlined)</Typography>
-            <Typography variant="body2" sx={{ color: "text.primary", opacity: 0.65 }}>
+          <Paper
+            sx={{ p: 2.5, minWidth: 220, maxWidth: 260 }}
+            variant="outlined"
+          >
+            <Typography variant="subtitle1" gutterBottom>
+              Paper (outlined)
+            </Typography>
+            <Typography
+              variant="body2"
+              sx={{ color: "text.primary", opacity: 0.65 }}
+            >
               Paper with border, no elevation.
             </Typography>
           </Paper>
@@ -728,14 +1065,33 @@ function LayoutSection() {
       <ComponentGroup label="Divider">
         <Stack spacing={3} sx={{ maxWidth: 560 }}>
           <Box>
-            <Typography variant="caption" sx={{ color: "text.primary", opacity: 0.6 }} gutterBottom display="block">Horizontal</Typography>
+            <Typography
+              variant="caption"
+              sx={{ color: "text.primary", opacity: 0.6 }}
+              gutterBottom
+              display="block"
+            >
+              Horizontal
+            </Typography>
             <Divider />
           </Box>
           <Box>
-            <Typography variant="caption" sx={{ color: "text.primary", opacity: 0.6 }} gutterBottom display="block">With label</Typography>
+            <Typography
+              variant="caption"
+              sx={{ color: "text.primary", opacity: 0.6 }}
+              gutterBottom
+              display="block"
+            >
+              With label
+            </Typography>
             <Divider>Section</Divider>
           </Box>
-          <Stack direction="row" spacing={2} alignItems="center" sx={{ height: 40 }}>
+          <Stack
+            direction="row"
+            spacing={2}
+            alignItems="center"
+            sx={{ height: 40 }}
+          >
             <Typography variant="body2">Left</Typography>
             <Divider orientation="vertical" flexItem />
             <Typography variant="body2">Center</Typography>
@@ -764,18 +1120,34 @@ function ChartsSection() {
 
       <ComponentGroup label="Donut Chart">
         <SectionErrorBoundary name="DonutChart">
-          <Stack direction="row" spacing={4} alignItems="flex-start" flexWrap="wrap" useFlexGap>
+          <Stack
+            direction="row"
+            spacing={4}
+            alignItems="flex-start"
+            flexWrap="wrap"
+            useFlexGap
+          >
             <Stack alignItems="center" spacing={1}>
               <Box sx={{ height: 160, width: 160 }}>
                 <DonutChart data={DONUT_DATA} />
               </Box>
-              <Typography variant="caption" sx={{ color: "text.primary", opacity: 0.6 }}>4 segments</Typography>
+              <Typography
+                variant="caption"
+                sx={{ color: "text.primary", opacity: 0.6 }}
+              >
+                4 segments
+              </Typography>
             </Stack>
             <Stack alignItems="center" spacing={1}>
               <Box sx={{ height: 160, width: 160 }}>
                 <DonutChart data={DONUT_DATA.slice(0, 3)} />
               </Box>
-              <Typography variant="caption" sx={{ color: "text.primary", opacity: 0.6 }}>3 segments</Typography>
+              <Typography
+                variant="caption"
+                sx={{ color: "text.primary", opacity: 0.6 }}
+              >
+                3 segments
+              </Typography>
             </Stack>
           </Stack>
         </SectionErrorBoundary>
@@ -783,27 +1155,54 @@ function ChartsSection() {
 
       <ComponentGroup label="Gauge Chart">
         <SectionErrorBoundary name="GaugeChart">
-          <Stack direction="row" spacing={4} alignItems="flex-start" flexWrap="wrap" useFlexGap>
+          <Stack
+            direction="row"
+            spacing={4}
+            alignItems="flex-start"
+            flexWrap="wrap"
+            useFlexGap
+          >
             <Stack alignItems="center" spacing={1}>
               <Box sx={{ height: 140, width: 200 }}>
                 <GaugeChart
                   data={[{ name: "Score", value: 24, color: "#ef4444" }]}
-                  customLabelComponent={<Typography variant="caption">Critical</Typography>}
+                  customLabelComponent={
+                    <Typography variant="caption">Critical</Typography>
+                  }
                 />
               </Box>
-              <Typography variant="caption" sx={{ color: "text.primary", opacity: 0.6 }}>Critical (24)</Typography>
+              <Typography
+                variant="caption"
+                sx={{ color: "text.primary", opacity: 0.6 }}
+              >
+                Critical (24)
+              </Typography>
             </Stack>
             <Stack alignItems="center" spacing={1}>
               <Box sx={{ height: 140, width: 200 }}>
-                <GaugeChart data={[{ name: "Score", value: 75, color: "#f59e0b" }]} />
+                <GaugeChart
+                  data={[{ name: "Score", value: 75, color: "#f59e0b" }]}
+                />
               </Box>
-              <Typography variant="caption" sx={{ color: "text.primary", opacity: 0.6 }}>Warning (75)</Typography>
+              <Typography
+                variant="caption"
+                sx={{ color: "text.primary", opacity: 0.6 }}
+              >
+                Warning (75)
+              </Typography>
             </Stack>
             <Stack alignItems="center" spacing={1}>
               <Box sx={{ height: 140, width: 200 }}>
-                <GaugeChart data={[{ name: "Score", value: 95, color: "#22c55e" }]} />
+                <GaugeChart
+                  data={[{ name: "Score", value: 95, color: "#22c55e" }]}
+                />
               </Box>
-              <Typography variant="caption" sx={{ color: "text.primary", opacity: 0.6 }}>Good (95)</Typography>
+              <Typography
+                variant="caption"
+                sx={{ color: "text.primary", opacity: 0.6 }}
+              >
+                Good (95)
+              </Typography>
             </Stack>
           </Stack>
         </SectionErrorBoundary>
@@ -811,7 +1210,15 @@ function ChartsSection() {
 
       <ComponentGroup label="Line Chart">
         <SectionErrorBoundary name="LineChart">
-          <Box sx={{ height: 240, maxWidth: 600, bgcolor: bg, borderRadius: 2, p: 1 }}>
+          <Box
+            sx={{
+              height: 240,
+              maxWidth: 600,
+              bgcolor: bg,
+              borderRadius: 2,
+              p: 1,
+            }}
+          >
             <LineChart
               data={LINE_DATA}
               categories={LINE_CATEGORIES}
@@ -835,8 +1242,8 @@ function ChartsSection() {
 
 // ─── Token definitions ────────────────────────────────────────────────────────
 
-type TokenEntry   = { name: string; description?: string };
-type TokenGroup   = { label: string; tokens: TokenEntry[] };
+type TokenEntry = { name: string; description?: string };
+type TokenGroup = { label: string; tokens: TokenEntry[] };
 type TokenSection = { label: string; groups: TokenGroup[] };
 
 const C1D_PRIMITIVE_TOKENS: {
@@ -846,85 +1253,217 @@ const C1D_PRIMITIVE_TOKENS: {
   {
     label: "Cisco Teal — Primary Accent",
     tokens: [
-      { name: "iocTeal500 (Brand)",   value: "#00BCEB", description: "Cisco brand teal — primary CTA, icons, rings" },
-      { name: "iocTeal400",           value: "#1AC6F0", description: "Hover state" },
-      { name: "iocTeal600",           value: "#00A0D1", description: "Active / pressed" },
-      { name: "iocTeal700",           value: "#0082AD", description: "Strong accent" },
-      { name: "iocTeal200",           value: "#7DE0F8", description: "Text on dark bg" },
-      { name: "iocTealAlpha40",       value: "rgba(0,188,235,0.40)", description: "Disabled states" },
-      { name: "iocTealAlpha20",       value: "rgba(0,188,235,0.20)", description: "Weak background" },
-      { name: "iocTealAlpha10",       value: "rgba(0,188,235,0.10)", description: "Subtle tint" },
+      {
+        name: "iocTeal500 (Brand)",
+        value: "#00BCEB",
+        description: "Cisco brand teal — primary CTA, icons, rings",
+      },
+      { name: "iocTeal400", value: "#1AC6F0", description: "Hover state" },
+      { name: "iocTeal600", value: "#00A0D1", description: "Active / pressed" },
+      { name: "iocTeal700", value: "#0082AD", description: "Strong accent" },
+      { name: "iocTeal200", value: "#7DE0F8", description: "Text on dark bg" },
+      {
+        name: "iocTealAlpha40",
+        value: "rgba(0,188,235,0.40)",
+        description: "Disabled states",
+      },
+      {
+        name: "iocTealAlpha20",
+        value: "rgba(0,188,235,0.20)",
+        description: "Weak background",
+      },
+      {
+        name: "iocTealAlpha10",
+        value: "rgba(0,188,235,0.10)",
+        description: "Subtle tint",
+      },
     ],
   },
   {
     label: "Cisco Blue — Secondary",
     tokens: [
-      { name: "iocBlue500",  value: "#2B82F6", description: "Execute / action buttons" },
-      { name: "iocBlue400",  value: "#3B92FF", description: "Hover" },
-      { name: "iocBlue600",  value: "#1E6FD9", description: "Active" },
+      {
+        name: "iocBlue500",
+        value: "#2B82F6",
+        description: "Execute / action buttons",
+      },
+      { name: "iocBlue400", value: "#3B92FF", description: "Hover" },
+      { name: "iocBlue600", value: "#1E6FD9", description: "Active" },
     ],
   },
   {
     label: "Backdrop — Dark Navy",
     tokens: [
-      { name: "iocBackdrop900 (Deepest)", value: "#020508", description: "Absolute darkest void" },
-      { name: "iocBackdrop800",           value: "#03080F", description: "" },
-      { name: "iocBackdrop700",           value: "#050C18", description: "Page background" },
-      { name: "iocBackdrop600",           value: "#07111F", description: "Gradient start" },
-      { name: "iocBackdrop500",           value: "#091428", description: "" },
-      { name: "iocBackdrop400",           value: "#0C1B35", description: "Deep card bg" },
-      { name: "iocBackdrop300",           value: "#0F2040", description: "" },
-      { name: "iocBackdrop200",           value: "#132650", description: "" },
-      { name: "iocBackdrop100",           value: "#1A3060", description: "Lightest navy" },
+      {
+        name: "iocBackdrop900 (Deepest)",
+        value: "#020508",
+        description: "Absolute darkest void",
+      },
+      { name: "iocBackdrop800", value: "#03080F", description: "" },
+      {
+        name: "iocBackdrop700",
+        value: "#050C18",
+        description: "Page background",
+      },
+      {
+        name: "iocBackdrop600",
+        value: "#07111F",
+        description: "Gradient start",
+      },
+      { name: "iocBackdrop500", value: "#091428", description: "" },
+      { name: "iocBackdrop400", value: "#0C1B35", description: "Deep card bg" },
+      { name: "iocBackdrop300", value: "#0F2040", description: "" },
+      { name: "iocBackdrop200", value: "#132650", description: "" },
+      {
+        name: "iocBackdrop100",
+        value: "#1A3060",
+        description: "Lightest navy",
+      },
     ],
   },
   {
     label: "Surfaces — Translucent Glass",
     tokens: [
-      { name: "iocSurface50",  value: "rgba(255,255,255,0.02)", description: "Barely-there tint" },
-      { name: "iocSurface100", value: "rgba(255,255,255,0.035)", description: "Card background" },
-      { name: "iocSurface200", value: "rgba(255,255,255,0.06)", description: "Control background" },
-      { name: "iocSurface300", value: "rgba(255,255,255,0.09)", description: "Hover overlay" },
-      { name: "iocSurface400", value: "rgba(255,255,255,0.12)", description: "Active state" },
-      { name: "iocSurface500", value: "rgba(255,255,255,0.16)", description: "Emphasized surface" },
+      {
+        name: "iocSurface50",
+        value: "rgba(255,255,255,0.02)",
+        description: "Barely-there tint",
+      },
+      {
+        name: "iocSurface100",
+        value: "rgba(255,255,255,0.035)",
+        description: "Card background",
+      },
+      {
+        name: "iocSurface200",
+        value: "rgba(255,255,255,0.06)",
+        description: "Control background",
+      },
+      {
+        name: "iocSurface300",
+        value: "rgba(255,255,255,0.09)",
+        description: "Hover overlay",
+      },
+      {
+        name: "iocSurface400",
+        value: "rgba(255,255,255,0.12)",
+        description: "Active state",
+      },
+      {
+        name: "iocSurface500",
+        value: "rgba(255,255,255,0.16)",
+        description: "Emphasized surface",
+      },
     ],
   },
   {
     label: "Borders — Translucent",
     tokens: [
-      { name: "iocBorder100", value: "rgba(255,255,255,0.05)", description: "Weakest border" },
-      { name: "iocBorder200", value: "rgba(255,255,255,0.07)", description: "Default divider" },
-      { name: "iocBorder300", value: "rgba(255,255,255,0.09)", description: "Card border" },
-      { name: "iocBorder400", value: "rgba(255,255,255,0.12)", description: "Emphasized border" },
-      { name: "iocBorder500", value: "rgba(255,255,255,0.18)", description: "Strong border" },
+      {
+        name: "iocBorder100",
+        value: "rgba(255,255,255,0.05)",
+        description: "Weakest border",
+      },
+      {
+        name: "iocBorder200",
+        value: "rgba(255,255,255,0.07)",
+        description: "Default divider",
+      },
+      {
+        name: "iocBorder300",
+        value: "rgba(255,255,255,0.09)",
+        description: "Card border",
+      },
+      {
+        name: "iocBorder400",
+        value: "rgba(255,255,255,0.12)",
+        description: "Emphasized border",
+      },
+      {
+        name: "iocBorder500",
+        value: "rgba(255,255,255,0.18)",
+        description: "Strong border",
+      },
     ],
   },
   {
     label: "Text — Alpha White",
     tokens: [
-      { name: "iocTextPrimary",   value: "rgba(255,255,255,0.94)", description: "Headings, key labels" },
-      { name: "iocTextSecondary", value: "rgba(255,255,255,0.55)", description: "Body text, captions" },
-      { name: "iocTextTertiary",  value: "rgba(255,255,255,0.32)", description: "Placeholder, hints" },
-      { name: "iocTextDisabled",  value: "rgba(255,255,255,0.22)", description: "Disabled" },
+      {
+        name: "iocTextPrimary",
+        value: "rgba(255,255,255,0.94)",
+        description: "Headings, key labels",
+      },
+      {
+        name: "iocTextSecondary",
+        value: "rgba(255,255,255,0.55)",
+        description: "Body text, captions",
+      },
+      {
+        name: "iocTextTertiary",
+        value: "rgba(255,255,255,0.32)",
+        description: "Placeholder, hints",
+      },
+      {
+        name: "iocTextDisabled",
+        value: "rgba(255,255,255,0.22)",
+        description: "Disabled",
+      },
     ],
   },
   {
     label: "Semantic Status",
     tokens: [
-      { name: "Success",        value: "#00B98E", description: "Green — compliance, success" },
-      { name: "Negative",       value: "#C62953", description: "Red — threats, errors" },
-      { name: "Warning",        value: "#FBAB2C", description: "Amber — warnings, medium severity" },
-      { name: "Severe Warning", value: "#F2643D", description: "Orange — critical alerts" },
-      { name: "Excellent",      value: "#0AB6FF", description: "Cyan — excellent / informational" },
+      {
+        name: "Success",
+        value: "#00B98E",
+        description: "Green — compliance, success",
+      },
+      {
+        name: "Negative",
+        value: "#C62953",
+        description: "Red — threats, errors",
+      },
+      {
+        name: "Warning",
+        value: "#FBAB2C",
+        description: "Amber — warnings, medium severity",
+      },
+      {
+        name: "Severe Warning",
+        value: "#F2643D",
+        description: "Orange — critical alerts",
+      },
+      {
+        name: "Excellent",
+        value: "#0AB6FF",
+        description: "Cyan — excellent / informational",
+      },
     ],
   },
   {
     label: "Shadows & Effects",
     tokens: [
-      { name: "Shadow SM",       value: "0 2px 8px rgba(0,0,0,0.30)",  description: "Subtle card lift" },
-      { name: "Shadow MD",       value: "0 4px 16px rgba(0,0,0,0.40)", description: "Elevated card" },
-      { name: "Shadow LG",       value: "0 8px 32px rgba(0,0,0,0.50)", description: "Modal / drawer" },
-      { name: "Backdrop Blur",   value: "blur(20px)",                   description: "Glass panel blur" },
+      {
+        name: "Shadow SM",
+        value: "0 2px 8px rgba(0,0,0,0.30)",
+        description: "Subtle card lift",
+      },
+      {
+        name: "Shadow MD",
+        value: "0 4px 16px rgba(0,0,0,0.40)",
+        description: "Elevated card",
+      },
+      {
+        name: "Shadow LG",
+        value: "0 8px 32px rgba(0,0,0,0.50)",
+        description: "Modal / drawer",
+      },
+      {
+        name: "Backdrop Blur",
+        value: "blur(20px)",
+        description: "Glass panel blur",
+      },
     ],
   },
 ];
@@ -932,17 +1471,22 @@ const C1D_PRIMITIVE_TOKENS: {
 const COLOR_TOKEN_SECTIONS: TokenSection[] = [
   {
     label: "Base — Text",
-    groups: [{
-      label: "Text",
-      tokens: [
-        { name: "baseTextStrong",   description: "Primary headings, key content" },
-        { name: "baseTextDefault",  description: "Body text default" },
-        { name: "baseTextMedium",   description: "Secondary body text" },
-        { name: "baseTextWeak",     description: "Tertiary / hint text" },
-        { name: "baseTextInverse",  description: "Text on dark surfaces" },
-        { name: "baseTextDisabled", description: "Disabled state" },
-      ],
-    }],
+    groups: [
+      {
+        label: "Text",
+        tokens: [
+          {
+            name: "baseTextStrong",
+            description: "Primary headings, key content",
+          },
+          { name: "baseTextDefault", description: "Body text default" },
+          { name: "baseTextMedium", description: "Secondary body text" },
+          { name: "baseTextWeak", description: "Tertiary / hint text" },
+          { name: "baseTextInverse", description: "Text on dark surfaces" },
+          { name: "baseTextDisabled", description: "Disabled state" },
+        ],
+      },
+    ],
   },
   {
     label: "Base — Background & Border",
@@ -951,18 +1495,21 @@ const COLOR_TOKEN_SECTIONS: TokenSection[] = [
         label: "Background",
         tokens: [
           { name: "baseBackgroundStrong", description: "Strongest surface" },
-          { name: "baseBackgroundMedium", description: "Default page background" },
-          { name: "baseBackgroundWeak",   description: "Subtle surface / card" },
-          { name: "baseBackgroundHover",  description: "Hover overlay" },
+          {
+            name: "baseBackgroundMedium",
+            description: "Default page background",
+          },
+          { name: "baseBackgroundWeak", description: "Subtle surface / card" },
+          { name: "baseBackgroundHover", description: "Hover overlay" },
         ],
       },
       {
         label: "Border",
         tokens: [
           { name: "baseBorderDefault", description: "Standard border" },
-          { name: "baseBorderStrong",  description: "Emphasized border" },
-          { name: "baseBorderMedium",  description: "Moderate border" },
-          { name: "baseBorderWeak",    description: "Subtle border" },
+          { name: "baseBorderStrong", description: "Emphasized border" },
+          { name: "baseBorderMedium", description: "Moderate border" },
+          { name: "baseBorderWeak", description: "Subtle border" },
         ],
       },
     ],
@@ -973,26 +1520,41 @@ const COLOR_TOKEN_SECTIONS: TokenSection[] = [
       {
         label: "Core",
         tokens: [
-          { name: "brandOrange",       description: "Primary orange" },
-          { name: "brandBlue",         description: "Primary brand blue" },
+          { name: "brandOrange", description: "Primary orange" },
+          { name: "brandBlue", description: "Primary brand blue" },
           { name: "brandMidnightBlue", description: "Deep navy" },
-          { name: "agentcyYellow",     description: "Agentcy yellow" },
-          { name: "agentcyBlue",       description: "Agentcy blue" },
-          { name: "agentcyDarkBlue",   description: "Agentcy dark blue" },
+          { name: "agentcyYellow", description: "Agentcy yellow" },
+          { name: "agentcyBlue", description: "Agentcy blue" },
+          { name: "agentcyDarkBlue", description: "Agentcy dark blue" },
         ],
       },
       {
         label: "Brand Text & Background",
         tokens: [
-          { name: "brandTextPrimary",                description: "Brand primary text" },
-          { name: "brandTextSecondary",              description: "Brand secondary text" },
-          { name: "brandLogoPrimary",                description: "Logo primary color" },
-          { name: "brandBackgroundPrimaryDefault",   description: "Brand bg primary" },
-          { name: "brandBackgroundPrimaryWeak",      description: "Brand bg weak" },
-          { name: "brandBackgroundSecondaryDefault", description: "Brand bg secondary" },
-          { name: "brandIconPrimaryDefault",         description: "Brand icon primary" },
-          { name: "brandIconSecondaryDefault",       description: "Brand icon secondary" },
-          { name: "brandIconTertiaryDefault",        description: "Brand icon tertiary" },
+          { name: "brandTextPrimary", description: "Brand primary text" },
+          { name: "brandTextSecondary", description: "Brand secondary text" },
+          { name: "brandLogoPrimary", description: "Logo primary color" },
+          {
+            name: "brandBackgroundPrimaryDefault",
+            description: "Brand bg primary",
+          },
+          { name: "brandBackgroundPrimaryWeak", description: "Brand bg weak" },
+          {
+            name: "brandBackgroundSecondaryDefault",
+            description: "Brand bg secondary",
+          },
+          {
+            name: "brandIconPrimaryDefault",
+            description: "Brand icon primary",
+          },
+          {
+            name: "brandIconSecondaryDefault",
+            description: "Brand icon secondary",
+          },
+          {
+            name: "brandIconTertiaryDefault",
+            description: "Brand icon tertiary",
+          },
         ],
       },
     ],
@@ -1003,22 +1565,25 @@ const COLOR_TOKEN_SECTIONS: TokenSection[] = [
       {
         label: "Background",
         tokens: [
-          { name: "controlBackgroundDefault",  description: "Input default bg" },
-          { name: "controlBackgroundDisabled", description: "Disabled control" },
-          { name: "controlBackgroundMedium",   description: "Medium control" },
+          { name: "controlBackgroundDefault", description: "Input default bg" },
+          {
+            name: "controlBackgroundDisabled",
+            description: "Disabled control",
+          },
+          { name: "controlBackgroundMedium", description: "Medium control" },
         ],
       },
       {
         label: "Border & Icon",
         tokens: [
-          { name: "controlBorderDefault",  description: "Default border" },
-          { name: "controlBorderHover",    description: "Hover border" },
-          { name: "controlBorderActive",   description: "Active border" },
+          { name: "controlBorderDefault", description: "Default border" },
+          { name: "controlBorderHover", description: "Hover border" },
+          { name: "controlBorderActive", description: "Active border" },
           { name: "controlBorderNegative", description: "Error border" },
           { name: "controlBorderDisabled", description: "Disabled border" },
-          { name: "controlIconDefault",    description: "Icon default" },
-          { name: "controlIconHover",      description: "Icon hover" },
-          { name: "controlIconDisabled",   description: "Icon disabled" },
+          { name: "controlIconDefault", description: "Icon default" },
+          { name: "controlIconHover", description: "Icon hover" },
+          { name: "controlIconDisabled", description: "Icon disabled" },
         ],
       },
     ],
@@ -1029,24 +1594,48 @@ const COLOR_TOKEN_SECTIONS: TokenSection[] = [
       {
         label: "Primary",
         tokens: [
-          { name: "interactivePrimaryDefaultDefault",  description: "Default" },
-          { name: "interactivePrimaryDefaultHover",    description: "Hover" },
-          { name: "interactivePrimaryDefaultActive",   description: "Active" },
-          { name: "interactivePrimaryDefaultDisabled", description: "Disabled" },
-          { name: "interactivePrimaryWeakDefault",     description: "Weak default" },
-          { name: "interactivePrimaryWeakHover",       description: "Weak hover" },
+          { name: "interactivePrimaryDefaultDefault", description: "Default" },
+          { name: "interactivePrimaryDefaultHover", description: "Hover" },
+          { name: "interactivePrimaryDefaultActive", description: "Active" },
+          {
+            name: "interactivePrimaryDefaultDisabled",
+            description: "Disabled",
+          },
+          {
+            name: "interactivePrimaryWeakDefault",
+            description: "Weak default",
+          },
+          { name: "interactivePrimaryWeakHover", description: "Weak hover" },
         ],
       },
       {
         label: "Secondary & Tertiary",
         tokens: [
-          { name: "interactiveSecondaryDefaultDefault", description: "Secondary default" },
-          { name: "interactiveSecondaryDefaultHover",   description: "Secondary hover" },
-          { name: "interactiveSecondaryDefaultActive",  description: "Secondary active" },
-          { name: "interactiveTertiaryDefault",         description: "Tertiary default" },
-          { name: "interactiveTertiaryHover",           description: "Tertiary hover" },
-          { name: "interactiveInverseBackgroundDefault",description: "Inverse bg" },
-          { name: "interactiveInverseTextDefault",      description: "Inverse text" },
+          {
+            name: "interactiveSecondaryDefaultDefault",
+            description: "Secondary default",
+          },
+          {
+            name: "interactiveSecondaryDefaultHover",
+            description: "Secondary hover",
+          },
+          {
+            name: "interactiveSecondaryDefaultActive",
+            description: "Secondary active",
+          },
+          {
+            name: "interactiveTertiaryDefault",
+            description: "Tertiary default",
+          },
+          { name: "interactiveTertiaryHover", description: "Tertiary hover" },
+          {
+            name: "interactiveInverseBackgroundDefault",
+            description: "Inverse bg",
+          },
+          {
+            name: "interactiveInverseTextDefault",
+            description: "Inverse text",
+          },
         ],
       },
     ],
@@ -1058,22 +1647,22 @@ const COLOR_TOKEN_SECTIONS: TokenSection[] = [
         label: "Success",
         tokens: [
           { name: "successBackgroundDefault", description: "Default bg" },
-          { name: "successBackgroundWeak",    description: "Weak bg" },
-          { name: "successTextDefault",       description: "Text" },
-          { name: "successBorderDefault",     description: "Border" },
-          { name: "successIconDefault",       description: "Icon" },
-          { name: "successTextInDefault",     description: "On-color text" },
+          { name: "successBackgroundWeak", description: "Weak bg" },
+          { name: "successTextDefault", description: "Text" },
+          { name: "successBorderDefault", description: "Border" },
+          { name: "successIconDefault", description: "Icon" },
+          { name: "successTextInDefault", description: "On-color text" },
         ],
       },
       {
         label: "Negative (Error)",
         tokens: [
           { name: "negativeBackgroundDefault", description: "Default bg" },
-          { name: "negativeBackgroundWeak",    description: "Weak bg" },
-          { name: "negativeTextDefault",       description: "Text" },
-          { name: "negativeBorderDefault",     description: "Border" },
-          { name: "negativeIconDefault",       description: "Icon" },
-          { name: "negativeTextInDefault",     description: "On-color text" },
+          { name: "negativeBackgroundWeak", description: "Weak bg" },
+          { name: "negativeTextDefault", description: "Text" },
+          { name: "negativeBorderDefault", description: "Border" },
+          { name: "negativeIconDefault", description: "Icon" },
+          { name: "negativeTextInDefault", description: "On-color text" },
         ],
       },
     ],
@@ -1085,28 +1674,28 @@ const COLOR_TOKEN_SECTIONS: TokenSection[] = [
         label: "Warning",
         tokens: [
           { name: "warningBackgroundDefault", description: "Default bg" },
-          { name: "warningBackgroundWeak",    description: "Weak bg" },
-          { name: "warningTextDefault",       description: "Text" },
-          { name: "warningBorderDefault",     description: "Border" },
-          { name: "warningIconDefault",       description: "Icon" },
+          { name: "warningBackgroundWeak", description: "Weak bg" },
+          { name: "warningTextDefault", description: "Text" },
+          { name: "warningBorderDefault", description: "Border" },
+          { name: "warningIconDefault", description: "Icon" },
         ],
       },
       {
         label: "Severe Warning",
         tokens: [
           { name: "severeWarningBackgroundDefault", description: "Default bg" },
-          { name: "severeWarningBackgroundWeak",    description: "Weak bg" },
-          { name: "severeWarningTextDefault",       description: "Text" },
-          { name: "severeWarningIconDefault",       description: "Icon" },
+          { name: "severeWarningBackgroundWeak", description: "Weak bg" },
+          { name: "severeWarningTextDefault", description: "Text" },
+          { name: "severeWarningIconDefault", description: "Icon" },
         ],
       },
       {
         label: "Moderate",
         tokens: [
           { name: "moderateBackgroundDefault", description: "Default bg" },
-          { name: "moderateBackgroundWeak",    description: "Weak bg" },
-          { name: "moderateTextDefault",       description: "Text" },
-          { name: "moderateIconDefault",       description: "Icon" },
+          { name: "moderateBackgroundWeak", description: "Weak bg" },
+          { name: "moderateTextDefault", description: "Text" },
+          { name: "moderateIconDefault", description: "Icon" },
         ],
       },
     ],
@@ -1118,67 +1707,69 @@ const COLOR_TOKEN_SECTIONS: TokenSection[] = [
         label: "Excellent",
         tokens: [
           { name: "excellentBackgroundDefault", description: "Default bg" },
-          { name: "excellentBackgroundWeak",    description: "Weak bg" },
-          { name: "excellentTextDefault",       description: "Text" },
-          { name: "excellentIconDefault",       description: "Icon" },
+          { name: "excellentBackgroundWeak", description: "Weak bg" },
+          { name: "excellentTextDefault", description: "Text" },
+          { name: "excellentIconDefault", description: "Icon" },
         ],
       },
       {
         label: "Neutral (Info Blue)",
         tokens: [
           { name: "neutralBackgroundDefault", description: "Default bg" },
-          { name: "neutralBackgroundWeak",    description: "Weak bg" },
-          { name: "neutralTextDefault",       description: "Text" },
-          { name: "neutralIconDefault",       description: "Icon" },
+          { name: "neutralBackgroundWeak", description: "Weak bg" },
+          { name: "neutralTextDefault", description: "Text" },
+          { name: "neutralIconDefault", description: "Icon" },
         ],
       },
       {
         label: "Info (Purple)",
         tokens: [
           { name: "infoBackgroundDefault", description: "Default bg" },
-          { name: "infoBackgroundWeak",    description: "Weak bg" },
-          { name: "infoTextDefault",       description: "Text" },
-          { name: "infoIconDefault",       description: "Icon" },
+          { name: "infoBackgroundWeak", description: "Weak bg" },
+          { name: "infoTextDefault", description: "Text" },
+          { name: "infoIconDefault", description: "Icon" },
         ],
       },
       {
         label: "Inactive",
         tokens: [
           { name: "inactiveBackgroundDefault", description: "Default bg" },
-          { name: "inactiveBackgroundWeak",    description: "Weak bg" },
-          { name: "inactiveTextDefault",       description: "Text" },
-          { name: "inactiveIconDefault",       description: "Icon" },
+          { name: "inactiveBackgroundWeak", description: "Weak bg" },
+          { name: "inactiveTextDefault", description: "Text" },
+          { name: "inactiveIconDefault", description: "Icon" },
         ],
       },
     ],
   },
   {
     label: "Accents (A–J)",
-    groups: [{
-      label: "Data Visualization",
-      tokens: [
-        { name: "accentADefault", description: "Accent A — Lavender" },
-        { name: "accentAWeak",    description: "Accent A weak" },
-        { name: "accentBDefault", description: "Accent B — Sunset" },
-        { name: "accentBWeak",    description: "Accent B weak" },
-        { name: "accentCDefault", description: "Accent C — Soft salmon" },
-        { name: "accentCWeak",    description: "Accent C weak" },
-        { name: "accentDDefault", description: "Accent D — Deep plum" },
-        { name: "accentDWeak",    description: "Accent D weak" },
-        { name: "accentEDefault", description: "Accent E — Lime" },
-        { name: "accentEWeak",    description: "Accent E weak" },
-        { name: "accentFDefault", description: "Accent F — Deep orange" },
-        { name: "accentFWeak",    description: "Accent F weak" },
-        { name: "accentGDefault", description: "Accent G — Night sky" },
-        { name: "accentGWeak",    description: "Accent G weak" },
-        { name: "accentHDefault", description: "Accent H — Deep navy" },
-        { name: "accentHWeak",    description: "Accent H weak" },
-        { name: "accentIDefault", description: "Accent I — Pink" },
-        { name: "accentIWeak",    description: "Accent I weak" },
-        { name: "accentJDefault", description: "Accent J — Teal" },
-        { name: "accentJWeak",    description: "Accent J weak" },
-      ],
-    }],
+    groups: [
+      {
+        label: "Data Visualization",
+        tokens: [
+          { name: "accentADefault", description: "Accent A — Lavender" },
+          { name: "accentAWeak", description: "Accent A weak" },
+          { name: "accentBDefault", description: "Accent B — Sunset" },
+          { name: "accentBWeak", description: "Accent B weak" },
+          { name: "accentCDefault", description: "Accent C — Soft salmon" },
+          { name: "accentCWeak", description: "Accent C weak" },
+          { name: "accentDDefault", description: "Accent D — Deep plum" },
+          { name: "accentDWeak", description: "Accent D weak" },
+          { name: "accentEDefault", description: "Accent E — Lime" },
+          { name: "accentEWeak", description: "Accent E weak" },
+          { name: "accentFDefault", description: "Accent F — Deep orange" },
+          { name: "accentFWeak", description: "Accent F weak" },
+          { name: "accentGDefault", description: "Accent G — Night sky" },
+          { name: "accentGWeak", description: "Accent G weak" },
+          { name: "accentHDefault", description: "Accent H — Deep navy" },
+          { name: "accentHWeak", description: "Accent H weak" },
+          { name: "accentIDefault", description: "Accent I — Pink" },
+          { name: "accentIWeak", description: "Accent I weak" },
+          { name: "accentJDefault", description: "Accent J — Teal" },
+          { name: "accentJWeak", description: "Accent J weak" },
+        ],
+      },
+    ],
   },
 ];
 
@@ -1238,7 +1829,7 @@ function TokenCopyChip({ text }: { text: string }) {
 
 function TokenRow({ name, description }: TokenEntry) {
   const theme = useTheme();
-  const vars  = theme.palette.vars as unknown as Record<string, string>;
+  const vars = theme.palette.vars as unknown as Record<string, string>;
   const value = vars[name] ?? "";
   return (
     <Box
@@ -1255,11 +1846,26 @@ function TokenRow({ name, description }: TokenEntry) {
     >
       <ColorSwatch value={value} />
       <Box sx={{ flex: 1, minWidth: 0 }}>
-        <Typography sx={{ fontFamily: "monospace", fontSize: "0.72rem", fontWeight: 500, color: "text.primary", lineHeight: 1.3 }}>
+        <Typography
+          sx={{
+            fontFamily: "monospace",
+            fontSize: "0.72rem",
+            fontWeight: 500,
+            color: "text.primary",
+            lineHeight: 1.3,
+          }}
+        >
           {name}
         </Typography>
         {description && (
-          <Typography sx={{ fontSize: "0.62rem", color: "text.primary", opacity: 0.45, lineHeight: 1.2 }}>
+          <Typography
+            sx={{
+              fontSize: "0.62rem",
+              color: "text.primary",
+              opacity: 0.45,
+              lineHeight: 1.2,
+            }}
+          >
             {description}
           </Typography>
         )}
@@ -1272,13 +1878,40 @@ function TokenRow({ name, description }: TokenEntry) {
 function TokenGroupBlock({ group }: { group: TokenGroup }) {
   return (
     <Box sx={{ mb: 2.5 }}>
-      <Typography sx={{ fontSize: "0.65rem", fontWeight: 700, color: "text.primary", opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.08em", mb: 0.5, px: 1 }}>
+      <Typography
+        sx={{
+          fontSize: "0.65rem",
+          fontWeight: 700,
+          color: "text.primary",
+          opacity: 0.4,
+          textTransform: "uppercase",
+          letterSpacing: "0.08em",
+          mb: 0.5,
+          px: 1,
+        }}
+      >
         {group.label}
       </Typography>
-      <Box sx={{ borderRadius: 2, border: "1px solid", borderColor: "divider", bgcolor: "background.paper", overflow: "hidden" }}>
+      <Box
+        sx={{
+          borderRadius: 2,
+          border: "1px solid",
+          borderColor: "divider",
+          bgcolor: "background.paper",
+          overflow: "hidden",
+        }}
+      >
         {group.tokens.map((t, i) => (
           <React.Fragment key={t.name}>
-            {i > 0 && <Box sx={{ borderTop: "1px solid", borderColor: "divider", opacity: 0.5 }} />}
+            {i > 0 && (
+              <Box
+                sx={{
+                  borderTop: "1px solid",
+                  borderColor: "divider",
+                  opacity: 0.5,
+                }}
+              />
+            )}
             <TokenRow {...t} />
           </React.Fragment>
         ))}
@@ -1289,20 +1922,78 @@ function TokenGroupBlock({ group }: { group: TokenGroup }) {
 
 // ─── Token sections ───────────────────────────────────────────────────────────
 
-function C1DPrimitiveRow({ name, value, description }: { name: string; value: string; description?: string }) {
+function C1DPrimitiveRow({
+  name,
+  value,
+  description,
+}: {
+  name: string;
+  value: string;
+  description?: string;
+}) {
   const [copied, setCopied] = useState(false);
   const copy = () => {
-    navigator.clipboard.writeText(value).then(() => { setCopied(true); setTimeout(() => setCopied(false), 1100); });
+    navigator.clipboard.writeText(value).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1100);
+    });
   };
   return (
-    <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, py: 0.6, px: 1, borderRadius: 1, "&:hover": { bgcolor: "action.hover" }, transition: "background-color 0.1s" }}>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        gap: 1.5,
+        py: 0.6,
+        px: 1,
+        borderRadius: 1,
+        "&:hover": { bgcolor: "action.hover" },
+        transition: "background-color 0.1s",
+      }}
+    >
       <ColorSwatch value={value} />
       <Box sx={{ flex: 1, minWidth: 0 }}>
-        <Typography sx={{ fontFamily: "monospace", fontSize: "0.72rem", fontWeight: 500, color: "text.primary", lineHeight: 1.3 }}>{name}</Typography>
-        {description && <Typography sx={{ fontSize: "0.62rem", color: "text.primary", opacity: 0.45, lineHeight: 1.2 }}>{description}</Typography>}
+        <Typography
+          sx={{
+            fontFamily: "monospace",
+            fontSize: "0.72rem",
+            fontWeight: 500,
+            color: "text.primary",
+            lineHeight: 1.3,
+          }}
+        >
+          {name}
+        </Typography>
+        {description && (
+          <Typography
+            sx={{
+              fontSize: "0.62rem",
+              color: "text.primary",
+              opacity: 0.45,
+              lineHeight: 1.2,
+            }}
+          >
+            {description}
+          </Typography>
+        )}
       </Box>
       <Tooltip title={copied ? "Copied!" : "Copy"} placement="top">
-        <Box onClick={copy} sx={{ fontFamily: "monospace", fontSize: "0.66rem", px: 0.75, py: 0.2, borderRadius: "4px", bgcolor: "action.hover", cursor: "pointer", color: "text.primary", opacity: 0.65, "&:hover": { opacity: 1 }, whiteSpace: "nowrap" }}>
+        <Box
+          onClick={copy}
+          sx={{
+            fontFamily: "monospace",
+            fontSize: "0.66rem",
+            px: 0.75,
+            py: 0.2,
+            borderRadius: "4px",
+            bgcolor: "action.hover",
+            cursor: "pointer",
+            color: "text.primary",
+            opacity: 0.65,
+            "&:hover": { opacity: 1 },
+            whiteSpace: "nowrap",
+          }}
+        >
           {value}
         </Box>
       </Tooltip>
@@ -1320,29 +2011,99 @@ function ColorTokensSection() {
     <>
       {isIoc && (
         <Box sx={{ mb: 5 }}>
-          <Box sx={{ mb: 2, p: 1.5, borderRadius: 2, border: "1px solid", borderColor: "primary.main", bgcolor: "action.hover", display: "flex", alignItems: "center", gap: 1.5 }}>
-            <Box sx={{ width: 10, height: 10, borderRadius: "50%", bgcolor: "#00BCEB", flexShrink: 0 }} />
-            <Typography sx={{ fontSize: "0.75rem", fontWeight: 600, color: "primary.main" }}>
+          <Box
+            sx={{
+              mb: 2,
+              p: 1.5,
+              borderRadius: 2,
+              border: "1px solid",
+              borderColor: "primary.main",
+              bgcolor: "action.hover",
+              display: "flex",
+              alignItems: "center",
+              gap: 1.5,
+            }}
+          >
+            <Box
+              sx={{
+                width: 10,
+                height: 10,
+                borderRadius: "50%",
+                bgcolor: "#00BCEB",
+                flexShrink: 0,
+              }}
+            />
+            <Typography
+              sx={{
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                color: "primary.main",
+              }}
+            >
               C1D Dark — Cisco 1 Design primitive tokens
             </Typography>
           </Box>
           {C1D_PRIMITIVE_TOKENS.map((section) => (
             <Box key={section.label} sx={{ mb: 2.5 }}>
-              <Typography sx={{ fontSize: "0.65rem", fontWeight: 700, color: "text.primary", opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.08em", mb: 0.5, px: 1 }}>
+              <Typography
+                sx={{
+                  fontSize: "0.65rem",
+                  fontWeight: 700,
+                  color: "text.primary",
+                  opacity: 0.4,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  mb: 0.5,
+                  px: 1,
+                }}
+              >
                 {section.label}
               </Typography>
-              <Box sx={{ borderRadius: 2, border: "1px solid", borderColor: "divider", bgcolor: "background.paper", overflow: "hidden" }}>
+              <Box
+                sx={{
+                  borderRadius: 2,
+                  border: "1px solid",
+                  borderColor: "divider",
+                  bgcolor: "background.paper",
+                  overflow: "hidden",
+                }}
+              >
                 {section.tokens.map((t, i) => (
                   <React.Fragment key={t.name}>
-                    {i > 0 && <Box sx={{ borderTop: "1px solid", borderColor: "divider", opacity: 0.5 }} />}
+                    {i > 0 && (
+                      <Box
+                        sx={{
+                          borderTop: "1px solid",
+                          borderColor: "divider",
+                          opacity: 0.5,
+                        }}
+                      />
+                    )}
                     <C1DPrimitiveRow {...t} />
                   </React.Fragment>
                 ))}
               </Box>
             </Box>
           ))}
-          <Box sx={{ mx: 0, my: 3, borderTop: "1px solid", borderColor: "divider", opacity: 0.4 }} />
-          <Typography sx={{ fontSize: "0.7rem", fontWeight: 700, color: "primary.main", textTransform: "uppercase", letterSpacing: "0.1em", mb: 2 }}>
+          <Box
+            sx={{
+              mx: 0,
+              my: 3,
+              borderTop: "1px solid",
+              borderColor: "divider",
+              opacity: 0.4,
+            }}
+          />
+          <Typography
+            sx={{
+              fontSize: "0.7rem",
+              fontWeight: 700,
+              color: "primary.main",
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              mb: 2,
+            }}
+          >
             C1D Semantic Tokens
           </Typography>
         </Box>
@@ -1350,7 +2111,17 @@ function ColorTokensSection() {
       {COLOR_TOKEN_SECTIONS.map((section) => (
         <Box key={section.label} sx={{ mb: 4 }}>
           <Typography
-            sx={{ fontSize: "0.7rem", fontWeight: 700, color: "primary.main", textTransform: "uppercase", letterSpacing: "0.1em", mb: 1.5, display: "flex", alignItems: "center", gap: 1 }}
+            sx={{
+              fontSize: "0.7rem",
+              fontWeight: 700,
+              color: "primary.main",
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              mb: 1.5,
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+            }}
           >
             {section.label}
           </Typography>
@@ -1362,35 +2133,142 @@ function ColorTokensSection() {
 
       {/* Glow tokens */}
       <Box sx={{ mb: 4 }}>
-        <Typography sx={{ fontSize: "0.7rem", fontWeight: 700, color: "primary.main", textTransform: "uppercase", letterSpacing: "0.1em", mb: 1.5 }}>
-          Glows
-        </Typography>
-        <Box sx={{ borderRadius: 2, border: "1px solid", borderColor: "divider", bgcolor: "background.paper", overflow: "hidden" }}>
-          {(["glowPrimary","glowSecondary","glowSuccess","glowWarning","glowNegative","glowSevere","glowExcellent","glowNeutral"] as const).map((key, i) => {
+        <Box
+          sx={{ display: "flex", alignItems: "baseline", gap: 1.5, mb: 1.5 }}
+        >
+          <Typography
+            sx={{
+              fontSize: "0.7rem",
+              fontWeight: 700,
+              color: "primary.main",
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+            }}
+          >
+            Glows
+          </Typography>
+          <Typography
+            sx={{ fontSize: "0.6rem", color: "text.secondary", opacity: 0.6 }}
+          >
+            C1D Dark &amp; Light only — "none" on AGNTCY themes
+          </Typography>
+        </Box>
+        {/* Card grid: each token gets its own dark-backdrop card so the glow is always visible */}
+        <Box
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
+            gap: 1.5,
+          }}
+        >
+          {(
+            [
+              "glowPrimary",
+              "glowSecondary",
+              "glowSuccess",
+              "glowWarning",
+              "glowNegative",
+              "glowSevere",
+              "glowExcellent",
+              "glowNeutral",
+            ] as const
+          ).map((key) => {
             const value = (vars as Record<string, string>)[key] ?? "none";
-            const label = key.replace("glow", "").replace(/([A-Z])/g, " $1").trim();
+            const label = key
+              .replace("glow", "")
+              .replace(/([A-Z])/g, " $1")
+              .trim();
             const isNone = value === "none";
-            // Extract the first colour from the box-shadow string for the swatch background
+            // Extract the base colour (strip alpha) for the dot fill
             const colorMatch = value.match(/#[0-9a-fA-F]{6,8}|rgba?\([^)]+\)/);
-            const swatchColor = colorMatch ? colorMatch[0].replace(/[A-Fa-f0-9]{2}$/, "") : "transparent";
+            const baseHex = colorMatch
+              ? colorMatch[0].replace(/[A-Fa-f0-9]{2}$/, "")
+              : "#888";
             return (
-              <React.Fragment key={key}>
-                {i > 0 && <Box sx={{ borderTop: "1px solid", borderColor: "divider", opacity: 0.5 }} />}
-                <Box sx={{ display: "flex", alignItems: "center", gap: 2, px: 2.5, py: 1.5, "&:hover": { bgcolor: "action.hover" } }}>
-                  {/* Glow swatch — a small circle that glows if the token is active */}
-                  <Box sx={{ width: 28, height: 28, borderRadius: "50%", flexShrink: 0, bgcolor: isNone ? "transparent" : swatchColor, border: "1px solid", borderColor: "divider", boxShadow: isNone ? "none" : value }} />
-                  <Box sx={{ flex: 1 }}>
-                    <Typography sx={{ fontFamily: "monospace", fontSize: "0.72rem", fontWeight: 600, color: "text.primary" }}>
+              <Box
+                key={key}
+                sx={{
+                  borderRadius: 2,
+                  border: "1px solid",
+                  borderColor: "divider",
+                  overflow: "hidden",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                {/* Dark stage — always #0d1117 so the glow pops regardless of theme */}
+                <Box
+                  sx={{
+                    bgcolor: "#0d1117",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    height: 80,
+                    position: "relative",
+                  }}
+                >
+                  {isNone ? (
+                    <Typography
+                      sx={{
+                        fontSize: "0.65rem",
+                        color: "#fff",
+                        opacity: 0.2,
+                        fontFamily: "monospace",
+                      }}
+                    >
+                      none
+                    </Typography>
+                  ) : (
+                    /* Dot with the token applied as box-shadow */
+                    <Box
+                      sx={{
+                        width: 18,
+                        height: 18,
+                        borderRadius: "50%",
+                        bgcolor: baseHex,
+                        boxShadow: value,
+                      }}
+                    />
+                  )}
+                </Box>
+                {/* Label row */}
+                <Box
+                  sx={{
+                    px: 1.5,
+                    py: 1,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    bgcolor: "background.paper",
+                  }}
+                >
+                  <Box>
+                    <Typography
+                      sx={{
+                        fontFamily: "monospace",
+                        fontSize: "0.65rem",
+                        fontWeight: 600,
+                        color: "text.primary",
+                      }}
+                    >
                       vars.{key}
                     </Typography>
-                    <Typography sx={{ fontSize: "0.6rem", color: "text.primary", opacity: 0.45, mt: 0.25 }}>{label}</Typography>
+                    <Typography
+                      sx={{
+                        fontSize: "0.58rem",
+                        color: "text.secondary",
+                        opacity: 0.55,
+                        mt: 0.25,
+                      }}
+                    >
+                      {label}
+                    </Typography>
                   </Box>
-                  {isNone
-                    ? <Typography sx={{ fontSize: "0.65rem", color: "text.primary", opacity: 0.3, fontFamily: "monospace" }}>none</Typography>
-                    : <TokenCopyChip text={`theme.palette.vars.${key}`} />
-                  }
+                  {!isNone && (
+                    <TokenCopyChip text={`theme.palette.vars.${key}`} />
+                  )}
                 </Box>
-              </React.Fragment>
+              </Box>
             );
           })}
         </Box>
@@ -1398,23 +2276,93 @@ function ColorTokensSection() {
 
       {/* Gradient tokens */}
       <Box sx={{ mb: 4 }}>
-        <Typography sx={{ fontSize: "0.7rem", fontWeight: 700, color: "primary.main", textTransform: "uppercase", letterSpacing: "0.1em", mb: 1.5 }}>
+        <Typography
+          sx={{
+            fontSize: "0.7rem",
+            fontWeight: 700,
+            color: "primary.main",
+            textTransform: "uppercase",
+            letterSpacing: "0.1em",
+            mb: 1.5,
+          }}
+        >
           Gradients
         </Typography>
-        <Box sx={{ borderRadius: 2, border: "1px solid", borderColor: "divider", bgcolor: "background.paper", overflow: "hidden" }}>
-          {(["gradientPrimary", "gradientSecondary", "gradientNegative", "gradientBrand", ...(isIoc ? ["gradientPage"] : [])] as const).map((key, i) => {
+        <Box
+          sx={{
+            borderRadius: 2,
+            border: "1px solid",
+            borderColor: "divider",
+            bgcolor: "background.paper",
+            overflow: "hidden",
+          }}
+        >
+          {(
+            [
+              "gradientPrimary",
+              "gradientSecondary",
+              "gradientNegative",
+              "gradientBrand",
+              ...(isIoc ? ["gradientPage"] : []),
+            ] as const
+          ).map((key, i) => {
             const value = (vars as Record<string, string>)[key] ?? "";
-            const label = key.replace("gradient", "").replace(/([A-Z])/g, " $1").trim();
+            const label = key
+              .replace("gradient", "")
+              .replace(/([A-Z])/g, " $1")
+              .trim();
             return (
               <React.Fragment key={key}>
-                {i > 0 && <Box sx={{ borderTop: "1px solid", borderColor: "divider", opacity: 0.5 }} />}
-                <Box sx={{ display: "flex", alignItems: "center", gap: 2, px: 2.5, py: 1.5, "&:hover": { bgcolor: "action.hover" } }}>
-                  <Box sx={{ width: 48, height: 28, borderRadius: "6px", background: value, flexShrink: 0, border: "1px solid", borderColor: "divider" }} />
+                {i > 0 && (
+                  <Box
+                    sx={{
+                      borderTop: "1px solid",
+                      borderColor: "divider",
+                      opacity: 0.5,
+                    }}
+                  />
+                )}
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 2,
+                    px: 2.5,
+                    py: 1.5,
+                    "&:hover": { bgcolor: "action.hover" },
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: 48,
+                      height: 28,
+                      borderRadius: "6px",
+                      background: value,
+                      flexShrink: 0,
+                      border: "1px solid",
+                      borderColor: "divider",
+                    }}
+                  />
                   <Box sx={{ flex: 1 }}>
-                    <Typography sx={{ fontFamily: "monospace", fontSize: "0.72rem", fontWeight: 600, color: "text.primary" }}>
+                    <Typography
+                      sx={{
+                        fontFamily: "monospace",
+                        fontSize: "0.72rem",
+                        fontWeight: 600,
+                        color: "text.primary",
+                      }}
+                    >
                       vars.{key}
                     </Typography>
-                    <Typography sx={{ fontSize: "0.6rem", color: "text.primary", opacity: 0.45, mt: 0.25, wordBreak: "break-all" }}>
+                    <Typography
+                      sx={{
+                        fontSize: "0.6rem",
+                        color: "text.primary",
+                        opacity: 0.45,
+                        mt: 0.25,
+                        wordBreak: "break-all",
+                      }}
+                    >
                       {label}
                     </Typography>
                   </Box>
@@ -1430,56 +2378,170 @@ function ColorTokensSection() {
 }
 
 const TYPOGRAPHY_VARIANTS = [
-  { variant: "h1",        meta: "Sharp Sans 700, 60px",   sample: "Aa" },
-  { variant: "h2",        meta: "Sharp Sans 700, 48px",   sample: "Aa" },
-  { variant: "h3",        meta: "Sharp Sans 700, 36px",   sample: "Aa" },
-  { variant: "h4",        meta: "Sharp Sans 700, 24px",   sample: "Heading Four" },
-  { variant: "h5",        meta: "Sharp Sans 700, 20px",   sample: "Heading Five" },
-  { variant: "h6",        meta: "Sharp Sans 700, 18px",   sample: "Heading Six" },
-  { variant: "subtitle1", meta: "Inter 500, 16px",        sample: "Subtitle One" },
-  { variant: "subtitle2", meta: "Inter 500, 14px",        sample: "Subtitle Two" },
-  { variant: "body1",     meta: "Inter 400, 14px",        sample: "Body one — paragraph text for reading." },
-  { variant: "body2",     meta: "Inter 400, 12px",        sample: "Body two — smaller paragraph text." },
-  { variant: "button",    meta: "Inter 600, 12px",        sample: "Button Label" },
-  { variant: "caption",   meta: "Inter 400, 12px",        sample: "Caption label" },
-  { variant: "overline",  meta: "Inter 600, 10px",        sample: "OVERLINE TEXT" },
+  { variant: "h1", meta: "Sharp Sans 700, 60px", sample: "Aa" },
+  { variant: "h2", meta: "Sharp Sans 700, 48px", sample: "Aa" },
+  { variant: "h3", meta: "Sharp Sans 700, 36px", sample: "Aa" },
+  { variant: "h4", meta: "Sharp Sans 700, 24px", sample: "Heading Four" },
+  { variant: "h5", meta: "Sharp Sans 700, 20px", sample: "Heading Five" },
+  { variant: "h6", meta: "Sharp Sans 700, 18px", sample: "Heading Six" },
+  { variant: "subtitle1", meta: "Inter 500, 16px", sample: "Subtitle One" },
+  { variant: "subtitle2", meta: "Inter 500, 14px", sample: "Subtitle Two" },
+  {
+    variant: "body1",
+    meta: "Inter 400, 14px",
+    sample: "Body one — paragraph text for reading.",
+  },
+  {
+    variant: "body2",
+    meta: "Inter 400, 12px",
+    sample: "Body two — smaller paragraph text.",
+  },
+  { variant: "button", meta: "Inter 600, 12px", sample: "Button Label" },
+  { variant: "caption", meta: "Inter 400, 12px", sample: "Caption label" },
+  { variant: "overline", meta: "Inter 600, 10px", sample: "OVERLINE TEXT" },
 ] as const;
 
 function TypographyTokensSection() {
   return (
     <>
-      <Box sx={{ borderRadius: 2, border: "1px solid", borderColor: "divider", bgcolor: "background.paper", overflow: "hidden", mb: 3 }}>
+      <Box
+        sx={{
+          borderRadius: 2,
+          border: "1px solid",
+          borderColor: "divider",
+          bgcolor: "background.paper",
+          overflow: "hidden",
+          mb: 3,
+        }}
+      >
         {TYPOGRAPHY_VARIANTS.map(({ variant, meta, sample }, i) => (
           <React.Fragment key={variant}>
-            {i > 0 && <Box sx={{ borderTop: "1px solid", borderColor: "divider", opacity: 0.5 }} />}
-            <Box sx={{ display: "flex", alignItems: "center", gap: 3, px: 2.5, py: 1.5, "&:hover": { bgcolor: "action.hover" } }}>
+            {i > 0 && (
+              <Box
+                sx={{
+                  borderTop: "1px solid",
+                  borderColor: "divider",
+                  opacity: 0.5,
+                }}
+              />
+            )}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 3,
+                px: 2.5,
+                py: 1.5,
+                "&:hover": { bgcolor: "action.hover" },
+              }}
+            >
               <Box sx={{ width: 240, flexShrink: 0 }}>
-                <Typography variant={variant as any} sx={{ lineHeight: 1.1 }}>{sample}</Typography>
+                <Typography variant={variant as any} sx={{ lineHeight: 1.1 }}>
+                  {sample}
+                </Typography>
               </Box>
               <Box sx={{ flex: 1 }}>
-                <Typography sx={{ fontFamily: "monospace", fontSize: "0.65rem", color: "text.primary", opacity: 0.45 }}>{meta}</Typography>
+                <Typography
+                  sx={{
+                    fontFamily: "monospace",
+                    fontSize: "0.65rem",
+                    color: "text.primary",
+                    opacity: 0.45,
+                  }}
+                >
+                  {meta}
+                </Typography>
               </Box>
               <TokenCopyChip text={variant} />
             </Box>
           </React.Fragment>
         ))}
       </Box>
-      <Typography sx={{ fontSize: "0.65rem", fontWeight: 700, color: "text.primary", opacity: 0.4, textTransform: "uppercase", letterSpacing: "0.08em", mb: 0.75, px: 0.5 }}>
+      <Typography
+        sx={{
+          fontSize: "0.65rem",
+          fontWeight: 700,
+          color: "text.primary",
+          opacity: 0.4,
+          textTransform: "uppercase",
+          letterSpacing: "0.08em",
+          mb: 0.75,
+          px: 0.5,
+        }}
+      >
         Font Families
       </Typography>
-      <Box sx={{ borderRadius: 2, border: "1px solid", borderColor: "divider", bgcolor: "background.paper", overflow: "hidden" }}>
+      <Box
+        sx={{
+          borderRadius: 2,
+          border: "1px solid",
+          borderColor: "divider",
+          bgcolor: "background.paper",
+          overflow: "hidden",
+        }}
+      >
         {[
-          { name: "Inter",      role: "Body, UI, captions, buttons", sample: "The quick brown fox jumps over the lazy dog." },
-          { name: "Sharp Sans", role: "Display headings (H1–H6)",     sample: "Sharp Sans — Heading Display" },
+          {
+            name: "Inter",
+            role: "Body, UI, captions, buttons",
+            sample: "The quick brown fox jumps over the lazy dog.",
+          },
+          {
+            name: "Sharp Sans",
+            role: "Display headings (H1–H6)",
+            sample: "Sharp Sans — Heading Display",
+          },
         ].map(({ name, role, sample }, i) => (
           <React.Fragment key={name}>
-            {i > 0 && <Box sx={{ borderTop: "1px solid", borderColor: "divider", opacity: 0.5 }} />}
-            <Box sx={{ px: 2.5, py: 1.5, "&:hover": { bgcolor: "action.hover" } }}>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 0.5 }}>
-                <Typography sx={{ fontFamily: "monospace", fontSize: "0.72rem", fontWeight: 600, color: "text.primary" }}>{name}</Typography>
-                <Typography sx={{ fontSize: "0.62rem", color: "text.primary", opacity: 0.45 }}>{role}</Typography>
+            {i > 0 && (
+              <Box
+                sx={{
+                  borderTop: "1px solid",
+                  borderColor: "divider",
+                  opacity: 0.5,
+                }}
+              />
+            )}
+            <Box
+              sx={{ px: 2.5, py: 1.5, "&:hover": { bgcolor: "action.hover" } }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1.5,
+                  mb: 0.5,
+                }}
+              >
+                <Typography
+                  sx={{
+                    fontFamily: "monospace",
+                    fontSize: "0.72rem",
+                    fontWeight: 600,
+                    color: "text.primary",
+                  }}
+                >
+                  {name}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: "0.62rem",
+                    color: "text.primary",
+                    opacity: 0.45,
+                  }}
+                >
+                  {role}
+                </Typography>
               </Box>
-              <Typography sx={{ fontSize: "0.85rem", color: "text.primary", opacity: 0.65 }}>{sample}</Typography>
+              <Typography
+                sx={{
+                  fontSize: "0.85rem",
+                  color: "text.primary",
+                  opacity: 0.65,
+                }}
+              >
+                {sample}
+              </Typography>
             </Box>
           </React.Fragment>
         ))}
@@ -1490,17 +2552,77 @@ function TypographyTokensSection() {
 
 function ShadowTokensSection() {
   const theme = useTheme();
-  const labels = ["None", "Lifted — subtle card lift", "Subtle — card resting", "Raised — elevated card", "Floating — modal / dropdown", "Side Drawer — sheet overlay"];
+  const labels = [
+    "None",
+    "Lifted — subtle card lift",
+    "Subtle — card resting",
+    "Raised — elevated card",
+    "Floating — modal / dropdown",
+    "Side Drawer — sheet overlay",
+  ];
   return (
-    <Box sx={{ borderRadius: 2, border: "1px solid", borderColor: "divider", bgcolor: "background.paper", overflow: "hidden" }}>
+    <Box
+      sx={{
+        borderRadius: 2,
+        border: "1px solid",
+        borderColor: "divider",
+        bgcolor: "background.paper",
+        overflow: "hidden",
+      }}
+    >
       {([0, 1, 2, 3, 4, 5] as const).map((level, i) => (
         <React.Fragment key={level}>
-          {i > 0 && <Box sx={{ borderTop: "1px solid", borderColor: "divider", opacity: 0.5 }} />}
-          <Box sx={{ display: "flex", alignItems: "center", gap: 3, px: 2.5, py: 2, "&:hover": { bgcolor: "action.hover" } }}>
-            <Box sx={{ width: 52, height: 36, borderRadius: 1.5, bgcolor: "background.paper", border: "1px solid", borderColor: "divider", boxShadow: theme.shadows[level], flexShrink: 0 }} />
+          {i > 0 && (
+            <Box
+              sx={{
+                borderTop: "1px solid",
+                borderColor: "divider",
+                opacity: 0.5,
+              }}
+            />
+          )}
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: 3,
+              px: 2.5,
+              py: 2,
+              "&:hover": { bgcolor: "action.hover" },
+            }}
+          >
+            <Box
+              sx={{
+                width: 52,
+                height: 36,
+                borderRadius: 1.5,
+                bgcolor: "background.paper",
+                border: "1px solid",
+                borderColor: "divider",
+                boxShadow: theme.shadows[level],
+                flexShrink: 0,
+              }}
+            />
             <Box sx={{ flex: 1 }}>
-              <Typography sx={{ fontFamily: "monospace", fontSize: "0.72rem", fontWeight: 600, color: "text.primary" }}>elevation={level}</Typography>
-              <Typography sx={{ fontSize: "0.62rem", color: "text.primary", opacity: 0.45 }}>{labels[level]}</Typography>
+              <Typography
+                sx={{
+                  fontFamily: "monospace",
+                  fontSize: "0.72rem",
+                  fontWeight: 600,
+                  color: "text.primary",
+                }}
+              >
+                elevation={level}
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: "0.62rem",
+                  color: "text.primary",
+                  opacity: 0.45,
+                }}
+              >
+                {labels[level]}
+              </Typography>
             </Box>
           </Box>
         </React.Fragment>
@@ -1534,35 +2656,100 @@ function SpacingTokensSection() {
 
   return (
     <>
-      <Typography sx={{ fontSize: "0.7rem", color: "text.primary", opacity: 0.5, mb: 2, lineHeight: 1.6 }}>
-        Spacing is based on an 8px base unit — <code>theme.spacing(n)</code> = <code>n × 8px</code>.
-        Use MUI's <code>sx</code> prop shorthand (e.g. <code>p={"{2}"}</code> = 16px) or token aliases below.
+      <Typography
+        sx={{
+          fontSize: "0.7rem",
+          color: "text.primary",
+          opacity: 0.5,
+          mb: 2,
+          lineHeight: 1.6,
+        }}
+      >
+        Spacing is based on an 8px base unit — <code>theme.spacing(n)</code> ={" "}
+        <code>n × 8px</code>. Use MUI's <code>sx</code> prop shorthand (e.g.{" "}
+        <code>p={"{2}"}</code> = 16px) or token aliases below.
       </Typography>
-      <Box sx={{ borderRadius: 2, border: "1px solid", borderColor: "divider", bgcolor: "background.paper", overflow: "hidden" }}>
+      <Box
+        sx={{
+          borderRadius: 2,
+          border: "1px solid",
+          borderColor: "divider",
+          bgcolor: "background.paper",
+          overflow: "hidden",
+        }}
+      >
         {steps.map((step, i) => {
           const px = theme.spacing(step);
           const alias = aliases[step];
           const barWidth = Math.min((step / 12) * 100, 100);
           return (
             <React.Fragment key={step}>
-              {i > 0 && <Box sx={{ borderTop: "1px solid", borderColor: "divider", opacity: 0.4 }} />}
-              <Box sx={{ display: "flex", alignItems: "center", gap: 2, px: 2.5, py: 1.25, "&:hover": { bgcolor: "action.hover" } }}>
+              {i > 0 && (
+                <Box
+                  sx={{
+                    borderTop: "1px solid",
+                    borderColor: "divider",
+                    opacity: 0.4,
+                  }}
+                />
+              )}
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 2,
+                  px: 2.5,
+                  py: 1.25,
+                  "&:hover": { bgcolor: "action.hover" },
+                }}
+              >
                 {/* Visual bar */}
                 <Box sx={{ width: 120, flexShrink: 0 }}>
-                  <Box sx={{ height: 10, borderRadius: "100px", bgcolor: "primary.main", width: `${Math.max(barWidth, step === 0 ? 0 : 2)}%`, opacity: 0.75, minWidth: step === 0 ? 0 : 3 }} />
+                  <Box
+                    sx={{
+                      height: 10,
+                      borderRadius: "100px",
+                      bgcolor: "primary.main",
+                      width: `${Math.max(barWidth, step === 0 ? 0 : 2)}%`,
+                      opacity: 0.75,
+                      minWidth: step === 0 ? 0 : 3,
+                    }}
+                  />
                 </Box>
                 {/* Token name */}
                 <Box sx={{ width: 60, flexShrink: 0 }}>
-                  <Typography sx={{ fontFamily: "monospace", fontSize: "0.72rem", fontWeight: 600, color: "text.primary" }}>
+                  <Typography
+                    sx={{
+                      fontFamily: "monospace",
+                      fontSize: "0.72rem",
+                      fontWeight: 600,
+                      color: "text.primary",
+                    }}
+                  >
                     spacing({step})
                   </Typography>
                 </Box>
                 {/* Alias */}
                 <Box sx={{ width: 48, flexShrink: 0 }}>
-                  <Typography sx={{ fontSize: "0.65rem", color: "primary.main", opacity: 0.8 }}>{alias}</Typography>
+                  <Typography
+                    sx={{
+                      fontSize: "0.65rem",
+                      color: "primary.main",
+                      opacity: 0.8,
+                    }}
+                  >
+                    {alias}
+                  </Typography>
                 </Box>
                 {/* px value */}
-                <Typography sx={{ fontFamily: "monospace", fontSize: "0.65rem", color: "text.primary", opacity: 0.5 }}>
+                <Typography
+                  sx={{
+                    fontFamily: "monospace",
+                    fontSize: "0.65rem",
+                    color: "text.primary",
+                    opacity: 0.5,
+                  }}
+                >
                   {px}
                 </Typography>
                 <Box sx={{ flex: 1 }} />
@@ -1579,43 +2766,112 @@ function SpacingTokensSection() {
 // ─── Dashboard template ───────────────────────────────────────────────────────
 
 const DASH_EVENTS = [
-  { id: "EVT-001", time: "09:41", type: "Brute Force",       severity: Severity.CRITICAL, source: "192.168.1.45",   tagStatus: TagStatus.Negative   },
-  { id: "EVT-002", time: "09:38", type: "Port Scan",         severity: Severity.HIGH,     source: "10.0.0.120",    tagStatus: TagStatus.Warning     },
-  { id: "EVT-003", time: "09:22", type: "Malware Detected",  severity: Severity.CRITICAL, source: "WS-2847",       tagStatus: TagStatus.Info        },
-  { id: "EVT-004", time: "09:15", type: "Failed Auth ×12",   severity: Severity.MEDIUM,   source: "AD-Server",     tagStatus: TagStatus.Positive    },
-  { id: "EVT-005", time: "08:54", type: "Data Exfiltration", severity: Severity.HIGH,     source: "192.168.5.99",  tagStatus: TagStatus.Negative    },
-  { id: "EVT-006", time: "08:30", type: "Config Change",     severity: Severity.LOW,      source: "Admin-01",      tagStatus: TagStatus.Excellent   },
-  { id: "EVT-007", time: "08:12", type: "Unusual Login",     severity: Severity.MEDIUM,   source: "User: j.smith", tagStatus: TagStatus.Warning     },
+  {
+    id: "EVT-001",
+    time: "09:41",
+    type: "Brute Force",
+    severity: Severity.CRITICAL,
+    source: "192.168.1.45",
+    tagStatus: TagStatus.Negative,
+  },
+  {
+    id: "EVT-002",
+    time: "09:38",
+    type: "Port Scan",
+    severity: Severity.HIGH,
+    source: "10.0.0.120",
+    tagStatus: TagStatus.Warning,
+  },
+  {
+    id: "EVT-003",
+    time: "09:22",
+    type: "Malware Detected",
+    severity: Severity.CRITICAL,
+    source: "WS-2847",
+    tagStatus: TagStatus.Info,
+  },
+  {
+    id: "EVT-004",
+    time: "09:15",
+    type: "Failed Auth ×12",
+    severity: Severity.MEDIUM,
+    source: "AD-Server",
+    tagStatus: TagStatus.Positive,
+  },
+  {
+    id: "EVT-005",
+    time: "08:54",
+    type: "Data Exfiltration",
+    severity: Severity.HIGH,
+    source: "192.168.5.99",
+    tagStatus: TagStatus.Negative,
+  },
+  {
+    id: "EVT-006",
+    time: "08:30",
+    type: "Config Change",
+    severity: Severity.LOW,
+    source: "Admin-01",
+    tagStatus: TagStatus.Excellent,
+  },
+  {
+    id: "EVT-007",
+    time: "08:12",
+    type: "Unusual Login",
+    severity: Severity.MEDIUM,
+    source: "User: j.smith",
+    tagStatus: TagStatus.Warning,
+  },
 ];
 
 const DASH_STATUS_LABEL: Record<string, string> = {
-  [TagStatus.Negative]:  "Active",
-  [TagStatus.Warning]:   "Investigating",
-  [TagStatus.Info]:      "Contained",
-  [TagStatus.Positive]:  "Resolved",
+  [TagStatus.Negative]: "Active",
+  [TagStatus.Warning]: "Investigating",
+  [TagStatus.Info]: "Contained",
+  [TagStatus.Positive]: "Resolved",
   [TagStatus.Excellent]: "Resolved",
 };
 
 const DASH_KPI = [
-  { label: "Active Threats",   value: "12",    sub: "↑ 3 since yesterday", subColor: "error.main"     },
-  { label: "Compliance",       value: "98.2%", sub: "↑ 0.4% this week",    subColor: "success.main"   },
-  { label: "Endpoints Online", value: "847",   sub: "of 852 total",         subColor: "text.primary"   },
-  { label: "Open Incidents",   value: "3",     sub: "2 high priority",      subColor: "warning.main"   },
+  {
+    label: "Active Threats",
+    value: "12",
+    sub: "↑ 3 since yesterday",
+    subColor: "error.main",
+  },
+  {
+    label: "Compliance",
+    value: "98.2%",
+    sub: "↑ 0.4% this week",
+    subColor: "success.main",
+  },
+  {
+    label: "Endpoints Online",
+    value: "847",
+    sub: "of 852 total",
+    subColor: "text.primary",
+  },
+  {
+    label: "Open Incidents",
+    value: "3",
+    sub: "2 high priority",
+    subColor: "warning.main",
+  },
 ];
 
 const DASH_BAR = [
-  { name: "Brute Force",  value: 28, color: "#ef4444" },
-  { name: "Malware",      value: 19, color: "#f97316" },
-  { name: "Phishing",     value: 14, color: "#f59e0b" },
-  { name: "Port Scan",    value: 11, color: "#3b82f6" },
-  { name: "Exfiltration", value: 7,  color: "#8b5cf6" },
+  { name: "Brute Force", value: 28, color: "#ef4444" },
+  { name: "Malware", value: 19, color: "#f97316" },
+  { name: "Phishing", value: 14, color: "#f59e0b" },
+  { name: "Port Scan", value: 11, color: "#3b82f6" },
+  { name: "Exfiltration", value: 7, color: "#8b5cf6" },
 ];
 
 const DASH_COMPLIANCE = [
-  { label: "Patch Compliance", value: 94  },
-  { label: "MFA Coverage",     value: 88  },
-  { label: "Encryption",       value: 100 },
-  { label: "Access Reviews",   value: 76  },
+  { label: "Patch Compliance", value: 94 },
+  { label: "MFA Coverage", value: 88 },
+  { label: "Encryption", value: 100 },
+  { label: "Access Reviews", value: 76 },
 ];
 
 const DASH_RISK_LINE = [
@@ -1628,20 +2884,29 @@ const DASH_RISK_LINE = [
   { date: "2024-01-14", Risk: 29 },
 ];
 const DASH_RISK_CATEGORIES = [{ name: "Risk", color: "#00BCEB" }];
-const DASH_GAUGE_DATA = [{ name: "Security Score", value: 85, color: "#00BCEB" }];
-
+const DASH_GAUGE_DATA = [
+  { name: "Security Score", value: 85, color: "#00BCEB" },
+];
 
 // ── Dashboard (same content across all themes, look & feel from active theme) ──
 /** Renders a Card in non-C1D themes; a spacious transparent Box in C1D. */
-function DashCard({ children, sx = {} }: { children: React.ReactNode; sx?: object }) {
+function DashCard({
+  children,
+  sx = {},
+}: {
+  children: React.ReactNode;
+  sx?: object;
+}) {
   const theme = useTheme();
   const isIoc = theme.palette.primary.main === "#00BCEB";
   if (isIoc) {
     return (
-      <Box sx={{
-        ...sx,
-        "& .MuiCardContent-root": { p: 0 },
-      }}>
+      <Box
+        sx={{
+          ...sx,
+          "& .MuiCardContent-root": { p: 0 },
+        }}
+      >
         <Box sx={{ px: 1, py: 2 }}>{children}</Box>
       </Box>
     );
@@ -1657,17 +2922,38 @@ function DashboardSection() {
   return (
     <>
       {/* ── KPI row ── */}
-      <Stack direction="row" spacing={isIoc ? 3 : 2} flexWrap="wrap" useFlexGap sx={{ mb: isIoc ? 4 : 3 }}>
+      <Stack
+        direction="row"
+        spacing={isIoc ? 3 : 2}
+        flexWrap="wrap"
+        useFlexGap
+        sx={{ mb: isIoc ? 4 : 3 }}
+      >
         {DASH_KPI.map(({ label, value, sub, subColor }) => (
           <DashCard key={label} sx={{ flex: "1 1 180px", minWidth: 160 }}>
             <CardContent>
-              <Typography sx={{ fontSize: "0.7rem", fontWeight: 700, color: "text.primary", textTransform: "uppercase", letterSpacing: "0.08em", mb: 0.5, opacity: 0.6 }}>
+              <Typography
+                sx={{
+                  fontSize: "0.7rem",
+                  fontWeight: 700,
+                  color: "text.primary",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  mb: 0.5,
+                  opacity: 0.6,
+                }}
+              >
                 {label}
               </Typography>
-              <Typography variant="h4" sx={{ fontWeight: 700, lineHeight: 1.1, mb: 0.5 }}>
+              <Typography
+                variant="h4"
+                sx={{ fontWeight: 700, lineHeight: 1.1, mb: 0.5 }}
+              >
                 {value}
               </Typography>
-              <Typography sx={{ fontSize: "0.72rem", fontWeight: 600, color: subColor }}>
+              <Typography
+                sx={{ fontSize: "0.72rem", fontWeight: 600, color: subColor }}
+              >
                 {sub}
               </Typography>
             </CardContent>
@@ -1676,21 +2962,36 @@ function DashboardSection() {
       </Stack>
 
       {/* ── Middle row: bar chart + compliance + gauge ── */}
-      <Stack direction="row" spacing={isIoc ? 3 : 2} sx={{ mb: isIoc ? 4 : 3 }} flexWrap="wrap" useFlexGap>
+      <Stack
+        direction="row"
+        spacing={isIoc ? 3 : 2}
+        sx={{ mb: isIoc ? 4 : 3 }}
+        flexWrap="wrap"
+        useFlexGap
+      >
         <DashCard sx={{ flex: "1 1 0", minWidth: 0 }}>
           <CardContent>
-            <Typography sx={{ fontSize: "0.78rem", fontWeight: 600, mb: isIoc ? 3 : 2, color: "text.primary" }}>
+            <Typography
+              sx={{
+                fontSize: "0.78rem",
+                fontWeight: 600,
+                mb: isIoc ? 3 : 2,
+                color: "text.primary",
+              }}
+            >
               Threat Distribution
             </Typography>
-            <Box sx={{
-              height: 200,
-              ...(isIoc && {
-                "& svg": { overflow: "visible !important" },
-                "& .recharts-bar-rectangle path": {
-                  filter: "drop-shadow(0 0 4px rgba(0,188,235,0.35))",
-                },
-              }),
-            }}>
+            <Box
+              sx={{
+                height: 200,
+                ...(isIoc && {
+                  "& svg": { overflow: "visible !important" },
+                  "& .recharts-bar-rectangle path": {
+                    filter: "drop-shadow(0 0 4px rgba(0,188,235,0.35))",
+                  },
+                }),
+              }}
+            >
               <SectionErrorBoundary name="DashboardBarChart">
                 <BarChart data={DASH_BAR} />
               </SectionErrorBoundary>
@@ -1700,27 +3001,37 @@ function DashboardSection() {
 
         <DashCard sx={{ flex: "1 1 0", minWidth: 0 }}>
           <CardContent>
-            <Typography sx={{ fontSize: "0.78rem", fontWeight: 600, mb: isIoc ? 3 : 2, color: "text.primary" }}>
+            <Typography
+              sx={{
+                fontSize: "0.78rem",
+                fontWeight: 600,
+                mb: isIoc ? 3 : 2,
+                color: "text.primary",
+              }}
+            >
               Compliance Overview
             </Typography>
-            <Box sx={{
-              height: 200,
-              ...(isIoc && {
-                "& [data-compliance-bar]": {
-                  filter: "drop-shadow(0 0 4px currentColor)",
-                },
-              }),
-            }}>
+            <Box
+              sx={{
+                height: 200,
+                ...(isIoc && {
+                  "& [data-compliance-bar]": {
+                    filter: "drop-shadow(0 0 4px currentColor)",
+                  },
+                }),
+              }}
+            >
               <SectionErrorBoundary name="ComplianceHorizontalBar">
                 <HorizontalBarChart
                   data={DASH_COMPLIANCE.map(({ label, value }) => ({
                     name: label,
                     value,
-                    color: value >= 90
-                      ? theme.palette.success.main
-                      : value >= 80
-                      ? theme.palette.warning.main
-                      : theme.palette.error.main,
+                    color:
+                      value >= 90
+                        ? theme.palette.success.main
+                        : value >= 80
+                          ? theme.palette.warning.main
+                          : theme.palette.error.main,
                   }))}
                 />
               </SectionErrorBoundary>
@@ -1728,9 +3039,25 @@ function DashboardSection() {
           </CardContent>
         </DashCard>
 
-        <DashCard sx={{ flex: "1 1 0", minWidth: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+        <DashCard
+          sx={{
+            flex: "1 1 0",
+            minWidth: 0,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <CardContent sx={{ textAlign: "center", width: "100%" }}>
-            <Typography sx={{ fontSize: "0.78rem", fontWeight: 600, mb: 1, color: "text.primary" }}>
+            <Typography
+              sx={{
+                fontSize: "0.78rem",
+                fontWeight: 600,
+                mb: 1,
+                color: "text.primary",
+              }}
+            >
               Security Score
             </Typography>
             <Box sx={{ height: 160 }}>
@@ -1745,47 +3072,117 @@ function DashboardSection() {
       {/* ── Risk trend row ── */}
       <DashCard sx={{ mb: isIoc ? 4 : 3 }}>
         <CardContent>
-          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", mb: isIoc ? 3 : 2 }}>
-            <Typography sx={{ fontSize: "0.78rem", fontWeight: 600, color: "text.primary" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              mb: isIoc ? 3 : 2,
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: "0.78rem",
+                fontWeight: 600,
+                color: "text.primary",
+              }}
+            >
               Risk Trends — 7-Day Score
             </Typography>
-            <Typography sx={{ fontSize: "0.72rem", color: "success.main", fontWeight: 600 }}>
+            <Typography
+              sx={{
+                fontSize: "0.72rem",
+                color: "success.main",
+                fontWeight: 600,
+              }}
+            >
               ↓ 13 pts improved
             </Typography>
           </Box>
-          <Box sx={{ height: 160, ...(isIoc && { "& svg": { overflow: "visible !important" } }) }}>
+          <Box
+            sx={{
+              height: 160,
+              ...(isIoc && { "& svg": { overflow: "visible !important" } }),
+            }}
+          >
             <SectionErrorBoundary name="DashboardLineChart">
               {isIoc ? (
                 /* C1D: filled area chart with gradient + glow */
                 <RRC width="100%" height="100%">
                   <defs>
-                    <linearGradient id="riskAreaGradient" x1="0" y1="0" x2="0" y2="1">
+                    <linearGradient
+                      id="riskAreaGradient"
+                      x1="0"
+                      y1="0"
+                      x2="0"
+                      y2="1"
+                    >
                       {/* Matches reference: solid deep-blue fill fading to near-transparent navy */}
-                      <stop offset="0%"  stopColor="rgba(30,100,220,0.75)" />
+                      <stop offset="0%" stopColor="rgba(30,100,220,0.75)" />
                       <stop offset="60%" stopColor="rgba(10,40,120,0.55)" />
                       <stop offset="100%" stopColor="rgba(5,15,50,0.20)" />
                     </linearGradient>
                   </defs>
-                  <AreaChart data={DASH_RISK_LINE} margin={{ top: 10, right: 8, bottom: 0, left: -10 }}>
+                  <AreaChart
+                    data={DASH_RISK_LINE}
+                    margin={{ top: 10, right: 8, bottom: 0, left: -10 }}
+                  >
                     <RXAxis
                       dataKey="date"
-                      tickFormatter={(v: string) => ["Mon","Tues","Wed","Thur","Fri","Sat","Sun"][new Date(v).getDay() === 0 ? 6 : new Date(v).getDay() - 1] ?? v.slice(5)}
+                      tickFormatter={(v: string) =>
+                        ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"][
+                          new Date(v).getDay() === 0
+                            ? 6
+                            : new Date(v).getDay() - 1
+                        ] ?? v.slice(5)
+                      }
                       tick={{ fontSize: 10, fill: "rgba(255,255,255,0.38)" }}
-                      axisLine={false} tickLine={false}
+                      axisLine={false}
+                      tickLine={false}
                     />
-                    <RYAxis domain={["dataMin - 3", "dataMax + 3"]} tick={{ fontSize: 10, fill: "rgba(255,255,255,0.38)" }} axisLine={false} tickLine={false} width={28} />
-                    <RGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+                    <RYAxis
+                      domain={["dataMin - 3", "dataMax + 3"]}
+                      tick={{ fontSize: 10, fill: "rgba(255,255,255,0.38)" }}
+                      axisLine={false}
+                      tickLine={false}
+                      width={28}
+                    />
+                    <RGrid
+                      strokeDasharray="3 3"
+                      stroke="rgba(255,255,255,0.05)"
+                      vertical={false}
+                    />
                     <RTooltip
-                      contentStyle={{ backgroundColor: "#0C1B35", border: "1px solid rgba(0,188,235,0.25)", borderRadius: 8, fontSize: 12, color: "#fff" }}
-                      cursor={{ stroke: "rgba(0,188,235,0.3)", strokeWidth: 1, strokeDasharray: "4 3" }}
+                      contentStyle={{
+                        backgroundColor: "#0C1B35",
+                        border: "1px solid rgba(0,188,235,0.25)",
+                        borderRadius: 8,
+                        fontSize: 12,
+                        color: "#fff",
+                      }}
+                      cursor={{
+                        stroke: "rgba(0,188,235,0.3)",
+                        strokeWidth: 1,
+                        strokeDasharray: "4 3",
+                      }}
                     />
                     <Area
-                      type="monotone" dataKey="Risk"
-                      stroke="#40D0F4" strokeWidth={2.5}
+                      type="monotone"
+                      dataKey="Risk"
+                      stroke="#40D0F4"
+                      strokeWidth={2.5}
                       fill="url(#riskAreaGradient)"
                       dot={false}
-                      activeDot={{ r: 4, fill: "#40D0F4", stroke: "rgba(64,208,244,0.45)", strokeWidth: 8 }}
-                      style={{ filter: "drop-shadow(0 0 5px rgba(0,188,235,0.8)) drop-shadow(0 0 12px rgba(0,188,235,0.4))" }}
+                      activeDot={{
+                        r: 4,
+                        fill: "#40D0F4",
+                        stroke: "rgba(64,208,244,0.45)",
+                        strokeWidth: 8,
+                      }}
+                      style={{
+                        filter:
+                          "drop-shadow(0 0 5px rgba(0,188,235,0.8)) drop-shadow(0 0 12px rgba(0,188,235,0.4))",
+                      }}
                     />
                   </AreaChart>
                 </RRC>
@@ -1793,7 +3190,10 @@ function DashboardSection() {
                 <LineChart
                   data={DASH_RISK_LINE}
                   categories={DASH_RISK_CATEGORIES}
-                  xAxisProps={{ dataKey: "date", tickFormatter: (v: string) => v.slice(5) }}
+                  xAxisProps={{
+                    dataKey: "date",
+                    tickFormatter: (v: string) => v.slice(5),
+                  }}
                 />
               )}
             </SectionErrorBoundary>
@@ -1804,21 +3204,58 @@ function DashboardSection() {
       {/* ── Security events table ── */}
       <DashCard>
         <CardContent>
-          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", mb: isIoc ? 3 : 2 }}>
-            <Typography sx={{ fontSize: "0.78rem", fontWeight: 600, color: "text.primary" }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              mb: isIoc ? 3 : 2,
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: "0.78rem",
+                fontWeight: 600,
+                color: "text.primary",
+              }}
+            >
               Security Events
             </Typography>
             <Stack direction="row" spacing={1}>
-              <Button size="small" variant="outlined">Export</Button>
-              <Button size="small" variant="primary">View All</Button>
+              <Button size="small" variant="outlined">
+                Export
+              </Button>
+              <Button size="small" variant="primary">
+                View All
+              </Button>
             </Stack>
           </Box>
           <TableContainer>
             <Table size="small">
               <TableHead>
                 <TableRow>
-                  {["Event ID", "Time", "Type", "Severity", "Source", "Status", "Action"].map((h) => (
-                    <TableCell key={h} sx={{ fontSize: "0.68rem", fontWeight: 700, color: "text.primary", opacity: 0.6, textTransform: "uppercase", letterSpacing: "0.06em", borderColor: "divider", py: 1 }}>
+                  {[
+                    "Event ID",
+                    "Time",
+                    "Type",
+                    "Severity",
+                    "Source",
+                    "Status",
+                    "Action",
+                  ].map((h) => (
+                    <TableCell
+                      key={h}
+                      sx={{
+                        fontSize: "0.68rem",
+                        fontWeight: 700,
+                        color: "text.primary",
+                        opacity: 0.6,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.06em",
+                        borderColor: "divider",
+                        py: 1,
+                      }}
+                    >
                       {h}
                     </TableCell>
                   ))}
@@ -1833,23 +3270,64 @@ function DashboardSection() {
                       onClick={() => setSelectedRow(isSelected ? null : row.id)}
                       sx={{
                         cursor: "pointer",
-                        bgcolor: isSelected ? theme.palette.vars.baseBackgroundMedium : "transparent",
-                        "&:hover": { bgcolor: theme.palette.vars.baseBackgroundHover },
-                        "& td": { borderColor: "divider", py: 1, fontSize: "0.78rem" },
+                        bgcolor: isSelected
+                          ? theme.palette.vars.baseBackgroundMedium
+                          : "transparent",
+                        "&:hover": {
+                          bgcolor: theme.palette.vars.baseBackgroundHover,
+                        },
+                        "& td": {
+                          borderColor: "divider",
+                          py: 1,
+                          fontSize: "0.78rem",
+                        },
                       }}
                     >
-                      <TableCell sx={{ color: "text.primary", opacity: 0.7, fontWeight: 600 }}>{row.id}</TableCell>
-                      <TableCell sx={{ color: "text.primary", opacity: 0.55, whiteSpace: "nowrap" }}>{row.time}</TableCell>
-                      <TableCell sx={{ color: "text.primary" }}>{row.type}</TableCell>
+                      <TableCell
+                        sx={{
+                          color: "text.primary",
+                          opacity: 0.7,
+                          fontWeight: 600,
+                        }}
+                      >
+                        {row.id}
+                      </TableCell>
+                      <TableCell
+                        sx={{
+                          color: "text.primary",
+                          opacity: 0.55,
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        {row.time}
+                      </TableCell>
+                      <TableCell sx={{ color: "text.primary" }}>
+                        {row.type}
+                      </TableCell>
                       <TableCell>
                         <SeverityBadge severity={row.severity} />
                       </TableCell>
-                      <TableCell sx={{ color: "text.primary", opacity: 0.65 }}>{row.source}</TableCell>
-                      <TableCell>
-                        <Tag status={row.tagStatus} size={"small" as any}>{DASH_STATUS_LABEL[row.tagStatus]}</Tag>
+                      <TableCell sx={{ color: "text.primary", opacity: 0.65 }}>
+                        {row.source}
                       </TableCell>
                       <TableCell>
-                        <Button size="small" variant="tertariary" sx={{ fontSize: "0.68rem", py: 0, minWidth: 0, px: 1 }}>Review</Button>
+                        <Tag status={row.tagStatus} size={"small" as any}>
+                          {DASH_STATUS_LABEL[row.tagStatus]}
+                        </Tag>
+                      </TableCell>
+                      <TableCell>
+                        <Button
+                          size="small"
+                          variant="tertariary"
+                          sx={{
+                            fontSize: "0.68rem",
+                            py: 0,
+                            minWidth: 0,
+                            px: 1,
+                          }}
+                        >
+                          Review
+                        </Button>
                       </TableCell>
                     </TableRow>
                   );
@@ -1865,29 +3343,96 @@ function DashboardSection() {
 
 // ─── Category renderer ────────────────────────────────────────────────────────
 
-const SECTION_META: Record<string, { title: string; description: string; Component: React.FC; wide?: boolean }> = {
-  buttons:    { title: "Buttons & Actions",  description: "Interactive controls for triggering actions. All variants, sizes, colors, and specialized button types.", Component: ButtonsSection },
-  forms:      { title: "Form Controls",      description: "Input components for collecting user data — switches, checkboxes, sliders, selects, and text fields.", Component: FormsSection },
-  data:       { title: "Data Display",       description: "Components for presenting information: typography, badges, severity indicators, tags, and avatars.", Component: DataDisplaySection },
-  navigation: { title: "Navigation",         description: "Components that help users move through the interface: tabs, breadcrumbs, pagination, and links.", Component: NavigationSection },
-  feedback:   { title: "Feedback & Status",  description: "Loading states, alerts, notifications, and collapsible content to communicate system status.", Component: FeedbackSection },
-  layout:     { title: "Layout & Structure", description: "Structural components for organizing content on the page.", Component: LayoutSection },
-  charts:     { title: "Charts",             description: "Data visualization components built on Recharts. All charts adapt to the active theme.", Component: ChartsSection },
-  dashboard:  { title: "Dashboard Template", description: "Security operations dashboard — action cards, activity timeline, status gauge, and risk trends. Fully theme-aware.", Component: DashboardSection, wide: true },
-  color:      { title: "Color Tokens",       description: "Semantic color tokens — base, brand, control, interactive, status, and accent colors for both AGNTCY light and dark themes.", Component: ColorTokensSection },
-  typography: { title: "Typography",         description: "Type scale: font families, sizes, weights, and variants across all text styles.", Component: TypographyTokensSection },
-  shadows:    { title: "Shadows",            description: "Elevation shadow levels from flat (0) to side-drawer (5).", Component: ShadowTokensSection },
-  spacing:    { title: "Spacing",            description: "8px base-unit spacing scale — from 0 to 24 steps, with semantic aliases and px values.", Component: SpacingTokensSection },
+const SECTION_META: Record<
+  string,
+  { title: string; description: string; Component: React.FC; wide?: boolean }
+> = {
+  buttons: {
+    title: "Buttons & Actions",
+    description:
+      "Interactive controls for triggering actions. All variants, sizes, colors, and specialized button types.",
+    Component: ButtonsSection,
+  },
+  forms: {
+    title: "Form Controls",
+    description:
+      "Input components for collecting user data — switches, checkboxes, sliders, selects, and text fields.",
+    Component: FormsSection,
+  },
+  data: {
+    title: "Data Display",
+    description:
+      "Components for presenting information: typography, badges, severity indicators, tags, and avatars.",
+    Component: DataDisplaySection,
+  },
+  navigation: {
+    title: "Navigation",
+    description:
+      "Components that help users move through the interface: tabs, breadcrumbs, pagination, and links.",
+    Component: NavigationSection,
+  },
+  feedback: {
+    title: "Feedback & Status",
+    description:
+      "Loading states, alerts, notifications, and collapsible content to communicate system status.",
+    Component: FeedbackSection,
+  },
+  layout: {
+    title: "Layout & Structure",
+    description: "Structural components for organizing content on the page.",
+    Component: LayoutSection,
+  },
+  charts: {
+    title: "Charts",
+    description:
+      "Data visualization components built on Recharts. All charts adapt to the active theme.",
+    Component: ChartsSection,
+  },
+  dashboard: {
+    title: "Dashboard Template",
+    description:
+      "Security operations dashboard — action cards, activity timeline, status gauge, and risk trends. Fully theme-aware.",
+    Component: DashboardSection,
+    wide: true,
+  },
+  color: {
+    title: "Color Tokens",
+    description:
+      "Semantic color tokens — base, brand, control, interactive, status, and accent colors for both AGNTCY light and dark themes.",
+    Component: ColorTokensSection,
+  },
+  typography: {
+    title: "Typography",
+    description:
+      "Type scale: font families, sizes, weights, and variants across all text styles.",
+    Component: TypographyTokensSection,
+  },
+  shadows: {
+    title: "Shadows",
+    description: "Elevation shadow levels from flat (0) to side-drawer (5).",
+    Component: ShadowTokensSection,
+  },
+  spacing: {
+    title: "Spacing",
+    description:
+      "8px base-unit spacing scale — from 0 to 24 steps, with semantic aliases and px values.",
+    Component: SpacingTokensSection,
+  },
 };
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function ComponentDocs() {
-  const urlTheme = new URLSearchParams(window.location.search).get("theme") as DocThemeMode | null;
+  const urlTheme = new URLSearchParams(window.location.search).get(
+    "theme",
+  ) as DocThemeMode | null;
+  const urlSection = new URLSearchParams(window.location.search).get("section");
   const [activeTheme, setActiveTheme] = useState<DocThemeMode>(
-    urlTheme && THEMES.some((t) => t.value === urlTheme) ? urlTheme : "light"
+    urlTheme && THEMES.some((t) => t.value === urlTheme) ? urlTheme : "light",
   );
-  const [activeCategory, setActiveCategory] = useState("buttons");
+  const [activeCategory, setActiveCategory] = useState(
+    urlSection && SECTION_META[urlSection] ? urlSection : "buttons",
+  );
   const mainRef = useRef<HTMLDivElement>(null);
 
   const { title, description, Component, wide } = SECTION_META[activeCategory];
@@ -1897,24 +3442,34 @@ export default function ComponentDocs() {
     if (mainRef.current) mainRef.current.scrollTop = 0;
   };
 
-  const isC1D     = activeTheme === "ioc" || activeTheme === "ioc-light";
-  const isIoc     = isC1D; // alias used throughout for C1D-specific layout/spacing
+  const isC1D = activeTheme === "ioc" || activeTheme === "ioc-light";
+  const isIoc = isC1D; // alias used throughout for C1D-specific layout/spacing
   const isIocDark = activeTheme === "ioc"; // dark-only: gradient backdrop, glows
 
   // Nav item style — C1D: full-width teal-tinted rounded highlight, no border
   const navItemSx = (isActive: boolean) =>
     isIoc
       ? {
-          display: "flex", alignItems: "center", gap: 1.5,
-          width: "calc(100% - 16px)", mx: 1,
-          px: 1.5, py: 0.85,
-          border: "none", outline: "none", cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          gap: 1.5,
+          width: "calc(100% - 16px)",
+          mx: 1,
+          px: 1.5,
+          py: 0.85,
+          border: "none",
+          outline: "none",
+          cursor: "pointer",
           borderRadius: "8px",
           bgcolor: isActive ? "rgba(0,188,235,0.12)" : "transparent",
           // Dark C1D: light text on dark bg. Light C1D: dark navy/teal on white.
           color: isActive
-            ? (isIocDark ? "#00BCEB" : "#006B8A")
-            : (isIocDark ? "#C8D6E8" : "#0A1628"),
+            ? isIocDark
+              ? "#00BCEB"
+              : "#006B8A"
+            : isIocDark
+              ? "#C8D6E8"
+              : "#0A1628",
           transition: "all 0.15s",
           "&:hover": {
             bgcolor: isActive ? "rgba(0,188,235,0.16)" : "rgba(0,188,235,0.06)",
@@ -1922,8 +3477,15 @@ export default function ComponentDocs() {
           },
         }
       : {
-          display: "flex", alignItems: "center", gap: 1.5, width: "100%",
-          px: 2.5, py: 1.0, border: "none", outline: "none", cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          gap: 1.5,
+          width: "100%",
+          px: 2.5,
+          py: 1.0,
+          border: "none",
+          outline: "none",
+          cursor: "pointer",
           bgcolor: isActive ? "action.selected" : "transparent",
           color: isActive ? "primary.light" : "text.primary",
           borderLeft: isActive ? "3px solid" : "3px solid transparent",
@@ -1936,34 +3498,46 @@ export default function ComponentDocs() {
     <ThemeProvider mode={activeTheme}>
       {/* Fixed gradient backdrop for C1D dark */}
       {isIocDark && (
-        <Box sx={{
-          position: "fixed",
-          inset: 0,
-          zIndex: -1,
-          background: `
+        <Box
+          sx={{
+            position: "fixed",
+            inset: 0,
+            zIndex: -1,
+            background: `
             radial-gradient(ellipse 130% 90% at -15% -5%, rgba(0,70,160,0.50) 0%, rgba(0,40,100,0.15) 45%, transparent 65%),
             radial-gradient(ellipse 80% 60% at 60% 110%, rgba(0,30,80,0.30) 0%, transparent 60%),
             linear-gradient(160deg, #07111F 0%, #050C18 40%, #030810 100%)
           `,
-          pointerEvents: "none",
-        }} />
+            pointerEvents: "none",
+          }}
+        />
       )}
       {/* Fixed gradient backdrop for C1D light */}
       {activeTheme === "ioc-light" && (
-        <Box sx={{
-          position: "fixed",
-          inset: 0,
-          zIndex: -1,
-          background: `
+        <Box
+          sx={{
+            position: "fixed",
+            inset: 0,
+            zIndex: -1,
+            background: `
             radial-gradient(ellipse 120% 80% at -10% -8%, rgba(0,188,235,0.13) 0%, rgba(0,130,200,0.06) 40%, transparent 65%),
             radial-gradient(ellipse 70% 60% at 100% 100%, rgba(43,130,246,0.07) 0%, transparent 55%),
             linear-gradient(150deg, #EBF6FF 0%, #F4F9FF 45%, #FAFCFF 100%)
           `,
-          pointerEvents: "none",
-        }} />
+            pointerEvents: "none",
+          }}
+        />
       )}
-      <Box sx={{ minHeight: "100vh", bgcolor: isC1D ? "transparent" : "background.default", color: "text.primary", display: "flex", flexDirection: "column", overflowX: "hidden" }}>
-
+      <Box
+        sx={{
+          minHeight: "100vh",
+          bgcolor: isC1D ? "transparent" : "background.default",
+          color: "text.primary",
+          display: "flex",
+          flexDirection: "column",
+          overflowX: "hidden",
+        }}
+      >
         {/* ── Header ── */}
         <Box
           component="header"
@@ -1974,7 +3548,11 @@ export default function ComponentDocs() {
             left: 0,
             right: 0,
             zIndex: 200,
-            bgcolor: isIocDark ? "rgba(7,17,31,0.80)" : activeTheme === "ioc-light" ? "rgba(255,255,255,0.75)" : "background.paper",
+            bgcolor: isIocDark
+              ? "rgba(7,17,31,0.80)"
+              : activeTheme === "ioc-light"
+                ? "rgba(255,255,255,0.75)"
+                : "background.paper",
             backdropFilter: isC1D ? "blur(20px)" : "none",
             borderBottom: "1px solid",
             borderColor: "divider",
@@ -1984,19 +3562,40 @@ export default function ComponentDocs() {
             gap: 2,
           }}
         >
-          <Typography variant="subtitle2" noWrap sx={{ flexShrink: 0, fontWeight: 600 }}>
+          <Typography
+            variant="subtitle2"
+            noWrap
+            sx={{ flexShrink: 0, fontWeight: 600 }}
+          >
             Open UI Kit
           </Typography>
 
           <Divider orientation="vertical" flexItem sx={{ mx: 0.5 }} />
 
-          <Typography variant="caption" noWrap sx={{ flex: 1, minWidth: 0, color: "text.primary", opacity: 0.6 }}>
+          <Typography
+            variant="caption"
+            noWrap
+            sx={{ flex: 1, minWidth: 0, color: "text.primary", opacity: 0.6 }}
+          >
             Component Reference
           </Typography>
 
           {/* Theme Switcher */}
-          <Stack direction="row" spacing={0.5} alignItems="center" sx={{ flexShrink: 0 }}>
-            <Typography variant="caption" sx={{ mr: 0.5, whiteSpace: "nowrap", color: "text.primary", opacity: 0.6 }}>
+          <Stack
+            direction="row"
+            spacing={0.5}
+            alignItems="center"
+            sx={{ flexShrink: 0 }}
+          >
+            <Typography
+              variant="caption"
+              sx={{
+                mr: 0.5,
+                whiteSpace: "nowrap",
+                color: "text.primary",
+                opacity: 0.6,
+              }}
+            >
               Theme:
             </Typography>
             {THEMES.map((t) => {
@@ -2020,7 +3619,10 @@ export default function ComponentDocs() {
                     cursor: "pointer",
                     outline: "none",
                     transition: "all 0.12s",
-                    "&:hover": { bgcolor: "action.hover", borderColor: "primary.light" },
+                    "&:hover": {
+                      bgcolor: "action.hover",
+                      borderColor: "primary.light",
+                    },
                   }}
                 >
                   <Box
@@ -2038,7 +3640,11 @@ export default function ComponentDocs() {
                   />
                   <Typography
                     variant="caption"
-                    sx={{ fontWeight: isActive ? 700 : 400, whiteSpace: "nowrap", fontSize: "0.72rem" }}
+                    sx={{
+                      fontWeight: isActive ? 700 : 400,
+                      whiteSpace: "nowrap",
+                      fontSize: "0.72rem",
+                    }}
                   >
                     {t.label}
                   </Typography>
@@ -2050,7 +3656,6 @@ export default function ComponentDocs() {
 
         {/* ── Body (sidebar + main) ── */}
         <Box sx={{ display: "flex", pt: `${HEADER_HEIGHT}px`, flex: 1 }}>
-
           {/* Sidebar */}
           <Box
             component="nav"
@@ -2061,7 +3666,11 @@ export default function ComponentDocs() {
               top: HEADER_HEIGHT,
               bottom: 0,
               overflowY: "auto",
-              bgcolor: isIocDark ? "rgba(7,17,31,0.70)" : activeTheme === "ioc-light" ? "rgba(255,255,255,0.70)" : "background.paper",
+              bgcolor: isIocDark
+                ? "rgba(7,17,31,0.70)"
+                : activeTheme === "ioc-light"
+                  ? "rgba(255,255,255,0.70)"
+                  : "background.paper",
               backdropFilter: isC1D ? "blur(20px)" : "none",
               borderRight: "1px solid",
               borderColor: "divider",
@@ -2071,7 +3680,15 @@ export default function ComponentDocs() {
             {/* Components group */}
             <Typography
               variant="overline"
-              sx={{ px: 2.5, display: "block", mb: 0.75, fontSize: "0.62rem", color: "text.primary", letterSpacing: "0.1em", fontWeight: 700 }}
+              sx={{
+                px: 2.5,
+                display: "block",
+                mb: 0.75,
+                fontSize: "0.62rem",
+                color: "text.primary",
+                letterSpacing: "0.1em",
+                fontWeight: 700,
+              }}
             >
               Components
             </Typography>
@@ -2079,9 +3696,22 @@ export default function ComponentDocs() {
             {COMPONENT_CATEGORIES.map(({ id, label, Icon }) => {
               const isActive = activeCategory === id;
               return (
-                <Box key={id} component="button" onClick={() => handleCategoryChange(id)} sx={navItemSx(isActive)}>
+                <Box
+                  key={id}
+                  component="button"
+                  onClick={() => handleCategoryChange(id)}
+                  sx={navItemSx(isActive)}
+                >
                   <Icon sx={{ fontSize: 18, flexShrink: 0 }} />
-                  <Typography variant="body2" sx={{ fontWeight: isActive ? 600 : 400, fontSize: "0.825rem", textAlign: "left", lineHeight: 1.3 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontWeight: isActive ? 600 : 400,
+                      fontSize: "0.825rem",
+                      textAlign: "left",
+                      lineHeight: 1.3,
+                    }}
+                  >
                     {label}
                   </Typography>
                 </Box>
@@ -2089,10 +3719,26 @@ export default function ComponentDocs() {
             })}
 
             {/* Templates group */}
-            <Box sx={{ mx: 2, my: 1.5, borderTop: "1px solid", borderColor: "divider", opacity: 0.5 }} />
+            <Box
+              sx={{
+                mx: 2,
+                my: 1.5,
+                borderTop: "1px solid",
+                borderColor: "divider",
+                opacity: 0.5,
+              }}
+            />
             <Typography
               variant="overline"
-              sx={{ px: 2.5, display: "block", mb: 0.75, fontSize: "0.62rem", color: "text.primary", letterSpacing: "0.1em", fontWeight: 700 }}
+              sx={{
+                px: 2.5,
+                display: "block",
+                mb: 0.75,
+                fontSize: "0.62rem",
+                color: "text.primary",
+                letterSpacing: "0.1em",
+                fontWeight: 700,
+              }}
             >
               Templates
             </Typography>
@@ -2100,9 +3746,22 @@ export default function ComponentDocs() {
             {TEMPLATE_CATEGORIES.map(({ id, label, Icon }) => {
               const isActive = activeCategory === id;
               return (
-                <Box key={id} component="button" onClick={() => handleCategoryChange(id)} sx={navItemSx(isActive)}>
+                <Box
+                  key={id}
+                  component="button"
+                  onClick={() => handleCategoryChange(id)}
+                  sx={navItemSx(isActive)}
+                >
                   <Icon sx={{ fontSize: 18, flexShrink: 0 }} />
-                  <Typography variant="body2" sx={{ fontWeight: isActive ? 600 : 400, fontSize: "0.825rem", textAlign: "left", lineHeight: 1.3 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontWeight: isActive ? 600 : 400,
+                      fontSize: "0.825rem",
+                      textAlign: "left",
+                      lineHeight: 1.3,
+                    }}
+                  >
                     {label}
                   </Typography>
                 </Box>
@@ -2110,10 +3769,26 @@ export default function ComponentDocs() {
             })}
 
             {/* Tokens group */}
-            <Box sx={{ mx: 2, my: 1.5, borderTop: "1px solid", borderColor: "divider", opacity: 0.5 }} />
+            <Box
+              sx={{
+                mx: 2,
+                my: 1.5,
+                borderTop: "1px solid",
+                borderColor: "divider",
+                opacity: 0.5,
+              }}
+            />
             <Typography
               variant="overline"
-              sx={{ px: 2.5, display: "block", mb: 0.75, fontSize: "0.62rem", color: "text.primary", letterSpacing: "0.1em", fontWeight: 700 }}
+              sx={{
+                px: 2.5,
+                display: "block",
+                mb: 0.75,
+                fontSize: "0.62rem",
+                color: "text.primary",
+                letterSpacing: "0.1em",
+                fontWeight: 700,
+              }}
             >
               Tokens
             </Typography>
@@ -2121,9 +3796,22 @@ export default function ComponentDocs() {
             {TOKEN_CATEGORIES.map(({ id, label, Icon }) => {
               const isActive = activeCategory === id;
               return (
-                <Box key={id} component="button" onClick={() => handleCategoryChange(id)} sx={navItemSx(isActive)}>
+                <Box
+                  key={id}
+                  component="button"
+                  onClick={() => handleCategoryChange(id)}
+                  sx={navItemSx(isActive)}
+                >
                   <Icon sx={{ fontSize: 18, flexShrink: 0 }} />
-                  <Typography variant="body2" sx={{ fontWeight: isActive ? 600 : 400, fontSize: "0.825rem", textAlign: "left", lineHeight: 1.3 }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      fontWeight: isActive ? 600 : 400,
+                      fontSize: "0.825rem",
+                      textAlign: "left",
+                      lineHeight: 1.3,
+                    }}
+                  >
                     {label}
                   </Typography>
                 </Box>
@@ -2146,10 +3834,16 @@ export default function ComponentDocs() {
           >
             {/* Section header */}
             <Box sx={{ mb: 4 }}>
-              <Typography variant="h4" sx={{ fontWeight: 700, mb: 1, color: "text.primary" }}>
+              <Typography
+                variant="h4"
+                sx={{ fontWeight: 700, mb: 1, color: "text.primary" }}
+              >
                 {title}
               </Typography>
-              <Typography variant="body1" sx={{ color: "text.primary", opacity: 0.65 }}>
+              <Typography
+                variant="body1"
+                sx={{ color: "text.primary", opacity: 0.65 }}
+              >
                 {description}
               </Typography>
               <Divider sx={{ mt: 3 }} />
@@ -2161,9 +3855,21 @@ export default function ComponentDocs() {
             </Box>
 
             {/* Footer */}
-            <Box sx={{ mt: 6, pt: 3, borderTop: "1px solid", borderColor: "divider" }}>
-              <Typography variant="caption" sx={{ color: "text.primary", opacity: 0.4 }}>
-                Open UI Kit · Apache 2.0 · {COMPONENT_CATEGORIES.length} components · {TEMPLATE_CATEGORIES.length} template · {TOKEN_CATEGORIES.length} token sections
+            <Box
+              sx={{
+                mt: 6,
+                pt: 3,
+                borderTop: "1px solid",
+                borderColor: "divider",
+              }}
+            >
+              <Typography
+                variant="caption"
+                sx={{ color: "text.primary", opacity: 0.4 }}
+              >
+                Open UI Kit · Apache 2.0 · {COMPONENT_CATEGORIES.length}{" "}
+                components · {TEMPLATE_CATEGORIES.length} template ·{" "}
+                {TOKEN_CATEGORIES.length} token sections
               </Typography>
             </Box>
           </Box>
