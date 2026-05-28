@@ -146,6 +146,29 @@ import {
   Toast,
   toast,
   Toaster,
+  // Illustrations
+  AddDomain,
+  AddRepos,
+  AttackPathAnalysis,
+  AttackPathAnalysisWalkThrough,
+  Celebration,
+  Cloud,
+  CloudSimple,
+  Dashboard as IllusDashboard,
+  Data as IllusData,
+  EmptyData,
+  Git,
+  GitSimple,
+  Info as IllusInfo,
+  Kubernetes,
+  Negative,
+  NoData,
+  Positive,
+  Recon,
+  Sent,
+  Shield as IllusShield,
+  Success,
+  Warning as IllusWarning,
 } from "@open-ui-kit/core";
 import type { SelectNodeType } from "@open-ui-kit/core";
 import AddIcon from "@mui/icons-material/Add";
@@ -166,6 +189,7 @@ import PaletteIcon from "@mui/icons-material/Palette";
 import TextFieldsIcon from "@mui/icons-material/TextFields";
 import LayersIcon from "@mui/icons-material/Layers";
 import AppsIcon from "@mui/icons-material/Apps";
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import ArticleIcon from "@mui/icons-material/Article";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import GridOnIcon from "@mui/icons-material/GridOn";
@@ -339,6 +363,7 @@ const COMPONENT_CATEGORIES = [
   { id: "layout", label: "Layout", Icon: DashboardIcon },
   { id: "charts", label: "Charts", Icon: BarChartIcon },
   { id: "icons", label: "Icons", Icon: AppsIcon },
+  { id: "illustrations", label: "Illustrations", Icon: AutoAwesomeIcon },
 ];
 
 const TOKEN_CATEGORIES = [
@@ -8240,6 +8265,143 @@ function IconsSection() {
   );
 }
 
+// ─── Illustrations Section ────────────────────────────────────────────────────
+
+const ILLUSTRATION_CATALOGUE: { name: string; Component: React.ElementType }[] =
+  [
+    { name: "AddDomain", Component: AddDomain },
+    { name: "AddRepos", Component: AddRepos },
+    { name: "AttackPathAnalysis", Component: AttackPathAnalysis },
+    {
+      name: "AttackPathAnalysisWalkThrough",
+      Component: AttackPathAnalysisWalkThrough,
+    },
+    { name: "Celebration", Component: Celebration },
+    { name: "Cloud", Component: Cloud },
+    { name: "CloudSimple", Component: CloudSimple },
+    { name: "Dashboard", Component: IllusDashboard },
+    { name: "Data", Component: IllusData },
+    { name: "EmptyData", Component: EmptyData },
+    { name: "Git", Component: Git },
+    { name: "GitSimple", Component: GitSimple },
+    { name: "Info", Component: IllusInfo },
+    { name: "Kubernetes", Component: Kubernetes },
+    { name: "Negative", Component: Negative },
+    { name: "NoData", Component: NoData },
+    { name: "Positive", Component: Positive },
+    { name: "Recon", Component: Recon },
+    { name: "Sent", Component: Sent },
+    { name: "Shield", Component: IllusShield },
+    { name: "Success", Component: Success },
+    { name: "Warning", Component: IllusWarning },
+  ];
+
+function IllustrationsSection() {
+  const [copiedName, setCopiedName] = useState<string | null>(null);
+
+  const handleCopy = (name: string) => {
+    const importLine = `import { ${name} } from "@open-ui-kit/core";`;
+    navigator.clipboard.writeText(importLine).catch(() => {});
+    setCopiedName(name);
+    setTimeout(() => setCopiedName(null), 1800);
+  };
+
+  return (
+    <Box>
+      <Box
+        sx={{
+          mb: 3,
+          p: 2,
+          borderRadius: 2,
+          bgcolor: "action.hover",
+          border: "1px solid",
+          borderColor: "divider",
+        }}
+      >
+        <Typography variant="body2" sx={{ opacity: 0.85, mb: 0.5 }}>
+          Custom illustrations from{" "}
+          <Box
+            component="code"
+            sx={{
+              fontSize: "0.8em",
+              px: 0.5,
+              bgcolor: "action.selected",
+              borderRadius: 0.5,
+            }}
+          >
+            @open-ui-kit/core
+          </Box>
+          . Click any illustration to copy its import statement.
+        </Typography>
+        <Typography variant="caption" sx={{ opacity: 0.6 }}>
+          {ILLUSTRATION_CATALOGUE.length} illustrations
+        </Typography>
+      </Box>
+
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))",
+          gap: 2,
+        }}
+      >
+        {ILLUSTRATION_CATALOGUE.map(({ name, Component }) => (
+          <Box
+            key={name}
+            onClick={() => handleCopy(name)}
+            title={`Click to copy import for ${name}`}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              p: 2,
+              gap: 1.5,
+              borderRadius: 2,
+              border: "1px solid",
+              borderColor: copiedName === name ? "primary.main" : "divider",
+              bgcolor: copiedName === name ? "action.selected" : "action.hover",
+              cursor: "pointer",
+              transition: "all 0.15s",
+              "&:hover": {
+                borderColor: "primary.main",
+                bgcolor: "action.selected",
+              },
+            }}
+          >
+            <Box
+              sx={{
+                width: 120,
+                height: 120,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Component sx={{ width: 120, height: 120, fontSize: 120 }} />
+            </Box>
+            <Box sx={{ textAlign: "center" }}>
+              <Typography
+                variant="caption"
+                sx={{
+                  fontFamily: "monospace",
+                  fontSize: "0.7rem",
+                  color:
+                    copiedName === name ? "primary.main" : "text.secondary",
+                  wordBreak: "break-word",
+                  lineHeight: 1.3,
+                }}
+              >
+                {copiedName === name ? "Copied!" : name}
+              </Typography>
+            </Box>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  );
+}
+
 // ─── Category renderer ────────────────────────────────────────────────────────
 
 const SECTION_META: Record<
@@ -8318,6 +8480,13 @@ const SECTION_META: Record<
     description:
       "Material UI icon library — 100+ icons organized by category. Click any icon to copy its import statement. All icons support size and color props and can be used in buttons, navigation, and any component with an icon slot.",
     Component: IconsSection,
+    wide: true,
+  },
+  illustrations: {
+    title: "Illustrations",
+    description:
+      "Custom SVG illustrations from @open-ui-kit/core — 22 illustrations for empty states, onboarding, status feedback, and more. Click any illustration to copy its import statement.",
+    Component: IllustrationsSection,
     wide: true,
   },
   dashboard: {
