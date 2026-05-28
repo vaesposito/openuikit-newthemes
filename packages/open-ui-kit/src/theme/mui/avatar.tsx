@@ -11,8 +11,8 @@ export const avatarComponent = (theme: Theme): Components => {
     MuiAvatar: {
       styleOverrides: {
         root: {
-          backgroundColor: "#E8F1FF",
-          color: theme.palette.vars.interactivePrimaryDefaultDefault,
+          backgroundColor: theme.palette.primary.main,
+          color: "#ffffff",
           fontWeight: 600,
           fontSize: "16px",
           lineHeight: "133%",
@@ -21,7 +21,7 @@ export const avatarComponent = (theme: Theme): Components => {
           verticalAlign: "middle",
           "&:hover": {
             backgroundColor: theme.palette.vars.interactivePrimaryWeakHover,
-            color: theme.palette.vars.controlIconHover,
+            color: "#ffffff",
             cursor: "pointer",
           },
         },
