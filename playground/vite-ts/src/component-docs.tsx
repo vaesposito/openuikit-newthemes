@@ -87,6 +87,16 @@ import {
   TableHead,
   TableRow,
   Chip,
+  ButtonGroup,
+  Menu,
+  Backdrop,
+  Drawer as MuiDrawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  ListItemIcon,
+  CircularProgress,
 } from "@mui/material";
 import {
   Severity,
@@ -95,7 +105,49 @@ import {
   LinkColorEnum,
   LinkType,
   Icons,
+  // Overlays & Dialogs
+  Modal,
+  ModalTitle,
+  ModalActions,
+  ModalContent,
+  ModalContentText,
+  Tooltip as OUITooltip,
+  OverflowTooltip,
+  DrawerShell,
+  ActionsModal,
+  // Content & Display
+  Widget,
+  Legend,
+  ActivityTimeline,
+  ActivityTimelineStepStatus,
+  CodeBlock,
+  EmptyState,
+  LoadingErrorState,
+  PathDisplay,
+  ScrollArea,
+  // Table
+  Table as OUITable,
+  // Nav / Page chrome
+  Header,
+  Footer,
+  // Form controls
+  Dropdown,
+  // Date/Time pickers
+  DatePicker,
+  DateTimePicker,
+  TimePicker,
+  DateRangePicker,
+  // Dropdown Autocomplete Tree
+  DropdownAutocompleteTree,
+  useDropdownAutocompleteTree,
+  // Tags container (plural)
+  Tags,
+  // Toast
+  Toast,
+  toast,
+  Toaster,
 } from "@open-ui-kit/core";
+import type { SelectNodeType } from "@open-ui-kit/core";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import PrintIcon from "@mui/icons-material/Print";
@@ -114,6 +166,10 @@ import PaletteIcon from "@mui/icons-material/Palette";
 import TextFieldsIcon from "@mui/icons-material/TextFields";
 import LayersIcon from "@mui/icons-material/Layers";
 import AppsIcon from "@mui/icons-material/Apps";
+import ArticleIcon from "@mui/icons-material/Article";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import GridOnIcon from "@mui/icons-material/GridOn";
+import WebAssetIcon from "@mui/icons-material/WebAsset";
 import Tooltip from "@mui/material/Tooltip";
 
 // ─── Icon catalogue imports ───────────────────────────────────────────────────
@@ -128,7 +184,6 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import CloseIcon from "@mui/icons-material/Close";
 import CheckIcon from "@mui/icons-material/Check";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -277,6 +332,10 @@ const COMPONENT_CATEGORIES = [
   { id: "data", label: "Data Display", Icon: LabelIcon },
   { id: "navigation", label: "Navigation", Icon: ExploreIcon },
   { id: "feedback", label: "Feedback & Status", Icon: NotificationsIcon },
+  { id: "overlays", label: "Overlays & Dialogs", Icon: OpenInNewIcon },
+  { id: "content", label: "Content & Display", Icon: ArticleIcon },
+  { id: "table", label: "Table", Icon: GridOnIcon },
+  { id: "chrome", label: "Page Chrome", Icon: WebAssetIcon },
   { id: "layout", label: "Layout", Icon: DashboardIcon },
   { id: "charts", label: "Charts", Icon: BarChartIcon },
   { id: "icons", label: "Icons", Icon: AppsIcon },
@@ -373,6 +432,81 @@ function ComponentGroup({
   );
 }
 
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+const DROPDOWN_TREE_DATA: SelectNodeType[] = [
+  {
+    value: "Cloud Providers",
+    isSelectable: false,
+    childNodes: [
+      { value: "Amazon Web Services", isSelectable: true },
+      { value: "Microsoft Azure", isSelectable: true },
+      { value: "Google Cloud Platform", isSelectable: true },
+    ],
+  },
+  {
+    value: "Security Tools",
+    isSelectable: false,
+    childNodes: [
+      { value: "Firewall", isSelectable: true },
+      { value: "IAM", isSelectable: true },
+      { value: "SIEM", isSelectable: true },
+      { value: "EDR", isSelectable: true },
+    ],
+  },
+  {
+    value: "Networking",
+    isSelectable: false,
+    childNodes: [
+      { value: "VPC", isSelectable: true },
+      { value: "Load Balancer", isSelectable: true },
+      { value: "CDN", isSelectable: true },
+    ],
+  },
+];
+
+function DropdownTreeDemo() {
+  const [treeData] = useState<SelectNodeType[]>(DROPDOWN_TREE_DATA);
+  const {
+    flattenedTreeOptions,
+    onSelectAllChange,
+    searchTextDebounced,
+    selectAllNode,
+    selectedValues,
+    setSearchText,
+    toggleExpand,
+    updateCheckbox,
+  } = useDropdownAutocompleteTree({ treeData, selectAllIcon: null });
+
+  return (
+    <Stack spacing={2} sx={{ minWidth: 280 }}>
+      <DropdownAutocompleteTree
+        buttonContent={`Select services${selectedValues.length ? ` (${selectedValues.length})` : ""}`}
+        flattenedTreeOptions={
+          flattenedTreeOptions.flattenedSelectTreeWithSearch
+        }
+        isIconAllowed={false}
+        isSearchFieldEnabled
+        onSelectAllChange={onSelectAllChange}
+        searchText={searchTextDebounced}
+        selectAllNode={selectAllNode}
+        setSearchText={setSearchText}
+        toggleExpand={toggleExpand}
+        updateCheckbox={updateCheckbox}
+      />
+      {selectedValues.length > 0 && (
+        <Tags
+          items={selectedValues}
+          handleDelete={(_e, node) =>
+            updateCheckbox(node as SelectNodeType, false)
+          }
+          shouldTruncate
+        />
+      )}
+    </Stack>
+  );
+}
+
 // ─── Category Sections ────────────────────────────────────────────────────────
 
 function ButtonsSection() {
@@ -462,6 +596,7 @@ function ButtonsSection() {
             sx={{ position: "absolute", bottom: 0, left: 0 }}
             icon={<SpeedDialIcon />}
             direction="right"
+            open
           >
             {[
               { icon: <EditIcon />, name: "Edit" },
@@ -472,10 +607,41 @@ function ButtonsSection() {
                 key={a.name}
                 icon={a.icon}
                 tooltipTitle={a.name}
+                FabProps={{
+                  sx: {
+                    bgcolor: "action.selected",
+                    color: "text.primary",
+                    boxShadow: 2,
+                    "&:hover": {
+                      bgcolor: "primary.main",
+                      color: "primary.contrastText",
+                    },
+                  },
+                }}
               />
             ))}
           </SpeedDial>
         </Box>
+      </ComponentGroup>
+
+      <ComponentGroup label="Button Group">
+        <Stack spacing={2} alignItems="flex-start">
+          <ButtonGroup variant="contained" aria-label="contained button group">
+            <Button>One</Button>
+            <Button>Two</Button>
+            <Button>Three</Button>
+          </ButtonGroup>
+          <ButtonGroup variant="outlined" aria-label="outlined button group">
+            <Button>One</Button>
+            <Button>Two</Button>
+            <Button>Three</Button>
+          </ButtonGroup>
+          <ButtonGroup variant="text" aria-label="text button group">
+            <Button>One</Button>
+            <Button>Two</Button>
+            <Button>Three</Button>
+          </ButtonGroup>
+        </Stack>
       </ComponentGroup>
 
       <ComponentGroup label="Copy Button">
@@ -516,6 +682,16 @@ function FormsSection() {
   const [checked, setChecked] = useState(true);
   const [radioVal, setRadioVal] = useState("a");
   const [toggleOn, setToggleOn] = useState(true);
+  const [dateRangeStart, setDateRangeStart] = useState("");
+  const [dateRangeEnd, setDateRangeEnd] = useState("");
+  const dropdownOptions = [
+    { label: "Last 24 hours", value: "24h" },
+    { label: "Last 7 days", value: "7d" },
+    { label: "Last 30 days", value: "30d" },
+    { label: "Last 90 days", value: "90d" },
+    { label: "Custom range", value: "custom" },
+  ];
+  const [dropdownSel, setDropdownSel] = useState(dropdownOptions[1]);
 
   return (
     <>
@@ -653,6 +829,64 @@ function FormsSection() {
             value="Disabled"
           />
         </Stack>
+      </ComponentGroup>
+
+      <ComponentGroup label="Dropdown">
+        <Stack
+          direction="row"
+          spacing={3}
+          flexWrap="wrap"
+          useFlexGap
+          alignItems="flex-start"
+        >
+          <Dropdown
+            options={dropdownOptions}
+            selected={dropdownSel}
+            onChange={(opt) => setDropdownSel(opt)}
+            label="Time range"
+          />
+          <Dropdown
+            options={dropdownOptions}
+            selected={dropdownOptions[0]}
+            onChange={() => {}}
+            label="Active filter"
+            isActive
+          />
+          <Dropdown
+            options={dropdownOptions}
+            selected={dropdownOptions[0]}
+            onChange={() => {}}
+            label="Disabled"
+          />
+        </Stack>
+      </ComponentGroup>
+
+      <ComponentGroup label="Date & Time Pickers">
+        <Stack
+          direction="row"
+          spacing={4}
+          flexWrap="wrap"
+          useFlexGap
+          alignItems="flex-start"
+        >
+          <DatePicker label="Date" />
+          <TimePicker label="Time" />
+          <DateTimePicker label="Date & Time" />
+        </Stack>
+      </ComponentGroup>
+
+      <ComponentGroup label="Date Range Picker">
+        <DateRangePicker
+          textFieldProps={{ placeholder: "Pick a date range" }}
+          startDate={dateRangeStart}
+          endDate={dateRangeEnd}
+          setStartDate={setDateRangeStart}
+          setEndDate={setDateRangeEnd}
+        />
+      </ComponentGroup>
+
+      <ComponentGroup label="Dropdown Autocomplete Tree">
+        <DropdownTreeDemo />
       </ComponentGroup>
     </>
   );
@@ -968,7 +1202,7 @@ function NavigationSection() {
         />
       </ComponentGroup>
 
-      <ComponentGroup label="Stepper">
+      <ComponentGroup label="Stepper — Horizontal">
         <Stepper activeStep={stepperActive} sx={{ maxWidth: 580 }}>
           {["Configure", "Review", "Deploy", "Done"].map((label, idx) => (
             <Step key={label} completed={idx < stepperActive}>
@@ -993,6 +1227,107 @@ function NavigationSection() {
           >
             Next
           </Button>
+        </Stack>
+      </ComponentGroup>
+
+      <ComponentGroup label="Stepper — Vertical">
+        <Stack
+          direction="row"
+          spacing={6}
+          alignItems="flex-start"
+          flexWrap="wrap"
+          useFlexGap
+        >
+          <Box>
+            <Typography
+              variant="caption"
+              sx={{ opacity: 0.6, display: "block", mb: 1 }}
+            >
+              Interactive
+            </Typography>
+            <Stepper
+              activeStep={stepperActive}
+              orientation="vertical"
+              sx={{ minWidth: 240 }}
+            >
+              {[
+                { label: "Configure", desc: "Set up project parameters" },
+                { label: "Review", desc: "Check settings before proceeding" },
+                { label: "Deploy", desc: "Push changes to environment" },
+                { label: "Done", desc: "Deployment complete" },
+              ].map(({ label, desc }, idx) => (
+                <Step key={label} completed={idx < stepperActive}>
+                  <StepLabel
+                    optional={
+                      <Typography variant="caption" sx={{ opacity: 0.6 }}>
+                        {desc}
+                      </Typography>
+                    }
+                  >
+                    {label}
+                  </StepLabel>
+                </Step>
+              ))}
+            </Stepper>
+            <Stack direction="row" spacing={1} sx={{ mt: 2 }}>
+              <Button
+                variant="outlined"
+                size="small"
+                onClick={() => setStepperActive((v) => Math.max(0, v - 1))}
+                disabled={stepperActive === 0}
+              >
+                Back
+              </Button>
+              <Button
+                variant="primary"
+                size="small"
+                onClick={() => setStepperActive((v) => Math.min(4, v + 1))}
+                disabled={stepperActive === 4}
+              >
+                Next
+              </Button>
+            </Stack>
+          </Box>
+
+          <Box>
+            <Typography
+              variant="caption"
+              sx={{ opacity: 0.6, display: "block", mb: 1 }}
+            >
+              All completed
+            </Typography>
+            <Stepper
+              activeStep={4}
+              orientation="vertical"
+              sx={{ minWidth: 200 }}
+            >
+              {["Configure", "Review", "Deploy", "Done"].map((label, idx) => (
+                <Step key={label} completed={idx < 4}>
+                  <StepLabel>{label}</StepLabel>
+                </Step>
+              ))}
+            </Stepper>
+          </Box>
+
+          <Box>
+            <Typography
+              variant="caption"
+              sx={{ opacity: 0.6, display: "block", mb: 1 }}
+            >
+              Error on step 2
+            </Typography>
+            <Stepper
+              activeStep={2}
+              orientation="vertical"
+              sx={{ minWidth: 200 }}
+            >
+              {["Configure", "Review", "Deploy", "Done"].map((label, idx) => (
+                <Step key={label} completed={idx < 2}>
+                  <StepLabel error={idx === 2}>{label}</StepLabel>
+                </Step>
+              ))}
+            </Stepper>
+          </Box>
         </Stack>
       </ComponentGroup>
 
@@ -1110,6 +1445,42 @@ function FeedbackSection() {
           </Accordion>
         </Stack>
       </ComponentGroup>
+
+      <ComponentGroup label="Toast">
+        <Stack spacing={2}>
+          <Stack direction="row" spacing={1.5} flexWrap="wrap" useFlexGap>
+            {(
+              [
+                { type: "default", label: "Default" },
+                { type: "info", label: "Info" },
+                { type: "success", label: "Success" },
+                { type: "warning", label: "Warning" },
+                { type: "error", label: "Error" },
+              ] as const
+            ).map(({ type, label }) => (
+              <Button
+                key={type}
+                variant="outlined"
+                size="small"
+                onClick={() =>
+                  toast({
+                    title: `${label} toast`,
+                    description: `This is a ${label.toLowerCase()} notification.`,
+                    type,
+                  })
+                }
+              >
+                {label}
+              </Button>
+            ))}
+          </Stack>
+          <Typography variant="caption" sx={{ opacity: 0.6 }}>
+            Click a button to trigger a toast notification (top-right). The{" "}
+            <code>{"<Toaster />"}</code> container is mounted once at the app
+            root.
+          </Typography>
+        </Stack>
+      </ComponentGroup>
     </>
   );
 }
@@ -1198,7 +1569,713 @@ function LayoutSection() {
           </Stack>
         </Stack>
       </ComponentGroup>
+
+      <ComponentGroup label="List">
+        <Stack direction="row" spacing={4} flexWrap="wrap" useFlexGap>
+          <Box
+            sx={{
+              maxWidth: 320,
+              border: "1px solid",
+              borderColor: "divider",
+              borderRadius: 1,
+              overflow: "hidden",
+            }}
+          >
+            <Typography
+              variant="caption"
+              sx={{
+                display: "block",
+                px: 2,
+                py: 1,
+                opacity: 0.6,
+                borderBottom: "1px solid",
+                borderColor: "divider",
+              }}
+            >
+              Interactive (ListItemButton)
+            </Typography>
+            <List dense disablePadding>
+              {[
+                { primary: "Inbox", secondary: "3 new messages" },
+                { primary: "Drafts", secondary: "1 draft saved" },
+                { primary: "Sent" },
+                { primary: "Trash", secondary: "Auto-deletes in 30 days" },
+              ].map(({ primary, secondary }) => (
+                <ListItem key={primary} disablePadding>
+                  <ListItemButton>
+                    <ListItemText
+                      primary={primary}
+                      secondary={secondary}
+                      primaryTypographyProps={{ variant: "body2" }}
+                      secondaryTypographyProps={{
+                        variant: "caption",
+                        sx: { opacity: 0.6 },
+                      }}
+                    />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+          <Box
+            sx={{
+              maxWidth: 320,
+              border: "1px solid",
+              borderColor: "divider",
+              borderRadius: 1,
+              overflow: "hidden",
+            }}
+          >
+            <Typography
+              variant="caption"
+              sx={{
+                display: "block",
+                px: 2,
+                py: 1,
+                opacity: 0.6,
+                borderBottom: "1px solid",
+                borderColor: "divider",
+              }}
+            >
+              Static (ListItem)
+            </Typography>
+            <List dense disablePadding>
+              {[
+                { primary: "web-prod-01", secondary: "Critical · Open" },
+                { primary: "db-prod-02", secondary: "High · In Progress" },
+                { primary: "api-prod-03", secondary: "Medium · Resolved" },
+              ].map(({ primary, secondary }) => (
+                <ListItem key={primary}>
+                  <ListItemText
+                    primary={primary}
+                    secondary={secondary}
+                    primaryTypographyProps={{ variant: "body2" }}
+                    secondaryTypographyProps={{
+                      variant: "caption",
+                      sx: { opacity: 0.6 },
+                    }}
+                  />
+                </ListItem>
+              ))}
+            </List>
+          </Box>
+        </Stack>
+      </ComponentGroup>
     </>
+  );
+}
+
+// ─── Overlays & Dialogs ───────────────────────────────────────────────────────
+
+function OverlaysSection() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerMuiOpen, setDrawerMuiOpen] = useState(false);
+  const [backdropOpen, setBackdropOpen] = useState(false);
+  const [actionsModalOpen, setActionsModalOpen] = useState(false);
+  const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
+
+  return (
+    <>
+      <ComponentGroup label="Modal (Dialog)">
+        <Stack spacing={2} alignItems="flex-start">
+          <Button variant="outlined" onClick={() => setModalOpen(true)}>
+            Open Modal
+          </Button>
+          <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+            <ModalTitle>Confirm Action</ModalTitle>
+            <ModalContent>
+              <ModalContentText>
+                This modal is built on MUI Dialog with custom title and subtitle
+                slots. Use it for confirmations, forms, and detail views.
+              </ModalContentText>
+            </ModalContent>
+            <ModalActions>
+              <Button onClick={() => setModalOpen(false)}>Cancel</Button>
+              <Button variant="contained" onClick={() => setModalOpen(false)}>
+                Confirm
+              </Button>
+            </ModalActions>
+          </Modal>
+        </Stack>
+      </ComponentGroup>
+
+      <ComponentGroup label="Tooltip">
+        <Stack direction="row" spacing={3} flexWrap="wrap" useFlexGap>
+          {(["top", "bottom", "left", "right"] as const).map((placement) => (
+            <OUITooltip
+              key={placement}
+              title={`Tooltip — ${placement}`}
+              placement={placement}
+              arrow
+            >
+              <Button variant="outlined" size="small">
+                {placement}
+              </Button>
+            </OUITooltip>
+          ))}
+          <OUITooltip
+            title="Large tooltip with extra context"
+            size="large"
+            arrow
+          >
+            <Button variant="outlined" size="small">
+              large size
+            </Button>
+          </OUITooltip>
+        </Stack>
+      </ComponentGroup>
+
+      <ComponentGroup label="Overflow Tooltip">
+        <Stack spacing={2} sx={{ maxWidth: 340 }}>
+          <Typography variant="caption" sx={{ opacity: 0.6 }}>
+            Hover each row — tooltip appears only when text is truncated.
+          </Typography>
+          {[
+            "Short text",
+            "This is a moderately longer string that might overflow",
+            "An extremely long path string: /org/team/project/sub/folder/deep/nested/file.config.yaml",
+          ].map((txt, i) => (
+            <Box
+              key={i}
+              sx={{
+                width: 280,
+                overflow: "hidden",
+                border: "1px solid",
+                borderColor: "divider",
+                borderRadius: 1,
+                px: 1.5,
+                py: 0.5,
+              }}
+            >
+              <OverflowTooltip value={txt} someLongText={txt} />
+            </Box>
+          ))}
+        </Stack>
+      </ComponentGroup>
+
+      <ComponentGroup label="Drawer Shell">
+        <Stack spacing={2} alignItems="flex-start">
+          <Button variant="outlined" onClick={() => setDrawerOpen(true)}>
+            Open Drawer Shell
+          </Button>
+          <DrawerShell
+            open={drawerOpen}
+            onClose={() => setDrawerOpen(false)}
+            copyURL={window.location.href}
+            titleText="Item Details"
+            pageName="Items"
+          >
+            <Stack spacing={2} sx={{ p: 2 }}>
+              <Typography variant="body2">
+                DrawerShell is a themed side panel with built-in title bar,
+                close button, copy-URL action, and optional severity badge.
+              </Typography>
+              <Typography variant="body2" sx={{ opacity: 0.6 }}>
+                Use it for detail views, contextual help, and record inspection
+                without navigating away.
+              </Typography>
+            </Stack>
+          </DrawerShell>
+          <Typography variant="caption" sx={{ opacity: 0.6 }}>
+            Includes copy-URL button, severity indicator slot, and page-link
+            footer.
+          </Typography>
+        </Stack>
+      </ComponentGroup>
+
+      <ComponentGroup label="Actions Modal">
+        <Stack spacing={2} alignItems="flex-start">
+          <Button variant="outlined" onClick={() => setActionsModalOpen(true)}>
+            Open Actions Modal
+          </Button>
+          <ActionsModal
+            open={actionsModalOpen}
+            hideModal={() => setActionsModalOpen(false)}
+            confirmClicked={(_dismiss, _comment) => setActionsModalOpen(false)}
+            mutationLoading={false}
+            title="Mark asset as Sensitive?"
+            bodyText="This action will prioritize high-severity alerts for this asset and notify your team."
+            includeDismissCheckbox
+            commentSuggestions={[
+              "Reviewed and approved",
+              "False positive",
+              "Needs further investigation",
+            ]}
+          />
+          <Typography variant="caption" sx={{ opacity: 0.6 }}>
+            Designed for security-workflow confirmations with optional dismiss
+            checkbox and comment suggestions.
+          </Typography>
+        </Stack>
+      </ComponentGroup>
+
+      <ComponentGroup label="Menu">
+        <Stack spacing={2} alignItems="flex-start">
+          <Button
+            variant="outlined"
+            onClick={(e) => setMenuAnchor(e.currentTarget)}
+          >
+            Open Menu
+          </Button>
+          <Menu
+            anchorEl={menuAnchor}
+            open={Boolean(menuAnchor)}
+            onClose={() => setMenuAnchor(null)}
+          >
+            <MenuItem onClick={() => setMenuAnchor(null)}>
+              View Details
+            </MenuItem>
+            <MenuItem onClick={() => setMenuAnchor(null)}>Edit</MenuItem>
+            <MenuItem onClick={() => setMenuAnchor(null)}>Duplicate</MenuItem>
+            <Divider />
+            <MenuItem
+              onClick={() => setMenuAnchor(null)}
+              sx={{ color: "error.main" }}
+            >
+              Delete
+            </MenuItem>
+          </Menu>
+          <Typography variant="caption" sx={{ opacity: 0.6 }}>
+            Contextual dropdown menu with divider and destructive action.
+          </Typography>
+        </Stack>
+      </ComponentGroup>
+
+      <ComponentGroup label="Drawer (MUI)">
+        <Stack spacing={2} alignItems="flex-start">
+          <Button variant="outlined" onClick={() => setDrawerMuiOpen(true)}>
+            Open Drawer
+          </Button>
+          <MuiDrawer
+            anchor="right"
+            open={drawerMuiOpen}
+            onClose={() => setDrawerMuiOpen(false)}
+          >
+            <Box sx={{ width: 320, p: 3 }}>
+              <Typography variant="h6" gutterBottom>
+                Drawer Panel
+              </Typography>
+              <Typography variant="body2" sx={{ opacity: 0.7, mb: 2 }}>
+                Standard MUI Drawer for side panels. For a themed drawer with
+                title bar and copy-URL action, use <code>DrawerShell</code>.
+              </Typography>
+              <Button
+                variant="outlined"
+                onClick={() => setDrawerMuiOpen(false)}
+              >
+                Close
+              </Button>
+            </Box>
+          </MuiDrawer>
+          <Typography variant="caption" sx={{ opacity: 0.6 }}>
+            Slides in from the right. Use <code>anchor</code> prop for other
+            sides.
+          </Typography>
+        </Stack>
+      </ComponentGroup>
+
+      <ComponentGroup label="Backdrop">
+        <Stack spacing={2} alignItems="flex-start">
+          <Button variant="outlined" onClick={() => setBackdropOpen(true)}>
+            Show Backdrop
+          </Button>
+          <Backdrop
+            sx={{
+              color: "#fff",
+              zIndex: (theme) => theme.zIndex.drawer + 1,
+            }}
+            open={backdropOpen}
+            onClick={() => setBackdropOpen(false)}
+          >
+            <CircularProgress color="inherit" />
+          </Backdrop>
+          <Typography variant="caption" sx={{ opacity: 0.6 }}>
+            Full-screen overlay for loading states. Click to dismiss.
+          </Typography>
+        </Stack>
+      </ComponentGroup>
+    </>
+  );
+}
+
+// ─── Content & Display ────────────────────────────────────────────────────────
+
+const LEGEND_ROWS = [
+  { color: "#ef4444", values: { Type: "Malware", Count: "42" } },
+  { color: "#f97316", values: { Type: "Phishing", Count: "87" } },
+  { color: "#3b82f6", values: { Type: "Cryptomining", Count: "15" } },
+  { color: "#22c55e", values: { Type: "Resolved", Count: "134" } },
+];
+
+const TIMELINE_STEPS = [
+  {
+    status: ActivityTimelineStepStatus.Complete,
+    title: "Vulnerability detected",
+    subTitle: "2 h ago",
+  },
+  {
+    status: ActivityTimelineStepStatus.Complete,
+    title: "Alert created",
+    subTitle: "1 h 45 min ago",
+  },
+  {
+    status: ActivityTimelineStepStatus.InProgress,
+    title: "Remediation in progress",
+    subTitle: "Now",
+    content: "Patch being applied to affected hosts.",
+  },
+  {
+    status: ActivityTimelineStepStatus.Inactive,
+    title: "Verification",
+    subTitle: "Pending",
+  },
+];
+
+function ContentSection() {
+  return (
+    <>
+      <ComponentGroup label="Widget">
+        <Stack direction="row" spacing={3} flexWrap="wrap" useFlexGap>
+          <Widget
+            label="Threat Summary"
+            bodyElement={
+              <Stack spacing={0.5}>
+                {LEGEND_ROWS.map((r) => (
+                  <Stack
+                    key={r.values.Type}
+                    direction="row"
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <Box
+                      sx={{
+                        width: 10,
+                        height: 10,
+                        borderRadius: "50%",
+                        bgcolor: r.color,
+                        flexShrink: 0,
+                      }}
+                    />
+                    <Typography variant="caption" sx={{ flex: 1 }}>
+                      {r.values.Type}
+                    </Typography>
+                    <Typography variant="caption" fontWeight={600}>
+                      {r.values.Count}
+                    </Typography>
+                  </Stack>
+                ))}
+              </Stack>
+            }
+          />
+          <Widget
+            label="Loading state"
+            isLoading
+            bodyElement={<Box sx={{ height: 80 }} />}
+          />
+          <Widget
+            label="Empty state"
+            isEmpty
+            bodyElement={<Box sx={{ height: 80 }} />}
+          />
+        </Stack>
+      </ComponentGroup>
+
+      <ComponentGroup label="Legend">
+        <Stack direction="row" spacing={4} flexWrap="wrap" useFlexGap>
+          <Box>
+            <Typography
+              variant="caption"
+              sx={{ mb: 1, display: "block", opacity: 0.6 }}
+            >
+              Vertical (default)
+            </Typography>
+            <Legend
+              headers={["Type", "Count"] as any}
+              rows={LEGEND_ROWS as any}
+            />
+          </Box>
+          <Box>
+            <Typography
+              variant="caption"
+              sx={{ mb: 1, display: "block", opacity: 0.6 }}
+            >
+              Horizontal
+            </Typography>
+            <Legend
+              headers={["Type", "Count"] as any}
+              rows={LEGEND_ROWS.slice(0, 2) as any}
+              isHorizontal
+            />
+          </Box>
+        </Stack>
+      </ComponentGroup>
+
+      <ComponentGroup label="Activity Timeline">
+        <Box sx={{ maxWidth: 480 }}>
+          <ActivityTimeline steps={TIMELINE_STEPS} />
+        </Box>
+      </ComponentGroup>
+
+      <ComponentGroup label="Code Block">
+        <Stack spacing={2} sx={{ maxWidth: 600 }}>
+          <CodeBlock
+            text={`import { Button } from "@open-ui-kit/core";\n\nfunction App() {\n  return (\n    <Button variant="contained">\n      Hello, World!\n    </Button>\n  );\n}`}
+            showLineNumbers
+          />
+          <CodeBlock
+            text={`{"status": "active", "severity": "critical", "count": 42}`}
+            showLineNumbers={false}
+          />
+        </Stack>
+      </ComponentGroup>
+
+      <ComponentGroup label="Empty State">
+        <Stack spacing={3}>
+          <EmptyState
+            title="No results found"
+            description="Try adjusting your search or filter criteria to find what you're looking for."
+            actionTitle="Clear filters"
+            actionCallback={() => {}}
+          />
+          <Stack direction="row" spacing={3} flexWrap="wrap" useFlexGap>
+            {(["info", "positive", "warning", "negative"] as const).map(
+              (variant) => (
+                <EmptyState
+                  key={variant}
+                  title={`${variant.charAt(0).toUpperCase() + variant.slice(1)} state`}
+                  description={`Empty state with ${variant} variant.`}
+                  variant={variant}
+                  size="small"
+                />
+              ),
+            )}
+          </Stack>
+        </Stack>
+      </ComponentGroup>
+
+      <ComponentGroup label="Loading Error State">
+        <Box sx={{ maxWidth: 400 }}>
+          <LoadingErrorState />
+        </Box>
+      </ComponentGroup>
+
+      <ComponentGroup label="Path Display">
+        <Stack spacing={2} sx={{ maxWidth: 480 }}>
+          <PathDisplay path="/organization/team/project/folder/deep/nested/file.config.yaml" />
+          <PathDisplay path="/short/path/file.txt" numberOfLevels={2} />
+          <PathDisplay
+            path="us-east-1/vpc-0a1b2c3d/subnet-9f8e7d6c/instance-i-0123456789abcdef0"
+            numberOfLevels={4}
+          />
+        </Stack>
+      </ComponentGroup>
+
+      <ComponentGroup label="Scroll Area">
+        <ScrollArea
+          sx={{
+            height: 160,
+            width: 320,
+            border: "1px solid",
+            borderColor: "divider",
+            borderRadius: 1,
+            p: 1.5,
+          }}
+        >
+          {Array.from({ length: 12 }, (_, i) => (
+            <Typography
+              key={i}
+              variant="body2"
+              sx={{
+                py: 0.5,
+                borderBottom: "1px solid",
+                borderColor: "divider",
+              }}
+            >
+              Row {i + 1} — scrollable content item
+            </Typography>
+          ))}
+        </ScrollArea>
+      </ComponentGroup>
+    </>
+  );
+}
+
+// ─── Table & Data Grid ────────────────────────────────────────────────────────
+
+const TABLE_COLUMNS = [
+  { accessorKey: "host", header: "Host", size: 180 },
+  { accessorKey: "severity", header: "Severity", size: 110 },
+  { accessorKey: "status", header: "Status", size: 120 },
+  { accessorKey: "cve", header: "CVE ID", size: 160 },
+  { accessorKey: "updated", header: "Last Updated", size: 150 },
+];
+
+const TABLE_DATA = [
+  {
+    host: "web-prod-01",
+    severity: "Critical",
+    status: "Open",
+    cve: "CVE-2024-1234",
+    updated: "2024-05-20",
+  },
+  {
+    host: "db-prod-02",
+    severity: "High",
+    status: "In Progress",
+    cve: "CVE-2024-5678",
+    updated: "2024-05-19",
+  },
+  {
+    host: "api-prod-03",
+    severity: "Medium",
+    status: "Resolved",
+    cve: "CVE-2024-9012",
+    updated: "2024-05-18",
+  },
+  {
+    host: "cache-01",
+    severity: "Low",
+    status: "Open",
+    cve: "CVE-2024-3456",
+    updated: "2024-05-17",
+  },
+  {
+    host: "worker-01",
+    severity: "Critical",
+    status: "Open",
+    cve: "CVE-2024-7890",
+    updated: "2024-05-16",
+  },
+];
+
+function TableSection() {
+  return (
+    <>
+      <ComponentGroup label="Table (Material React Table)">
+        <SectionErrorBoundary name="Table">
+          <OUITable
+            columns={TABLE_COLUMNS as any}
+            data={TABLE_DATA}
+            isLoading={false}
+            title={{ label: "Vulnerabilities", count: TABLE_DATA.length }}
+          />
+        </SectionErrorBoundary>
+      </ComponentGroup>
+
+      <ComponentGroup label="Table — Loading State">
+        <SectionErrorBoundary name="Table Loading">
+          <OUITable
+            columns={TABLE_COLUMNS as any}
+            data={[]}
+            isLoading={true}
+            title={{ label: "Loading…" }}
+          />
+        </SectionErrorBoundary>
+      </ComponentGroup>
+
+      <ComponentGroup label="Table — Empty State">
+        <SectionErrorBoundary name="Table Empty">
+          <OUITable
+            columns={TABLE_COLUMNS as any}
+            data={[]}
+            isLoading={false}
+            title={{ label: "Vulnerabilities", count: 0 }}
+            emptyStateProps={{
+              title: "No vulnerabilities found",
+              description: "No data matches the current filters.",
+            }}
+          />
+        </SectionErrorBoundary>
+      </ComponentGroup>
+    </>
+  );
+}
+
+// ─── Page Chrome ──────────────────────────────────────────────────────────────
+
+function PageChromeSection() {
+  return (
+    <MemoryRouter>
+      <>
+        <ComponentGroup label="Header">
+          <SectionErrorBoundary name="Header">
+            <Box
+              sx={{
+                border: "1px solid",
+                borderColor: "divider",
+                borderRadius: 1,
+                overflow: "hidden",
+              }}
+            >
+              <Header
+                logo={
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                    <Box
+                      sx={{
+                        width: 28,
+                        height: 28,
+                        borderRadius: "50%",
+                        bgcolor: "primary.main",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Typography
+                        variant="caption"
+                        sx={{ color: "#fff", fontWeight: 700 }}
+                      >
+                        UI
+                      </Typography>
+                    </Box>
+                  </Box>
+                }
+                title="Open UI Kit"
+                actions={[
+                  {
+                    id: "docs",
+                    icon: <ArticleIcon />,
+                    "aria-label": "Documentation",
+                    href: "#",
+                  },
+                  {
+                    id: "external",
+                    icon: <OpenInNewIcon />,
+                    "aria-label": "Open in new tab",
+                    href: "#",
+                  },
+                ]}
+                userSection={<Avatar sx={{ width: 32, height: 32 }} />}
+              />
+            </Box>
+          </SectionErrorBoundary>
+        </ComponentGroup>
+
+        <ComponentGroup label="Footer">
+          <SectionErrorBoundary name="Footer">
+            <Box
+              sx={{
+                border: "1px solid",
+                borderColor: "divider",
+                borderRadius: 1,
+                overflow: "hidden",
+              }}
+            >
+              <Footer
+                productName="Open UI Kit"
+                productLink="#"
+                links={[
+                  { href: "#", children: "Documentation" },
+                  { href: "#", children: "GitHub" },
+                  { href: "#", children: "Apache 2.0" },
+                ]}
+              />
+            </Box>
+          </SectionErrorBoundary>
+        </ComponentGroup>
+      </>
+    </MemoryRouter>
   );
 }
 
@@ -7122,7 +8199,6 @@ function IconsSection() {
                             sx={{
                               fontSize: 28,
                               color: "text.primary",
-                              opacity: 0.8,
                             }}
                           />
                         )}
@@ -7130,7 +8206,8 @@ function IconsSection() {
                           variant="caption"
                           sx={{
                             fontSize: "0.62rem",
-                            color: isCopied ? "primary.main" : "text.secondary",
+                            color: isCopied ? "primary.main" : "text.primary",
+                            opacity: isCopied ? 1 : 0.72,
                             textAlign: "center",
                             lineHeight: 1.25,
                             wordBreak: "break-word",
@@ -7198,6 +8275,32 @@ const SECTION_META: Record<
     description:
       "Loading states, alerts, notifications, and collapsible content to communicate system status.",
     Component: FeedbackSection,
+  },
+  overlays: {
+    title: "Overlays & Dialogs",
+    description:
+      "Modal dialogs, tooltips, drawer shells, and action confirmation modals for contextual and interruptive UI patterns.",
+    Component: OverlaysSection,
+  },
+  content: {
+    title: "Content & Display",
+    description:
+      "Rich content components: widgets, legends, activity timelines, code blocks, empty/error states, path displays, and scroll areas.",
+    Component: ContentSection,
+  },
+  table: {
+    title: "Table",
+    description:
+      "Feature-rich data table built on Material React Table — sorting, pagination, filtering, loading and empty states.",
+    Component: TableSection,
+    wide: true,
+  },
+  chrome: {
+    title: "Page Chrome",
+    description:
+      "Application shell components: the top app bar Header and page Footer.",
+    Component: PageChromeSection,
+    wide: true,
   },
   layout: {
     title: "Layout & Structure",
@@ -7325,6 +8428,7 @@ export default function ComponentDocs() {
 
   return (
     <ThemeProvider mode={activeTheme}>
+      <Toaster />
       {/* Fixed gradient backdrop for C1D dark */}
       {isIocDark && (
         <Box
