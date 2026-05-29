@@ -343,6 +343,13 @@ export const lightVars: VarsType = {
   accentIWeak: pinkPalette[50],
   accentJDefault: tealPalette[600],
   accentJWeak: tealPalette[50],
+  // Shape — border radius
+  borderRadiusSm: "4px",
+  borderRadiusLg: "8px",
+  borderRadius4xl: "20px",
+  // Shape — border width
+  borderWidthDefault: "1px",
+  borderWidthStrong: "4px",
   gradientPrimary: `linear-gradient(180deg, ${bluePalette[400]} 0%, ${bluePalette[600]} 100%)`,
   gradientSecondary: `linear-gradient(180deg, ${lightOrangePalette[400]} 0%, ${lightOrangePalette[600]} 100%)`,
   gradientNegative: `linear-gradient(180deg, ${redPalette[400]} 0%, ${redPalette[600]} 100%)`,

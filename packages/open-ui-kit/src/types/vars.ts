@@ -322,6 +322,13 @@ export interface VarsType {
   accentIWeak: string;
   accentJDefault: string;
   accentJWeak: string;
+  // Shape — border radius
+  borderRadiusSm: string;
+  borderRadiusLg: string;
+  borderRadius4xl: string;
+  // Shape — border width
+  borderWidthDefault: string;
+  borderWidthStrong: string;
   // Gradients
   gradientPrimary: string;
   gradientSecondary: string;

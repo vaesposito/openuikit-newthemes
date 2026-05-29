@@ -29,7 +29,7 @@ export const inputComponents = (theme: Theme): Components => {
           border: "2px solid",
           borderColor: theme.palette.vars.controlBorderDefault,
           backgroundColor: theme.palette.vars.controlBackgroundDefault,
-          borderRadius: "4px",
+          borderRadius: theme.palette.vars.borderRadiusSm,
           "&:not(.Mui-disabled,.Mui-error).Mui-focused": {
             borderColor: theme.palette.vars.controlBorderActive,
           },

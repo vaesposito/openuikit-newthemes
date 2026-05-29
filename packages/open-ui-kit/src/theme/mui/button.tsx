@@ -26,7 +26,7 @@ export const buttonComponent = (theme: Theme): Components => {
           color: theme.palette.vars.baseTextInverse,
           textTransform: "none",
           transition: "none",
-          borderRadius: "4px",
+          borderRadius: theme.palette.vars.borderRadiusSm,
           "& .MuiButton-startIcon": {
             marginLeft: "0px",
           },

@@ -65,7 +65,7 @@ export const tabComponent = (theme: Theme): Components => {
             color: theme.palette.vars.baseTextDefault,
             minHeight: `${toggleTabHeight}px`,
             height: `${toggleTabHeight}px`,
-            borderRadius: "20px",
+            borderRadius: theme.palette.vars?.borderRadius4xl,
             backgroundColor: theme.palette.vars?.controlBackgroundWeak,
             "&:hover": {
               backgroundColor: theme.palette.vars?.controlBackgroundMedium,

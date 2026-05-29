@@ -13,7 +13,7 @@ export const popoverComponent = (theme: Theme): Components => {
         paper: {
           background: theme.palette.vars?.controlBackgroundWeak,
           border: `2px solid ${theme.palette.vars?.controlBorderActive}`,
-          borderRadius: "4px",
+          borderRadius: theme.palette.vars?.borderRadiusSm,
         },
       },
     },

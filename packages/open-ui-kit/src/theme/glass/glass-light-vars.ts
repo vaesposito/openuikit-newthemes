@@ -397,6 +397,13 @@ export const glassLightVars: VarsType = {
   accentIWeak: "rgba(194, 48, 111, 0.12)",
   accentJDefault: tealPalette[600],
   accentJWeak: "rgba(2, 142, 153, 0.12)",
+  // Shape — border radius
+  borderRadiusSm: "4px",
+  borderRadiusLg: "8px",
+  borderRadius4xl: "20px",
+  // Shape — border width
+  borderWidthDefault: "1px",
+  borderWidthStrong: "4px",
   gradientPrimary: `linear-gradient(180deg, ${lightOrangePalette[400]} 0%, ${lightOrangePalette[600]} 100%)`,
   gradientSecondary: `linear-gradient(180deg, ${lightBluePalette[400]} 0%, ${lightBluePalette[600]} 100%)`,
   gradientNegative: `linear-gradient(180deg, ${redPalette[400]} 0%, ${redPalette[600]} 100%)`,

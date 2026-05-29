@@ -17,7 +17,7 @@ export const menuComponent = (theme: Theme): Components => {
           backgroundImage: "none",
           backgroundColor: theme.palette.vars.controlBackgroundWeak,
           padding: "8px 0px",
-          borderRadius: "8px",
+          borderRadius: theme.palette.vars.borderRadiusLg,
         },
       },
     },

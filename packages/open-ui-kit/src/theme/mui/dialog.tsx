@@ -11,7 +11,7 @@ export const dialogComponent = (theme: Theme): Components => {
     MuiPaper: {
       styleOverrides: {
         root: {
-          borderRadius: "8px",
+          borderRadius: theme.palette.vars.borderRadiusLg,
           background: theme.palette.vars.controlBackgroundDefault,
           // Scope dialog-specific padding to dialog papers only
           "&.MuiDialog-paper": {

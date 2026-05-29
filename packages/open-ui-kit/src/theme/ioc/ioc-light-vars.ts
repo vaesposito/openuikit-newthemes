@@ -395,6 +395,13 @@ export const iocLightVars: VarsType = {
   accentJWeak: "rgba(62, 203, 209, 0.12)",
 
   // Gradients
+  // Shape — border radius
+  borderRadiusSm: "4px",
+  borderRadiusLg: "8px",
+  borderRadius4xl: "20px",
+  // Shape — border width
+  borderWidthDefault: "1px",
+  borderWidthStrong: "4px",
   gradientPrimary: `linear-gradient(180deg, ${iocTealPalette[400]} 0%, ${iocTealPalette[600]} 100%)`,
   gradientSecondary: `linear-gradient(180deg, ${iocBluePalette[500]} 0%, ${iocBluePalette[600]} 100%)`,
   gradientNegative: `linear-gradient(180deg, ${redPalette[400]} 0%, ${redPalette[500]} 100%)`,

@@ -12,7 +12,7 @@ export const cardComponent = (theme: Theme): Components => {
       styleOverrides: {
         root: {
           padding: "16px 16px 16px 16px",
-          borderRadius: "8px",
+          borderRadius: theme.palette.vars?.borderRadiusLg,
           backgroundImage: "none",
           backgroundColor: theme.palette.vars?.baseBackgroundWeak,
           boxSizing: "border-box",
@@ -25,7 +25,7 @@ export const cardComponent = (theme: Theme): Components => {
     MuiCardActionArea: {
       styleOverrides: {
         root: {
-          borderRadius: "8px",
+          borderRadius: theme.palette.vars?.borderRadiusLg,
           "&:hover": {
             outline: `1px solid ${theme.palette.vars?.controlBorderHover}`,
             "& .MuiCardActionArea-focusHighlight": {

@@ -41,7 +41,7 @@ export const accordionComponent = (theme: Theme): Components => {
           },
           "&:focus": {
             backgroundColor: "transparent",
-            borderRadius: "4px",
+            borderRadius: theme.palette.vars?.borderRadiusSm,
             boxShadow: `0 0 0 2px ${lightBluePalette[900]}`,
             outlineOffset: "4px",
           },
