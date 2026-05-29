@@ -81,7 +81,7 @@ const palette: PaletteOptions = {
   vars: lightVars,
   text: {
     primary: greyPalette[500],
-    secondary: greyPalette[50],
+    secondary: greyPalette[300],
     disabled: greyPalette[100],
   },
   background: {
