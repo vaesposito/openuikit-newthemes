@@ -13,6 +13,7 @@ export const styles = (theme: Theme) => ({
     flexDirection: "column",
     backgroundColor: theme.palette.vars.interactiveSecondaryWeakDefault,
     padding: "0px",
+    minWidth: "300px",
     "&:hover": {
       backgroundColor: theme.palette.vars.interactiveSecondaryWeakDefault,
     },
@@ -50,7 +51,7 @@ export const styles = (theme: Theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    borderBottom: `1px solid ${theme.palette.vars.inactiveBorderHover}`,
+    borderBottom: `1px solid ${theme.palette.vars.controlBorderWeak}`,
     padding: "12px 16px",
     width: "100%",
   } as CSSProperties,

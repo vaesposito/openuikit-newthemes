@@ -46,6 +46,7 @@ export interface VarsType {
   controlBackgroundDefault: string;
   controlBackgroundDisabled: string;
   controlBackgroundWeak: string;
+  controlBackgroundHover: string;
   controlBackgroundMedium: string;
   controlBorderDefault: string;
   controlBorderStrong: string;

@@ -21,10 +21,7 @@ import {
   pinkPalette,
   tealPalette,
 } from "../color-palette";
-import {
-  iocTealPalette,
-  iocBluePalette,
-} from "./ioc-color-palette";
+import { iocTealPalette, iocBluePalette } from "./ioc-color-palette";
 import {
   iocLightSurfacePalette,
   iocLightBorderPalette,
@@ -90,6 +87,7 @@ export const iocLightVars: VarsType = {
   controlBackgroundDefault: iocLightSurfacePalette[50],
   controlBackgroundDisabled: iocLightSurfacePalette[100],
   controlBackgroundWeak: iocLightSurfacePalette[200],
+  controlBackgroundHover: iocLightSurfacePalette[100],
   controlBackgroundMedium: iocLightSurfacePalette[300],
   controlBorderDefault: iocLightBorderPalette[300],
   controlBorderStrong: iocLightBorderPalette[500],
@@ -397,19 +395,19 @@ export const iocLightVars: VarsType = {
   accentJWeak: "rgba(62, 203, 209, 0.12)",
 
   // Gradients
-  gradientPrimary:   `linear-gradient(180deg, ${iocTealPalette[400]} 0%, ${iocTealPalette[600]} 100%)`,
+  gradientPrimary: `linear-gradient(180deg, ${iocTealPalette[400]} 0%, ${iocTealPalette[600]} 100%)`,
   gradientSecondary: `linear-gradient(180deg, ${iocBluePalette[500]} 0%, ${iocBluePalette[600]} 100%)`,
-  gradientNegative:  `linear-gradient(180deg, ${redPalette[400]} 0%, ${redPalette[500]} 100%)`,
-  gradientBrand:     `linear-gradient(135deg, ${iocTealPalette[400]} 0%, ${iocBluePalette[500]} 100%)`,
-  gradientPage:      iocLightPageBackground,
+  gradientNegative: `linear-gradient(180deg, ${redPalette[400]} 0%, ${redPalette[500]} 100%)`,
+  gradientBrand: `linear-gradient(135deg, ${iocTealPalette[400]} 0%, ${iocBluePalette[500]} 100%)`,
+  gradientPage: iocLightPageBackground,
 
   // Glows — very subtle on light backgrounds
-  glowPrimary:   `0 0 4px ${iocTealPalette[500]}55, 0 0 10px ${iocTealPalette[500]}22`,
+  glowPrimary: `0 0 4px ${iocTealPalette[500]}55, 0 0 10px ${iocTealPalette[500]}22`,
   glowSecondary: `0 0 4px ${iocBluePalette[500]}55, 0 0 10px ${iocBluePalette[500]}22`,
-  glowSuccess:   `0 0 4px ${greenPalette[500]}55, 0 0 10px ${greenPalette[500]}22`,
-  glowWarning:   `0 0 4px ${lightOrangePalette[500]}55, 0 0 10px ${lightOrangePalette[500]}22`,
-  glowNegative:  `0 0 4px ${redPalette[500]}55, 0 0 10px ${redPalette[500]}22`,
-  glowSevere:    `0 0 4px ${orangePalette[500]}55, 0 0 10px ${orangePalette[500]}22`,
+  glowSuccess: `0 0 4px ${greenPalette[500]}55, 0 0 10px ${greenPalette[500]}22`,
+  glowWarning: `0 0 4px ${lightOrangePalette[500]}55, 0 0 10px ${lightOrangePalette[500]}22`,
+  glowNegative: `0 0 4px ${redPalette[500]}55, 0 0 10px ${redPalette[500]}22`,
+  glowSevere: `0 0 4px ${orangePalette[500]}55, 0 0 10px ${orangePalette[500]}22`,
   glowExcellent: `0 0 4px ${lightBluePalette[500]}55, 0 0 10px ${lightBluePalette[500]}22`,
-  glowNeutral:   `0 0 3px ${iocTealPalette[600]}44, 0 0 8px ${iocTealPalette[600]}18`,
+  glowNeutral: `0 0 3px ${iocTealPalette[600]}44, 0 0 8px ${iocTealPalette[600]}18`,
 };

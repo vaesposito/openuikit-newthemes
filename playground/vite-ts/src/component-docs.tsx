@@ -147,27 +147,8 @@ import {
   toast,
   Toaster,
   // Illustrations
-  AddDomain,
-  AddRepos,
-  AttackPathAnalysis,
-  AttackPathAnalysisWalkThrough,
-  Celebration,
-  Cloud,
-  CloudSimple,
-  Dashboard as IllusDashboard,
-  Data as IllusData,
-  EmptyData,
-  Git,
-  GitSimple,
-  Info as IllusInfo,
-  Kubernetes,
   Negative,
-  NoData,
   Positive,
-  Recon,
-  Sent,
-  Shield as IllusShield,
-  Success,
   Warning as IllusWarning,
 } from "@open-ui-kit/core";
 import type { SelectNodeType } from "@open-ui-kit/core";
@@ -1707,7 +1688,12 @@ function OverlaysSection() {
           <Button variant="outlined" onClick={() => setModalOpen(true)}>
             Open Modal
           </Button>
-          <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+          <Modal
+            open={modalOpen}
+            onClose={() => setModalOpen(false)}
+            maxWidth="sm"
+            fullWidth
+          >
             <ModalTitle>Confirm Action</ModalTitle>
             <ModalContent>
               <ModalContentText>
@@ -1716,10 +1702,10 @@ function OverlaysSection() {
               </ModalContentText>
             </ModalContent>
             <ModalActions>
-              <Button onClick={() => setModalOpen(false)}>Cancel</Button>
-              <Button variant="contained" onClick={() => setModalOpen(false)}>
-                Confirm
+              <Button variant="outlined" onClick={() => setModalOpen(false)}>
+                Cancel
               </Button>
+              <Button onClick={() => setModalOpen(false)}>Confirm</Button>
             </ModalActions>
           </Modal>
         </Stack>
@@ -2234,6 +2220,8 @@ function PageChromeSection() {
               }}
             >
               <Header
+                position="relative"
+                sx={{ zIndex: "auto" }}
                 logo={
                   <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                     <Box
@@ -8269,30 +8257,8 @@ function IconsSection() {
 
 const ILLUSTRATION_CATALOGUE: { name: string; Component: React.ElementType }[] =
   [
-    { name: "AddDomain", Component: AddDomain },
-    { name: "AddRepos", Component: AddRepos },
-    { name: "AttackPathAnalysis", Component: AttackPathAnalysis },
-    {
-      name: "AttackPathAnalysisWalkThrough",
-      Component: AttackPathAnalysisWalkThrough,
-    },
-    { name: "Celebration", Component: Celebration },
-    { name: "Cloud", Component: Cloud },
-    { name: "CloudSimple", Component: CloudSimple },
-    { name: "Dashboard", Component: IllusDashboard },
-    { name: "Data", Component: IllusData },
-    { name: "EmptyData", Component: EmptyData },
-    { name: "Git", Component: Git },
-    { name: "GitSimple", Component: GitSimple },
-    { name: "Info", Component: IllusInfo },
-    { name: "Kubernetes", Component: Kubernetes },
     { name: "Negative", Component: Negative },
-    { name: "NoData", Component: NoData },
     { name: "Positive", Component: Positive },
-    { name: "Recon", Component: Recon },
-    { name: "Sent", Component: Sent },
-    { name: "Shield", Component: IllusShield },
-    { name: "Success", Component: Success },
     { name: "Warning", Component: IllusWarning },
   ];
 
@@ -8485,7 +8451,7 @@ const SECTION_META: Record<
   illustrations: {
     title: "Illustrations",
     description:
-      "Custom SVG illustrations from @open-ui-kit/core — 22 illustrations for empty states, onboarding, status feedback, and more. Click any illustration to copy its import statement.",
+      "Custom SVG illustrations from @open-ui-kit/core — status feedback illustrations (Positive, Negative, Warning). Click any illustration to copy its import statement.",
     Component: IllustrationsSection,
     wide: true,
   },

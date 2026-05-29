@@ -119,7 +119,7 @@ const filterItemStyles = {
       if (isSelectAllEnabled) {
         return { paddingLeft: "76px" };
       }
-      return { paddingLeft: "12px" };
+      return { paddingLeft: "16px" };
     } else if (level > 0) {
       if (isSelectAllEnabled) {
         return { paddingLeft: "64px" };

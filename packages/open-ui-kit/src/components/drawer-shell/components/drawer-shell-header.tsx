@@ -10,7 +10,7 @@ import {
   Typography,
   Box,
   Divider,
-  Button,
+  IconButton,
   useTheme,
 } from "@mui/material";
 import {
@@ -119,19 +119,17 @@ export const DrawerShellHeader = ({
             {!hideTitleAction &&
               (titleAction ?? (
                 <Tooltip title="Open in a new tab" size={TooltipSize.Large}>
-                  <Button
+                  <IconButton
                     onClick={onTitleAction}
-                    size={"medium"}
-                    sx={{
-                      "&.MuiButton-sizeMedium": {
-                        color:
-                          theme.palette.vars.interactiveSecondaryDefaultDefault,
-                      },
-                    }}
+                    size="small"
                     aria-label="drawer open in new tab"
+                    sx={{
+                      color:
+                        theme.palette.vars.interactiveSecondaryDefaultDefault,
+                    }}
                   >
                     <OpenInNewTab />
-                  </Button>
+                  </IconButton>
                 </Tooltip>
               ))}
           </Stack>
@@ -140,29 +138,29 @@ export const DrawerShellHeader = ({
         <Stack sx={headerButtonsContainerStyle}>
           <Stack sx={navigationButtonsContainerStyle}>
             {!hidePrev && (
-              <Button
+              <IconButton
                 onClick={onPrev}
                 disabled={disablePrev}
-                size={"medium"}
+                size="small"
                 aria-label="drawer prev"
               >
                 <ArrowBackIOS sx={navigationIconStyle(disablePrev, theme)} />
-              </Button>
+              </IconButton>
             )}
             {!hideNext && (
-              <Button
+              <IconButton
                 onClick={onNext}
                 disabled={disableNext}
-                size={"medium"}
+                size="small"
                 aria-label="drawer next"
               >
                 <ArrowForwardIOS sx={navigationIconStyle(disableNext, theme)} />
-              </Button>
+              </IconButton>
             )}
           </Stack>
-          <Button onClick={onClose} size={"medium"} aria-label="drawer close">
+          <IconButton onClick={onClose} size="small" aria-label="drawer close">
             <CloseLarge sx={closeButtonStyle(theme)} />
-          </Button>
+          </IconButton>
         </Stack>
       </Stack>
       {!hideActionButtons && (

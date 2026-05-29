@@ -13,7 +13,10 @@ export const dialogComponent = (theme: Theme): Components => {
         root: {
           borderRadius: "8px",
           background: theme.palette.vars.controlBackgroundDefault,
-          padding: "24px",
+          // Scope dialog-specific padding to dialog papers only
+          "&.MuiDialog-paper": {
+            padding: "24px",
+          },
           "&.MuiDialog-paperWidthMd": {
             maxWidth: "480px",
           },
@@ -29,14 +32,15 @@ export const dialogComponent = (theme: Theme): Components => {
     MuiDialogContent: {
       styleOverrides: {
         root: {
-          padding: "0",
+          padding: "8px 0 0 0",
         },
       },
     },
     MuiDialogActions: {
       styleOverrides: {
         root: {
-          padding: "24px 0 0 0",
+          padding: "20px 0 0 0",
+          gap: "8px",
         },
       },
     },

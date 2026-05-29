@@ -113,7 +113,7 @@ const commonTableStyles = (theme: Theme) => ({
     const styles: Record<string, { backgroundColor: string }> = {
       // Row backgroundColor when it is hovered, not selected, and not pinned.
       [`& ${notSelectedOrPinned}:hover > td`]: {
-        backgroundColor: theme.palette.vars.controlBackgroundMedium,
+        backgroundColor: theme.palette.vars.controlBackgroundHover,
       },
       // Row backgroundColor when it is selected, not pinned, and not a detail panel.
       '& tr[data-selected="true"]:not([data-pinned="true"]):not(.Mui-TableBodyCell-DetailPanel) > td':

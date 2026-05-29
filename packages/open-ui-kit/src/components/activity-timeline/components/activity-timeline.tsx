@@ -41,9 +41,19 @@ export const ActivityTimeline = ({
   );
 
   return (
-    <MuiTimeline {...props}>
+    <MuiTimeline
+      position="right"
+      sx={{ padding: 0, margin: 0, ...((props as { sx?: object }).sx ?? {}) }}
+      {...props}
+    >
       {steps.map((step, index) => (
-        <MuiTimelineItem key={index}>
+        <MuiTimelineItem
+          key={index}
+          sx={{
+            // Remove the default ::before pseudo-element that creates dead space
+            "&::before": { flex: 0, padding: 0 },
+          }}
+        >
           <MuiTimelineSeparator sx={{ marginTop: "2px" }}>
             <ActivityTimelineDot
               automaticProgress={automaticProgress}
@@ -64,10 +74,18 @@ export const ActivityTimeline = ({
             )}
           </MuiTimelineSeparator>
           <MuiTimelineContent
-            sx={{ padding: "0px 16px", paddingBottom: "24px" }}
+            sx={{
+              padding: "0px 0px 24px 16px",
+              flex: 1,
+              minWidth: 0,
+            }}
           >
             {step.content ? (
-              <Accordion title={step.title} subTitle={step.subTitle}>
+              <Accordion
+                title={step.title}
+                subTitle={step.subTitle}
+                sx={{ width: "100%" }}
+              >
                 {step.content}
               </Accordion>
             ) : (

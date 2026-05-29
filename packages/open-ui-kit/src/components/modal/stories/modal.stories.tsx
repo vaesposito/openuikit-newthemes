@@ -83,7 +83,7 @@ const ModalComponent = (
           <Button onClick={handleClose} variant="outlined">
             Disagree
           </Button>
-          <Button onClick={handleClose} autoFocus>
+          <Button onClick={handleClose} variant="primary" autoFocus>
             Agree
           </Button>
         </ModalActions>
