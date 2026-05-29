@@ -147,6 +147,7 @@ import {
   toast,
   Toaster,
   // Illustrations
+  Info as IllusInfo,
   Negative,
   Positive,
   Warning as IllusWarning,
@@ -8257,9 +8258,10 @@ function IconsSection() {
 
 const ILLUSTRATION_CATALOGUE: { name: string; Component: React.ElementType }[] =
   [
-    { name: "Negative", Component: Negative },
+    { name: "Info", Component: IllusInfo },
     { name: "Positive", Component: Positive },
     { name: "Warning", Component: IllusWarning },
+    { name: "Negative", Component: Negative },
   ];
 
 function IllustrationsSection() {
@@ -8451,7 +8453,7 @@ const SECTION_META: Record<
   illustrations: {
     title: "Illustrations",
     description:
-      "Custom SVG illustrations from @open-ui-kit/core — status feedback illustrations (Positive, Negative, Warning). Click any illustration to copy its import statement.",
+      "Custom SVG illustrations from @open-ui-kit/core — status feedback illustrations (Info, Positive, Warning, Negative). Click any illustration to copy its import statement.",
     Component: IllustrationsSection,
     wide: true,
   },
