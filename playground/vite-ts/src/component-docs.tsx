@@ -176,6 +176,8 @@ import ArticleIcon from "@mui/icons-material/Article";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import GridOnIcon from "@mui/icons-material/GridOn";
 import WebAssetIcon from "@mui/icons-material/WebAsset";
+import RoundedCornerIcon from "@mui/icons-material/RoundedCorner";
+import BorderStyleIcon from "@mui/icons-material/BorderStyle";
 import Tooltip from "@mui/material/Tooltip";
 
 // ─── Icon catalogue imports ───────────────────────────────────────────────────
@@ -353,6 +355,8 @@ const TOKEN_CATEGORIES = [
   { id: "typography", label: "Typography", Icon: TextFieldsIcon },
   { id: "shadows", label: "Shadows", Icon: LayersIcon },
   { id: "spacing", label: "Spacing", Icon: DashboardIcon },
+  { id: "border-radius", label: "Border Radius", Icon: RoundedCornerIcon },
+  { id: "border-width", label: "Border Width", Icon: BorderStyleIcon },
 ];
 
 const TEMPLATE_CATEGORIES = [
@@ -3929,6 +3933,253 @@ function SpacingTokensSection() {
             </React.Fragment>
           );
         })}
+      </Box>
+    </>
+  );
+}
+
+// ─── Border Radius Tokens ─────────────────────────────────────────────────────
+
+const BORDER_RADIUS_SCALE = [
+  { name: "none", value: "0px", usage: "No rounding" },
+  { name: "xs", value: "2px", usage: "Subtle rounding" },
+  { name: "sm", value: "4px", usage: "Buttons, inputs, chips, progress bars" },
+  { name: "md", value: "6px", usage: "Secondary controls" },
+  { name: "lg", value: "8px", usage: "Cards, modals, menus, panels" },
+  { name: "xl", value: "10px", usage: "IOC large controls" },
+  { name: "2xl", value: "12px", usage: "Glass panels, drawers" },
+  { name: "3xl", value: "16px", usage: "Large panels" },
+  { name: "4xl", value: "20px", usage: "Pills, tab strips" },
+  { name: "full", value: "50%", usage: "Circles, avatars" },
+];
+
+function BorderRadiusSection() {
+  return (
+    <>
+      <Typography
+        sx={{
+          fontSize: "0.7rem",
+          color: "text.primary",
+          opacity: 0.5,
+          mb: 2,
+          lineHeight: 1.6,
+        }}
+      >
+        Border radius scale used across components. Values are applied directly
+        via CSS (e.g. <code>borderRadius: "8px"</code>) or via MUI&apos;s{" "}
+        <code>theme.shape.borderRadius</code> multiplier.
+      </Typography>
+      <Box
+        sx={{
+          borderRadius: 2,
+          border: "1px solid",
+          borderColor: "divider",
+          bgcolor: "background.paper",
+          overflow: "hidden",
+        }}
+      >
+        {BORDER_RADIUS_SCALE.map((step, i) => (
+          <React.Fragment key={step.name}>
+            {i > 0 && (
+              <Box
+                sx={{
+                  borderTop: "1px solid",
+                  borderColor: "divider",
+                  opacity: 0.4,
+                }}
+              />
+            )}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+                px: 2.5,
+                py: 1.5,
+                "&:hover": { bgcolor: "action.hover" },
+              }}
+            >
+              {/* Visual swatch */}
+              <Box
+                sx={{
+                  width: 80,
+                  flexShrink: 0,
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: 48,
+                    height: 28,
+                    bgcolor: "primary.main",
+                    borderRadius: step.value,
+                    opacity: 0.85,
+                  }}
+                />
+              </Box>
+              {/* Alias */}
+              <Typography
+                sx={{
+                  fontFamily: "monospace",
+                  fontSize: "0.78rem",
+                  fontWeight: 600,
+                  color: "text.primary",
+                  width: 56,
+                  flexShrink: 0,
+                }}
+              >
+                {step.name}
+              </Typography>
+              {/* px value */}
+              <Typography
+                sx={{
+                  fontFamily: "monospace",
+                  fontSize: "0.78rem",
+                  color: "text.primary",
+                  opacity: 0.5,
+                  width: 48,
+                  flexShrink: 0,
+                }}
+              >
+                {step.value}
+              </Typography>
+              {/* Usage */}
+              <Typography
+                sx={{ fontSize: "0.75rem", color: "text.secondary", flex: 1 }}
+              >
+                {step.usage}
+              </Typography>
+              <TokenCopyChip text={`borderRadius: "${step.value}"`} />
+            </Box>
+          </React.Fragment>
+        ))}
+      </Box>
+    </>
+  );
+}
+
+// ─── Border Width Tokens ──────────────────────────────────────────────────────
+
+const BORDER_WIDTH_SCALE = [
+  { name: "none", value: "0px", usage: "No border — borderless controls" },
+  {
+    name: "default",
+    value: "1px",
+    usage: "Standard borders, dividers, input outlines",
+  },
+  {
+    name: "medium",
+    value: "2px",
+    usage: "Focus rings, emphasized outlines",
+  },
+  {
+    name: "strong",
+    value: "4px",
+    usage: "Accent borders, alert sidebars, callouts",
+  },
+];
+
+function BorderWidthSection() {
+  return (
+    <>
+      <Typography
+        sx={{
+          fontSize: "0.7rem",
+          color: "text.primary",
+          opacity: 0.5,
+          mb: 2,
+          lineHeight: 1.6,
+        }}
+      >
+        Border width scale. Use directly via CSS (e.g.{" "}
+        <code>borderWidth: "2px"</code>) or MUI component overrides.
+      </Typography>
+      <Box
+        sx={{
+          borderRadius: 2,
+          border: "1px solid",
+          borderColor: "divider",
+          bgcolor: "background.paper",
+          overflow: "hidden",
+        }}
+      >
+        {BORDER_WIDTH_SCALE.map((step, i) => (
+          <React.Fragment key={step.name}>
+            {i > 0 && (
+              <Box
+                sx={{
+                  borderTop: "1px solid",
+                  borderColor: "divider",
+                  opacity: 0.4,
+                }}
+              />
+            )}
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+                px: 2.5,
+                py: 1.5,
+                "&:hover": { bgcolor: "action.hover" },
+              }}
+            >
+              {/* Visual swatch */}
+              <Box
+                sx={{
+                  width: 80,
+                  flexShrink: 0,
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: 48,
+                    height: 28,
+                    borderRadius: 1,
+                    border: `${step.value} solid`,
+                    borderColor: "primary.main",
+                  }}
+                />
+              </Box>
+              {/* Alias */}
+              <Typography
+                sx={{
+                  fontFamily: "monospace",
+                  fontSize: "0.78rem",
+                  fontWeight: 600,
+                  color: "text.primary",
+                  width: 64,
+                  flexShrink: 0,
+                }}
+              >
+                {step.name}
+              </Typography>
+              {/* px value */}
+              <Typography
+                sx={{
+                  fontFamily: "monospace",
+                  fontSize: "0.78rem",
+                  color: "text.primary",
+                  opacity: 0.5,
+                  width: 40,
+                  flexShrink: 0,
+                }}
+              >
+                {step.value}
+              </Typography>
+              {/* Usage */}
+              <Typography
+                sx={{ fontSize: "0.75rem", color: "text.secondary", flex: 1 }}
+              >
+                {step.usage}
+              </Typography>
+              <TokenCopyChip text={`borderWidth: "${step.value}"`} />
+            </Box>
+          </React.Fragment>
+        ))}
       </Box>
     </>
   );
@@ -8486,6 +8737,18 @@ const SECTION_META: Record<
     description:
       "8px base-unit spacing scale — from 0 to 24 steps, with semantic aliases and px values.",
     Component: SpacingTokensSection,
+  },
+  "border-radius": {
+    title: "Border Radius",
+    description:
+      "Corner radius scale — from none (0px) to full (50%) with semantic aliases used across all components.",
+    Component: BorderRadiusSection,
+  },
+  "border-width": {
+    title: "Border Width",
+    description:
+      "Border thickness scale — none, default (1px), medium (2px), and strong (4px) for outlines, dividers, focus rings, and accent borders.",
+    Component: BorderWidthSection,
   },
 };
 
