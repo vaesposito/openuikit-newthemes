@@ -351,7 +351,8 @@ const COMPONENT_CATEGORIES = [
 ];
 
 const TOKEN_CATEGORIES = [
-  { id: "color", label: "Color", Icon: PaletteIcon },
+  { id: "color-primitives", label: "Color Primitives", Icon: PaletteIcon },
+  { id: "color", label: "Color Tokens", Icon: PaletteIcon },
   { id: "typography", label: "Typography", Icon: TextFieldsIcon },
   { id: "shadows", label: "Shadows", Icon: LayersIcon },
   { id: "spacing", label: "Spacing", Icon: DashboardIcon },
@@ -2967,6 +2968,522 @@ const COLOR_TOKEN_SECTIONS: TokenSection[] = [
 ];
 
 // ─── Token sub-components ─────────────────────────────────────────────────────
+
+// ─── Color Primitives Section ────────────────────────────────────────────────
+
+type PaletteRamp = Record<string | number, string>;
+
+interface RampDef {
+  label: string;
+  palette: PaletteRamp;
+}
+
+// ── Base palettes (shared across AGNTCY Light & Dark)
+const BASE_PALETTES: RampDef[] = [
+  {
+    label: "Blue",
+    palette: {
+      50: "#e8f1ff",
+      100: "#9bcaff",
+      200: "#79b9ff",
+      300: "#187adc",
+      400: "#0063c2",
+      500: "#0051af",
+      600: "#004ba8",
+      700: "#00409f",
+      800: "#003796",
+      900: "#002786",
+    },
+  },
+  {
+    label: "Light Blue",
+    palette: {
+      50: "#edfbff",
+      100: "#bcf2ff",
+      200: "#8fe9ff",
+      300: "#62e0ff",
+      400: "#41d9ff",
+      500: "#1fd2ff",
+      600: "#1bcdff",
+      700: "#17c7ff",
+      800: "#12c1ff",
+      900: "#0ab6ff",
+    },
+  },
+  {
+    label: "Grey",
+    palette: {
+      0: "#ffffff",
+      50: "#e8e9ea",
+      100: "#c5c7cb",
+      200: "#9ea2a8",
+      300: "#777d85",
+      400: "#59616b",
+      500: "#3c4551",
+      600: "#363e4a",
+      700: "#2e3640",
+      800: "#272e37",
+      900: "#1a1f27",
+    },
+  },
+  {
+    label: "Green",
+    palette: {
+      50: "#eafbf6",
+      100: "#b3eadd",
+      200: "#80dcc6",
+      300: "#4dceaf",
+      400: "#26c49e",
+      500: "#00b98d",
+      600: "#00b285",
+      700: "#00aa7a",
+      800: "#00a270",
+      900: "#00935d",
+    },
+  },
+  {
+    label: "Red",
+    palette: {
+      50: "#f8e5ea",
+      100: "#eebfcb",
+      200: "#e394a9",
+      300: "#d76987",
+      400: "#cf496d",
+      500: "#c62953",
+      600: "#c0244c",
+      700: "#b91f42",
+      800: "#b11939",
+      900: "#a40f29",
+    },
+  },
+  {
+    label: "Orange",
+    palette: {
+      50: "#fdece8",
+      100: "#fbd1c5",
+      200: "#f9b29e",
+      300: "#f69377",
+      400: "#f47b5a",
+      500: "#f2643d",
+      600: "#f05c37",
+      700: "#ee522f",
+      800: "#ec4827",
+      900: "#e8361a",
+    },
+  },
+  {
+    label: "Light Orange",
+    palette: {
+      50: "#fff5e9",
+      100: "#ffe7c7",
+      200: "#ffd7a2",
+      300: "#ffc77d",
+      400: "#ffbb61",
+      500: "#fbaf45",
+      600: "#fbab2c",
+      700: "#fb9f36",
+      800: "#fb962e",
+      900: "#fb861f",
+    },
+  },
+  {
+    label: "Yellow",
+    palette: {
+      50: "#fffceb",
+      100: "#fff8cd",
+      200: "#fff3ac",
+      300: "#ffee8b",
+      400: "#ffea72",
+      500: "#ffe659",
+      600: "#ffe351",
+      700: "#ffdf48",
+      800: "#ffdb3e",
+      900: "#ffd52e",
+    },
+  },
+  {
+    label: "Purple",
+    palette: {
+      50: "#faecff",
+      100: "#f1dbff",
+      200: "#deb8ff",
+      300: "#ca93ff",
+      400: "#c080ff",
+      500: "#b76dff",
+      600: "#9c4eea",
+      700: "#6a21ba",
+      800: "#5300a4",
+      900: "#1b0077",
+    },
+  },
+  {
+    label: "Teal",
+    palette: {
+      10: "#efffff",
+      50: "#c7ffff",
+      100: "#92ffff",
+      200: "#78fbff",
+      300: "#5de2e8",
+      400: "#3ecbd1",
+      500: "#0bb2b8",
+      600: "#028e99",
+      700: "#007178",
+      800: "#00484f",
+      900: "#00353c",
+    },
+  },
+  {
+    label: "Pink",
+    palette: {
+      10: "#fff9ff",
+      50: "#ffdeea",
+      100: "#ffc4d5",
+      200: "#ffa6ca",
+      300: "#ff87a9",
+      400: "#f2638c",
+      500: "#e3447c",
+      600: "#c2306f",
+      700: "#97174a",
+      800: "#7f0037",
+      900: "#500014",
+    },
+  },
+  {
+    label: "Lavender",
+    palette: {
+      10: "#f1f5ff",
+      50: "#e0e5ff",
+      100: "#c8cdfb",
+      200: "#bac1ff",
+      300: "#a8afff",
+      400: "#9ca6ff",
+      500: "#8a95ff",
+      600: "#5c6ddd",
+      700: "#2847a5",
+      800: "#00358f",
+      900: "#002378",
+    },
+  },
+  {
+    label: "Lime",
+    palette: {
+      10: "#fcfee8",
+      50: "#fcffd0",
+      100: "#eaff80",
+      200: "#d3f474",
+      300: "#bbdc5e",
+      400: "#a4c547",
+      500: "#89ab2c",
+      600: "#7da11b",
+      700: "#5f8200",
+      800: "#345900",
+      900: "#193100",
+    },
+  },
+  {
+    label: "Night",
+    palette: {
+      10: "#dff1f5",
+      50: "#96d0dd",
+      100: "#62bed2",
+      200: "#46aace",
+      300: "#3d91be",
+      400: "#3577ae",
+      500: "#2d5e9e",
+      600: "#24448e",
+      700: "#1c2b7f",
+      800: "#162065",
+      900: "#11174b",
+    },
+  },
+  {
+    label: "Sunset",
+    palette: {
+      10: "#fff6d4",
+      50: "#f9cdac",
+      100: "#f3aca2",
+      200: "#ee8b97",
+      300: "#e96a8d",
+      400: "#db5087",
+      500: "#b8428c",
+      600: "#973490",
+      700: "#742796",
+      800: "#5e1f88",
+      900: "#4d1a70",
+    },
+  },
+  {
+    label: "Surface Light",
+    palette: {
+      50: "#fbfcfe",
+      100: "#f5f8fd",
+      200: "#eff3fc",
+      300: "#e8eefb",
+      400: "#e3eafa",
+      500: "#dee6f9",
+      600: "#dae3f8",
+      700: "#d5dff7",
+      800: "#d1dbf6",
+      900: "#c8d5f5",
+    },
+  },
+  {
+    label: "Surface Dark",
+    palette: {
+      50: "#4f628d",
+      100: "#3a4e77",
+      200: "#31466e",
+      300: "#263b62",
+      400: "#183056",
+      500: "#0d274d",
+      600: "#062242",
+      700: "#001c3b",
+      800: "#041930",
+      900: "#00142b",
+    },
+  },
+];
+
+// ── C1D (IOC/Cisco 1 Design) theme-specific palettes
+const C1D_PALETTES: RampDef[] = [
+  {
+    label: "C1D Teal — Brand",
+    palette: {
+      50: "#E6F9FE",
+      100: "#B3EEFB",
+      200: "#7DE0F8",
+      300: "#40D0F4",
+      400: "#1AC6F0",
+      500: "#00BCEB",
+      600: "#00A0D1",
+      700: "#0082AD",
+      800: "#006B8A",
+      900: "#003D54",
+    },
+  },
+  {
+    label: "C1D Blue",
+    palette: { 400: "#3B92FF", 500: "#2B82F6", 600: "#1E6FD9" },
+  },
+  {
+    label: "C1D Backdrop",
+    palette: {
+      100: "#1A3060",
+      200: "#132650",
+      300: "#0F2040",
+      400: "#0C1B35",
+      500: "#091428",
+      600: "#07111F",
+      700: "#050C18",
+      800: "#03080F",
+      900: "#020508",
+    },
+  },
+];
+
+// ── Glass theme-specific palettes
+const GLASS_PALETTES: RampDef[] = [
+  {
+    label: "Glass Accent — Cyan",
+    palette: {
+      50: "#e6fcff",
+      100: "#b3f5ff",
+      200: "#80eeff",
+      300: "#4de7ff",
+      400: "#26e1ff",
+      500: "#00d4ff",
+      600: "#00bfe6",
+      700: "#00a6cc",
+      800: "#008db3",
+      900: "#006b8a",
+    },
+  },
+  {
+    label: "Glass Highlight — Purple",
+    palette: {
+      50: "#f5f0ff",
+      100: "#e4d9ff",
+      200: "#d0bfff",
+      300: "#b8a1ff",
+      400: "#a688ff",
+      500: "#9370ff",
+      600: "#7c5ce6",
+      700: "#6548cc",
+      800: "#4e35b3",
+      900: "#38238a",
+    },
+  },
+  {
+    label: "Glass Backdrop",
+    palette: {
+      50: "#1a1f2e",
+      100: "#161a27",
+      200: "#121620",
+      300: "#0e1119",
+      400: "#0a0d14",
+      500: "#080a10",
+      600: "#06080c",
+      700: "#040609",
+      800: "#020406",
+      900: "#010203",
+    },
+  },
+];
+
+function getLuminance(hex: string): number {
+  const clean = hex.replace("#", "");
+  if (clean.length !== 6) return 0.5;
+  const r = parseInt(clean.slice(0, 2), 16) / 255;
+  const g = parseInt(clean.slice(2, 4), 16) / 255;
+  const b = parseInt(clean.slice(4, 6), 16) / 255;
+  const toLinear = (c: number) =>
+    c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  return 0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
+}
+
+function PrimitiveRampRow({ label, palette }: RampDef) {
+  const steps = Object.keys(palette);
+  return (
+    <Box sx={{ mb: 2 }}>
+      <Typography
+        sx={{
+          fontSize: "0.65rem",
+          fontWeight: 700,
+          color: "text.primary",
+          opacity: 0.45,
+          textTransform: "uppercase",
+          letterSpacing: "0.08em",
+          mb: 0.5,
+        }}
+      >
+        {label}
+      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          borderRadius: "8px",
+          overflow: "hidden",
+          boxShadow: "0 1px 3px rgba(0,0,0,0.12)",
+        }}
+      >
+        {steps.map((step) => {
+          const color = palette[step];
+          const isTransparent =
+            color.startsWith("rgba") || color.startsWith("linear");
+          const lum = isTransparent ? 0.5 : getLuminance(color);
+          const textColor =
+            lum > 0.35 ? "rgba(0,0,0,0.75)" : "rgba(255,255,255,0.9)";
+          return (
+            <Box
+              key={step}
+              title={`${label}[${step}] = ${color}`}
+              sx={{
+                flex: 1,
+                minWidth: 0,
+                height: 64,
+                bgcolor: color,
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                px: 0.5,
+                pt: 0.5,
+                pb: 0.6,
+                cursor: "default",
+                transition: "transform 0.1s",
+                "&:hover": { transform: "scaleY(1.04)", zIndex: 1 },
+              }}
+            >
+              <Typography
+                sx={{
+                  fontSize: "0.52rem",
+                  fontWeight: 700,
+                  color: textColor,
+                  lineHeight: 1,
+                  fontFamily: "monospace",
+                  opacity: 0.8,
+                }}
+              >
+                {step}
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: "0.48rem",
+                  color: textColor,
+                  lineHeight: 1,
+                  fontFamily: "monospace",
+                  opacity: 0.7,
+                  wordBreak: "break-all",
+                }}
+              >
+                {isTransparent
+                  ? color
+                      .replace("rgba(", "")
+                      .replace(")", "")
+                      .split(",")
+                      .slice(-1)[0]
+                      .trim()
+                      .replace(" ", "") + "α"
+                  : color}
+              </Typography>
+            </Box>
+          );
+        })}
+      </Box>
+    </Box>
+  );
+}
+
+function ColorPrimitivesSection() {
+  const groupLabel = (label: string) => (
+    <Typography
+      sx={{
+        fontSize: "0.65rem",
+        fontWeight: 700,
+        color: "text.primary",
+        opacity: 0.4,
+        textTransform: "uppercase",
+        letterSpacing: "0.08em",
+        mb: 1.5,
+      }}
+    >
+      {label}
+    </Typography>
+  );
+  return (
+    <>
+      <Typography
+        sx={{
+          fontSize: "0.7rem",
+          color: "text.primary",
+          opacity: 0.5,
+          mb: 3,
+          lineHeight: 1.6,
+        }}
+      >
+        Raw color ramps underlying all semantic tokens. Each step (50–900) goes
+        from lightest to darkest. Hover any swatch to see its name and hex
+        value.
+      </Typography>
+
+      {groupLabel("Base Palette — AGNTCY Themes")}
+      {BASE_PALETTES.map((r) => (
+        <PrimitiveRampRow key={r.label} {...r} />
+      ))}
+
+      <Box sx={{ mt: 3, mb: 1.5 }}>{groupLabel("C1D Dark Palette")}</Box>
+      {C1D_PALETTES.map((r) => (
+        <PrimitiveRampRow key={r.label} {...r} />
+      ))}
+
+      <Box sx={{ mt: 3, mb: 1.5 }}>{groupLabel("Glass Dark Palette")}</Box>
+      {GLASS_PALETTES.map((r) => (
+        <PrimitiveRampRow key={r.label} {...r} />
+      ))}
+    </>
+  );
+}
+
+// ─── Semantic Color Tokens ────────────────────────────────────────────────────
 
 function ColorSwatch({ value }: { value: string }) {
   return (
@@ -8714,6 +9231,12 @@ const SECTION_META: Record<
       "Security operations dashboard — action cards, activity timeline, status gauge, and risk trends. Fully theme-aware.",
     Component: DashboardSection,
     wide: true,
+  },
+  "color-primitives": {
+    title: "Color Primitives",
+    description:
+      "Raw color ramps — every step of every palette used across all themes. The foundation beneath semantic tokens.",
+    Component: ColorPrimitivesSection,
   },
   color: {
     title: "Color Tokens",
