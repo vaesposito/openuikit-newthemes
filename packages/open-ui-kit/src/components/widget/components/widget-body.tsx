@@ -29,7 +29,12 @@ export const WidgetBody = <T extends string>({
   const theme = useTheme();
 
   return (
-    <CardContent sx={styles(theme).cardContent}>
+    <CardContent
+      sx={{
+        ...styles(theme).cardContent,
+        "&:last-child": { paddingBottom: "16px" },
+      }}
+    >
       {isLoading ? (
         <Stack
           sx={styles(theme).stack}
