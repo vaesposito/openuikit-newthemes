@@ -96,7 +96,7 @@ export const lightVars: VarsType = {
   interactiveSecondaryDefaultHover: surfaceDarkPalette[300],
   interactiveSecondaryDefaultActive: surfaceDarkPalette[900],
   interactiveSecondaryDefaultDisabled: "#00142b66",
-  interactiveSecondaryWeakDefault: surfaceLightPalette[600],
+  interactiveSecondaryWeakDefault: surfaceLightPalette[50],
   interactiveSecondaryWeakHover: surfaceLightPalette[300],
   interactiveSecondaryWeakActive: surfaceLightPalette[900],
   interactiveSecondaryWeakDisabled: "#d1dbf666",
