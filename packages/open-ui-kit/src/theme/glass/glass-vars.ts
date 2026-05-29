@@ -92,7 +92,7 @@ export const glassVars: VarsType = {
   controlBackgroundDefault: glassSurfacePalette[100],
   controlBackgroundDisabled: glassSurfacePalette[50],
   controlBackgroundWeak: glassSurfacePalette[50],
-  controlBackgroundHover: glassSurfacePalette[200],
+  controlBackgroundHover: "rgba(255, 255, 255, 0.06)",
   controlBackgroundMedium: glassSurfacePalette[300],
   controlBorderDefault: glassBorderPalette[400],
   controlBorderStrong: glassBorderPalette[600],
