@@ -71,7 +71,7 @@ export const darkVars: VarsType = {
   controlBackgroundDefault: surfaceDarkPalette[400],
   controlBackgroundDisabled: surfaceDarkPalette[500],
   controlBackgroundWeak: surfaceDarkPalette[500],
-  controlBackgroundHover: "rgba(255, 255, 255, 0.06)",
+  controlBackgroundHover: surfaceDarkPalette[300],
   controlBackgroundMedium: surfaceDarkPalette[200],
   controlBorderDefault: surfaceDarkPalette[50],
   controlBorderStrong: surfaceDarkPalette[100],
