@@ -35,9 +35,9 @@ const commonCellStyles = <TData extends MRT_RowData>(
     borderLeft: setBorder(isLeftmostRightPinnedColumn, theme),
     borderRight: setBorder(isRightmostLeftPinnedColumn, theme),
     borderBottom: setBorder(true, theme),
-    backgroundColor: column.getIsPinned()
-      ? theme.palette.vars.controlBackgroundMedium
-      : theme.palette.vars.controlBackgroundDefault,
+    // Pinned/sticky cells are painted by MRT via mrtTheme.baseBackgroundColor (with !important),
+    // so only the non-pinned background is set here to avoid a misleading overridden rule.
+    backgroundColor: theme.palette.vars.controlBackgroundDefault,
     ".MuiBox-root": {
       whiteSpace: "nowrap",
     },
