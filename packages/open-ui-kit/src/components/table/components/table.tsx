@@ -342,7 +342,12 @@ export const CreateTableInstance = <TData extends MRT_RowData>({
     },
     mrtTheme: () => {
       return {
-        baseBackgroundColor: theme.palette.vars.controlBackgroundMedium,
+        // MRT applies this to pinned/sticky cells as `${baseBackgroundColor} !important`.
+        // C1D sets controlBackgroundStickyColumn (0.1) so pinned columns match the cell tint;
+        // other themes fall back to controlBackgroundMedium.
+        baseBackgroundColor:
+          theme.palette.vars.controlBackgroundStickyColumn ??
+          theme.palette.vars.controlBackgroundMedium,
         draggingBorderColor: theme.palette.primary[500],
       };
     },

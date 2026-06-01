@@ -48,6 +48,9 @@ export interface VarsType {
   controlBackgroundWeak: string;
   controlBackgroundHover: string;
   controlBackgroundMedium: string;
+  // Optional override for the table's pinned/sticky-column background (MRT baseBackgroundColor).
+  // Falls back to controlBackgroundMedium when not set.
+  controlBackgroundStickyColumn?: string;
   controlBorderDefault: string;
   controlBorderStrong: string;
   controlBorderMedium: string;

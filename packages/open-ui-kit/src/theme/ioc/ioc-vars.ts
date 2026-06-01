@@ -91,6 +91,7 @@ export const iocVars: VarsType = {
   controlBackgroundWeak: iocSurfacePalette[300], // toggle-tab container: clearly visible pill
   controlBackgroundHover: iocSurfacePalette[400],
   controlBackgroundMedium: iocSurfacePalette[500], // selected tab: clearly elevated
+  controlBackgroundStickyColumn: "rgba(255, 255, 255, 0.1)", // pinned table columns: match the 0.1 cell tint
   controlBorderDefault: iocBorderPalette[300],
   controlBorderStrong: iocBorderPalette[500],
   controlBorderMedium: iocBorderPalette[200],
