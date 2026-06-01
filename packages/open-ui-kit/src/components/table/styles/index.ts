@@ -35,9 +35,6 @@ const commonCellStyles = <TData extends MRT_RowData>(
     borderLeft: setBorder(isLeftmostRightPinnedColumn, theme),
     borderRight: setBorder(isRightmostLeftPinnedColumn, theme),
     borderBottom: setBorder(true, theme),
-    backgroundColor: column.getIsPinned()
-      ? theme.palette.vars.controlBackgroundMedium
-      : theme.palette.vars.controlBackgroundDefault,
     ".MuiBox-root": {
       whiteSpace: "nowrap",
     },
@@ -50,7 +47,6 @@ const commonCellStyles = <TData extends MRT_RowData>(
 const commonHeaderStyles = (theme: Theme) => ({
   paddingTop: 0,
   paddingBottom: 0,
-  backgroundColor: theme.palette.vars.controlBackgroundDefault,
   "& .Mui-TableHeadCell-Content": {
     margin: "auto",
   },
@@ -101,7 +97,9 @@ const commonTableStyles = (theme: Theme) => ({
       width: "100%",
     },
   },
-  tablePaperStyle: {},
+  tablePaperStyle: {
+    backgroundColor: "transparent",
+  },
   tableContainerStyle: {
     borderRadius: `${tableBorderRadius}px`,
   },
