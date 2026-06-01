@@ -20,10 +20,7 @@ import {
   Shadows,
 } from "@mui/material";
 import { iocLightVars } from "./ioc-light-vars";
-import {
-  iocTealPalette,
-  iocBluePalette,
-} from "./ioc-color-palette";
+import { iocTealPalette, iocBluePalette } from "./ioc-color-palette";
 import {
   iocLightSurfacePalette,
   iocLightBorderPalette,
@@ -105,7 +102,7 @@ const palette: PaletteOptions = {
   divider: iocLightBorderPalette[300],
   action: {
     hoverOpacity: 0.06,
-    selectedOpacity: 0.10,
+    selectedOpacity: 0.1,
     focusOpacity: 0.08,
   },
 };
@@ -165,6 +162,15 @@ const iocLightComponentOverrides = {
     },
   },
 
+  // Table cells: transparent so they match the card surface
+  MuiTableCell: {
+    styleOverrides: {
+      root: {
+        backgroundColor: "transparent !important",
+      },
+    },
+  },
+
   MuiCard: {
     styleOverrides: {
       root: {
@@ -218,9 +224,19 @@ const iocLightComponentOverrides = {
         transition: "all 0.18s ease",
         "& .MuiButton-startIcon": { marginLeft: 0 },
         "& .MuiButton-endIcon": { marginRight: 0 },
-        "&.MuiButton-sizeLarge": { ...baseTheme.typography.subtitle1, height: "40px" },
-        "&.MuiButton-sizeMedium": { ...baseTheme.typography.subtitle2, height: "32px" },
-        "&.MuiButton-sizeSmall": { ...baseTheme.typography.subtitle2, height: "24px", padding: "2px 12px" },
+        "&.MuiButton-sizeLarge": {
+          ...baseTheme.typography.subtitle1,
+          height: "40px",
+        },
+        "&.MuiButton-sizeMedium": {
+          ...baseTheme.typography.subtitle2,
+          height: "32px",
+        },
+        "&.MuiButton-sizeSmall": {
+          ...baseTheme.typography.subtitle2,
+          height: "24px",
+          padding: "2px 12px",
+        },
         "&.MuiButton-primarySizeLarge, &.MuiButton-primarySizeMedium": {
           paddingRight: "16px",
           paddingLeft: "16px",
@@ -253,7 +269,10 @@ const iocLightComponentOverrides = {
           border: `2px solid ${iocLightBorderPalette[400]}`,
           background: "none",
           color: iocTealPalette[600],
-          "&.Mui-disabled": { opacity: 0.35, borderColor: iocLightBorderPalette[200] },
+          "&.Mui-disabled": {
+            opacity: 0.35,
+            borderColor: iocLightBorderPalette[200],
+          },
           "&:hover": {
             borderColor: iocTealPalette[500],
             backgroundColor: iocTealPalette.alpha05,
@@ -279,7 +298,10 @@ const iocLightComponentOverrides = {
           background: "none",
           color: redPalette[600],
           "&.Mui-disabled": { opacity: 0.35 },
-          "&:hover": { border: `2px solid ${redPalette[600]}`, color: redPalette[700] },
+          "&:hover": {
+            border: `2px solid ${redPalette[600]}`,
+            color: redPalette[700],
+          },
         },
         "&.MuiButton-tertariaryNegative": {
           background: "none",
@@ -414,7 +436,10 @@ const iocLightComponentOverrides = {
   MuiSwitch: {
     styleOverrides: {
       root: {
-        "& .MuiSwitch-track": { backgroundColor: iocLightBorderPalette[400], opacity: 1 },
+        "& .MuiSwitch-track": {
+          backgroundColor: iocLightBorderPalette[400],
+          opacity: 1,
+        },
         "& .Mui-checked + .MuiSwitch-track": {
           backgroundColor: iocTealPalette[500],
           opacity: 1,
@@ -553,10 +578,22 @@ const iocLightComponentOverrides = {
         border: `1px solid ${iocLightBorderPalette[300]}`,
         borderRadius: "10px",
       },
-      standardSuccess: { borderLeftColor: greenPalette[500], borderLeftWidth: "4px" },
-      standardError:   { borderLeftColor: redPalette[500],   borderLeftWidth: "4px" },
-      standardWarning: { borderLeftColor: lightOrangePalette[500], borderLeftWidth: "4px" },
-      standardInfo:    { borderLeftColor: iocTealPalette[500], borderLeftWidth: "4px" },
+      standardSuccess: {
+        borderLeftColor: greenPalette[500],
+        borderLeftWidth: "4px",
+      },
+      standardError: {
+        borderLeftColor: redPalette[500],
+        borderLeftWidth: "4px",
+      },
+      standardWarning: {
+        borderLeftColor: lightOrangePalette[500],
+        borderLeftWidth: "4px",
+      },
+      standardInfo: {
+        borderLeftColor: iocTealPalette[500],
+        borderLeftWidth: "4px",
+      },
     },
   },
 
@@ -607,7 +644,10 @@ const iocLightComponentOverrides = {
 
   MuiLinearProgress: {
     styleOverrides: {
-      root: { backgroundColor: iocLightSurfacePalette[300], borderRadius: "4px" },
+      root: {
+        backgroundColor: iocLightSurfacePalette[300],
+        borderRadius: "4px",
+      },
       bar: { borderRadius: "4px" },
       barColorPrimary: { backgroundColor: iocTealPalette[500] },
     },
@@ -642,4 +682,7 @@ const iocLightThemeOptions: ThemeOptions = {
   },
 };
 
-export const iocLightTheme: Theme = createTheme(baseTheme, iocLightThemeOptions);
+export const iocLightTheme: Theme = createTheme(
+  baseTheme,
+  iocLightThemeOptions,
+);

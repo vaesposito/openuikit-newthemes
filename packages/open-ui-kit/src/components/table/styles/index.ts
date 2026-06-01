@@ -102,7 +102,8 @@ const commonTableStyles = (theme: Theme) => ({
     },
   },
   tablePaperStyle: {
-    backgroundColor: "transparent",
+    border: `1px solid ${theme.palette.vars.controlBorderMedium}`,
+    borderRadius: `${tableBorderRadius}px`,
   },
   tableContainerStyle: {
     borderRadius: `${tableBorderRadius}px`,

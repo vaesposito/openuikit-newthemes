@@ -105,7 +105,7 @@ const palette: PaletteOptions = {
   action: {
     hoverOpacity: 0.08,
     selectedOpacity: 0.14,
-    focusOpacity: 0.10,
+    focusOpacity: 0.1,
   },
 };
 
@@ -163,6 +163,15 @@ const iocComponentOverrides = {
       "::selection": {
         backgroundColor: iocTealPalette.alpha20,
         color: "#ffffff",
+      },
+    },
+  },
+
+  // Table cells: transparent so they blend with the card surface instead of stacking opacity layers
+  MuiTableCell: {
+    styleOverrides: {
+      root: {
+        backgroundColor: "transparent !important",
       },
     },
   },
@@ -226,9 +235,19 @@ const iocComponentOverrides = {
         color: baseTheme.palette.vars.baseTextInverse,
         "& .MuiButton-startIcon": { marginLeft: 0 },
         "& .MuiButton-endIcon": { marginRight: 0 },
-        "&.MuiButton-sizeLarge": { ...baseTheme.typography.subtitle1, height: "40px" },
-        "&.MuiButton-sizeMedium": { ...baseTheme.typography.subtitle2, height: "32px" },
-        "&.MuiButton-sizeSmall": { ...baseTheme.typography.subtitle2, height: "24px", padding: "2px 12px" },
+        "&.MuiButton-sizeLarge": {
+          ...baseTheme.typography.subtitle1,
+          height: "40px",
+        },
+        "&.MuiButton-sizeMedium": {
+          ...baseTheme.typography.subtitle2,
+          height: "32px",
+        },
+        "&.MuiButton-sizeSmall": {
+          ...baseTheme.typography.subtitle2,
+          height: "24px",
+          padding: "2px 12px",
+        },
         "&.MuiButton-primarySizeLarge, &.MuiButton-primarySizeMedium": {
           paddingRight: "16px",
           paddingLeft: "16px",
@@ -262,7 +281,10 @@ const iocComponentOverrides = {
           border: `2px solid ${iocBorderPalette[300]}`,
           background: "none",
           color: iocTealPalette[400],
-          "&.Mui-disabled": { opacity: 0.35, borderColor: iocBorderPalette[200] },
+          "&.Mui-disabled": {
+            opacity: 0.35,
+            borderColor: iocBorderPalette[200],
+          },
           "&:hover": {
             borderColor: iocTealPalette[500],
             backgroundColor: iocTealPalette.alpha05,
@@ -282,7 +304,9 @@ const iocComponentOverrides = {
           "&:hover": {
             background: `linear-gradient(180deg, ${baseTheme.palette.vars.negativeBackgroundWeak ?? baseTheme.palette.vars.negativeBackgroundHover} 0%, ${baseTheme.palette.vars.negativeBackgroundHover} 100%)`,
           },
-          "&:active": { background: baseTheme.palette.vars.negativeBackgroundActive },
+          "&:active": {
+            background: baseTheme.palette.vars.negativeBackgroundActive,
+          },
         },
         "&.MuiButton-outlinedNegative": {
           border: `2px solid ${baseTheme.palette.vars.negativeBorderDefault}`,
@@ -437,7 +461,10 @@ const iocComponentOverrides = {
   MuiSwitch: {
     styleOverrides: {
       root: {
-        "& .MuiSwitch-track": { backgroundColor: iocSurfacePalette[400], opacity: 1 },
+        "& .MuiSwitch-track": {
+          backgroundColor: iocSurfacePalette[400],
+          opacity: 1,
+        },
         "& .Mui-checked + .MuiSwitch-track": {
           backgroundColor: iocTealPalette[600],
           opacity: 1,
@@ -579,10 +606,22 @@ const iocComponentOverrides = {
         border: `1px solid ${iocBorderPalette[200]}`,
         borderRadius: "10px",
       },
-      standardSuccess: { borderLeftColor: greenPalette[500], borderLeftWidth: "4px" },
-      standardError:   { borderLeftColor: redPalette[500],   borderLeftWidth: "4px" },
-      standardWarning: { borderLeftColor: lightOrangePalette[500], borderLeftWidth: "4px" },
-      standardInfo:    { borderLeftColor: iocTealPalette[500], borderLeftWidth: "4px" },
+      standardSuccess: {
+        borderLeftColor: greenPalette[500],
+        borderLeftWidth: "4px",
+      },
+      standardError: {
+        borderLeftColor: redPalette[500],
+        borderLeftWidth: "4px",
+      },
+      standardWarning: {
+        borderLeftColor: lightOrangePalette[500],
+        borderLeftWidth: "4px",
+      },
+      standardInfo: {
+        borderLeftColor: iocTealPalette[500],
+        borderLeftWidth: "4px",
+      },
     },
   },
 
