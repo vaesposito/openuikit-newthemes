@@ -167,11 +167,11 @@ const iocComponentOverrides = {
     },
   },
 
-  // Table cells: transparent so they blend with the card surface instead of stacking opacity layers
+  // Table cells: subtle translucent white tint (0.1) so rows read as a light surface over the dark page
   MuiTableCell: {
     styleOverrides: {
       root: {
-        backgroundColor: "transparent !important",
+        backgroundColor: "rgba(255, 255, 255, 0.1) !important",
       },
     },
   },
