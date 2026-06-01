@@ -67,7 +67,7 @@ export const lightVars: VarsType = {
   controlBackgroundDefault: surfaceLightPalette[50],
   controlBackgroundDisabled: surfaceLightPalette[100],
   controlBackgroundWeak: surfaceLightPalette[100],
-  controlBackgroundHover: surfaceLightPalette[300],
+  controlBackgroundHover: surfaceLightPalette[200],
   controlBackgroundMedium: surfaceLightPalette[400],
   controlBorderDefault: surfaceLightPalette[700],
   controlBorderStrong: surfaceLightPalette[900],
