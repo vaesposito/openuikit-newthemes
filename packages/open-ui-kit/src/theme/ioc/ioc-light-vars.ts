@@ -87,7 +87,7 @@ export const iocLightVars: VarsType = {
   controlBackgroundDefault: iocLightSurfacePalette[50],
   controlBackgroundDisabled: iocLightSurfacePalette[100],
   controlBackgroundWeak: iocLightSurfacePalette[200],
-  controlBackgroundHover: iocLightSurfacePalette[100],
+  controlBackgroundHover: iocLightSurfacePalette[300],
   controlBackgroundMedium: iocLightSurfacePalette[300],
   controlBorderDefault: iocLightBorderPalette[300],
   controlBorderStrong: iocLightBorderPalette[500],
