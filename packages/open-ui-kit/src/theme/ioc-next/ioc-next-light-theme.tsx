@@ -484,7 +484,7 @@ const iocNextLightComponentOverrides = {
       },
       colorSecondary: {
         backgroundColor: "rgba(58,149,255,0.16)",
-        color: iocNextBluePalette[700],
+        color: iocNextBluePalette[600],
         border: "none",
       },
     },

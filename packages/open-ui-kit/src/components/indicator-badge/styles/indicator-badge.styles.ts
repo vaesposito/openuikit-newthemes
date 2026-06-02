@@ -7,7 +7,7 @@
 export const indicatorBadgeValueContainerStyles = {
   container: {
     height: 24,
-    width: 24,
+    width: 28,
     position: "relative",
     display: "flex",
     alignItems: "center",
@@ -17,8 +17,10 @@ export const indicatorBadgeValueContainerStyles = {
 
 export const indicatorBadgeBackdropStyles = (color: string) => ({
   backgroundColor: color,
-  borderRadius: 1,
+  // Fixed radius (px) keeps the backdrop pill consistent regardless of the
+  // theme's shape.borderRadius, which themes like IoC set large.
+  borderRadius: "6px",
   height: "inherit",
-  opacity: 0.1,
+  opacity: 0.12,
   width: "inherit",
 });
