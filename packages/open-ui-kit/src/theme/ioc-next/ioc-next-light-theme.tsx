@@ -11,7 +11,8 @@ import {
   orangePalette,
   redPalette,
 } from "../color-palette";
-import { typography, commonMixins } from "../common";
+import { commonMixins } from "../common";
+import { iocNextTypography } from "./ioc-next-typography";
 import {
   createTheme,
   PaletteOptions,
@@ -26,7 +27,6 @@ import {
 } from "./ioc-next-color-palette";
 import {
   iocNextLightSurfacePalette,
-  iocNextLightBorderPalette,
   iocNextLightTextPrimary,
   iocNextLightTextSecondary,
   iocNextLightTextDisabled,
@@ -59,15 +59,18 @@ import {
   tooltipComponent,
 } from "../mui";
 
-export const iocNextLightShadows: Shadows = [
-  "none",
-  iocNextLightShadowSm,
-  iocNextLightShadowMd,
-  iocNextLightShadowLg,
-  iocNextLightShadowLg,
-  iocNextLightShadowLg,
-  ...Array(19).fill("none"),
-] as Shadows;
+// ── OXP glassmorphism language (light) ───────────────────────────────────────
+// Frosted-white panes float over a soft light gradient, separated by space and
+// glow instead of hard outlines.
+const glassFill = "rgba(255, 255, 255, 0.55)";
+const glassFillMedium = "rgba(255, 255, 255, 0.70)";
+const glassFillStrong = "rgba(255, 255, 255, 0.85)";
+const glassHairline = "rgba(15, 32, 64, 0.06)";
+const glassBlur = "blur(28px)";
+const glassDepth = "0 12px 40px rgba(15, 32, 64, 0.12)";
+
+const glowPrimary = iocNextLightVars.glowPrimary as string;
+const glowSecondary = iocNextLightVars.glowSecondary as string;
 
 const palette: PaletteOptions = {
   mode: "light",
@@ -99,10 +102,10 @@ const palette: PaletteOptions = {
     disabled: iocNextLightTextDisabled,
   },
   background: {
-    paper: "#FFFFFF",
+    paper: glassFill,
     default: iocNextLightSurfacePalette[100],
   },
-  divider: iocNextLightBorderPalette[300],
+  divider: glassHairline,
   action: {
     hoverOpacity: 0.06,
     selectedOpacity: 0.1,
@@ -110,13 +113,23 @@ const palette: PaletteOptions = {
   },
 };
 
+export const iocNextLightShadows: Shadows = [
+  "none",
+  iocNextLightShadowSm,
+  iocNextLightShadowMd,
+  iocNextLightShadowLg,
+  iocNextLightShadowLg,
+  iocNextLightShadowLg,
+  ...Array(19).fill("none"),
+] as Shadows;
+
 const baseTheme: Theme = createTheme({
   breakpoints: {
     keys: ["md", "lg", "xl", "xxl"],
     values: { md: 1024, lg: 1440, xl: 1920, xxl: 2560 },
   },
   palette,
-  typography,
+  typography: iocNextTypography,
   mixins: commonMixins,
 });
 
@@ -125,7 +138,7 @@ const iocNextLightComponentOverrides = {
     styleOverrides: {
       html: {
         scrollbarWidth: "thin",
-        scrollbarColor: `${iocNextLightBorderPalette[300]} ${iocNextLightSurfacePalette[200]}`,
+        scrollbarColor: `rgba(15,32,64,0.18) transparent`,
       },
       body: {
         background: iocNextLightPageBackground,
@@ -133,30 +146,31 @@ const iocNextLightComponentOverrides = {
         minHeight: "100vh",
       },
       ".osd-view-switcher-option": {
-        backgroundColor: `${iocNextLightSurfacePalette[50]} !important`,
-        borderColor: `${iocNextLightBorderPalette[300]} !important`,
+        backgroundColor: `${glassFill} !important`,
+        borderColor: `transparent !important`,
         color: `${iocNextLightTextSecondary} !important`,
         "&:hover": {
-          backgroundColor: `${iocNextLightSurfacePalette[200]} !important`,
+          backgroundColor: `${glassFillMedium} !important`,
           color: `${iocNextLightTextPrimary} !important`,
         },
       },
       ".osd-view-switcher-option-selected": {
-        backgroundColor: `${iocNextLightSurfacePalette[300]} !important`,
+        backgroundColor: `${glassFillStrong} !important`,
         borderColor: `${iocNextCyanPalette.alpha20} !important`,
         color: `${iocNextLightTextPrimary} !important`,
+        boxShadow: `${glowPrimary} !important`,
       },
       "*::-webkit-scrollbar": { width: "8px", height: "8px" },
       "*::-webkit-scrollbar-track": {
-        backgroundColor: iocNextLightSurfacePalette[200],
-        borderRadius: 4,
+        backgroundColor: "transparent",
+        borderRadius: 8,
       },
       "*::-webkit-scrollbar-thumb": {
-        backgroundColor: iocNextLightBorderPalette[300],
-        borderRadius: 4,
+        backgroundColor: "rgba(15,32,64,0.16)",
+        borderRadius: 8,
         border: "2px solid transparent",
         backgroundClip: "content-box",
-        "&:hover": { backgroundColor: iocNextLightBorderPalette[400] },
+        "&:hover": { backgroundColor: "rgba(15,32,64,0.28)" },
       },
       "::selection": {
         backgroundColor: iocNextCyanPalette.alpha20,
@@ -165,7 +179,6 @@ const iocNextLightComponentOverrides = {
     },
   },
 
-  // Table cells: transparent so they match the card surface
   MuiTableCell: {
     styleOverrides: {
       root: {
@@ -174,17 +187,25 @@ const iocNextLightComponentOverrides = {
     },
   },
 
+  // Cards: borderless frosted-white glass, rounded, cyan glow on hover
   MuiCard: {
     styleOverrides: {
       root: {
-        backgroundColor: "rgba(255,255,255,0.82)",
-        backgroundImage: "none",
-        backdropFilter: "blur(16px)",
-        border: `1px solid ${iocNextLightBorderPalette[200]}`,
-        borderRadius: "10px",
-        boxShadow: iocNextLightShadowSm,
+        backgroundColor: glassFill,
+        backgroundImage:
+          "radial-gradient(120% 100% at 0% 0%, rgba(255,255,255,0.65) 0%, transparent 55%)",
+        backdropFilter: glassBlur,
+        WebkitBackdropFilter: glassBlur,
+        border: "none",
+        borderRadius: "20px",
+        boxShadow: glassDepth,
         position: "relative" as const,
-        padding: "16px",
+        padding: "20px",
+        transition: "box-shadow 0.2s ease, background-color 0.2s ease",
+        "&:hover": {
+          backgroundColor: glassFillMedium,
+          boxShadow: `${glassDepth}, ${glowPrimary}`,
+        },
       },
     },
   },
@@ -193,21 +214,25 @@ const iocNextLightComponentOverrides = {
     styleOverrides: {
       root: {
         backgroundImage: "none",
-        backgroundColor: "rgba(255,255,255,0.82)",
-        backdropFilter: "blur(16px)",
+        backgroundColor: glassFill,
+        backdropFilter: glassBlur,
+        WebkitBackdropFilter: glassBlur,
+        borderRadius: "16px",
       },
       elevation1: {
-        backgroundColor: "rgba(255,255,255,0.82)",
-        backdropFilter: "blur(16px)",
-        boxShadow: iocNextLightShadowSm,
+        backgroundColor: glassFill,
+        backdropFilter: glassBlur,
+        boxShadow: glassDepth,
       },
       elevation2: {
-        backgroundColor: iocNextLightSurfacePalette[50],
-        boxShadow: iocNextLightShadowMd,
+        backgroundColor: glassFillMedium,
+        backdropFilter: glassBlur,
+        boxShadow: glassDepth,
       },
       elevation3: {
-        backgroundColor: iocNextLightSurfacePalette[100],
-        boxShadow: iocNextLightShadowLg,
+        backgroundColor: glassFillStrong,
+        backdropFilter: glassBlur,
+        boxShadow: `${glassDepth}, ${glowPrimary}`,
       },
     },
   },
@@ -222,35 +247,41 @@ const iocNextLightComponentOverrides = {
     styleOverrides: {
       root: {
         textTransform: "none" as const,
-        borderRadius: "8px",
+        borderRadius: "12px",
         fontWeight: 600,
         transition: "all 0.18s ease",
+        color: "#FFFFFF",
         "& .MuiButton-startIcon": { marginLeft: 0 },
         "& .MuiButton-endIcon": { marginRight: 0 },
+        "&.Mui-focusVisible": {
+          boxShadow: `0 0 0 3px ${iocNextCyanPalette.alpha20}, ${glowPrimary}`,
+        },
         "&.MuiButton-sizeLarge": {
           ...baseTheme.typography.subtitle1,
-          height: "40px",
+          height: "44px",
+          borderRadius: "14px",
         },
         "&.MuiButton-sizeMedium": {
           ...baseTheme.typography.subtitle2,
-          height: "32px",
+          height: "36px",
         },
         "&.MuiButton-sizeSmall": {
           ...baseTheme.typography.subtitle2,
-          height: "24px",
-          padding: "2px 12px",
+          height: "28px",
+          padding: "2px 14px",
         },
         "&.MuiButton-primarySizeLarge, &.MuiButton-primarySizeMedium": {
-          paddingRight: "16px",
-          paddingLeft: "16px",
+          paddingRight: "18px",
+          paddingLeft: "18px",
         },
         "&.MuiButton-primary": {
           background: `linear-gradient(180deg, ${iocNextCyanPalette[400]} 0%, ${iocNextCyanPalette[600]} 100%)`,
           color: "#FFFFFF",
-          "&.Mui-disabled": { opacity: 0.4 },
+          boxShadow: `0 4px 14px ${iocNextCyanPalette.alpha40}`,
+          "&.Mui-disabled": { opacity: 0.4, boxShadow: "none" },
           "&:hover": {
             background: `linear-gradient(180deg, ${iocNextCyanPalette[300]} 0%, ${iocNextCyanPalette[500]} 100%)`,
-            boxShadow: `0 4px 16px ${iocNextCyanPalette.alpha20}`,
+            boxShadow: glowPrimary,
           },
           "&:active": {
             background: `linear-gradient(180deg, ${iocNextCyanPalette[500]} 0%, ${iocNextCyanPalette[700]} 100%)`,
@@ -259,58 +290,63 @@ const iocNextLightComponentOverrides = {
         "&.MuiButton-secondary": {
           background: `linear-gradient(180deg, ${iocNextBluePalette[500]} 0%, ${iocNextBluePalette[600]} 100%)`,
           color: "#ffffff",
-          "&.Mui-disabled": { opacity: 0.4 },
+          boxShadow: `0 4px 14px rgba(58,149,255,0.30)`,
+          "&.Mui-disabled": { opacity: 0.4, boxShadow: "none" },
           "&:hover": {
             background: `linear-gradient(180deg, ${iocNextBluePalette[400]} 0%, ${iocNextBluePalette[500]} 100%)`,
-            boxShadow: "0 4px 16px rgba(58,149,255,0.25)",
+            boxShadow: glowSecondary,
           },
           "&:active": {
             background: `linear-gradient(180deg, ${iocNextBluePalette[600]} 0%, #1560c0 100%)`,
           },
         },
         "&.MuiButton-outlined": {
-          border: `2px solid ${iocNextLightBorderPalette[400]}`,
-          background: "none",
-          color: iocNextCyanPalette[600],
+          border: `1px solid ${iocNextCyanPalette.alpha40}`,
+          background: iocNextCyanPalette.alpha05,
+          color: iocNextCyanPalette[700],
           "&.Mui-disabled": {
             opacity: 0.35,
-            borderColor: iocNextLightBorderPalette[200],
+            borderColor: glassHairline,
           },
           "&:hover": {
             borderColor: iocNextCyanPalette[500],
-            backgroundColor: iocNextCyanPalette.alpha05,
+            backgroundColor: iocNextCyanPalette.alpha10,
+            boxShadow: `0 0 12px ${iocNextCyanPalette.alpha20}`,
           },
         },
         "&.MuiButton-tertariary": {
           background: "none",
-          color: iocNextCyanPalette[600],
+          color: iocNextCyanPalette[700],
           "&.Mui-disabled": { opacity: 0.35 },
-          "&:hover": { backgroundColor: iocNextCyanPalette.alpha05 },
+          "&:hover": { backgroundColor: iocNextCyanPalette.alpha10 },
         },
         "&.MuiButton-primaryNegative": {
-          background: `linear-gradient(180deg, ${redPalette[400]} 0%, ${redPalette[500]} 100%)`,
+          background: `linear-gradient(180deg, ${baseTheme.palette.vars.negativeBackgroundHover} 0%, ${baseTheme.palette.vars.negativeBackgroundDefault} 100%)`,
           color: "#ffffff",
           "&.Mui-disabled": { opacity: 0.35 },
           "&:hover": {
-            background: `linear-gradient(180deg, ${redPalette[300]} 0%, ${redPalette[400]} 100%)`,
+            background: `linear-gradient(180deg, ${baseTheme.palette.vars.negativeBackgroundWeak ?? baseTheme.palette.vars.negativeBackgroundHover} 0%, ${baseTheme.palette.vars.negativeBackgroundHover} 100%)`,
+            boxShadow: baseTheme.palette.vars.glowNegative,
           },
-          "&:active": { background: redPalette[600] },
+          "&:active": {
+            background: baseTheme.palette.vars.negativeBackgroundActive,
+          },
         },
         "&.MuiButton-outlinedNegative": {
-          border: `2px solid ${redPalette[500]}`,
+          border: `1px solid ${baseTheme.palette.vars.negativeBorderDefault}`,
           background: "none",
-          color: redPalette[600],
+          color: baseTheme.palette.vars.negativeTextDefault,
           "&.Mui-disabled": { opacity: 0.35 },
           "&:hover": {
-            border: `2px solid ${redPalette[600]}`,
-            color: redPalette[700],
+            border: `1px solid ${baseTheme.palette.vars.negativeBackgroundHover}`,
+            color: baseTheme.palette.vars.negativeBackgroundHover,
           },
         },
         "&.MuiButton-tertariaryNegative": {
           background: "none",
-          color: redPalette[600],
+          color: baseTheme.palette.vars.negativeTextDefault,
           "&.Mui-disabled": { opacity: 0.35 },
-          "&:hover": { color: redPalette[700] },
+          "&:hover": { color: baseTheme.palette.vars.negativeBackgroundHover },
         },
       },
     },
@@ -326,18 +362,19 @@ const iocNextLightComponentOverrides = {
           transform: "translate(12px, 3px) scale(1)",
         },
         "& .MuiOutlinedInput-root": {
-          backgroundColor: "#FFFFFF",
-          borderRadius: "8px",
-          "& fieldset": { borderColor: iocNextLightBorderPalette[300] },
-          "&:hover fieldset": { borderColor: iocNextLightBorderPalette[400] },
+          backgroundColor: "rgba(255,255,255,0.6)",
+          backdropFilter: "blur(12px)",
+          borderRadius: "12px",
+          "& fieldset": { borderColor: glassHairline },
+          "&:hover fieldset": { borderColor: "rgba(15,32,64,0.14)" },
           "&.Mui-focused fieldset": {
             borderColor: iocNextCyanPalette[500],
-            boxShadow: `0 0 0 3px ${iocNextCyanPalette.alpha10}`,
+            boxShadow: `0 0 0 3px ${iocNextCyanPalette.alpha20}`,
           },
         },
         "& .MuiInputLabel-root": {
           color: iocNextLightTextSecondary,
-          "&.Mui-focused": { color: iocNextCyanPalette[600] },
+          "&.Mui-focused": { color: iocNextCyanPalette[700] },
         },
       },
     },
@@ -346,10 +383,18 @@ const iocNextLightComponentOverrides = {
   MuiDialog: {
     styleOverrides: {
       paper: {
-        backgroundColor: "#FFFFFF",
-        border: `1px solid ${iocNextLightBorderPalette[300]}`,
-        borderRadius: "14px",
-        boxShadow: iocNextLightShadowLg,
+        backgroundColor: "rgba(255, 255, 255, 0.75)",
+        backgroundImage:
+          "radial-gradient(120% 90% at 0% 0%, rgba(255,255,255,0.8) 0%, transparent 55%)",
+        backdropFilter: "blur(40px)",
+        WebkitBackdropFilter: "blur(40px)",
+        border: "none",
+        borderRadius: "24px",
+        boxShadow: `0 24px 80px rgba(15,32,64,0.2), ${glowPrimary}`,
+      },
+      backdrop: {
+        backgroundColor: "rgba(15, 32, 64, 0.25)",
+        backdropFilter: "blur(8px)",
       },
     },
   },
@@ -357,9 +402,11 @@ const iocNextLightComponentOverrides = {
   MuiDrawer: {
     styleOverrides: {
       paper: {
-        backgroundColor: iocNextLightSurfacePalette[50],
-        borderRight: `1px solid ${iocNextLightBorderPalette[300]}`,
-        boxShadow: iocNextLightShadowLg,
+        backgroundColor: "rgba(255, 255, 255, 0.75)",
+        backdropFilter: "blur(40px)",
+        WebkitBackdropFilter: "blur(40px)",
+        border: "none",
+        boxShadow: "0 0 60px rgba(15,32,64,0.15)",
       },
     },
   },
@@ -367,10 +414,11 @@ const iocNextLightComponentOverrides = {
   MuiAppBar: {
     styleOverrides: {
       root: {
-        backgroundColor: "#FFFFFF",
-        borderBottom: `1px solid ${iocNextLightBorderPalette[300]}`,
-        boxShadow: iocNextLightShadowSm,
-        color: iocNextLightTextPrimary,
+        backgroundColor: "rgba(255, 255, 255, 0.6)",
+        backdropFilter: glassBlur,
+        WebkitBackdropFilter: glassBlur,
+        borderBottom: "none",
+        boxShadow: "0 8px 32px rgba(15,32,64,0.08)",
       },
     },
   },
@@ -378,10 +426,12 @@ const iocNextLightComponentOverrides = {
   MuiMenu: {
     styleOverrides: {
       paper: {
-        backgroundColor: "#FFFFFF",
-        border: `1px solid ${iocNextLightBorderPalette[300]}`,
-        borderRadius: "10px",
-        boxShadow: iocNextLightShadowLg,
+        backgroundColor: "rgba(255, 255, 255, 0.8)",
+        backdropFilter: "blur(32px)",
+        WebkitBackdropFilter: "blur(32px)",
+        border: "none",
+        borderRadius: "16px",
+        boxShadow: "0 16px 48px rgba(15,32,64,0.16)",
       },
     },
   },
@@ -389,11 +439,12 @@ const iocNextLightComponentOverrides = {
   MuiMenuItem: {
     styleOverrides: {
       root: {
-        borderRadius: "6px",
-        margin: "2px 6px",
-        "&:hover": { backgroundColor: iocNextLightSurfacePalette[200] },
+        borderRadius: "10px",
+        margin: "2px 8px",
+        "&:hover": { backgroundColor: "rgba(15,32,64,0.04)" },
         "&.Mui-selected": {
           backgroundColor: iocNextCyanPalette.alpha10,
+          boxShadow: `inset 0 0 0 1px ${iocNextCyanPalette.alpha20}`,
           "&:hover": { backgroundColor: iocNextCyanPalette.alpha20 },
         },
       },
@@ -403,34 +454,37 @@ const iocNextLightComponentOverrides = {
   MuiTooltip: {
     styleOverrides: {
       tooltip: {
-        backgroundColor: iocNextLightTextPrimary,
+        backgroundColor: "rgba(35, 40, 46, 0.92)",
         border: "none",
-        borderRadius: "6px",
-        boxShadow: iocNextLightShadowMd,
+        borderRadius: "10px",
+        boxShadow: "0 8px 28px rgba(15,32,64,0.2)",
         color: "#FFFFFF",
         fontSize: "12px",
         fontWeight: 500,
+        backdropFilter: "blur(20px)",
       },
-      arrow: { color: iocNextLightTextPrimary },
+      arrow: { color: "rgba(35, 40, 46, 0.92)" },
     },
   },
 
   MuiChip: {
     styleOverrides: {
       root: {
-        backgroundColor: iocNextLightSurfacePalette[200],
-        border: `1px solid ${iocNextLightBorderPalette[300]}`,
+        backgroundColor: "rgba(15,32,64,0.05)",
+        border: "none",
+        borderRadius: "9999px",
         color: iocNextLightTextSecondary,
-        "&:hover": { backgroundColor: iocNextLightSurfacePalette[300] },
+        "&:hover": { backgroundColor: "rgba(15,32,64,0.09)" },
       },
       colorPrimary: {
-        backgroundColor: iocNextCyanPalette[500],
-        color: "#FFFFFF",
+        backgroundColor: iocNextCyanPalette.alpha20,
+        color: iocNextCyanPalette[700],
         border: "none",
+        boxShadow: `0 0 10px ${iocNextCyanPalette.alpha20}`,
       },
       colorSecondary: {
-        backgroundColor: iocNextBluePalette[500],
-        color: "#fff",
+        backgroundColor: "rgba(58,149,255,0.16)",
+        color: iocNextBluePalette[700],
         border: "none",
       },
     },
@@ -440,12 +494,15 @@ const iocNextLightComponentOverrides = {
     styleOverrides: {
       root: {
         "& .MuiSwitch-track": {
-          backgroundColor: iocNextLightBorderPalette[400],
+          backgroundColor: "rgba(15,32,64,0.18)",
           opacity: 1,
         },
         "& .Mui-checked + .MuiSwitch-track": {
           backgroundColor: iocNextCyanPalette[500],
           opacity: 1,
+        },
+        "& .MuiSwitch-thumb": {
+          boxShadow: `0 0 8px ${iocNextCyanPalette.alpha40}`,
         },
       },
     },
@@ -454,13 +511,11 @@ const iocNextLightComponentOverrides = {
   MuiSlider: {
     styleOverrides: {
       root: { color: iocNextCyanPalette[500] },
-      rail: { backgroundColor: iocNextLightSurfacePalette[400] },
+      rail: { backgroundColor: "rgba(15,32,64,0.14)" },
+      track: { border: "none" },
       thumb: {
         backgroundColor: "#fff",
-        border: `2px solid ${iocNextCyanPalette[500]}`,
-        "&:hover, &.Mui-focusVisible": {
-          boxShadow: `0 0 0 8px ${iocNextCyanPalette.alpha10}`,
-        },
+        "&:hover, &.Mui-focusVisible": { boxShadow: glowPrimary },
       },
     },
   },
@@ -483,7 +538,7 @@ const iocNextLightComponentOverrides = {
         textTransform: "none" as const,
         fontWeight: 500,
         color: iocNextLightTextSecondary,
-        "&.Mui-selected": { color: iocNextCyanPalette[600] },
+        "&.Mui-selected": { color: iocNextCyanPalette[700] },
         transition: "all 0.15s ease",
       },
     },
@@ -494,12 +549,12 @@ const iocNextLightComponentOverrides = {
         style: {
           ...baseTheme.typography.body1,
           fontWeight: baseTheme.typography.fontWeightSemiBold,
-          minHeight: "42px",
-          height: "42px",
+          minHeight: "44px",
+          height: "44px",
           color: iocNextLightTextSecondary,
           padding: "8px 24px",
-          "&:hover": { backgroundColor: iocNextLightSurfacePalette[200] },
-          "&.Mui-selected": { color: iocNextCyanPalette[600] },
+          "&:hover": { backgroundColor: "rgba(15,32,64,0.04)" },
+          "&.Mui-selected": { color: iocNextCyanPalette[700] },
         },
       },
       {
@@ -511,8 +566,8 @@ const iocNextLightComponentOverrides = {
           height: "40px",
           color: iocNextLightTextSecondary,
           padding: "8px 24px",
-          "&:hover": { backgroundColor: iocNextLightSurfacePalette[200] },
-          "&.Mui-selected": { color: iocNextCyanPalette[600] },
+          "&:hover": { backgroundColor: "rgba(15,32,64,0.04)" },
+          "&.Mui-selected": { color: iocNextCyanPalette[700] },
         },
       },
       {
@@ -520,16 +575,17 @@ const iocNextLightComponentOverrides = {
         style: {
           ...baseTheme.typography.caption,
           fontWeight: baseTheme.typography.fontWeightSemiBold,
-          minHeight: "32px",
-          height: "32px",
-          borderRadius: "20px",
-          padding: "0 16px",
+          minHeight: "34px",
+          height: "34px",
+          borderRadius: "9999px",
+          padding: "0 18px",
           backgroundColor: "transparent",
           color: iocNextLightTextSecondary,
-          "&:hover": { backgroundColor: iocNextLightSurfacePalette[200] },
+          "&:hover": { backgroundColor: "rgba(15,32,64,0.04)" },
           "&.Mui-selected": {
-            backgroundColor: iocNextLightSurfacePalette[400],
-            color: iocNextCyanPalette[600],
+            backgroundColor: iocNextCyanPalette.alpha20,
+            color: iocNextCyanPalette[700],
+            boxShadow: `0 0 10px ${iocNextCyanPalette.alpha20}`,
           },
         },
       },
@@ -539,13 +595,15 @@ const iocNextLightComponentOverrides = {
   MuiAccordion: {
     styleOverrides: {
       root: {
-        backgroundColor: "#FFFFFF",
-        border: `1px solid ${iocNextLightBorderPalette[300]}`,
-        borderRadius: "10px !important",
-        marginBottom: "8px",
-        boxShadow: "none",
+        backgroundColor: glassFill,
+        backdropFilter: glassBlur,
+        WebkitBackdropFilter: glassBlur,
+        border: "none",
+        borderRadius: "16px !important",
+        marginBottom: "10px",
+        boxShadow: glassDepth,
         "&:before": { display: "none" },
-        "&.Mui-expanded": { margin: "0 0 8px 0" },
+        "&.Mui-expanded": { margin: "0 0 10px 0" },
       },
     },
   },
@@ -553,7 +611,7 @@ const iocNextLightComponentOverrides = {
   MuiAccordionSummary: {
     styleOverrides: {
       root: {
-        padding: "12px 16px",
+        padding: "12px 18px",
         minHeight: "unset",
         gap: "4px",
         "&.Mui-expanded": { minHeight: "unset" },
@@ -569,7 +627,7 @@ const iocNextLightComponentOverrides = {
   MuiAccordionDetails: {
     styleOverrides: {
       root: {
-        padding: "12px 16px 16px 16px",
+        padding: "8px 18px 18px 18px",
       },
     },
   },
@@ -577,26 +635,16 @@ const iocNextLightComponentOverrides = {
   MuiAlert: {
     styleOverrides: {
       root: {
-        backgroundColor: iocNextLightSurfacePalette[100],
-        border: `1px solid ${iocNextLightBorderPalette[300]}`,
-        borderRadius: "10px",
+        backgroundColor: glassFillMedium,
+        backdropFilter: "blur(20px)",
+        border: "none",
+        borderRadius: "14px",
+        boxShadow: glassDepth,
       },
-      standardSuccess: {
-        borderLeftColor: greenPalette[500],
-        borderLeftWidth: "4px",
-      },
-      standardError: {
-        borderLeftColor: redPalette[500],
-        borderLeftWidth: "4px",
-      },
-      standardWarning: {
-        borderLeftColor: lightOrangePalette[500],
-        borderLeftWidth: "4px",
-      },
-      standardInfo: {
-        borderLeftColor: iocNextCyanPalette[500],
-        borderLeftWidth: "4px",
-      },
+      standardSuccess: { borderLeft: `3px solid ${greenPalette[500]}` },
+      standardError: { borderLeft: `3px solid ${redPalette[500]}` },
+      standardWarning: { borderLeft: `3px solid ${lightOrangePalette[500]}` },
+      standardInfo: { borderLeft: `3px solid ${iocNextCyanPalette[500]}` },
     },
   },
 
@@ -605,6 +653,7 @@ const iocNextLightComponentOverrides = {
       badge: {
         backgroundColor: iocNextCyanPalette[500],
         color: "#FFFFFF",
+        boxShadow: `0 0 8px ${iocNextCyanPalette.alpha40}`,
       },
     },
   },
@@ -612,8 +661,8 @@ const iocNextLightComponentOverrides = {
   MuiAvatar: {
     styleOverrides: {
       root: {
-        backgroundColor: iocNextLightSurfacePalette[300],
-        border: `2px solid ${iocNextLightBorderPalette[300]}`,
+        backgroundColor: "rgba(15,32,64,0.08)",
+        border: "none",
         color: iocNextLightTextPrimary,
       },
     },
@@ -621,18 +670,18 @@ const iocNextLightComponentOverrides = {
 
   MuiDivider: {
     styleOverrides: {
-      root: { borderColor: iocNextLightBorderPalette[300] },
+      root: { borderColor: glassHairline },
     },
   },
 
   MuiListItemButton: {
     styleOverrides: {
       root: {
-        borderRadius: "8px",
-        "&:hover": { backgroundColor: iocNextLightSurfacePalette[200] },
+        borderRadius: "12px",
+        "&:hover": { backgroundColor: "rgba(15,32,64,0.04)" },
         "&.Mui-selected": {
           backgroundColor: iocNextCyanPalette.alpha10,
-          borderLeft: `3px solid ${iocNextCyanPalette[500]}`,
+          boxShadow: `inset 3px 0 0 ${iocNextCyanPalette[500]}`,
           "&:hover": { backgroundColor: iocNextCyanPalette.alpha20 },
         },
       },
@@ -641,18 +690,20 @@ const iocNextLightComponentOverrides = {
 
   MuiSkeleton: {
     styleOverrides: {
-      root: { backgroundColor: iocNextLightSurfacePalette[300] },
+      root: { backgroundColor: "rgba(15,32,64,0.06)" },
     },
   },
 
   MuiLinearProgress: {
     styleOverrides: {
       root: {
-        backgroundColor: iocNextLightSurfacePalette[300],
-        borderRadius: "4px",
+        backgroundColor: "rgba(15,32,64,0.08)",
+        borderRadius: "9999px",
       },
-      bar: { borderRadius: "4px" },
-      barColorPrimary: { backgroundColor: iocNextCyanPalette[500] },
+      bar: { borderRadius: "9999px" },
+      barColorPrimary: {
+        backgroundColor: iocNextCyanPalette[500],
+      },
     },
   },
 };

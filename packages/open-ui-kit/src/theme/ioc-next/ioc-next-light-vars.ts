@@ -397,10 +397,10 @@ export const iocNextLightVars: VarsType = {
   accentJDefault: tealPalette[500],
   accentJWeak: "rgba(62, 203, 209, 0.12)",
 
-  // Shape — border radius
-  borderRadiusSm: "4px",
-  borderRadiusLg: "8px",
-  borderRadius4xl: "20px",
+  // Shape — border radius (OXP: distinctly larger / rounder than other themes)
+  borderRadiusSm: "8px",
+  borderRadiusLg: "16px",
+  borderRadius4xl: "28px",
   // Shape — border width
   borderWidthDefault: "1px",
   borderWidthStrong: "4px",
