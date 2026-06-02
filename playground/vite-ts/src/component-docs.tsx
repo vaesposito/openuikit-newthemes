@@ -332,6 +332,8 @@ const THEMES: { value: DocThemeMode; label: string; bg: string }[] = [
   { value: "dark", label: "AGNTCY dark", bg: "#141418" },
   { value: "ioc", label: "C1D dark", bg: "#050C18" },
   { value: "ioc-light", label: "C1D light", bg: "#F0F7FF" },
+  { value: "ioc-next", label: "IoC dark", bg: "#0A1526" },
+  { value: "ioc-next-light", label: "IoC light", bg: "#EFF3FC" },
 ];
 
 const COMPONENT_CATEGORIES = [

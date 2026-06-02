@@ -24,6 +24,8 @@ export {
   glassLightTheme,
   iocTheme,
   iocLightTheme,
+  iocNextTheme,
+  iocNextLightTheme,
 } from "./theme-provider/theme-provider";
 
 // Glass theme exports (dark)
@@ -41,6 +43,14 @@ export { iocVars } from "./theme/ioc/ioc-vars";
 // IoC light theme exports
 export * from "./theme/ioc/ioc-light-color-palette";
 export { iocLightVars } from "./theme/ioc/ioc-light-vars";
+
+// IoC (OXP) next theme exports
+export * from "./theme/ioc-next/ioc-next-color-palette";
+export { iocNextVars } from "./theme/ioc-next/ioc-next-vars";
+
+// IoC (OXP) next light theme exports
+export * from "./theme/ioc-next/ioc-next-light-color-palette";
+export { iocNextLightVars } from "./theme/ioc-next/ioc-next-light-vars";
 
 export type { GradientsPalette, Gradient } from "./types/palette";
 export type {
