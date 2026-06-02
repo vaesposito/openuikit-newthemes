@@ -115,11 +115,18 @@ export const iocNextTextSecondary = "#C5C7CB"; // base/text/medium
 export const iocNextTextTertiary = "#9EA2A8"; // base/text/weak
 export const iocNextTextDisabled = "#6A7079";
 
-// ─── Page background: deep navy with cyan/blue ambient glow ───────────────────
+// ─── Page background: OXP "App Page" bottom bloom over deep navy ─────────────
+// Recreates the signature OXP gradient (Figma node 4320:37117, "Ellipse 7/8"):
+// a multi-stop bloom rising from the bottom-center — blue #0A66FF → cyan #02C8FF
+// → magenta #FF007F → warm orange #FF9000 — fading into a near-black navy base.
+// Layers are listed top→bottom: orange core, magenta mid, blue/cyan bloom,
+// cyan accent, then the navy base linear.
 export const iocNextPageBackground = `
-  radial-gradient(ellipse 120% 80% at 100% -5%, rgba(23, 199, 255, 0.10) 0%, rgba(10, 120, 200, 0.05) 42%, transparent 66%),
-  radial-gradient(ellipse 80% 60% at 0% 110%, rgba(24, 122, 220, 0.12) 0%, transparent 60%),
-  linear-gradient(160deg, #0C1B30 0%, #0A1526 45%, #060B14 100%)
+  radial-gradient(ellipse 60% 42% at 50% 116%, rgba(255, 144, 0, 0.42) 0%, rgba(255, 144, 0, 0) 55%),
+  radial-gradient(ellipse 85% 55% at 50% 110%, rgba(255, 0, 127, 0.38) 0%, rgba(255, 0, 127, 0) 60%),
+  radial-gradient(ellipse 120% 70% at 46% 102%, rgba(10, 102, 255, 0.40) 0%, rgba(2, 200, 255, 0.12) 42%, transparent 70%),
+  radial-gradient(ellipse 70% 50% at 62% 96%, rgba(2, 200, 255, 0.16) 0%, transparent 55%),
+  linear-gradient(180deg, #060B14 0%, #070E1A 48%, #0A1124 100%)
 `;
 
 // ─── Shadows ──────────────────────────────────────────────────────────────────

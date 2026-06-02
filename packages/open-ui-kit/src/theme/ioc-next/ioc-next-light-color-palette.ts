@@ -47,8 +47,14 @@ export const iocNextLightTextTertiary = "rgba(35, 40, 46, 0.45)";
 export const iocNextLightTextDisabled = "rgba(35, 40, 46, 0.30)";
 
 // ─── Page background ──────────────────────────────────────────────────────────
+// Light adaptation of the OXP "App Page" bottom bloom (Figma node 4320:37117).
+// The reference is dark-only; here the same blue→cyan→magenta→orange bloom is
+// echoed at much lower alpha so the light theme stays bright and frosted while
+// staying coherent with the dark page gradient.
 export const iocNextLightPageBackground = `
-  radial-gradient(ellipse 110% 70% at -10% -5%, rgba(23, 199, 255, 0.08) 0%, rgba(24, 122, 220, 0.03) 50%, transparent 70%),
+  radial-gradient(ellipse 60% 40% at 50% 115%, rgba(255, 144, 0, 0.10) 0%, rgba(255, 144, 0, 0) 58%),
+  radial-gradient(ellipse 85% 52% at 50% 110%, rgba(255, 0, 127, 0.08) 0%, rgba(255, 0, 127, 0) 62%),
+  radial-gradient(ellipse 120% 68% at 46% 104%, rgba(10, 102, 255, 0.10) 0%, rgba(2, 200, 255, 0.05) 45%, transparent 72%),
   linear-gradient(160deg, #EFF3FC 0%, #F6F9FF 50%, #FFFFFF 100%)
 `;
 
