@@ -60,6 +60,7 @@ import {
   ScatterChart as _ScatterChart,
   SankeyChart as _SankeyChart,
   MeterChart as _MeterChart,
+  NetworkChart as _NetworkChart,
 } from "@open-ui-kit/core";
 
 const BarChart = _BarChart as React.FC<any>;
@@ -70,6 +71,7 @@ const HorizontalBarChart = _HorizontalBarChart as React.FC<any>;
 const ScatterChart = _ScatterChart as React.FC<any>;
 const SankeyChart = _SankeyChart as React.FC<any>;
 const MeterChart = _MeterChart as React.FC<any>;
+const NetworkChart = _NetworkChart as React.FC<any>;
 import {
   Tab,
   Card,
@@ -455,6 +457,33 @@ const SANKEY_DATA = {
     { source: 4, target: 5, value: 60 },
   ],
 };
+
+const NETWORK_NODES = [
+  { id: "itinerary", label: "Itinerary Assistant", type: "agent" },
+  { id: "routing", label: "Routing Assistant", type: "agent" },
+  { id: "restaurant", label: "Restaurant Finder", type: "agent" },
+  { id: "weather", label: "Weather API", type: "tool" },
+  { id: "trips", label: "Trip Database", type: "tool" },
+  { id: "vendor", label: "Vendor API", type: "tool" },
+  { id: "hotel", label: "Hotel API", type: "tool" },
+  { id: "calendar", label: "Calendar Sync", type: "tool" },
+  { id: "duration", label: "Duration Calculator", type: "llm" },
+  { id: "route-opt", label: "Route Optimizer", type: "llm" },
+  { id: "flight", label: "Flight API", type: "tool", status: "error" },
+];
+const NETWORK_LINKS = [
+  { source: "itinerary", target: "weather" },
+  { source: "itinerary", target: "trips" },
+  { source: "itinerary", target: "duration" },
+  { source: "itinerary", target: "restaurant" },
+  { source: "routing", target: "itinerary" },
+  { source: "routing", target: "vendor" },
+  { source: "routing", target: "route-opt" },
+  { source: "routing", target: "flight" },
+  { source: "vendor", target: "hotel" },
+  { source: "restaurant", target: "calendar" },
+  { source: "duration", target: "route-opt" },
+];
 
 // ─── Layout helpers ───────────────────────────────────────────────────────────
 
@@ -2516,6 +2545,14 @@ function ChartsSection() {
             <MeterChart value={58} label="Coverage" />
             <MeterChart value={91} label="Health" />
           </Stack>
+        </SectionErrorBoundary>
+      </ComponentGroup>
+
+      <ComponentGroup label="Agent Network Graph">
+        <SectionErrorBoundary name="NetworkChart">
+          <Box sx={{ height: 440, maxWidth: 680 }}>
+            <NetworkChart nodes={NETWORK_NODES} links={NETWORK_LINKS} />
+          </Box>
         </SectionErrorBoundary>
       </ComponentGroup>
     </>

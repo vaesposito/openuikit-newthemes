@@ -15,6 +15,7 @@ export * from "./spider-chart";
 export * from "./scatter-chart";
 export * from "./sankey-chart";
 export * from "./meter-chart";
+export * from "./network-chart";
 
 export * from "./common/types";
 export * from "./common/is-ioc-theme";

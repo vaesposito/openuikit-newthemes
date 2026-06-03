@@ -15,6 +15,7 @@ import { BarGraph, BarGraphProps } from "../bar-graph/bar-graph";
 import { ScatterChart } from "../scatter-chart/scatter-chart";
 import { SankeyChart } from "../sankey-chart/sankey-chart";
 import { MeterChart } from "../meter-chart/meter-chart";
+import { NetworkChart } from "../network-chart/network-chart";
 import type { CategoricalChartFunc } from "recharts/types/chart/generateCategoricalChart";
 
 export interface ChartDataItem {
@@ -68,6 +69,7 @@ export enum ChartType {
   SCATTER = "scatter",
   SANKEY = "sankey",
   METER = "meter",
+  NETWORK = "network",
 }
 
 export const ChartTypeComponents: {
@@ -86,6 +88,8 @@ export const ChartTypeComponents: {
     ScatterChart as unknown as React.ComponentType<ChartProps>,
   [ChartType.SANKEY]: SankeyChart as unknown as React.ComponentType<ChartProps>,
   [ChartType.METER]: MeterChart as unknown as React.ComponentType<ChartProps>,
+  [ChartType.NETWORK]:
+    NetworkChart as unknown as React.ComponentType<ChartProps>,
 };
 
 export type ConditionalPropsByType =
