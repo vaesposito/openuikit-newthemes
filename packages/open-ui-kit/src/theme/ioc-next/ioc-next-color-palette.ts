@@ -121,12 +121,16 @@ export const iocNextTextDisabled = "#6A7079";
 // → magenta #FF007F → warm orange #FF9000 — fading into a near-black navy base.
 // Layers are listed top→bottom: orange core, magenta mid, blue/cyan bloom,
 // cyan accent, then the navy base linear.
+// OXP "App Page" canvas: near-black with a soft aurora rising from the
+// bottom — a steel-blue core low-center blending down into purple/magenta,
+// then warm amber at the bottom corners. Heavily feathered, subtle.
 export const iocNextPageBackground = `
-  radial-gradient(ellipse 60% 42% at 50% 116%, rgba(255, 144, 0, 0.42) 0%, rgba(255, 144, 0, 0) 55%),
-  radial-gradient(ellipse 85% 55% at 50% 110%, rgba(255, 0, 127, 0.38) 0%, rgba(255, 0, 127, 0) 60%),
-  radial-gradient(ellipse 120% 70% at 46% 102%, rgba(10, 102, 255, 0.40) 0%, rgba(2, 200, 255, 0.12) 42%, transparent 70%),
-  radial-gradient(ellipse 70% 50% at 62% 96%, rgba(2, 200, 255, 0.16) 0%, transparent 55%),
-  linear-gradient(180deg, #060B14 0%, #070E1A 48%, #0A1124 100%)
+  radial-gradient(ellipse 48% 32% at 50% 70%, rgba(72, 112, 192, 0.55) 0%, rgba(72, 112, 192, 0) 72%),
+  radial-gradient(ellipse 62% 30% at 50% 92%, rgba(138, 74, 168, 0.55) 0%, rgba(138, 74, 168, 0) 70%),
+  radial-gradient(ellipse 44% 26% at 4% 110%, rgba(202, 120, 56, 0.50) 0%, rgba(202, 120, 56, 0) 60%),
+  radial-gradient(ellipse 44% 26% at 96% 110%, rgba(202, 120, 56, 0.46) 0%, rgba(202, 120, 56, 0) 60%),
+  radial-gradient(ellipse 110% 55% at 50% 122%, rgba(120, 60, 150, 0.28) 0%, transparent 62%),
+  linear-gradient(180deg, #030509 0%, #04060B 55%, #06080F 100%)
 `;
 
 // ─── Shadows ──────────────────────────────────────────────────────────────────
