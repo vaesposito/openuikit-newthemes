@@ -16,6 +16,7 @@ import { ScatterChart } from "../scatter-chart/scatter-chart";
 import { SankeyChart } from "../sankey-chart/sankey-chart";
 import { MeterChart } from "../meter-chart/meter-chart";
 import { NetworkChart } from "../network-chart/network-chart";
+import { FlowChart } from "../flow-chart/flow-chart";
 import type { CategoricalChartFunc } from "recharts/types/chart/generateCategoricalChart";
 
 export interface ChartDataItem {
@@ -70,6 +71,7 @@ export enum ChartType {
   SANKEY = "sankey",
   METER = "meter",
   NETWORK = "network",
+  FLOW = "flow",
 }
 
 export const ChartTypeComponents: {
@@ -90,6 +92,7 @@ export const ChartTypeComponents: {
   [ChartType.METER]: MeterChart as unknown as React.ComponentType<ChartProps>,
   [ChartType.NETWORK]:
     NetworkChart as unknown as React.ComponentType<ChartProps>,
+  [ChartType.FLOW]: FlowChart as unknown as React.ComponentType<ChartProps>,
 };
 
 export type ConditionalPropsByType =
