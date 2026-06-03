@@ -119,6 +119,7 @@ export const BarChart = ({
           dataKey="value"
           radius={4}
           minPointSize={10}
+          isAnimationActive={false}
           background={{
             fill: "rgba(128,128,128,0.18)",
             radius: 4,

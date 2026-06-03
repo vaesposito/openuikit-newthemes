@@ -81,8 +81,8 @@ export const GaugeChart = ({
   const height = styleProps?.customHeight || 132;
   const cx = width / 2;
   const cy = height / 2;
-  // ioc uses a noticeably thicker arc to match the reference design
-  const chartWidth = isIoc ? 9 : 9;
+  // OXP gauge uses a thin arc relative to its diameter; non-ioc keeps 9.
+  const chartWidth = isIoc ? 6.5 : 9;
   const outerRadius = width / 2;
   const innerRadius = outerRadius - chartWidth;
 
@@ -131,16 +131,33 @@ export const GaugeChart = ({
   const gradientId = `gauge-active-gradient`;
   const iocGlowStyle: React.CSSProperties | undefined = isIoc
     ? {
-        // Wider multi-layer bloom at HTML level — not clipped by SVG viewport
-        filter: `drop-shadow(0 0 4px ${activeColor}) drop-shadow(0 0 12px ${activeColor}AA) drop-shadow(0 0 26px ${activeColor}66) drop-shadow(0 0 44px ${activeColor}33)`,
+        // Tight glow keeps the thin arc crisp; the radial bloom div behind
+        // supplies the wide ambient halo (matches the OXP gauge).
+        filter: `drop-shadow(0 0 3px ${activeColor}) drop-shadow(0 0 8px ${activeColor}88)`,
       }
     : undefined;
 
   return (
     <StyledResponsiveContainer width="100%" height="100%">
       <div style={gaugeWrapper({ height, width })}>
+        {/* OXP centered warm radial bloom behind the arc */}
+        {isIoc && (
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              width: width * 1.75,
+              height: height * 1.75,
+              transform: "translate(-50%, -50%)",
+              background: `radial-gradient(circle, ${activeColor}3D 0%, ${activeColor}1A 36%, transparent 68%)`,
+              pointerEvents: "none",
+              zIndex: 0,
+            }}
+          />
+        )}
         {/* Glow wrapper — isolates the arc so Typography doesn't inherit the filter */}
-        <div style={iocGlowStyle}>
+        <div style={{ ...iocGlowStyle, position: "relative", zIndex: 1 }}>
           <PieChart width={width} height={height}>
             {isIoc && (
               <defs>
@@ -163,6 +180,7 @@ export const GaugeChart = ({
               outerRadius={outerRadius}
               dataKey="value"
               strokeWidth={0}
+              isAnimationActive={false}
               cornerRadius={isIoc ? chartWidth / 2 : 0}
             >
               <Cell

@@ -406,10 +406,12 @@ const LINE_MONTH_FMT = (v: unknown) => {
     : d.toLocaleString("en", { month: "short" });
 };
 
+// No explicit colors → LineChart applies its OXP IoC default series
+// (cyan #17C7FF / pink / orange) under the ioc-next theme.
 const LINE_CATEGORIES = [
-  { name: "Critical", color: "#ef4444" },
-  { name: "High", color: "#f97316" },
-  { name: "Resolved", color: "#22c55e" },
+  { name: "Critical" },
+  { name: "High" },
+  { name: "Resolved" },
 ];
 
 const HBAR_DATA = [

@@ -49,6 +49,12 @@ export const LineChart = ({
   gridProps,
 }: LineChartProps) => {
   const theme = useTheme();
+  const isIoc = isIocTheme(theme);
+  // OXP grid is a subtle blue dashed grid; non-ioc keeps the neutral grid.
+  const gridStroke = isIoc
+    ? theme.palette.primary.main
+    : theme.palette.vars.inactiveBackgroundDefault;
+  const gridOpacity = isIoc ? 0.18 : 0.35;
 
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -103,13 +109,12 @@ export const LineChart = ({
         <CartesianGrid
           vertical={false}
           strokeWidth={1}
-          stroke={theme.palette.vars.inactiveBackgroundDefault}
-          strokeOpacity={0.35}
+          stroke={gridStroke}
+          strokeOpacity={gridOpacity}
           strokeDasharray="4 4"
           {...gridProps}
         />
         {categories?.map((category, index) => {
-          const isIoc = isIocTheme(theme);
           // OXP default series order: cyan (brand) → pink → orange, then accents.
           const iocDefaults = [
             theme.palette.primary.main,
@@ -134,6 +139,7 @@ export const LineChart = ({
               legendType="none"
               dot={false}
               activeDot={true}
+              isAnimationActive={false}
               strokeWidth={isIoc ? 2.5 : 2}
               stroke={color}
               name={category.name}

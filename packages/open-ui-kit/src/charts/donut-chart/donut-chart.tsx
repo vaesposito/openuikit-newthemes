@@ -89,6 +89,7 @@ export const DonutChart = ({
           startAngle={450}
           endAngle={90}
           minAngle={10}
+          isAnimationActive={false}
           style={iocGlowStyle}
         >
           {(data as ChartDataItem[]).map(({ color }, index) => (

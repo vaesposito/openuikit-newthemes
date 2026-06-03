@@ -205,6 +205,7 @@ export const ScatterChart = ({
               name={s.name}
               data={s.data}
               fill={color}
+              isAnimationActive={false}
               shape={(props: GlowDotProps) => (
                 <GlowDot {...props} fill={color} glow={isIoc} />
               )}
