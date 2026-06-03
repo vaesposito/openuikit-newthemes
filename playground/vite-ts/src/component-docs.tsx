@@ -57,6 +57,9 @@ import {
   DonutChart as _DonutChart,
   GaugeChart as _GaugeChart,
   HorizontalBarChart as _HorizontalBarChart,
+  ScatterChart as _ScatterChart,
+  SankeyChart as _SankeyChart,
+  MeterChart as _MeterChart,
 } from "@open-ui-kit/core";
 
 const BarChart = _BarChart as React.FC<any>;
@@ -64,6 +67,9 @@ const LineChart = _LineChart as React.FC<any>;
 const DonutChart = _DonutChart as React.FC<any>;
 const GaugeChart = _GaugeChart as React.FC<any>;
 const HorizontalBarChart = _HorizontalBarChart as React.FC<any>;
+const ScatterChart = _ScatterChart as React.FC<any>;
+const SankeyChart = _SankeyChart as React.FC<any>;
+const MeterChart = _MeterChart as React.FC<any>;
 import {
   Tab,
   Card,
@@ -411,6 +417,44 @@ const HBAR_DATA = [
   { name: "Data Exfiltration", value: 3, color: "#3b82f6" },
   { name: "Recon", value: 1, color: "#3b82f6" },
 ];
+
+const SCATTER_SERIES_A = Array.from({ length: 18 }, (_, i) => ({
+  x: 10 + i * 4 + (i % 3) * 3,
+  y: 30 + Math.round(Math.sin(i / 2) * 22) + (i % 4) * 6,
+  z: 60 + (i % 5) * 80,
+  name: `Asset ${i + 1}`,
+}));
+const SCATTER_SERIES_B = Array.from({ length: 14 }, (_, i) => ({
+  x: 20 + i * 5,
+  y: 60 + Math.round(Math.cos(i / 2) * 18) + (i % 3) * 8,
+  z: 40 + (i % 4) * 70,
+  name: `Threat ${i + 1}`,
+}));
+const SCATTER_SERIES = [
+  { name: "Assets", data: SCATTER_SERIES_A },
+  { name: "Threats", data: SCATTER_SERIES_B },
+];
+const SCATTER_BAND = { x1: 55, x2: 95, y1: 60, y2: 100, label: "High risk" };
+
+const SANKEY_DATA = {
+  nodes: [
+    { name: "Ingest" },
+    { name: "Triage" },
+    { name: "Enrich" },
+    { name: "Resolved" },
+    { name: "Escalated" },
+    { name: "Closed" },
+  ],
+  links: [
+    { source: 0, target: 1, value: 120 },
+    { source: 1, target: 2, value: 80 },
+    { source: 1, target: 4, value: 40 },
+    { source: 2, target: 3, value: 60 },
+    { source: 2, target: 4, value: 20 },
+    { source: 3, target: 5, value: 60 },
+    { source: 4, target: 5, value: 60 },
+  ],
+};
 
 // ─── Layout helpers ───────────────────────────────────────────────────────────
 
@@ -2430,6 +2474,48 @@ function ChartsSection() {
           <Box sx={{ maxWidth: 480 }}>
             <HorizontalBarChart data={HBAR_DATA} />
           </Box>
+        </SectionErrorBoundary>
+      </ComponentGroup>
+
+      <ComponentGroup label="Scatter / Distribution Chart">
+        <SectionErrorBoundary name="ScatterChart">
+          <Box
+            sx={{
+              height: 320,
+              maxWidth: 560,
+              bgcolor: bg,
+              borderRadius: 2,
+              p: 1.5,
+            }}
+          >
+            <ScatterChart series={SCATTER_SERIES} band={SCATTER_BAND} />
+          </Box>
+        </SectionErrorBoundary>
+      </ComponentGroup>
+
+      <ComponentGroup label="Sankey / Flow Chart">
+        <SectionErrorBoundary name="SankeyChart">
+          <Box
+            sx={{
+              height: 360,
+              maxWidth: 640,
+              bgcolor: bg,
+              borderRadius: 2,
+              p: 1.5,
+            }}
+          >
+            <SankeyChart data={SANKEY_DATA} />
+          </Box>
+        </SectionErrorBoundary>
+      </ComponentGroup>
+
+      <ComponentGroup label="Health Meter">
+        <SectionErrorBoundary name="MeterChart">
+          <Stack spacing={3} sx={{ maxWidth: 380 }}>
+            <MeterChart value={22} label="Risk score" />
+            <MeterChart value={58} label="Coverage" />
+            <MeterChart value={91} label="Health" />
+          </Stack>
         </SectionErrorBoundary>
       </ComponentGroup>
     </>

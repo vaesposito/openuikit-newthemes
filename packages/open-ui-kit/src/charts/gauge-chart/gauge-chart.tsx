@@ -9,6 +9,7 @@ import { Box, Typography, useTheme } from "@mui/material";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 // import { barShadow, boxStyle, gaugeLabel, gaugeWrapper } from "./styles";
 import { ChartDataItem, ChartProps } from "@/charts";
+import { isIocTheme } from "../common/is-ioc-theme";
 import styled from "@emotion/styled";
 
 // Dividers Configuration
@@ -27,6 +28,17 @@ const StyledResponsiveContainer = styled(ResponsiveContainer)`
   align-items: center;
 `;
 
+// Mix a hex color toward white by `amt` (0..1) for a same-hue gradient sheen.
+const lightenHex = (hex: string, amt: number): string => {
+  const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
+  if (!m) return hex;
+  const n = parseInt(m[1], 16);
+  const r = Math.round(((n >> 16) & 255) + (255 - ((n >> 16) & 255)) * amt);
+  const g = Math.round(((n >> 8) & 255) + (255 - ((n >> 8) & 255)) * amt);
+  const b = Math.round((n & 255) + (255 - (n & 255)) * amt);
+  return `#${((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1)}`;
+};
+
 export interface GaugeChartProps extends ChartProps {
   maxValue?: number;
   customLabelComponent?: React.ReactNode;
@@ -44,7 +56,7 @@ export const GaugeChart = ({
   styleProps,
 }: GaugeChartProps) => {
   const theme = useTheme();
-  const isIoc = theme.palette.primary.main === "#00BCEB";
+  const isIoc = isIocTheme(theme);
 
   const [valueItem] = data as ChartDataItem[];
   const gaugeData = [
@@ -58,7 +70,9 @@ export const GaugeChart = ({
       value:
         ((maxValue - Math.min(valueItem.value, maxValue)) / maxValue) * 100,
       fill: isIoc
-        ? (theme.palette.mode === "dark" ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.08)")
+        ? theme.palette.mode === "dark"
+          ? "rgba(255,255,255,0.06)"
+          : "rgba(0,0,0,0.08)"
         : theme.palette.vars.controlIconDisabled,
     },
   ];
@@ -101,7 +115,11 @@ export const GaugeChart = ({
             y1={y1}
             x2={x2}
             y2={y2}
-            stroke={isIoc ? "transparent" : theme.palette.vars.inactiveBackgroundDefault}
+            stroke={
+              isIoc
+                ? "transparent"
+                : theme.palette.vars.inactiveBackgroundDefault
+            }
             strokeWidth={strokeWidth}
           />
         );
@@ -109,10 +127,12 @@ export const GaugeChart = ({
     </>
   );
 
+  const activeColor = gaugeData[0].fill;
+  const gradientId = `gauge-active-gradient`;
   const iocGlowStyle: React.CSSProperties | undefined = isIoc
     ? {
-        // Subtle glow at HTML level — not clipped by SVG viewport
-        filter: `drop-shadow(0 0 4px ${gaugeData[0].fill}BB) drop-shadow(0 0 12px ${gaugeData[0].fill}66)`,
+        // Wider multi-layer bloom at HTML level — not clipped by SVG viewport
+        filter: `drop-shadow(0 0 4px ${activeColor}) drop-shadow(0 0 12px ${activeColor}AA) drop-shadow(0 0 26px ${activeColor}66) drop-shadow(0 0 44px ${activeColor}33)`,
       }
     : undefined;
 
@@ -122,19 +142,34 @@ export const GaugeChart = ({
         {/* Glow wrapper — isolates the arc so Typography doesn't inherit the filter */}
         <div style={iocGlowStyle}>
           <PieChart width={width} height={height}>
-          <Pie
-            data={gaugeData}
-            cx="50%"
-            cy="50%"
-            startAngle={START_ANGLE}
-            endAngle={END_ANGLE}
-            innerRadius={innerRadius}
-            outerRadius={outerRadius}
-            dataKey="value"
-            strokeWidth={0}
-            cornerRadius={isIoc ? chartWidth / 2 : 0}
-          >
-              <Cell key={`gauge-main-bar`} strokeLinecap="round" />
+            {isIoc && (
+              <defs>
+                <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stopColor={activeColor} />
+                  <stop
+                    offset="100%"
+                    stopColor={lightenHex(activeColor, 0.4)}
+                  />
+                </linearGradient>
+              </defs>
+            )}
+            <Pie
+              data={gaugeData}
+              cx="50%"
+              cy="50%"
+              startAngle={START_ANGLE}
+              endAngle={END_ANGLE}
+              innerRadius={innerRadius}
+              outerRadius={outerRadius}
+              dataKey="value"
+              strokeWidth={0}
+              cornerRadius={isIoc ? chartWidth / 2 : 0}
+            >
+              <Cell
+                key={`gauge-main-bar`}
+                strokeLinecap="round"
+                fill={isIoc ? `url(#${gradientId})` : activeColor}
+              />
               <Cell key={`gauge-background-bar`} strokeLinecap="round" />
             </Pie>
             {renderDividers()}

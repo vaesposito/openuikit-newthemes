@@ -12,5 +12,10 @@ export * from "./gauge-chart/gauge-chart";
 export * from "./horizontal-bar-chart/horizontal-bar-chart";
 export * from "./line-chart/line-chart";
 export * from "./spider-chart";
+export * from "./scatter-chart";
+export * from "./sankey-chart";
+export * from "./meter-chart";
 
 export * from "./common/types";
+export * from "./common/is-ioc-theme";
+export * from "./common/chart-colors";

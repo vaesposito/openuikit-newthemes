@@ -18,6 +18,8 @@ import {
   LineProps,
 } from "recharts";
 import { ChartProps } from "@/charts";
+import { isIocTheme } from "../common/is-ioc-theme";
+import { resolveSeriesColor } from "../common/chart-colors";
 import { LineChartTooltip, LineChartTooltipProps } from "./line-chart-tooltip";
 import { formatISODate, formatNumber } from "./utils";
 import { useTheme } from "@mui/material";
@@ -103,13 +105,25 @@ export const LineChart = ({
           strokeWidth={1}
           stroke={theme.palette.vars.inactiveBackgroundDefault}
           strokeOpacity={0.35}
+          strokeDasharray="4 4"
           {...gridProps}
         />
-        {categories?.map((category) => {
-          const isIoc = theme.palette.primary.main === "#00BCEB";
+        {categories?.map((category, index) => {
+          const isIoc = isIocTheme(theme);
+          // OXP default series order: cyan (brand) → pink → orange, then accents.
+          const iocDefaults = [
+            theme.palette.primary.main,
+            theme.palette.vars.accentIDefault,
+            theme.palette.vars.accentFDefault,
+          ];
+          const color =
+            category.color ??
+            (isIoc
+              ? iocDefaults[index % iocDefaults.length]
+              : resolveSeriesColor(theme, index));
           const glowStyle = isIoc
             ? {
-                filter: `drop-shadow(0 0 6px ${category.color}99) drop-shadow(0 0 2px ${category.color}66)`,
+                filter: `drop-shadow(0 0 6px ${color}99) drop-shadow(0 0 2px ${color}66)`,
               }
             : undefined;
           return (
@@ -121,7 +135,7 @@ export const LineChart = ({
               dot={false}
               activeDot={true}
               strokeWidth={isIoc ? 2.5 : 2}
-              stroke={category.color}
+              stroke={color}
               name={category.name}
               style={glowStyle}
               {...lineProps}

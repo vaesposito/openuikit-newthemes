@@ -12,6 +12,9 @@ import { DonutChart, DonutProps } from "../donut-chart/donut-chart";
 import { GaugeChart, GaugeChartProps } from "../gauge-chart/gauge-chart";
 import { LineChart } from "../line-chart/line-chart";
 import { BarGraph, BarGraphProps } from "../bar-graph/bar-graph";
+import { ScatterChart } from "../scatter-chart/scatter-chart";
+import { SankeyChart } from "../sankey-chart/sankey-chart";
+import { MeterChart } from "../meter-chart/meter-chart";
 import type { CategoricalChartFunc } from "recharts/types/chart/generateCategoricalChart";
 
 export interface ChartDataItem {
@@ -62,6 +65,9 @@ export enum ChartType {
   GAUGE = "gauge",
   LINE = "line",
   BAR_GRAPH = "bar_graph",
+  SCATTER = "scatter",
+  SANKEY = "sankey",
+  METER = "meter",
 }
 
 export const ChartTypeComponents: {
@@ -73,6 +79,13 @@ export const ChartTypeComponents: {
   [ChartType.GAUGE]: GaugeChart,
   [ChartType.LINE]: LineChart,
   [ChartType.BAR_GRAPH]: BarGraph,
+  // Scatter / Sankey / Meter use their own richer prop shapes (x-y series,
+  // flow graphs, single-value meters) rather than the shared ChartProps; cast
+  // so they can still be looked up by ChartType in this registry.
+  [ChartType.SCATTER]:
+    ScatterChart as unknown as React.ComponentType<ChartProps>,
+  [ChartType.SANKEY]: SankeyChart as unknown as React.ComponentType<ChartProps>,
+  [ChartType.METER]: MeterChart as unknown as React.ComponentType<ChartProps>,
 };
 
 export type ConditionalPropsByType =

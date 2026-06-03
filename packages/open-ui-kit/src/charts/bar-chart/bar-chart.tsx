@@ -16,6 +16,7 @@ import {
 } from "recharts";
 import { ChartDataItem, ChartProps } from "@/charts";
 import { Stack, Typography, useTheme } from "@mui/material";
+import { isIocTheme } from "../common/is-ioc-theme";
 import { styles } from "./styles";
 
 interface GlowBarProps {
@@ -28,11 +29,20 @@ interface GlowBarProps {
   isIoc?: boolean;
 }
 
-const GlowBar = ({ x = 0, y = 0, width = 0, height = 0, fill, radius = 4, isIoc }: GlowBarProps) => {
+const GlowBar = ({
+  x = 0,
+  y = 0,
+  width = 0,
+  height = 0,
+  fill,
+  radius = 4,
+  isIoc,
+}: GlowBarProps) => {
   if (!fill || fill === "transparent" || height <= 0) return null;
-  const glowFilter = isIoc && fill
-    ? `drop-shadow(0 0 4px ${fill}99) drop-shadow(0 0 10px ${fill}55)`
-    : undefined;
+  const glowFilter =
+    isIoc && fill
+      ? `drop-shadow(0 0 4px ${fill}99) drop-shadow(0 0 10px ${fill}55)`
+      : undefined;
   return (
     <rect
       x={x}
@@ -84,7 +94,7 @@ export const BarChart = ({
   const [maxBars, setMaxBars] = useState(0);
 
   const theme = useTheme();
-  const isIoc = theme.palette.primary.main === "#00BCEB";
+  const isIoc = isIocTheme(theme);
 
   const handleResize = useCallback((width: number) => {
     const maxBars =

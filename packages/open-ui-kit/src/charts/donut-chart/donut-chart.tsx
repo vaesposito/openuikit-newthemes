@@ -17,6 +17,7 @@ import {
 import { Stack, Typography } from "@mui/material";
 import { donutLabel, styles } from "./styles";
 import { ChartDataItem, ChartProps } from "@/charts";
+import { isIocTheme } from "../common/is-ioc-theme";
 
 const formatBigNum = (value: number) =>
   Intl.NumberFormat("en-US", {
@@ -60,11 +61,12 @@ export const DonutChart = ({
   handleClick,
 }: DonutProps): JSX.Element => {
   const theme = useTheme();
-  const isIoc = theme.palette.primary.main === "#00BCEB";
+  const isIoc = isIocTheme(theme);
   const innerRadius = 57;
   const outerRadius = 66;
 
-  const dominantColor = (data as ChartDataItem[])[0]?.color ?? "#00BCEB";
+  const dominantColor =
+    (data as ChartDataItem[])[0]?.color ?? theme.palette.primary.main;
   const iocGlowStyle: React.CSSProperties | undefined = isIoc
     ? {
         filter: `drop-shadow(0 0 3px ${dominantColor}88)`,

@@ -6,6 +6,7 @@
 
 import { Box, Stack, Typography, useTheme } from "@mui/material";
 import { ChartDataItem, ChartProps } from "@/charts";
+import { isIocTheme } from "../common/is-ioc-theme";
 import { getBarStyle, styles } from "./styles";
 
 interface HorizontalBarChartProps extends ChartProps {
@@ -18,7 +19,7 @@ export const HorizontalBarChart = ({
   handleClick,
 }: HorizontalBarChartProps) => {
   const theme = useTheme();
-  const isIoc = theme.palette.primary.main === "#00BCEB";
+  const isIoc = isIocTheme(theme);
 
   const chartData = data as ChartDataItem[];
   const maxValue = Math.max(...chartData.map((d) => d.value));
