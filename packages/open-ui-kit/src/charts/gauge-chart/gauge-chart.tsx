@@ -41,6 +41,8 @@ const lightenHex = (hex: string, amt: number): string => {
 
 export interface GaugeChartProps extends ChartProps {
   maxValue?: number;
+  /** Optional unit rendered as a smaller, lighter superscript next to the value (e.g. "%"). */
+  unit?: string;
   customLabelComponent?: React.ReactNode;
   styleProps?: {
     customWidth?: number;
@@ -52,6 +54,7 @@ export interface GaugeChartProps extends ChartProps {
 export const GaugeChart = ({
   data,
   maxValue = 100,
+  unit,
   customLabelComponent,
   styleProps,
 }: GaugeChartProps) => {
@@ -140,7 +143,7 @@ export const GaugeChart = ({
   return (
     <StyledResponsiveContainer width="100%" height="100%">
       <div style={gaugeWrapper({ height, width })}>
-        {/* OXP centered warm radial bloom behind the arc */}
+        {/* Soft ambient bloom behind the arc — tinted with the active arc color */}
         {isIoc && (
           <div
             style={{
@@ -150,7 +153,7 @@ export const GaugeChart = ({
               width: width * 1.75,
               height: height * 1.75,
               transform: "translate(-50%, -50%)",
-              background: `radial-gradient(circle, ${activeColor}3D 0%, ${activeColor}1A 36%, transparent 68%)`,
+              background: `radial-gradient(circle, ${activeColor}40 0%, ${activeColor}1F 34%, transparent 68%)`,
               pointerEvents: "none",
               zIndex: 0,
             }}
@@ -193,16 +196,48 @@ export const GaugeChart = ({
             {renderDividers()}
           </PieChart>
         </div>
-        <Typography
-          variant="h4"
-          position="absolute"
-          top={styleProps?.textTop || "50%"}
-          left="50%"
-          color={theme.palette.vars.baseTextStrong}
-          style={gaugeLabel}
+        <Box
+          sx={{
+            position: "absolute",
+            top: styleProps?.textTop || "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            display: "flex",
+            alignItems: "flex-start",
+            lineHeight: 1,
+          }}
         >
-          {Math.round(valueItem.value)}
-        </Typography>
+          <Typography
+            component="span"
+            sx={{
+              fontFamily: "Inter, sans-serif",
+              // Large, lightweight numeral under IoC; bold elsewhere.
+              fontWeight: isIoc ? 300 : 700,
+              fontSize: isIoc ? `${Math.round(width * 0.34)}px` : "2.125rem",
+              lineHeight: 1,
+              letterSpacing: "-0.02em",
+              color: theme.palette.vars.baseTextStrong,
+            }}
+          >
+            {Math.round(valueItem.value)}
+          </Typography>
+          {unit && (
+            <Typography
+              component="span"
+              sx={{
+                fontFamily: "Inter, sans-serif",
+                fontWeight: 400,
+                fontSize: isIoc ? `${Math.round(width * 0.15)}px` : "1rem",
+                lineHeight: 1,
+                marginTop: "0.18em",
+                marginLeft: "0.08em",
+                color: theme.palette.vars.baseTextWeak,
+              }}
+            >
+              {unit}
+            </Typography>
+          )}
+        </Box>
         <Box sx={boxStyle}>{customLabelComponent && customLabelComponent}</Box>
       </div>
     </StyledResponsiveContainer>
@@ -236,7 +271,8 @@ export const gaugeLabel = {
 
 export const boxStyle = {
   position: "absolute",
-  top: "55%",
+  top: "64%",
   left: "50%",
   transform: "translateX(-50%)",
+  whiteSpace: "nowrap",
 };

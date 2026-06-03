@@ -2437,6 +2437,7 @@ function ChartsSection() {
               <Box sx={{ height: 140, width: 200 }}>
                 <GaugeChart
                   data={[{ name: "Score", value: 24, color: "#ef4444" }]}
+                  unit="%"
                   customLabelComponent={
                     <Typography variant="caption">Critical</Typography>
                   }
@@ -2453,6 +2454,7 @@ function ChartsSection() {
               <Box sx={{ height: 140, width: 200 }}>
                 <GaugeChart
                   data={[{ name: "Score", value: 75, color: "#f59e0b" }]}
+                  unit="%"
                 />
               </Box>
               <Typography
@@ -2466,6 +2468,7 @@ function ChartsSection() {
               <Box sx={{ height: 140, width: 200 }}>
                 <GaugeChart
                   data={[{ name: "Score", value: 95, color: "#22c55e" }]}
+                  unit="%"
                 />
               </Box>
               <Typography
