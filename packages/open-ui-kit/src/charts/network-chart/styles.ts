@@ -15,13 +15,10 @@ export const networkStyles = (
     width: "100%",
     height: "100%",
     minHeight: 280,
-    borderRadius: "16px",
     overflow: "hidden",
-    // Translucent glass surface consistent with the IoC look.
-    background: isIoc
-      ? theme.palette.vars.controlBackgroundWeak
-      : theme.palette.vars.baseBackgroundMedium,
-    ...(isIoc && { backdropFilter: "blur(12px)" }),
+    // Transparent canvas: the glowing nodes + labels float directly over the
+    // page background (no glass card surface). Non-IoC keeps a faint surface.
+    background: isIoc ? "transparent" : theme.palette.vars.baseBackgroundMedium,
   },
 });
 

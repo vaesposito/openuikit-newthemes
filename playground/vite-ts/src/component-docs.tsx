@@ -2545,10 +2545,23 @@ function ChartsSection() {
 
       <ComponentGroup label="Health Meter">
         <SectionErrorBoundary name="MeterChart">
-          <Stack spacing={3} sx={{ maxWidth: 380 }}>
-            <MeterChart value={22} label="Risk score" />
-            <MeterChart value={58} label="Coverage" />
-            <MeterChart value={91} label="Health" />
+          <Stack spacing={5}>
+            <Box sx={{ maxWidth: 960 }}>
+              <MeterChart
+                variant="score"
+                value={50}
+                unit="%"
+                title="Health Score"
+                hint="To reach 100%, reduce corrective loops."
+                markers={[{ value: 50, label: "Ok" }]}
+                cta={{ label: "Learn More" }}
+              />
+            </Box>
+            <Stack spacing={3} sx={{ maxWidth: 380 }}>
+              <MeterChart value={22} label="Risk score" />
+              <MeterChart value={58} label="Coverage" />
+              <MeterChart value={91} label="Health" />
+            </Stack>
           </Stack>
         </SectionErrorBoundary>
       </ComponentGroup>
