@@ -715,7 +715,7 @@ const LegendGroup = ({
       >
         {group.heading}
       </Box>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
         {group.items.map((item) => {
           const key = itemKey(group, item);
           const interactive = hasTargets(key);

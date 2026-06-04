@@ -23,7 +23,8 @@ export const networkStyles = (
     width: { xs: "100%", sm: 210 },
     display: "flex",
     flexDirection: "column",
-    gap: 2.5,
+    // Generous separation between groups → clear space above each section header.
+    gap: 4,
     py: 1,
   },
   graph: {
