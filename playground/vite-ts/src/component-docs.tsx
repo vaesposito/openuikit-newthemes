@@ -518,11 +518,24 @@ const NETWORK_LEGEND = [
   {
     heading: "AGENTS",
     variant: "card",
+    type: "agent",
     items: [
-      { title: "Moderator", subtitle: "Classification" },
-      { title: "Schedule Assistant", subtitle: "Planning" },
-      { title: "Concierge Assistant", subtitle: "Quality Control" },
-      { title: "Itinerary Assistant", subtitle: "Coordination" },
+      { title: "Moderator", subtitle: "Classification", nodeId: "moderator" },
+      {
+        title: "Schedule Assistant",
+        subtitle: "Planning",
+        nodeId: "scheduling",
+      },
+      {
+        title: "Concierge Assistant",
+        subtitle: "Quality Control",
+        nodeId: "concierge",
+      },
+      {
+        title: "Itinerary Assistant",
+        subtitle: "Coordination",
+        nodeId: "itinerary",
+      },
     ],
   },
   {
@@ -537,6 +550,7 @@ const NETWORK_LEGEND = [
   {
     heading: "TOOLS",
     variant: "outline",
+    type: "tool",
     items: [{ title: "Knowledge Base Search" }, { title: "Ticket Management" }],
   },
 ];
