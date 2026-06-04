@@ -70,8 +70,20 @@ export interface FlowChartProps {
 const HEADER_H = 132;
 const DIVIDER_Y = 96;
 const PAD_X = 28;
-const NODE_W = 150;
+const NODE_W = 140;
 const NODE_H = 86;
+
+/**
+ * Column-center fractions (0..1 across the drawable span). The reference
+ * spaces Gate 2 → Gate 3 wider so the category pills have room to breathe;
+ * fall back to even spacing for other column counts.
+ */
+const columnFractions = (numCols: number): number[] => {
+  if (numCols === 4) return [0, 0.27, 0.64, 1];
+  return Array.from({ length: numCols }, (_, i) =>
+    numCols > 1 ? i / (numCols - 1) : 0,
+  );
+};
 
 const toneColors = (tone: FlowTone, theme: Theme): string => {
   switch (tone) {
@@ -90,28 +102,28 @@ const nodeFill = (variant: FlowNodeVariant, theme: Theme) => {
   switch (variant) {
     case "amber":
       return {
-        fill: withAlpha(v.warningBackgroundDefault, 0.18),
-        stroke: withAlpha(v.warningBackgroundDefault, 0.55),
+        fill: withAlpha(v.warningBackgroundDefault, 0.3),
+        stroke: withAlpha(v.warningBackgroundDefault, 0.62),
       };
     case "fail":
       return {
-        fill: withAlpha(v.negativeBackgroundDefault, 0.16),
-        stroke: withAlpha(v.negativeBackgroundDefault, 0.5),
+        fill: withAlpha(v.negativeBackgroundDefault, 0.26),
+        stroke: withAlpha(v.negativeBackgroundDefault, 0.58),
       };
     case "verdict-pass":
       return {
-        fill: withAlpha(v.accentJDefault, 0.2),
-        stroke: withAlpha(v.accentJDefault, 0.6),
+        fill: withAlpha(v.accentJDefault, 0.3),
+        stroke: withAlpha(v.accentJDefault, 0.62),
       };
     case "verdict-fail":
       return {
-        fill: withAlpha(v.baseBackgroundMedium, 0.92),
-        stroke: "rgba(255,255,255,0.14)",
+        fill: withAlpha(v.infoBackgroundDefault, 0.32),
+        stroke: withAlpha(v.infoBackgroundDefault, 0.55),
       };
     case "default":
     default:
       return {
-        fill: withAlpha(v.baseBackgroundStrong, 0.72),
+        fill: withAlpha(v.baseBackgroundStrong, 0.78),
         stroke: "rgba(255,255,255,0.12)",
       };
   }
@@ -152,8 +164,9 @@ export const FlowChart = ({
     const leftInset = PAD_X + NODE_W / 2;
     const rightInset = PAD_X + NODE_W / 2;
     const span = Math.max(width - leftInset - rightInset, 1);
+    const fracs = columnFractions(numCols);
     const colX = (c: number) =>
-      numCols > 1 ? leftInset + (c / (numCols - 1)) * span : leftInset;
+      leftInset + (fracs[c] ?? (numCols > 1 ? c / (numCols - 1) : 0)) * span;
 
     const bodyTop = HEADER_H;
     const bodyBottom = height - 24;
@@ -209,6 +222,26 @@ export const FlowChart = ({
   }, [width, height, gates, nodes, links]);
 
   const gradId = (tone: FlowTone) => `flow-grad-${tone}`;
+
+  // Evaluate the cubic bezier used for each ribbon
+  // (P0=(sx,sy), C1=(mx,sy), C2=(mx,ty), P3=(tx,ty)) at parameter t∈[0,1].
+  const pointOnCurve = (
+    r: { sx: number; sy: number; mx: number; tx: number; ty: number },
+    t: number,
+  ) => {
+    const mt = 1 - t;
+    const x =
+      mt * mt * mt * r.sx +
+      3 * mt * mt * t * r.mx +
+      3 * mt * t * t * r.mx +
+      t * t * t * r.tx;
+    const y =
+      mt * mt * mt * r.sy +
+      3 * mt * mt * t * r.sy +
+      3 * mt * t * t * r.ty +
+      t * t * t * r.ty;
+    return { x, y };
+  };
 
   return (
     <Box ref={containerRef} sx={flowContainer(isIoc)}>
@@ -323,7 +356,7 @@ export const FlowChart = ({
             );
           })}
 
-          {/* ── Ribbons ──────────────────────────────────────────── */}
+          {/* ── Ribbons (soft, overlapping bezier bands) ─────────── */}
           {layout.ribbons.map((r) =>
             r ? (
               <path
@@ -331,15 +364,15 @@ export const FlowChart = ({
                 d={r.path}
                 fill="none"
                 stroke={`url(#${gradId(r.l.tone)})`}
-                strokeWidth={r.l.weight ?? 22}
+                strokeWidth={r.l.weight ?? 24}
                 strokeLinecap="round"
-                opacity={0.92}
+                opacity={0.9}
                 style={
                   isIoc
                     ? {
-                        filter: `drop-shadow(0 0 6px ${withAlpha(
+                        filter: `drop-shadow(0 0 2px ${withAlpha(
                           toneColors(r.l.tone, theme),
-                          0.4,
+                          0.35,
                         )})`,
                       }
                     : undefined
@@ -347,55 +380,6 @@ export const FlowChart = ({
               />
             ) : null,
           )}
-
-          {/* ── Count badges near the source ─────────────────────── */}
-          {layout.ribbons.map((r) => {
-            if (!r || !r.l.badge) return null;
-            const bx = r.sx + 26;
-            const by = r.sy;
-            const c = toneColors(r.l.tone, theme);
-            return (
-              <g key={`badge-${r.i}`}>
-                <circle
-                  cx={bx}
-                  cy={by}
-                  r={17}
-                  fill={c}
-                  stroke={lighten(c, 0.25)}
-                  strokeWidth={1}
-                  style={
-                    isIoc
-                      ? { filter: `drop-shadow(0 0 8px ${withAlpha(c, 0.6)})` }
-                      : undefined
-                  }
-                />
-                <text
-                  x={bx}
-                  y={r.l.badge.label ? by - 1 : by + 4}
-                  textAnchor="middle"
-                  fontFamily="Inter, sans-serif"
-                  fontSize={12}
-                  fontWeight={700}
-                  fill="#ffffff"
-                >
-                  {r.l.badge.count}
-                </text>
-                {r.l.badge.label && (
-                  <text
-                    x={bx}
-                    y={by + 10}
-                    textAnchor="middle"
-                    fontFamily="Inter, sans-serif"
-                    fontSize={8}
-                    fontWeight={600}
-                    fill="#ffffff"
-                  >
-                    {r.l.badge.label}
-                  </text>
-                )}
-              </g>
-            );
-          })}
 
           {/* ── Decision nodes (drawn on top of ribbons) ─────────── */}
           {nodes.map((n) => {
@@ -449,23 +433,20 @@ export const FlowChart = ({
           {/* ── Mid-ribbon category pills (on top, always readable) ─ */}
           {layout.ribbons.map((r) => {
             if (!r || !r.l.pill) return null;
-            // Point along the cubic bezier (C1=(mx,sy), C2=(mx,ty)).
-            const t = r.l.pill.t ?? 0.5;
-            const mt = 1 - t;
-            const midX =
-              mt * mt * mt * r.sx +
-              3 * mt * mt * t * r.mx +
-              3 * mt * t * t * r.mx +
-              t * t * t * r.tx;
-            const midY =
-              mt * mt * mt * r.sy +
-              3 * mt * mt * t * r.sy +
-              3 * mt * t * t * r.ty +
-              t * t * t * r.ty;
             const text = r.l.pill.count
               ? `${r.l.pill.label}   ${r.l.pill.count}`
               : r.l.pill.label;
-            const w = text.length * 6.9 + 30;
+            const w = text.length * 5.9 + 22;
+            const { y: midY } = pointOnCurve(r, r.l.pill.t ?? 0.5);
+            // Keep the pill inside the open ribbon span between the two nodes
+            // so it never sits over a node's title.
+            const loX = r.sx + 16 + w / 2;
+            const hiX = r.tx - 16 - w / 2;
+            const rawX = pointOnCurve(r, r.l.pill.t ?? 0.5).x;
+            const midX =
+              loX <= hiX
+                ? Math.min(Math.max(rawX, loX), hiX)
+                : (r.sx + r.tx) / 2;
             return (
               <g key={`pill-${r.i}`}>
                 <rect
@@ -474,26 +455,77 @@ export const FlowChart = ({
                   width={w}
                   height={24}
                   rx={12}
-                  fill={withAlpha(vars.baseBackgroundStrong, 0.92)}
-                  stroke="rgba(255,255,255,0.10)"
+                  fill={withAlpha(vars.baseBackgroundStrong, 0.85)}
+                  stroke="rgba(255,255,255,0.08)"
                   strokeWidth={1}
                 />
                 <text
                   x={midX}
-                  y={midY + 4}
+                  y={midY + 3.5}
                   textAnchor="middle"
                   fontFamily="Inter, sans-serif"
-                  fontSize={11.5}
+                  fontSize={10.5}
                 >
-                  <tspan fill={vars.accentHDefault} fontWeight={600}>
+                  <tspan fill={vars.baseTextStrong} fontWeight={500}>
                     {r.l.pill.label}
                   </tspan>
                   {r.l.pill.count && (
                     <tspan
-                      fill={vars.baseTextDefault}
+                      fill={vars.baseTextWeak}
                     >{`   ${r.l.pill.count}`}</tspan>
                   )}
                 </text>
+              </g>
+            );
+          })}
+
+          {/* ── Count badges riding the ribbon near the source ───── */}
+          {layout.ribbons.map((r) => {
+            if (!r || !r.l.badge) return null;
+            // Sit the badge a short way along the curve so the two siblings
+            // from one node ride their own (diverging) ribbons instead of
+            // stacking, and clear the node's text.
+            const { x: bx, y: by } = pointOnCurve(r, 0.22);
+            const c = toneColors(r.l.tone, theme);
+            return (
+              <g key={`badge-${r.i}`}>
+                <circle
+                  cx={bx}
+                  cy={by}
+                  r={16}
+                  fill={c}
+                  stroke={lighten(c, 0.28)}
+                  strokeWidth={1}
+                  style={
+                    isIoc
+                      ? { filter: `drop-shadow(0 0 7px ${withAlpha(c, 0.6)})` }
+                      : undefined
+                  }
+                />
+                <text
+                  x={bx}
+                  y={r.l.badge.label ? by - 1 : by + 4}
+                  textAnchor="middle"
+                  fontFamily="Inter, sans-serif"
+                  fontSize={11.5}
+                  fontWeight={700}
+                  fill="#ffffff"
+                >
+                  {r.l.badge.count}
+                </text>
+                {r.l.badge.label && (
+                  <text
+                    x={bx}
+                    y={by + 9}
+                    textAnchor="middle"
+                    fontFamily="Inter, sans-serif"
+                    fontSize={8}
+                    fontWeight={600}
+                    fill="#ffffff"
+                  >
+                    {r.l.badge.label}
+                  </text>
+                )}
               </g>
             );
           })}

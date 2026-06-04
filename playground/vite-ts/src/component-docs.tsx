@@ -2708,11 +2708,12 @@ function ChartsSection() {
 
       <ComponentGroup label="Gated Decision Flow">
         <SectionErrorBoundary name="FlowChart">
-          <Box sx={{ width: "100%", maxWidth: 1100, height: 480 }}>
+          <Box sx={{ width: "100%", maxWidth: 1100, height: 500 }}>
             <FlowChart
               gates={FLOW_GATES}
               nodes={FLOW_NODES}
               links={FLOW_LINKS}
+              height={500}
             />
           </Box>
         </SectionErrorBoundary>
