@@ -62,11 +62,25 @@ export const GaugeChart = ({
   const isIoc = isIocTheme(theme);
 
   const [valueItem] = data as ChartDataItem[];
+
+  // Under IoC the arc color is derived from the score so the stroke, its
+  // gradient and the radial bloom always agree semantically:
+  //   ≥80 → success/green, ≥50 → warning/amber, else → negative/red.
+  // Non-IoC keeps the caller-supplied color.
+  const scorePct = (Math.min(valueItem.value, maxValue) / maxValue) * 100;
+  const semanticColor =
+    scorePct >= 80
+      ? theme.palette.vars.successBackgroundDefault
+      : scorePct >= 50
+        ? theme.palette.vars.warningBackgroundDefault
+        : theme.palette.vars.negativeBackgroundDefault;
+  const activeColor = isIoc ? semanticColor : valueItem.color;
+
   const gaugeData = [
     // Main Bar
     {
       value: (valueItem.value / maxValue) * 100,
-      fill: valueItem.color,
+      fill: activeColor,
     },
     // Background Bar
     {
@@ -130,8 +144,9 @@ export const GaugeChart = ({
     </>
   );
 
-  const activeColor = gaugeData[0].fill;
-  const gradientId = `gauge-active-gradient`;
+  // Per-color id so multiple gauges on one page never share a gradient
+  // (a shared id made every arc render the first gauge's color).
+  const gradientId = `gauge-active-${String(activeColor).replace(/[^a-z0-9]/gi, "")}`;
   const iocGlowStyle: React.CSSProperties | undefined = isIoc
     ? {
         // Tight glow keeps the thin arc crisp; the radial bloom div behind
