@@ -463,16 +463,28 @@ const SANKEY_DATA = {
 };
 
 const NETWORK_NODES = [
-  { id: "itinerary", label: "Itinerary Assistant", type: "agent" },
-  { id: "routing", label: "Routing Assistant", type: "agent" },
+  // Agents (purple/violet)
+  { id: "itinerary", label: "Itinerary Assistant", type: "service" },
+  { id: "concierge", label: "Concierge Assistant", type: "agent" },
+  { id: "moderator", label: "Moderator", type: "agent" },
   { id: "restaurant", label: "Restaurant Finder", type: "agent" },
+  { id: "booking", label: "Booking Flow", type: "agent" },
+  { id: "route-opt", label: "Route Optimizer", type: "agent" },
+  { id: "duration", label: "Duration Calculator", type: "agent" },
+  { id: "translation", label: "Translation Tool", type: "agent" },
+  // Services (blue-magenta)
+  { id: "trip-planning", label: "Trip Planning", type: "service" },
+  { id: "activity", label: "Activity Finder", type: "service" },
+  { id: "recommendation", label: "Recommendation", type: "service" },
+  { id: "scheduling", label: "Scheduling Assistant", type: "service" },
+  { id: "preferences", label: "User Preferences", type: "service" },
+  // Tools / data (blue)
   { id: "weather", label: "Weather API", type: "tool" },
   { id: "trips", label: "Trip Database", type: "tool" },
-  { id: "vendor", label: "Vendor API", type: "tool" },
+  { id: "vendor", label: "Vendor APIs", type: "tool" },
   { id: "hotel", label: "Hotel API", type: "tool" },
   { id: "calendar", label: "Calendar Sync", type: "tool" },
-  { id: "duration", label: "Duration Calculator", type: "llm" },
-  { id: "route-opt", label: "Route Optimizer", type: "llm" },
+  // Error node (red ring)
   { id: "flight", label: "Flight API", type: "tool", status: "error" },
 ];
 const NETWORK_LINKS = [
@@ -480,13 +492,53 @@ const NETWORK_LINKS = [
   { source: "itinerary", target: "trips" },
   { source: "itinerary", target: "duration" },
   { source: "itinerary", target: "restaurant" },
-  { source: "routing", target: "itinerary" },
-  { source: "routing", target: "vendor" },
-  { source: "routing", target: "route-opt" },
-  { source: "routing", target: "flight" },
-  { source: "vendor", target: "hotel" },
+  { source: "itinerary", target: "flight" },
+  { source: "itinerary", target: "booking" },
+  { source: "itinerary", target: "scheduling" },
+  { source: "itinerary", target: "trip-planning" },
+  { source: "concierge", target: "itinerary" },
+  { source: "concierge", target: "recommendation" },
+  { source: "concierge", target: "activity" },
+  { source: "booking", target: "flight" },
+  { source: "booking", target: "hotel" },
   { source: "restaurant", target: "calendar" },
-  { source: "duration", target: "route-opt" },
+  { source: "restaurant", target: "booking" },
+  { source: "route-opt", target: "duration" },
+  { source: "route-opt", target: "translation" },
+  { source: "moderator", target: "concierge" },
+  { source: "moderator", target: "recommendation" },
+  { source: "scheduling", target: "preferences" },
+  { source: "scheduling", target: "vendor" },
+  { source: "trip-planning", target: "activity" },
+  { source: "trip-planning", target: "preferences" },
+  { source: "vendor", target: "hotel" },
+  { source: "weather", target: "trips" },
+];
+const NETWORK_LEGEND = [
+  {
+    heading: "AGENTS",
+    variant: "card",
+    items: [
+      { title: "Moderator", subtitle: "Classification" },
+      { title: "Schedule Assistant", subtitle: "Planning" },
+      { title: "Concierge Assistant", subtitle: "Quality Control" },
+      { title: "Itinerary Assistant", subtitle: "Coordination" },
+    ],
+  },
+  {
+    heading: "LLMS",
+    variant: "pill",
+    items: [
+      { title: "GPT-4", subtitle: "Primary reasoning" },
+      { title: "GPT-3.5", subtitle: "Quick responses" },
+      { title: "Claude 3", subtitle: "Long context analysis" },
+    ],
+  },
+  {
+    heading: "TOOLS",
+    variant: "outline",
+    items: [{ title: "Knowledge Base Search" }, { title: "Ticket Management" }],
+  },
 ];
 
 const FLOW_GATES = [
@@ -2700,8 +2752,13 @@ function ChartsSection() {
 
       <ComponentGroup label="Agent Network Graph">
         <SectionErrorBoundary name="NetworkChart">
-          <Box sx={{ height: 440, maxWidth: 680 }}>
-            <NetworkChart nodes={NETWORK_NODES} links={NETWORK_LINKS} />
+          <Box sx={{ width: "100%", maxWidth: 1040 }}>
+            <NetworkChart
+              nodes={NETWORK_NODES}
+              links={NETWORK_LINKS}
+              legend={NETWORK_LEGEND}
+              height={540}
+            />
           </Box>
         </SectionErrorBoundary>
       </ComponentGroup>
