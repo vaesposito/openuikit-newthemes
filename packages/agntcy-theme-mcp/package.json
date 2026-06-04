@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "@open-ui-kit/agntcy-theme-mcp",
+  "version": "0.1.0",
+  "description": "Model Context Protocol (MCP) server exposing the AGNTCY design tokens and components from the Open UI Kit design system (default light + dark themes).",
+  "license": "Apache-2.0",
+  "private": true,
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/outshift-open/open-ui-kit.git",
+    "directory": "packages/agntcy-theme-mcp"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "design-system",
+    "design-tokens",
+    "agntcy",
+    "open-ui-kit"
+  ],
+  "bin": "dist/index.js",
+  "files": [
+    "dist/",
+    "data/",
+    "README.md"
+  ],
+  "scripts": {
+    "generate": "node scripts/generate-data.mjs",
+    "prebuild": "yarn generate",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js",
+    "inspect": "yarn build && npx @modelcontextprotocol/inspector node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "esbuild": "^0.28.0",
+    "typescript": "^5.0.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

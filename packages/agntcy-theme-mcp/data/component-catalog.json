@@ -1,0 +1,4069 @@
+{
+  "generatedAt": "2026-06-04T10:27:44.170Z",
+  "source": "packages/open-ui-kit/src/{components,charts}",
+  "themeFamily": "AGNTCY",
+  "componentCount": 96,
+  "components": [
+    {
+      "name": "Accordion",
+      "category": "component",
+      "source": "components/accordion/components/accordion.tsx",
+      "description": "Accordion component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "AccordionProps",
+      "props": [
+        {
+          "name": "contained",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "type": "\"medium\" | \"large\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "arrowPosition",
+          "type": "\"left\" | \"right\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "useDotsStyle",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subTitle",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "accordionSummaryProps",
+          "type": "AccordionSummaryProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "detailsContentBoxProps",
+          "type": "BoxProps",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [
+        "(\n      <Accordion>\n        <AccordionSummary>Section title</AccordionSummary>\n        <AccordionDetails>Content goes here.</AccordionDetails>\n      </Accordion>\n    )",
+        "(\n      <Accordion defaultExpanded>\n        <AccordionSummary>Section title</AccordionSummary>\n        <AccordionDetails>Content goes here.</AccordionDetails>\n      </Accordion>\n    )"
+      ],
+      "stories": [
+        "Default",
+        "Sizes",
+        "Variants"
+      ],
+      "themeOverrides": {
+        "MuiAccordion": {
+          "sourceFile": "theme/mui/accordion.tsx",
+          "tokensUsed": [
+            "baseTextStrong",
+            "baseTextDisabled"
+          ]
+        }
+      }
+    },
+    {
+      "name": "ActionsModal",
+      "category": "component",
+      "source": "components/actions-modal/components/actions-modal.tsx",
+      "description": "ActionsModal component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "ActionsModalProps",
+      "props": [
+        {
+          "name": "open",
+          "type": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "confirmClicked",
+          "type": "(dismiss: boolean, comment: string) => void",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "hideModal",
+          "type": "() => void",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "mutationLoading",
+          "type": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "subTitle",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "useCommentSuggestions",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "includeDismissCheckbox",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "dismissCheckboxText",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "bodyText",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "closeClicked",
+          "type": "() => void",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "commentSuggestions",
+          "type": "string[]",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "styleModal",
+          "type": "SxProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "footerProps",
+          "type": "BoxProps",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Default"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "ActivityTimeline",
+      "category": "component",
+      "source": "components/activity-timeline/components/activity-timeline.tsx",
+      "description": "ActivityTimeline component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "ActivityTimelineProps",
+      "props": [
+        {
+          "name": "automaticProgress",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "steps",
+          "type": "ActivityTimelineStep[]",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "ActivityTimelineDotsStatuses",
+        "ActivityTimelineDotsPercentages",
+        "ActivityTimelineDefault",
+        "ActivityTimelineWithAutomaticProgress",
+        "ActivityTimelineWithAccordions"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Avatar",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Avatar` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {
+        "MuiAvatar": {
+          "sourceFile": "theme/mui/avatar.tsx",
+          "tokensUsed": [
+            "interactivePrimaryWeakHover",
+            "interactivePrimaryWeakDisabled"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Backdrop",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Backdrop` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Badge",
+      "category": "component",
+      "source": "components/badge/components/badge.tsx",
+      "description": "Badge component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "BadgeProps",
+      "props": [
+        {
+          "name": "type",
+          "type": "BadgeType",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "notificationContent",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "content",
+          "type": "React.ReactNode",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "styleBadge",
+          "type": "MuiBadgeProps[\"sx\"]",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "styleContent",
+          "type": "TypographyProps[\"sx\"]",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {
+        "BadgeType": [
+          "default",
+          "excellent",
+          "neutral",
+          "error",
+          "warning",
+          "info",
+          "success",
+          "inactive",
+          "moderate",
+          "severe"
+        ]
+      },
+      "figmaExamples": [
+        "<Badge type=\"default\" content=\"Label\" />",
+        "<Badge type=\"success\" content=\"Active\" />",
+        "<Badge type=\"error\" content=\"Error\" />",
+        "<Badge type=\"warning\" content=\"Warning\" />"
+      ],
+      "stories": [
+        "Example",
+        "BadgeTypes",
+        "BadgeWithNotifications"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Banner",
+      "category": "component",
+      "source": "components/banner/components/banner.tsx",
+      "description": "Banner component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "BannerProps",
+      "props": [
+        {
+          "name": "status",
+          "type": "StatusBanner",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "text",
+          "type": "React.ReactNode",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {
+        "StatusBanner": [
+          "negative",
+          "warning",
+          "success",
+          "info",
+          "excellent"
+        ]
+      },
+      "figmaExamples": [
+        "(\n      <Banner status=\"negative\" text=\"An error occurred. Please try again.\" />\n    )",
+        "(\n      <Banner status=\"warning\" text=\"Your session is about to expire.\" />\n    )",
+        "(\n      <Banner status=\"success\" text=\"Changes saved successfully.\" />\n    )",
+        "<Banner status=\"info\" text=\"A new version is available.\" />"
+      ],
+      "stories": [
+        "Example",
+        "BannerStatus"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "BarChart",
+      "category": "chart",
+      "source": "charts/bar-chart/bar-chart.tsx",
+      "description": "BarChart component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "BarChartProps",
+      "props": [
+        {
+          "name": "handleClick",
+          "type": "(item: ChartDataItem) => void",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [
+        "(\n      <BarChart\n        data={data}\n        bars={[{ dataKey: \"value\", name: \"Value\" }]}\n        width={500}\n        height={300}\n      />\n    )"
+      ],
+      "stories": [
+        "Basic",
+        "HandleClick",
+        "WithTooltip"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "BarGraph",
+      "category": "chart",
+      "source": "charts/bar-graph/bar-graph.tsx",
+      "description": "BarGraph component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "BarGraphProps",
+      "props": [
+        {
+          "name": "headers",
+          "type": "string[]",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "bars",
+          "type": "BarProps[]",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "showLegend",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "handleClick",
+          "type": "CategoricalChartFunc",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Basic",
+        "WithCustomLabels"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Box",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Box` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Breadcrumbs",
+      "category": "component",
+      "source": "components/breadcrumbs/components/breadcrumbs.tsx",
+      "description": "Breadcrumbs component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "BreadcrumbsProps",
+      "props": [
+        {
+          "name": "iconPosition",
+          "type": "IconPosition",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "items",
+          "type": "BreadcrumbItem[]",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "color",
+          "type": "LinkColorEnum",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "type": "LinkType",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "type": "GeneralSize",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "maximumNumberOfVisibleBreadcrumbs",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "BasicBreadcrumbs",
+        "BreadcrumbsWithMoreThan4Level",
+        "BreadcrumbsTooLong",
+        "BreadcrumbsWithIcons"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Button",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Button` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {
+        "MuiButton": {
+          "sourceFile": "theme/mui/button.tsx",
+          "tokensUsed": [
+            "baseTextInverse",
+            "borderRadiusSm",
+            "interactivePrimaryDefaultDefault",
+            "interactivePrimaryDefaultDisabled",
+            "interactivePrimaryWeakDefault",
+            "interactivePrimaryDefaultHover",
+            "interactivePrimaryDefaultActive",
+            "interactiveSecondaryDefaultDefault",
+            "interactiveSecondaryDefaultDisabled",
+            "interactiveInverseTextDefault",
+            "interactiveSecondaryDefaultHover",
+            "interactiveSecondaryDefaultActive",
+            "interactiveTertiaryDefault",
+            "interactiveTextInDefault",
+            "interactiveTertiaryHover",
+            "interactiveTextInHover",
+            "interactiveTertiaryActive",
+            "interactiveTextInActive",
+            "interactiveTertiaryDisabled",
+            "baseTextWeak",
+            "negativeBackgroundDefault",
+            "negativeTextInDefault",
+            "negativeBackgroundDisabled",
+            "negativeBackgroundHover",
+            "negativeBackgroundActive",
+            "negativeBorderDefault",
+            "negativeTextDefault",
+            "brandIconPrimaryDefault"
+          ]
+        }
+      }
+    },
+    {
+      "name": "ButtonGroup",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `ButtonGroup` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {}
+    },
+    {
+      "name": "CardDescription",
+      "category": "component",
+      "source": "components/card/components/card-description.tsx",
+      "description": "CardDescription component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "CardDescriptionProps",
+      "props": [
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "BasicCard",
+        "ClickableCard"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "CardSubheader",
+      "category": "component",
+      "source": "components/card/components/card-subheader.tsx",
+      "description": "CardSubheader component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "CardSubheaderProps",
+      "props": [
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "BasicCard",
+        "ClickableCard"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "ChartWidget",
+      "category": "chart",
+      "source": "charts/chart-widget/chart-widget.tsx",
+      "description": "ChartWidget component from the Open UI Kit (AGNTCY theme).",
+      "propsType": null,
+      "props": [],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "ChartWidgetExample",
+        "ChartWidgetTypes"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Checkbox",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Checkbox` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {
+        "MuiCheckbox": {
+          "sourceFile": "theme/mui/checkbox.tsx",
+          "tokensUsed": [
+            "controlIconDefault",
+            "controlIconDisabled"
+          ]
+        }
+      }
+    },
+    {
+      "name": "CodeBlock",
+      "category": "component",
+      "source": "components/code-block/components/code-block.tsx",
+      "description": "CodeBlock component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "CodeBlockProps",
+      "props": [
+        {
+          "name": "containerProps",
+          "type": "StackOwnProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "copyButtonProps",
+          "type": "Omit<CopyButtonProps, \"text\">",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Default",
+        "LineNumbers",
+        "StartingLineNumber"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Container",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Container` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {}
+    },
+    {
+      "name": "CopyButton",
+      "category": "component",
+      "source": "components/copy-button/components/copy-button.tsx",
+      "description": "CopyButton component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "CopyButtonProps",
+      "props": [
+        {
+          "name": "text",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "onCopy",
+          "type": "() => void",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Default"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "CreateTableInstance",
+      "category": "component",
+      "source": "components/table/components/table.tsx",
+      "description": "`Table` Component\n\nA customizable table component built on top of `MaterialReactTable`. It provides additional features\nand configurations to cater to specific use cases, while also allowing for manual control over pagination\nand sorting.",
+      "propsType": null,
+      "props": [],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "SimpleTable",
+        "EmptyTable",
+        "SubTablesWithPagination",
+        "TableRowWithActions",
+        "TableRowWithLinkAction",
+        "SimpleTableWithColumnPinning",
+        "TableWithReload",
+        "TableTitleVariant",
+        "TableWithCustomActionsInToolBar",
+        "TableWithPathDisplay",
+        "TableRowIsLink",
+        "TableRowIsClickable2"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "DatePicker",
+      "category": "component",
+      "source": "components/date-time/components/DatePicker.tsx",
+      "description": "DatePicker component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "DatePickerProps",
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "textFieldStyles",
+          "type": "SxProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "popperSlotProps",
+          "type": "SlotComponentProps< typeof Popper, unknown, PickerPopperProps >",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "DateTimePickerExample",
+        "DatePickerExample",
+        "DateRangePickerExample",
+        "DateRangePickerCustomExample",
+        "TimePickerExample",
+        "StaticDatePickerExample",
+        "StaticDateTimePickerExample"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "DateRangePicker",
+      "category": "component",
+      "source": "components/date-time/components/DateRangePicker.tsx",
+      "description": "DateRangePicker component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "DateRangePickerProps",
+      "props": [
+        {
+          "name": "startDate",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "endDate",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "setStartDate",
+          "type": "(endDate: string) => void",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "setEndDate",
+          "type": "(endDate: string) => void",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "getPopoverVisibility",
+          "type": "(visibility: boolean) => void",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "textFieldProps",
+          "type": "TextFieldProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "popoverProps",
+          "type": "PopoverProps",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "DateTimePickerExample",
+        "DatePickerExample",
+        "DateRangePickerExample",
+        "DateRangePickerCustomExample",
+        "TimePickerExample",
+        "StaticDatePickerExample",
+        "StaticDateTimePickerExample"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "DateTimePicker",
+      "category": "component",
+      "source": "components/date-time/components/DateTimePicker.tsx",
+      "description": "DateTimePicker component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "DateTimePickerProps",
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "textFieldStyles",
+          "type": "SxProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "popperSlotProps",
+          "type": "SlotComponentProps< typeof Popper, unknown, PickerPopperProps >",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "DateTimePickerExample",
+        "DatePickerExample",
+        "DateRangePickerExample",
+        "DateRangePickerCustomExample",
+        "TimePickerExample",
+        "StaticDatePickerExample",
+        "StaticDateTimePickerExample"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Dialog",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Dialog` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Divider",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Divider` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {
+        "MuiDivider": {
+          "sourceFile": "theme/mui/divider.tsx",
+          "tokensUsed": [
+            "controlBorderDefault"
+          ]
+        }
+      }
+    },
+    {
+      "name": "DonutChart",
+      "category": "chart",
+      "source": "charts/donut-chart/donut-chart.tsx",
+      "description": "A donut chart typically shows the proportions of categorical data where the size of each piece of the donut communicates the proportion of each category.",
+      "propsType": null,
+      "props": [],
+      "enums": {},
+      "figmaExamples": [
+        "<DonutChart data={data} size={300} />"
+      ],
+      "stories": [
+        "Basic",
+        "DonutTypes",
+        "DonutWithBigNumbers"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Drawer",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Drawer` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {}
+    },
+    {
+      "name": "DrawerShell",
+      "category": "component",
+      "source": "components/drawer-shell/components/drawer-shell.tsx",
+      "description": "DrawerShell component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "DrawerShellProps",
+      "props": [
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isLoading",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isError",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "hideFooter",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "paperProps",
+          "type": "SxProps",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "SimpleDrawer",
+        "ScrollableDrawer",
+        "DrawerWithoutIcon",
+        "DrawerWithoutFooter",
+        "ComplexTitleDrawer"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Dropdown",
+      "category": "component",
+      "source": "components/dropdown/components/dropdown.tsx",
+      "description": "Dropdown component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "DropdownProps",
+      "props": [
+        {
+          "name": "onChange",
+          "type": "(selected: DropdownOption<T>) => void",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "options",
+          "type": "DropdownOption<T>[]",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "selected",
+          "type": "DropdownOption<T>",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "buttonProps",
+          "type": "ButtonProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isActive",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "menuProps",
+          "type": "Partial<MenuProps>",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "startIcon",
+          "type": "JSX.Element",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "endIcon",
+          "type": "JSX.Element",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "showSelectedOption",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "fixedWidth",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "buttonTooltipProps",
+          "type": "Partial<TooltipProps>",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Example",
+        "ExampleWithLabel"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "DropdownAutocompleteTree",
+      "category": "component",
+      "source": "components/dropdown-autocomplete-tree/components/dropdown-autocomplete-tree.tsx",
+      "description": "DropdownAutocompleteTree component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "DropdownAutocompleteTreeProps",
+      "props": [
+        {
+          "name": "buttonContent",
+          "type": "ReactNode",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "buttonSize",
+          "type": "\"medium\" | \"large\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "flattenedTreeOptions",
+          "type": "AugmentedSelectNodeType[]",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "id",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isIconAllowed",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isSearchFieldEnabled",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "onSelectAllChange",
+          "type": "(isSelected: boolean) => void",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parentSelectOnly",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "searchText",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "selectAllIcon",
+          "type": "React.ElementType<SvgIconProps>",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "selectAllNode",
+          "type": "AugmentedSelectNodeType",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "setSearchText",
+          "type": "(text: string) => void",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "toggleExpand",
+          "type": "(args: { selectNode: AugmentedSelectNodeType }) => void",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "updateCheckbox",
+          "type": "( selectNode: AugmentedSelectNodeType, isSelected: boolean, ) => void",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "popOverPaperSx",
+          "type": "SxProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "buttonProps",
+          "type": "ButtonProps",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Default"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "DropdownAutocompleteTreeListbox",
+      "category": "component",
+      "source": "components/dropdown-autocomplete-tree/components/dropdown-autocomplete-tree-listbox.tsx",
+      "description": "DropdownAutocompleteTreeListbox component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "DropdownAutocompleteTreeListboxProps",
+      "props": [
+        {
+          "name": "children",
+          "type": "React.ReactNode[]",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isIconAllowed",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isSearchFieldEnabled",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "onSelectAllChange",
+          "type": "(isSelected: boolean) => void",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "searchPlaceholder",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "searchText",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "selectAllNode",
+          "type": "AugmentedSelectNodeType",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "setSearchText",
+          "type": "(text: string) => void",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "virtualizationOverscanPx",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Default"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "EmptyState",
+      "category": "component",
+      "source": "components/empty-state/components/empty-state.tsx",
+      "description": "EmptyState component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "EmptyStateProps",
+      "props": [
+        {
+          "name": "variant",
+          "type": "Variant",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "direction",
+          "type": "Direction",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "type": "GeneralSize",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "actionCallback",
+          "type": "() => void",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "actionTitle",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "actionButtonProps",
+          "type": "ButtonProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "containerProps",
+          "type": "StackProps",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {
+        "Variant": [
+          "info",
+          "positive",
+          "warning",
+          "negative"
+        ],
+        "Direction": [
+          "row",
+          "column"
+        ]
+      },
+      "figmaExamples": [
+        "(\n      <EmptyState\n        variant=\"info\"\n        size={GeneralSize.Large}\n        title=\"Nothing here yet\"\n        description=\"No data to display.\"\n      />\n    )",
+        "(\n      <EmptyState\n        variant=\"negative\"\n        size={GeneralSize.Large}\n        title=\"Something went wrong\"\n        description=\"We could not load the data. Please try again.\"\n      />\n    )"
+      ],
+      "stories": [
+        "Example"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Fab",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Fab` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {}
+    },
+    {
+      "name": "FavoriteButton",
+      "category": "component",
+      "source": "components/favorite-button/components/favorite-button.tsx",
+      "description": "FavoriteButton component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "FavoriteButtonProps",
+      "props": [
+        {
+          "name": "onClick",
+          "type": "(event: React.MouseEvent<HTMLElement>) => void",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "isChecked",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tooltipProps",
+          "type": "Partial<TooltipProps>",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "buttonProps",
+          "type": "ButtonProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "withBackground",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "FavoriteButtonComponentStory",
+        "FavoriteButtonComponent",
+        "FavoriteButtonComponentUsage",
+        "FavoriteWithoutBackground"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "FlowChart",
+      "category": "chart",
+      "source": "charts/flow-chart/flow-chart.tsx",
+      "description": "OXP \"gated decision flow\" — a timeline-headed Sankey/decision diagram.\nA top timeline lists gates (cyan eyebrow + title + UTC time) over a divider\nwith red-triangle alert markers; dark translucent decision nodes are linked\nby thick gradient ribbons (teal pass / red fail) carrying circular count\nbadges and mid-ribbon category pills. Fully token-driven.",
+      "propsType": "FlowChartProps",
+      "props": [
+        {
+          "name": "gates",
+          "type": "FlowGate[]",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "nodes",
+          "type": "FlowNode[]",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "type": "FlowLink[]",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "description": "Fixed drawing height in px. Defaults to 460."
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "FLOW_SAMPLE",
+        "Basic"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Footer",
+      "category": "component",
+      "source": "components/footer/components/footer.tsx",
+      "description": "Footer component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "FooterProps",
+      "props": [
+        {
+          "name": "productNode",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "productName",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "productLink",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "type": "LinkProps[]",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Default"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "GaugeChart",
+      "category": "chart",
+      "source": "charts/gauge-chart/gauge-chart.tsx",
+      "description": "GaugeChart component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "GaugeChartProps",
+      "props": [
+        {
+          "name": "maxValue",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "unit",
+          "type": "string",
+          "required": false,
+          "description": "Optional unit rendered as a smaller, lighter superscript next to the value (e.g. \"%\")."
+        },
+        {
+          "name": "customLabelComponent",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "styleProps",
+          "type": "{ customWidth?: number; customHeight?: number; textTop?: string; }",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [
+        "<GaugeChart value={72} size={220} label=\"Score\" />"
+      ],
+      "stories": [
+        "GaugeChartError",
+        "GaugeChartWarning"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Grid",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Grid` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Header",
+      "category": "component",
+      "source": "components/header/components/header.tsx",
+      "description": "Header component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "HeaderProps",
+      "props": [
+        {
+          "name": "logo",
+          "type": "ReactNode",
+          "required": true,
+          "description": "The logo element to display on the left side.\nCan be an img, svg, or a custom component."
+        },
+        {
+          "name": "title",
+          "type": "string | ReactNode",
+          "required": false,
+          "description": "The title to display next to the logo."
+        },
+        {
+          "name": "searchProps",
+          "type": "SearchFieldProps",
+          "required": false,
+          "description": "Configuration object for the search field.\nIf undefined, the search field will not be rendered."
+        },
+        {
+          "name": "customSearchNode",
+          "type": "ReactNode",
+          "required": false,
+          "description": "A custom search field component to override the default search field.\nIf provided, this will be used instead of the default searchProps."
+        },
+        {
+          "name": "actions",
+          "type": "HeaderAction[]",
+          "required": false,
+          "description": "An array of action objects to render quick action icon buttons."
+        },
+        {
+          "name": "userSection",
+          "type": "ReactNode",
+          "required": false,
+          "description": "The user-related section, typically a user menu or login button."
+        },
+        {
+          "name": "position",
+          "type": "AppBarProps[\"position\"]",
+          "required": false,
+          "description": "The positioning type of the AppBar."
+        },
+        {
+          "name": "elevation",
+          "type": "number",
+          "required": false,
+          "description": "The elevation (shadow) of the AppBar."
+        },
+        {
+          "name": "sx",
+          "type": "SxProps<Theme>",
+          "required": false,
+          "description": "Allows for custom styling overrides."
+        },
+        {
+          "name": "useDivider",
+          "type": "boolean",
+          "required": false,
+          "description": "Whether to use a divider between the logo and title."
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Default",
+        "Minimal",
+        "ScrollingBehavior"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "HorizontalBarChart",
+      "category": "chart",
+      "source": "charts/horizontal-bar-chart/horizontal-bar-chart.tsx",
+      "description": "HorizontalBarChart component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "HorizontalBarChartProps",
+      "props": [
+        {
+          "name": "handleClick",
+          "type": "(item: ChartDataItem) => void",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Example"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Icon",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Icon` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {}
+    },
+    {
+      "name": "IconButton",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `IconButton` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {
+        "MuiIconButton": {
+          "sourceFile": "theme/mui/button.tsx",
+          "tokensUsed": [
+            "baseTextInverse",
+            "borderRadiusSm",
+            "interactivePrimaryDefaultDefault",
+            "interactivePrimaryDefaultDisabled",
+            "interactivePrimaryWeakDefault",
+            "interactivePrimaryDefaultHover",
+            "interactivePrimaryDefaultActive",
+            "interactiveSecondaryDefaultDefault",
+            "interactiveSecondaryDefaultDisabled",
+            "interactiveInverseTextDefault",
+            "interactiveSecondaryDefaultHover",
+            "interactiveSecondaryDefaultActive",
+            "interactiveTertiaryDefault",
+            "interactiveTextInDefault",
+            "interactiveTertiaryHover",
+            "interactiveTextInHover",
+            "interactiveTertiaryActive",
+            "interactiveTextInActive",
+            "interactiveTertiaryDisabled",
+            "baseTextWeak",
+            "negativeBackgroundDefault",
+            "negativeTextInDefault",
+            "negativeBackgroundDisabled",
+            "negativeBackgroundHover",
+            "negativeBackgroundActive",
+            "negativeBorderDefault",
+            "negativeTextDefault",
+            "brandIconPrimaryDefault"
+          ]
+        }
+      }
+    },
+    {
+      "name": "IndicatorBadge",
+      "category": "component",
+      "source": "components/indicator-badge/components/indicator-badge.tsx",
+      "description": "IndicatorBadge component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "IndicatorBadgeProps",
+      "props": [
+        {
+          "name": "value",
+          "type": "0 | 1 | 2 | 3 | 4",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Example"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "LabelAndChildrenTooltipContent",
+      "category": "component",
+      "source": "components/tags/tags/components/label-and-children-tooltip-content.tsx",
+      "description": "LabelAndChildrenTooltipContent component from the Open UI Kit (AGNTCY theme).",
+      "propsType": null,
+      "props": [],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "TagSizesWithDeleteOption",
+        "TagWithAvatar",
+        "ClickableTagWithIcon",
+        "StatusTags",
+        "ClickableOutlinedTag",
+        "TagColors",
+        "DisabledTag",
+        "Default"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Legend",
+      "category": "component",
+      "source": "components/legend/components/legend.tsx",
+      "description": "Legend component from the Open UI Kit (AGNTCY theme).",
+      "propsType": null,
+      "props": [],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "ChartLegend",
+        "LegendTableWithClickableRows"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "LineChart",
+      "category": "chart",
+      "source": "charts/line-chart/line-chart.tsx",
+      "description": "LineChart component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "LineChartProps",
+      "props": [
+        {
+          "name": "subject",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "xAxisProps",
+          "type": "XAxisProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "yAxisProps",
+          "type": "YAxisProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "lineProps",
+          "type": "Partial<SafeLineProps>",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "gridProps",
+          "type": "CartesianGridProps",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [
+        "(\n      <LineChart\n        data={data}\n        lines={[\n          { dataKey: \"threats\", name: \"Active Threats\" },\n          { dataKey: \"resolved\", name: \"Resolved\" },\n        ]}\n        width={500}\n        height={300}\n      />\n    )"
+      ],
+      "stories": [
+        "Basic"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Link",
+      "category": "component",
+      "source": "components/link/components/link.tsx",
+      "description": "Link component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "LinkProps",
+      "props": [
+        {
+          "name": "Icon",
+          "type": "React.ElementType<SvgIconProps>",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "color",
+          "type": "LinkColorEnum",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "customizeColor",
+          "type": "({ disabled, pressed, hovered }: LinkColorStatus) => string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ellipsis",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "fontStyle",
+          "type": "CSSProperties",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "href",
+          "type": "To",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "iconPosition",
+          "type": "IconPosition",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "linkType",
+          "type": "LinkType",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "openInNewTab",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "type": "GeneralSize",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "sx",
+          "type": "CSSProperties",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Example",
+        "Ellipsis",
+        "LinkSizes",
+        "Colors",
+        "IconVariants",
+        "LinkTypes"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "List",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `List` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {
+        "MuiList": {
+          "sourceFile": "theme/mui/list.tsx",
+          "tokensUsed": [
+            "baseTextDefault",
+            "controlBackgroundDefault",
+            "controlBackgroundMedium",
+            "interactiveSecondaryDefaultActive",
+            "baseTextWeak",
+            "controlBackgroundDisabled"
+          ]
+        }
+      }
+    },
+    {
+      "name": "ListItem",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `ListItem` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {
+        "MuiListItem": {
+          "sourceFile": "theme/mui/list.tsx",
+          "tokensUsed": [
+            "baseTextDefault",
+            "controlBackgroundDefault",
+            "controlBackgroundMedium",
+            "interactiveSecondaryDefaultActive",
+            "baseTextWeak",
+            "controlBackgroundDisabled"
+          ]
+        }
+      }
+    },
+    {
+      "name": "ListItemButton",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `ListItemButton` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {
+        "MuiListItemButton": {
+          "sourceFile": "theme/mui/list.tsx",
+          "tokensUsed": [
+            "baseTextDefault",
+            "controlBackgroundDefault",
+            "controlBackgroundMedium",
+            "interactiveSecondaryDefaultActive",
+            "baseTextWeak",
+            "controlBackgroundDisabled"
+          ]
+        }
+      }
+    },
+    {
+      "name": "LoadingErrorState",
+      "category": "component",
+      "source": "components/loading-error-state/components/loading-error-state.tsx",
+      "description": "LoadingErrorState component from the Open UI Kit (AGNTCY theme).",
+      "propsType": null,
+      "props": [],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Default"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "MenuItem",
+      "category": "component",
+      "source": "components/menu/components/menu-item.tsx",
+      "description": "MenuItem component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "MenuItemProps",
+      "props": [
+        {
+          "name": "href",
+          "type": "LinkProps[\"href\"]",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "openInNewTab",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "ellipsis",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "iconPosition",
+          "type": "LinkProps[\"iconPosition\"]",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "Icon",
+          "type": "LinkProps[\"Icon\"]",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Example",
+        "MenuWithIcons",
+        "MenuWithDivider"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "MeterChart",
+      "category": "chart",
+      "source": "charts/meter-chart/meter-chart.tsx",
+      "description": "Linear gradient health meter. The default \"bar\" variant mirrors the\nseverity-bar visual language; the \"score\" variant reproduces the OXP\nHealth-Score panel. Both gain a glow under IoC themes.",
+      "propsType": "MeterChartProps",
+      "props": [
+        {
+          "name": "value",
+          "type": "number",
+          "required": true,
+          "description": "Current value plotted by the marker."
+        },
+        {
+          "name": "min",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "showValue",
+          "type": "boolean",
+          "required": false,
+          "description": "Show the numeric value on the right of the header."
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "description": "Track height in px."
+        },
+        {
+          "name": "colors",
+          "type": "[string, string, string]",
+          "required": false,
+          "description": "Gradient stops [low, mid, high]. Defaults to red → amber → cyan from\ntheme accent/semantic tokens."
+        },
+        {
+          "name": "valueFormatter",
+          "type": "(value: number) => string",
+          "required": false,
+          "description": "Formats the displayed value."
+        },
+        {
+          "name": "variant",
+          "type": "\"bar\" | \"score\"",
+          "required": false,
+          "description": "Layout variant. \"bar\" (default) renders the compact gradient bar with a\ndot marker. \"score\" renders the OXP Health-Score layout: a large\nlight-weight value, an uppercase caption, a gradient-outlined hint pill\nand a hairline rainbow track with thin vertical value markers."
+        },
+        {
+          "name": "unit",
+          "type": "string",
+          "required": false,
+          "description": "Unit appended to the value (e.g. \"%\")."
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "description": "Uppercase caption beneath the big value (score variant)."
+        },
+        {
+          "name": "hint",
+          "type": "string",
+          "required": false,
+          "description": "Gradient-outlined helper pill text (score variant)."
+        },
+        {
+          "name": "markers",
+          "type": "MeterMarker[]",
+          "required": false,
+          "description": "Vertical value markers along the track (score variant)."
+        },
+        {
+          "name": "gradientStops",
+          "type": "string[]",
+          "required": false,
+          "description": "Full multi-stop rainbow for the score track, e.g.\nred → magenta → orange → amber → green → cyan. Defaults to theme tokens."
+        },
+        {
+          "name": "cta",
+          "type": "MeterCta",
+          "required": false,
+          "description": "Optional call-to-action button (score variant)."
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Basic"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "ModalSubtitle",
+      "category": "component",
+      "source": "components/modal/components/modal-subtitle.tsx",
+      "description": "ModalSubtitle component from the Open UI Kit (AGNTCY theme).",
+      "propsType": null,
+      "props": [],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "SimpleModal",
+        "DialogSizes"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "ModalTitle",
+      "category": "component",
+      "source": "components/modal/components/modal-title.tsx",
+      "description": "ModalTitle component from the Open UI Kit (AGNTCY theme).",
+      "propsType": null,
+      "props": [],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "SimpleModal",
+        "DialogSizes"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "NetworkChart",
+      "category": "chart",
+      "source": "charts/network-chart/network-chart.tsx",
+      "description": "Force-directed agent/tool network graph (OXP \"agent network\"). Layout is\ncomputed with d3-force and rendered as SVG: purple glowing nodes, a red\nerror node, translucent links and Inter labels over a glass surface.",
+      "propsType": "NetworkChartProps",
+      "props": [
+        {
+          "name": "nodes",
+          "type": "NetworkNode[]",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "links",
+          "type": "NetworkLink[]",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "legend",
+          "type": "NetworkLegendGroup[]",
+          "required": false,
+          "description": "Categorized legend groups rendered to the left of the graph."
+        },
+        {
+          "name": "showLabels",
+          "type": "boolean",
+          "required": false,
+          "description": "Show text labels next to nodes. Defaults to true."
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "description": "Fixed height (px) of the graph canvas. Defaults to 520."
+        },
+        {
+          "name": "interactive",
+          "type": "boolean",
+          "required": false,
+          "description": "Enable drag, hover-highlight and tooltips with a live force simulation.\nDefaults to true. When false, a static pre-computed layout is rendered."
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Basic"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "OverflowTooltip",
+      "category": "component",
+      "source": "components/overflow-tooltip/components/overflow-tooltip.tsx",
+      "description": "OverflowTooltip component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "OverflowTooltipProps",
+      "props": [
+        {
+          "name": "value",
+          "type": "React.ReactNode",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "someLongText",
+          "type": "React.ReactNode",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "ellipsisDirection",
+          "type": "\"start\" | \"end\"",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "styleText",
+          "type": "React.CSSProperties",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "SimpleOverflowTooltip"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Pagination",
+      "category": "component",
+      "source": "components/pagination/components/pagination.tsx",
+      "description": "Pagination component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "PaginationProps",
+      "props": [],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "BasicPagination",
+        "OutlinedPagination",
+        "RoundedPagination"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Paper",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Paper` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {
+        "MuiPaper": {
+          "sourceFile": "theme/mui/dialog.tsx",
+          "tokensUsed": [
+            "borderRadiusLg",
+            "controlBackgroundDefault",
+            "baseTextDefault"
+          ]
+        }
+      }
+    },
+    {
+      "name": "PathDisplay",
+      "category": "component",
+      "source": "components/path-display/components/path-display.tsx",
+      "description": "PathDisplay component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "PathDisplayProps",
+      "props": [
+        {
+          "name": "path",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "numberOfLevels",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tooltipProps",
+          "type": "TooltipProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "TypographyProps",
+          "type": "TypographyProps",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Default",
+        "Collapsed",
+        "NoLevels1",
+        "NoLevels2",
+        "EmptyPath",
+        "EmptyPathWithSlash",
+        "EmptyPathWithSlashAndText"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Radio",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Radio` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {
+        "MuiRadio": {
+          "sourceFile": "theme/mui/radio.tsx",
+          "tokensUsed": [
+            "controlIconDefault",
+            "controlIconDisabled"
+          ]
+        }
+      }
+    },
+    {
+      "name": "RadioGroup",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `RadioGroup` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {}
+    },
+    {
+      "name": "RemainingTags",
+      "category": "component",
+      "source": "components/tags/tags/components/remaining-tags.tsx",
+      "description": "RemainingTags component from the Open UI Kit (AGNTCY theme).",
+      "propsType": null,
+      "props": [],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "TagSizesWithDeleteOption",
+        "TagWithAvatar",
+        "ClickableTagWithIcon",
+        "StatusTags",
+        "ClickableOutlinedTag",
+        "TagColors",
+        "DisabledTag",
+        "Default"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "SankeyChart",
+      "category": "chart",
+      "source": "charts/sankey-chart/sankey-chart.tsx",
+      "description": "Sankey / flow chart with gradient ribbons (source→target color) and circular\nvalue badges on each node. Node/ribbon colors default to the theme's\nbrand-accent palette; nodes gain a glow under IoC themes.",
+      "propsType": "SankeyChartProps",
+      "props": [
+        {
+          "name": "data",
+          "type": "SankeyData",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "colors",
+          "type": "string[]",
+          "required": false,
+          "description": "Overrides the brand-accent palette used to color nodes/ribbons."
+        },
+        {
+          "name": "nodePadding",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "nodeWidth",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "showTooltip",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Basic"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "ScatterChart",
+      "category": "chart",
+      "source": "charts/scatter-chart/scatter-chart.tsx",
+      "description": "Scatter / distribution chart. Plots one or more x/y series (optionally sized\nby `z`), with an optional highlighted band and pill badge overlay. Series\ndefault to the theme's brand-accent palette and gain a glow under IoC themes.",
+      "propsType": "ScatterChartProps",
+      "props": [
+        {
+          "name": "series",
+          "type": "ScatterSeries[]",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "band",
+          "type": "ScatterBand",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "showTooltip",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "xAxisProps",
+          "type": "XAxisProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "yAxisProps",
+          "type": "YAxisProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "zRange",
+          "type": "[number, number]",
+          "required": false,
+          "description": "[min, max] range of `z` mapped to bubble radius in px."
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Basic"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "ScrollArea",
+      "category": "component",
+      "source": "components/scroll-area/components/scroll-area.tsx",
+      "description": "ScrollArea component from the Open UI Kit (AGNTCY theme).",
+      "propsType": null,
+      "props": [],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Default",
+        "HorizontalScroll",
+        "VerticalScroll"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "SearchField",
+      "category": "component",
+      "source": "components/search-field/components/search-field.tsx",
+      "description": "SearchField component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "SearchFieldProps",
+      "props": [
+        {
+          "name": "inputProps",
+          "type": "InputProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "onChangeCallback",
+          "type": "(value: string) => void",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "onClear",
+          "type": "() => void",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "extendEndAdornment",
+          "type": "React.JSX.Element",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "SimpleSearchField"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Select",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Select` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {
+        "MuiSelect": {
+          "sourceFile": "theme/mui/input.tsx",
+          "tokensUsed": [
+            "controlBorderDisabled",
+            "controlBorderDefault",
+            "controlBackgroundDefault",
+            "borderRadiusSm",
+            "controlBorderActive",
+            "negativeBorderActive",
+            "controlBorderHover",
+            "baseTextDefault",
+            "baseTextWeak",
+            "controlIconWeak",
+            "controlBackgroundWeak",
+            "controlIconDefault"
+          ]
+        }
+      }
+    },
+    {
+      "name": "SelectNode",
+      "category": "component",
+      "source": "components/dropdown-autocomplete-tree/components/select-node.tsx",
+      "description": "SelectNode component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "SelectNodeProps",
+      "props": [
+        {
+          "name": "isExpanded",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isIconAllowed",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isLeaf",
+          "type": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "isParentNode",
+          "type": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "isSelectAllNode",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isSelectable",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "isSelected",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "nestLevel",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "nodeIcon",
+          "type": "React.ElementType<SvgIconProps> | null",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "nodeLabel",
+          "type": "JSX.Element",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "onCheckboxClick",
+          "type": "(isSelected: boolean) => void",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "onExpand",
+          "type": "() => void",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "parentSelectOnly",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "selectableLeavesCount",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "selectedLeavesCount",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Default"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "SelectNodeListItem",
+      "category": "component",
+      "source": "components/dropdown-autocomplete-tree/components/select-node-list-item.tsx",
+      "description": "SelectNodeListItem component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "SelectNodeListItemProps",
+      "props": [
+        {
+          "name": "isLeaf",
+          "type": "boolean",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "isSelectable",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "listItemProps",
+          "type": "ListItemProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "onExpand",
+          "type": "() => void",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "selectNodeElement",
+          "type": "ReactElement<ComponentProps<typeof SelectNode>>",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "selectableLeavesCount",
+          "type": "number | null",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Default"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "SeverityBadge",
+      "category": "component",
+      "source": "components/severity-badge/components/severity-badge.tsx",
+      "description": "SeverityBadge component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "SeverityBadgeProps",
+      "props": [
+        {
+          "name": "severity",
+          "type": "Severity",
+          "required": false,
+          "description": "Set a type if you want to display the badge in severity colors."
+        },
+        {
+          "name": "value",
+          "type": "number",
+          "required": false,
+          "description": "Set a value if you want to display the badge in score system colors.\n`severity` param overrides this behaviour."
+        },
+        {
+          "name": "scoreSystem",
+          "type": "SeverityBadgeScoreSystemItem[]",
+          "required": false,
+          "description": "Customizable colors / thresholds."
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Example",
+        "ExampleBySeverityType",
+        "ExampleByValue",
+        "ExampleByValueWithCustomScoreSystem"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "SeverityBadgeLabel",
+      "category": "component",
+      "source": "components/severity-badge-label/components/severity-badge-label.tsx",
+      "description": "SeverityBadgeLabel component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "SeverityBadgeLabelProps",
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "description": "Provide a custom label to override the default ones"
+        },
+        {
+          "name": "containerStackProps",
+          "type": "StackProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "labelTypographyProps",
+          "type": "TypographyProps",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Example",
+        "ExampleBySeverityType",
+        "ExampleByValue",
+        "ExampleByValueWithCustomScoreSystem"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "SeverityBar",
+      "category": "component",
+      "source": "components/severity-bar/components/severity-bar.tsx",
+      "description": "SeverityBar component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "SeverityBarProps",
+      "props": [
+        {
+          "name": "severity",
+          "type": "Severity",
+          "required": true,
+          "description": "Severity of the bar"
+        },
+        {
+          "name": "sx",
+          "type": "SxProps<Theme>",
+          "required": false,
+          "description": "Styling for the bar"
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Example",
+        "ExampleBySeverityType"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Skeleton",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Skeleton` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {
+        "MuiSkeleton": {
+          "sourceFile": "theme/mui/skeleton.tsx",
+          "tokensUsed": [
+            "baseBackgroundWeak",
+            "controlBorderWeak"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Slider",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Slider` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {}
+    },
+    {
+      "name": "SpeedDial",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `SpeedDial` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {}
+    },
+    {
+      "name": "SpiderChart",
+      "category": "chart",
+      "source": "charts/spider-chart/components/spider-chart.tsx",
+      "description": "Spider charts, also known as radar charts or star plots, are used to display multivariate data in a two-dimensional chart.\nEach variable is represented by an axis radiating from a common center point, and the values of the variables are plotted as data points along the corresponding axis.\nThe range of values in a spider chart depends on the specific variables being represented.",
+      "propsType": "SpiderChartProps",
+      "props": [
+        {
+          "name": "data",
+          "type": "ExtendedDataPoint[]",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "radars",
+          "type": "RadarType[]",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "outerRadius",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "padData",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "onTooltipClick",
+          "type": "(subject: string) => void",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tooltipContent",
+          "type": "(dataPoint: ExtendedDataPoint) => React.ReactNode",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "showTooltip",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "customTooltip",
+          "type": "ContentType<number, string>",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "labelOffsets",
+          "type": "Offset[]",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "tickBand",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "scale",
+          "type": "number",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Example"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Spinner",
+      "category": "component",
+      "source": "components/spinner/components/spinner.tsx",
+      "description": "Spinner component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "SpinnerProps",
+      "props": [
+        {
+          "name": "boxProps",
+          "type": "BoxProps",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [
+        "<Spinner size={20} />",
+        "<Spinner size={40} />",
+        "<Spinner size={64} />"
+      ],
+      "stories": [
+        "SpinnerComponent"
+      ],
+      "themeOverrides": {
+        "MuiCircularProgress": {
+          "sourceFile": "theme/mui/circular-progress.tsx",
+          "tokensUsed": [
+            "interactivePrimaryDefaultDefault",
+            "interactiveSecondaryDefaultDefault"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Stack",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Stack` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {}
+    },
+    {
+      "name": "StaticDatePicker",
+      "category": "component",
+      "source": "components/date-time/components/StaticDatePicker.tsx",
+      "description": "StaticDatePicker component from the Open UI Kit (AGNTCY theme).",
+      "propsType": null,
+      "props": [],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "DateTimePickerExample",
+        "DatePickerExample",
+        "DateRangePickerExample",
+        "DateRangePickerCustomExample",
+        "TimePickerExample",
+        "StaticDatePickerExample",
+        "StaticDateTimePickerExample"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "StaticDateTimePicker",
+      "category": "component",
+      "source": "components/date-time/components/StaticDateTimePicker.tsx",
+      "description": "StaticDateTimePicker component from the Open UI Kit (AGNTCY theme).",
+      "propsType": null,
+      "props": [],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "DateTimePickerExample",
+        "DatePickerExample",
+        "DateRangePickerExample",
+        "DateRangePickerCustomExample",
+        "TimePickerExample",
+        "StaticDatePickerExample",
+        "StaticDateTimePickerExample"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Stepper",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Stepper` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Tab",
+      "category": "component",
+      "source": "components/tabs/components/tab.tsx",
+      "description": "Tab component from the Open UI Kit (AGNTCY theme).",
+      "propsType": null,
+      "props": [],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "BasicTabs",
+        "WrappedLabels",
+        "StatesTab",
+        "VerticalTabs",
+        "ColoredTab",
+        "CenteredTabs",
+        "ScrollableTabsButtonAuto",
+        "ScrollableVerticalTabsButtonAuto",
+        "IconTabAndPosition",
+        "CounterTabsAndPosition",
+        "IconTab"
+      ],
+      "themeOverrides": {
+        "MuiTab": {
+          "sourceFile": "theme/mui/tab.tsx",
+          "tokensUsed": [
+            "baseTextDefault",
+            "interactiveSecondaryDefaultActive"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Table",
+      "category": "component",
+      "source": "components/table/components/table.tsx",
+      "description": "Table component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "TableProps",
+      "props": [
+        {
+          "name": "isLoading",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "manualPagination",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "manualSorting",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "numOfRows",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "densityCompact",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "enableExpandAll",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "enableExpanding",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "enableTopToolbar",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "topToolbarProps",
+          "type": "TopToolbarProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "type": "TableTitle",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "titleExtension",
+          "type": "ReactNode",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "initialPageIndex",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "initialPageSize",
+          "type": "number",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "rowsPerPageOptions",
+          "type": "number[]",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "emptyStateProps",
+          "type": "EmptyStateProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "onRowLinkClick",
+          "type": "(rowData: RowData<TData>) => unknown",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "SimpleTable",
+        "EmptyTable",
+        "SubTablesWithPagination",
+        "TableRowWithActions",
+        "TableRowWithLinkAction",
+        "SimpleTableWithColumnPinning",
+        "TableWithReload",
+        "TableTitleVariant",
+        "TableWithCustomActionsInToolBar",
+        "TableWithPathDisplay",
+        "TableRowIsLink",
+        "TableRowIsClickable2"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Tabs",
+      "category": "component",
+      "source": "components/tabs/components/tabs.tsx",
+      "description": "Tabs component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "TabsProps",
+      "props": [
+        {
+          "name": "type",
+          "type": "TabsType",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "boxProps",
+          "type": "BoxProps",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {
+        "TabsType": [
+          "main",
+          "subTab",
+          "toggleTab"
+        ]
+      },
+      "figmaExamples": [
+        "(\n      <Tabs type=\"main\" value={0}>\n        <Tab label=\"Overview\" />\n        <Tab label=\"Details\" />\n        <Tab label=\"Settings\" />\n      </Tabs>\n    )",
+        "(\n      <Tabs type=\"toggleTab\" value={0}>\n        <Tab label=\"List\" />\n        <Tab label=\"Grid\" />\n      </Tabs>\n    )"
+      ],
+      "stories": [
+        "BasicTabs",
+        "WrappedLabels",
+        "StatesTab",
+        "VerticalTabs",
+        "ColoredTab",
+        "CenteredTabs",
+        "ScrollableTabsButtonAuto",
+        "ScrollableVerticalTabsButtonAuto",
+        "IconTabAndPosition",
+        "CounterTabsAndPosition",
+        "IconTab"
+      ],
+      "themeOverrides": {
+        "MuiTabs": {
+          "sourceFile": "theme/mui/tabs.tsx",
+          "tokensUsed": [
+            "interactiveSecondaryDefaultActive",
+            "controlBorderStrong"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Tag",
+      "category": "component",
+      "source": "components/tags/tag/components/tag.tsx",
+      "description": "Tag component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "TagProps",
+      "props": [
+        {
+          "name": "color",
+          "type": "TagBackgroundColorVariants",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "type": "GeneralSize",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "status",
+          "type": "TagStatus",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [
+        "<Tag size={GeneralSize.Large} label=\"Tag\" />",
+        "(\n      <Tag\n        size={GeneralSize.Large}\n        status={TagStatus.Positive}\n        label=\"Success\"\n      />\n    )",
+        "(\n      <Tag\n        size={GeneralSize.Large}\n        status={TagStatus.Negative}\n        label=\"Negative\"\n      />\n    )",
+        "(\n      <Tag\n        size={GeneralSize.Large}\n        status={TagStatus.Warning}\n        label=\"Warning\"\n      />\n    )"
+      ],
+      "stories": [
+        "TagSizesWithDeleteOption",
+        "TagWithAvatar",
+        "ClickableTagWithIcon",
+        "StatusTags",
+        "ClickableOutlinedTag",
+        "TagColors",
+        "DisabledTag",
+        "Default"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Tags",
+      "category": "component",
+      "source": "components/tags/tags/components/tags.tsx",
+      "description": "Tags component from the Open UI Kit (AGNTCY theme).",
+      "propsType": null,
+      "props": [],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "TagSizesWithDeleteOption",
+        "TagWithAvatar",
+        "ClickableTagWithIcon",
+        "StatusTags",
+        "ClickableOutlinedTag",
+        "TagColors",
+        "DisabledTag",
+        "Default"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "TimePicker",
+      "category": "component",
+      "source": "components/date-time/components/TimePicker.tsx",
+      "description": "TimePicker component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "TimePickerProps",
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "textFieldStyles",
+          "type": "SxProps",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "popperSlotProps",
+          "type": "SlotComponentProps< typeof Popper, unknown, PickerPopperProps >",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "DateTimePickerExample",
+        "DatePickerExample",
+        "DateRangePickerExample",
+        "DateRangePickerCustomExample",
+        "TimePickerExample",
+        "StaticDatePickerExample",
+        "StaticDateTimePickerExample"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Toast",
+      "category": "component",
+      "source": "components/toast/components/toast.tsx",
+      "description": "Toast component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "ToastProps",
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "type",
+          "type": "ToastType",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "showCloseButton",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "useNativeClose",
+          "type": "boolean",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "action",
+          "type": "{ label: string; onClick: () => void; }",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "customActions",
+          "type": "React.ReactNode",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {
+        "ToastType": [
+          "default",
+          "info",
+          "success",
+          "warning",
+          "error"
+        ]
+      },
+      "figmaExamples": [
+        "<Toast type=\"default\" title=\"Notification\" />",
+        "(\n      <Toast\n        type=\"success\"\n        title=\"Changes saved\"\n        description=\"Your changes have been saved successfully.\"\n      />\n    )",
+        "(\n      <Toast\n        type=\"warning\"\n        title=\"Session expiring\"\n        description=\"You will be logged out in 5 minutes.\"\n      />\n    )",
+        "(\n      <Toast\n        type=\"error\"\n        title=\"Error\"\n        description=\"Something went wrong. Please try again.\"\n      />\n    )"
+      ],
+      "stories": [
+        "Default",
+        "ToastWithLongText",
+        "ToastWithOutTitle",
+        "ToastType"
+      ],
+      "themeOverrides": {
+        "MuiSnackbar": {
+          "sourceFile": "theme/mui/snack-bar.tsx",
+          "tokensUsed": [
+            "controlBackgroundDefault",
+            "baseTextDefault",
+            "controlIconDefault"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Toaster",
+      "category": "component",
+      "source": "components/toast/components/toaster.tsx",
+      "description": "Toaster component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "ToasterProps",
+      "props": [],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Default",
+        "ToastWithLongText",
+        "ToastWithOutTitle",
+        "ToastType"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Toggle",
+      "category": "component",
+      "source": "components/toggle/components/toggle.tsx",
+      "description": "Toggle component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "ToggleProps",
+      "props": [],
+      "enums": {},
+      "figmaExamples": [
+        "<Toggle />",
+        "<Toggle defaultChecked />",
+        "<Toggle disabled />"
+      ],
+      "stories": [
+        "Primary",
+        "Error",
+        "Info",
+        "Success",
+        "Warning"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Tooltip",
+      "category": "component",
+      "source": "components/tooltip/components/tooltip.tsx",
+      "description": "Tooltip component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "TooltipProps",
+      "props": [
+        {
+          "name": "size",
+          "type": "TooltipSize",
+          "required": false,
+          "description": ""
+        }
+      ],
+      "enums": {},
+      "figmaExamples": [
+        "(\n      <Tooltip title=\"Helpful information\" placement=\"top\">\n        <Button>Hover me</Button>\n      </Tooltip>\n    )",
+        "(\n      <Tooltip\n        size={TooltipSize.Small}\n        title=\"Helpful information\"\n        placement=\"top\"\n      >\n        <Button>Hover me</Button>\n      </Tooltip>\n    )"
+      ],
+      "stories": [
+        "TooltipWithSize"
+      ],
+      "themeOverrides": {
+        "MuiTooltip": {
+          "sourceFile": "theme/mui/tooltip.tsx",
+          "tokensUsed": [
+            "inactiveBackgroundActive",
+            "baseTextInverse"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Typography",
+      "category": "mui-reexport",
+      "source": "@mui/material",
+      "description": "Material UI `Typography` re-exported by Open UI Kit. Styled by the AGNTCY theme via component overrides when applicable.",
+      "props": [],
+      "propsType": null,
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [],
+      "themeOverrides": {}
+    },
+    {
+      "name": "ViewSwitcher",
+      "category": "component",
+      "source": "components/view-switcher/components/view-switcher.tsx",
+      "description": "ViewSwitcher component from the Open UI Kit (AGNTCY theme).",
+      "propsType": "ViewSwitcherProps",
+      "props": [
+        {
+          "name": "containerProps",
+          "type": "BoxProps | undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "disabled",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "fullWidth",
+          "type": "boolean | undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "onChange",
+          "type": "ViewSwitcherOptionProperties[\"onChange\"]",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "options",
+          "type": "readonly ViewSwitcherOption[]",
+          "required": true,
+          "description": ""
+        },
+        {
+          "name": "size",
+          "type": "ViewSwitcherSize | undefined",
+          "required": false,
+          "description": ""
+        },
+        {
+          "name": "value",
+          "type": "string | undefined",
+          "required": true,
+          "description": ""
+        }
+      ],
+      "enums": {
+        "ViewSwitcherOption": [
+          "ViewSwitcherOptionObject",
+          "string"
+        ],
+        "ViewSwitcherSize": [
+          "sm",
+          "md"
+        ]
+      },
+      "figmaExamples": [],
+      "stories": [
+        "SizeMedium",
+        "SizeSmall",
+        "FullWidth",
+        "Disabled",
+        "IconOnlyMedium",
+        "IconOnlySmall"
+      ],
+      "themeOverrides": {}
+    },
+    {
+      "name": "Widget",
+      "category": "component",
+      "source": "components/widget/components/widget.tsx",
+      "description": "Widget component from the Open UI Kit (AGNTCY theme).",
+      "propsType": null,
+      "props": [],
+      "enums": {},
+      "figmaExamples": [],
+      "stories": [
+        "Default",
+        "LoadingWidget",
+        "EmptyStateWidget",
+        "WidgetWithoutLabel",
+        "GeneralPropsWidget",
+        "LabelAsElement",
+        "LeftHeaderElement",
+        "GeneralLegendWidget"
+      ],
+      "themeOverrides": {}
+    }
+  ],
+  "muiOverrides": {
+    "MuiAccordion": {
+      "sourceFile": "theme/mui/accordion.tsx",
+      "tokensUsed": [
+        "baseTextStrong",
+        "baseTextDisabled"
+      ]
+    },
+    "MuiAccordionSummary": {
+      "sourceFile": "theme/mui/accordion.tsx",
+      "tokensUsed": [
+        "baseTextStrong",
+        "baseTextDisabled"
+      ]
+    },
+    "MuiAccordionDetails": {
+      "sourceFile": "theme/mui/accordion.tsx",
+      "tokensUsed": [
+        "baseTextStrong",
+        "baseTextDisabled"
+      ]
+    },
+    "MuiAppBar": {
+      "sourceFile": "theme/mui/app-bar.tsx",
+      "tokensUsed": [
+        "baseBackgroundStrong",
+        "baseBorderDefault"
+      ]
+    },
+    "MuiAvatarGroup": {
+      "sourceFile": "theme/mui/avatar-group.tsx",
+      "tokensUsed": [
+        "baseBackgroundWeak"
+      ]
+    },
+    "MuiAvatar": {
+      "sourceFile": "theme/mui/avatar.tsx",
+      "tokensUsed": [
+        "interactivePrimaryWeakHover",
+        "interactivePrimaryWeakDisabled"
+      ]
+    },
+    "MuiButtonBase": {
+      "sourceFile": "theme/mui/button.tsx",
+      "tokensUsed": [
+        "baseTextInverse",
+        "borderRadiusSm",
+        "interactivePrimaryDefaultDefault",
+        "interactivePrimaryDefaultDisabled",
+        "interactivePrimaryWeakDefault",
+        "interactivePrimaryDefaultHover",
+        "interactivePrimaryDefaultActive",
+        "interactiveSecondaryDefaultDefault",
+        "interactiveSecondaryDefaultDisabled",
+        "interactiveInverseTextDefault",
+        "interactiveSecondaryDefaultHover",
+        "interactiveSecondaryDefaultActive",
+        "interactiveTertiaryDefault",
+        "interactiveTextInDefault",
+        "interactiveTertiaryHover",
+        "interactiveTextInHover",
+        "interactiveTertiaryActive",
+        "interactiveTextInActive",
+        "interactiveTertiaryDisabled",
+        "baseTextWeak",
+        "negativeBackgroundDefault",
+        "negativeTextInDefault",
+        "negativeBackgroundDisabled",
+        "negativeBackgroundHover",
+        "negativeBackgroundActive",
+        "negativeBorderDefault",
+        "negativeTextDefault",
+        "brandIconPrimaryDefault"
+      ]
+    },
+    "MuiButton": {
+      "sourceFile": "theme/mui/button.tsx",
+      "tokensUsed": [
+        "baseTextInverse",
+        "borderRadiusSm",
+        "interactivePrimaryDefaultDefault",
+        "interactivePrimaryDefaultDisabled",
+        "interactivePrimaryWeakDefault",
+        "interactivePrimaryDefaultHover",
+        "interactivePrimaryDefaultActive",
+        "interactiveSecondaryDefaultDefault",
+        "interactiveSecondaryDefaultDisabled",
+        "interactiveInverseTextDefault",
+        "interactiveSecondaryDefaultHover",
+        "interactiveSecondaryDefaultActive",
+        "interactiveTertiaryDefault",
+        "interactiveTextInDefault",
+        "interactiveTertiaryHover",
+        "interactiveTextInHover",
+        "interactiveTertiaryActive",
+        "interactiveTextInActive",
+        "interactiveTertiaryDisabled",
+        "baseTextWeak",
+        "negativeBackgroundDefault",
+        "negativeTextInDefault",
+        "negativeBackgroundDisabled",
+        "negativeBackgroundHover",
+        "negativeBackgroundActive",
+        "negativeBorderDefault",
+        "negativeTextDefault",
+        "brandIconPrimaryDefault"
+      ]
+    },
+    "MuiIconButton": {
+      "sourceFile": "theme/mui/button.tsx",
+      "tokensUsed": [
+        "baseTextInverse",
+        "borderRadiusSm",
+        "interactivePrimaryDefaultDefault",
+        "interactivePrimaryDefaultDisabled",
+        "interactivePrimaryWeakDefault",
+        "interactivePrimaryDefaultHover",
+        "interactivePrimaryDefaultActive",
+        "interactiveSecondaryDefaultDefault",
+        "interactiveSecondaryDefaultDisabled",
+        "interactiveInverseTextDefault",
+        "interactiveSecondaryDefaultHover",
+        "interactiveSecondaryDefaultActive",
+        "interactiveTertiaryDefault",
+        "interactiveTextInDefault",
+        "interactiveTertiaryHover",
+        "interactiveTextInHover",
+        "interactiveTertiaryActive",
+        "interactiveTextInActive",
+        "interactiveTertiaryDisabled",
+        "baseTextWeak",
+        "negativeBackgroundDefault",
+        "negativeTextInDefault",
+        "negativeBackgroundDisabled",
+        "negativeBackgroundHover",
+        "negativeBackgroundActive",
+        "negativeBorderDefault",
+        "negativeTextDefault",
+        "brandIconPrimaryDefault"
+      ]
+    },
+    "MuiCard": {
+      "sourceFile": "theme/mui/card.tsx",
+      "tokensUsed": []
+    },
+    "MuiCardActionArea": {
+      "sourceFile": "theme/mui/card.tsx",
+      "tokensUsed": []
+    },
+    "MuiCardHeader": {
+      "sourceFile": "theme/mui/card.tsx",
+      "tokensUsed": []
+    },
+    "MuiCardContent": {
+      "sourceFile": "theme/mui/card.tsx",
+      "tokensUsed": []
+    },
+    "MuiCardActions": {
+      "sourceFile": "theme/mui/card.tsx",
+      "tokensUsed": []
+    },
+    "MuiCheckbox": {
+      "sourceFile": "theme/mui/checkbox.tsx",
+      "tokensUsed": [
+        "controlIconDefault",
+        "controlIconDisabled"
+      ]
+    },
+    "MuiCircularProgress": {
+      "sourceFile": "theme/mui/circular-progress.tsx",
+      "tokensUsed": [
+        "interactivePrimaryDefaultDefault",
+        "interactiveSecondaryDefaultDefault"
+      ]
+    },
+    "MuiPaper": {
+      "sourceFile": "theme/mui/dialog.tsx",
+      "tokensUsed": [
+        "borderRadiusLg",
+        "controlBackgroundDefault",
+        "baseTextDefault"
+      ]
+    },
+    "MuiDialogContent": {
+      "sourceFile": "theme/mui/dialog.tsx",
+      "tokensUsed": [
+        "borderRadiusLg",
+        "controlBackgroundDefault",
+        "baseTextDefault"
+      ]
+    },
+    "MuiDialogActions": {
+      "sourceFile": "theme/mui/dialog.tsx",
+      "tokensUsed": [
+        "borderRadiusLg",
+        "controlBackgroundDefault",
+        "baseTextDefault"
+      ]
+    },
+    "MuiDialogContentText": {
+      "sourceFile": "theme/mui/dialog.tsx",
+      "tokensUsed": [
+        "borderRadiusLg",
+        "controlBackgroundDefault",
+        "baseTextDefault"
+      ]
+    },
+    "MuiDivider": {
+      "sourceFile": "theme/mui/divider.tsx",
+      "tokensUsed": [
+        "controlBorderDefault"
+      ]
+    },
+    "MuiInput": {
+      "sourceFile": "theme/mui/input.tsx",
+      "tokensUsed": [
+        "controlBorderDisabled",
+        "controlBorderDefault",
+        "controlBackgroundDefault",
+        "borderRadiusSm",
+        "controlBorderActive",
+        "negativeBorderActive",
+        "controlBorderHover",
+        "baseTextDefault",
+        "baseTextWeak",
+        "controlIconWeak",
+        "controlBackgroundWeak",
+        "controlIconDefault"
+      ]
+    },
+    "MuiInputLabel": {
+      "sourceFile": "theme/mui/input.tsx",
+      "tokensUsed": [
+        "controlBorderDisabled",
+        "controlBorderDefault",
+        "controlBackgroundDefault",
+        "borderRadiusSm",
+        "controlBorderActive",
+        "negativeBorderActive",
+        "controlBorderHover",
+        "baseTextDefault",
+        "baseTextWeak",
+        "controlIconWeak",
+        "controlBackgroundWeak",
+        "controlIconDefault"
+      ]
+    },
+    "MuiFormHelperText": {
+      "sourceFile": "theme/mui/input.tsx",
+      "tokensUsed": [
+        "controlBorderDisabled",
+        "controlBorderDefault",
+        "controlBackgroundDefault",
+        "borderRadiusSm",
+        "controlBorderActive",
+        "negativeBorderActive",
+        "controlBorderHover",
+        "baseTextDefault",
+        "baseTextWeak",
+        "controlIconWeak",
+        "controlBackgroundWeak",
+        "controlIconDefault"
+      ]
+    },
+    "MuiTextField": {
+      "sourceFile": "theme/mui/input.tsx",
+      "tokensUsed": [
+        "controlBorderDisabled",
+        "controlBorderDefault",
+        "controlBackgroundDefault",
+        "borderRadiusSm",
+        "controlBorderActive",
+        "negativeBorderActive",
+        "controlBorderHover",
+        "baseTextDefault",
+        "baseTextWeak",
+        "controlIconWeak",
+        "controlBackgroundWeak",
+        "controlIconDefault"
+      ]
+    },
+    "MuiSelect": {
+      "sourceFile": "theme/mui/input.tsx",
+      "tokensUsed": [
+        "controlBorderDisabled",
+        "controlBorderDefault",
+        "controlBackgroundDefault",
+        "borderRadiusSm",
+        "controlBorderActive",
+        "negativeBorderActive",
+        "controlBorderHover",
+        "baseTextDefault",
+        "baseTextWeak",
+        "controlIconWeak",
+        "controlBackgroundWeak",
+        "controlIconDefault"
+      ]
+    },
+    "MuiAutocomplete": {
+      "sourceFile": "theme/mui/input.tsx",
+      "tokensUsed": [
+        "controlBorderDisabled",
+        "controlBorderDefault",
+        "controlBackgroundDefault",
+        "borderRadiusSm",
+        "controlBorderActive",
+        "negativeBorderActive",
+        "controlBorderHover",
+        "baseTextDefault",
+        "baseTextWeak",
+        "controlIconWeak",
+        "controlBackgroundWeak",
+        "controlIconDefault"
+      ]
+    },
+    "MuiList": {
+      "sourceFile": "theme/mui/list.tsx",
+      "tokensUsed": [
+        "baseTextDefault",
+        "controlBackgroundDefault",
+        "controlBackgroundMedium",
+        "interactiveSecondaryDefaultActive",
+        "baseTextWeak",
+        "controlBackgroundDisabled"
+      ]
+    },
+    "MuiListItem": {
+      "sourceFile": "theme/mui/list.tsx",
+      "tokensUsed": [
+        "baseTextDefault",
+        "controlBackgroundDefault",
+        "controlBackgroundMedium",
+        "interactiveSecondaryDefaultActive",
+        "baseTextWeak",
+        "controlBackgroundDisabled"
+      ]
+    },
+    "MuiListItemButton": {
+      "sourceFile": "theme/mui/list.tsx",
+      "tokensUsed": [
+        "baseTextDefault",
+        "controlBackgroundDefault",
+        "controlBackgroundMedium",
+        "interactiveSecondaryDefaultActive",
+        "baseTextWeak",
+        "controlBackgroundDisabled"
+      ]
+    },
+    "MuiListItemIcon": {
+      "sourceFile": "theme/mui/list.tsx",
+      "tokensUsed": [
+        "baseTextDefault",
+        "controlBackgroundDefault",
+        "controlBackgroundMedium",
+        "interactiveSecondaryDefaultActive",
+        "baseTextWeak",
+        "controlBackgroundDisabled"
+      ]
+    },
+    "MuiListSubheader": {
+      "sourceFile": "theme/mui/list.tsx",
+      "tokensUsed": [
+        "baseTextDefault",
+        "controlBackgroundDefault",
+        "controlBackgroundMedium",
+        "interactiveSecondaryDefaultActive",
+        "baseTextWeak",
+        "controlBackgroundDisabled"
+      ]
+    },
+    "MuiListItemText": {
+      "sourceFile": "theme/mui/list.tsx",
+      "tokensUsed": [
+        "baseTextDefault",
+        "controlBackgroundDefault",
+        "controlBackgroundMedium",
+        "interactiveSecondaryDefaultActive",
+        "baseTextWeak",
+        "controlBackgroundDisabled"
+      ]
+    },
+    "MuiMenu": {
+      "sourceFile": "theme/mui/menu.tsx",
+      "tokensUsed": [
+        "controlBackgroundWeak",
+        "borderRadiusLg",
+        "controlBackgroundMedium",
+        "interactiveSecondaryDefaultActive"
+      ]
+    },
+    "MuiMenuItem": {
+      "sourceFile": "theme/mui/menu.tsx",
+      "tokensUsed": [
+        "controlBackgroundWeak",
+        "borderRadiusLg",
+        "controlBackgroundMedium",
+        "interactiveSecondaryDefaultActive"
+      ]
+    },
+    "MuiPopover": {
+      "sourceFile": "theme/mui/popover.tsx",
+      "tokensUsed": []
+    },
+    "MuiRadio": {
+      "sourceFile": "theme/mui/radio.tsx",
+      "tokensUsed": [
+        "controlIconDefault",
+        "controlIconDisabled"
+      ]
+    },
+    "MuiSkeleton": {
+      "sourceFile": "theme/mui/skeleton.tsx",
+      "tokensUsed": [
+        "baseBackgroundWeak",
+        "controlBorderWeak"
+      ]
+    },
+    "MuiSnackbar": {
+      "sourceFile": "theme/mui/snack-bar.tsx",
+      "tokensUsed": [
+        "controlBackgroundDefault",
+        "baseTextDefault",
+        "controlIconDefault"
+      ]
+    },
+    "MuiSwitch": {
+      "sourceFile": "theme/mui/switch.tsx",
+      "tokensUsed": [
+        "controlBackgroundWeak",
+        "interactivePrimaryDefaultActive",
+        "controlIconStrong",
+        "controlIconMedium",
+        "controlIconDisabled"
+      ]
+    },
+    "MuiTab": {
+      "sourceFile": "theme/mui/tab.tsx",
+      "tokensUsed": [
+        "baseTextDefault",
+        "interactiveSecondaryDefaultActive"
+      ]
+    },
+    "MuiTabs": {
+      "sourceFile": "theme/mui/tabs.tsx",
+      "tokensUsed": [
+        "interactiveSecondaryDefaultActive",
+        "controlBorderStrong"
+      ]
+    },
+    "MuiTooltip": {
+      "sourceFile": "theme/mui/tooltip.tsx",
+      "tokensUsed": [
+        "inactiveBackgroundActive",
+        "baseTextInverse"
+      ]
+    }
+  }
+}
