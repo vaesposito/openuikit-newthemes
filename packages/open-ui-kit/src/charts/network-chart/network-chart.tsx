@@ -27,10 +27,10 @@ import { isIocTheme } from "../common/is-ioc-theme";
 import {
   labelStyle,
   legendHeading,
-  lightenHex,
   mixHex,
   networkStyles,
   nodeGlow,
+  nodeGradientStops,
   withAlpha,
 } from "./styles";
 
@@ -432,6 +432,22 @@ export const NetworkChart = ({
     )
     .sort((a, b) => zOf(a.id) - zOf(b.id));
 
+  // Tooltip placement: flip above/below near the top edge and clamp the center
+  // horizontally so the overlay never clips at the container edges.
+  const TIP_W = 200;
+  const tipR = hoveredNode ? radiusForDegree(hoveredNode.degree) : 0;
+  const tipNX = hoveredNode?.x ?? 0;
+  const tipNY = hoveredNode?.y ?? 0;
+  const tipBelow = tipNY - tipR - 12 < 48;
+  const tipLeft = Math.min(
+    Math.max(tipNX, TIP_W / 2 + 8),
+    Math.max(width - TIP_W / 2 - 8, TIP_W / 2 + 8),
+  );
+  const tipTop = tipBelow ? tipNY + tipR + 10 : tipNY - tipR - 10;
+  const tipTransform = tipBelow
+    ? "translate(-50%, 0)"
+    : "translate(-50%, -100%)";
+
   return (
     <Box sx={styles.root}>
       {legend && legend.length > 0 && (
@@ -458,20 +474,23 @@ export const NetworkChart = ({
             style={{ touchAction: "none" }}
           >
             <defs>
-              {gradientColors.map((color) => (
-                <radialGradient
-                  key={gradientId(color)}
-                  id={gradientId(color)}
-                  cx="36%"
-                  cy="30%"
-                  r="78%"
-                >
-                  {/* Opaque, lighter pastel tint with a soft sphere highlight. */}
-                  <stop offset="0%" stopColor={lightenHex(color, 0.62)} />
-                  <stop offset="55%" stopColor={lightenHex(color, 0.42)} />
-                  <stop offset="100%" stopColor={lightenHex(color, 0.22)} />
-                </radialGradient>
-              ))}
+              {gradientColors.map((color) => {
+                const [inner, mid, outer] = nodeGradientStops(color, theme);
+                return (
+                  <radialGradient
+                    key={gradientId(color)}
+                    id={gradientId(color)}
+                    cx="36%"
+                    cy="30%"
+                    r="78%"
+                  >
+                    {/* Opaque tint with a soft sphere highlight (dimmer in dark). */}
+                    <stop offset="0%" stopColor={inner} />
+                    <stop offset="55%" stopColor={mid} />
+                    <stop offset="100%" stopColor={outer} />
+                  </radialGradient>
+                );
+              })}
             </defs>
 
             {/* Links — drawn first so opaque nodes always sit on top */}
@@ -514,7 +533,7 @@ export const NetworkChart = ({
                   opacity={dimmed ? 0.28 : 1}
                   style={{
                     filter: isIoc
-                      ? nodeGlow(color, focused || isError)
+                      ? nodeGlow(color, focused || isError, !isLight)
                       : undefined,
                     cursor: interactive
                       ? draggingId === n.id
@@ -576,10 +595,10 @@ export const NetworkChart = ({
           <Box
             sx={{
               position: "absolute",
-              left: hoveredNode.x ?? 0,
-              top:
-                (hoveredNode.y ?? 0) - radiusForDegree(hoveredNode.degree) - 10,
-              transform: "translate(-50%, -100%)",
+              left: tipLeft,
+              top: tipTop,
+              transform: tipTransform,
+              maxWidth: TIP_W,
               px: 1.25,
               py: 0.75,
               borderRadius: 1.5,
@@ -688,7 +707,7 @@ const LegendGroup = ({
           border: "none",
           p: 0,
           m: 0,
-          mb: 1.25,
+          mb: 2,
           cursor: gInteractive ? "pointer" : "default",
           color: gActive ? accent : v.baseTextStrong,
           ...(gInteractive ? focusRing : null),

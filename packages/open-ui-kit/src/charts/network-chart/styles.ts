@@ -30,7 +30,9 @@ export const networkStyles = (
     position: "relative",
     flex: "1 1 360px",
     minWidth: 0,
-    overflow: "hidden",
+    // Visible so the hover tooltip is never clipped at the container edges.
+    // Nodes are clamped well inside the bounds, so the graph itself stays put.
+    overflow: "visible",
     // Transparent canvas: the glowing nodes + labels float directly over the
     // page background (no glass card surface). Non-IoC keeps a faint surface.
     background: isIoc ? "transparent" : theme.palette.vars.baseBackgroundMedium,
@@ -66,12 +68,42 @@ export const labelStyle = (theme: Theme) =>
 /**
  * Soft drop-shadow bloom for IoC network nodes. Two gentle layers (not neon):
  * a tight low-alpha halo plus a wider, very faint glow. `boost` (e.g. on hover)
- * slightly intensifies it.
+ * slightly intensifies it; `dark` tones it down further for the dark theme so
+ * bubbles read calm, not neon.
  */
-export const nodeGlow = (color: string, boost = false) =>
-  boost
+export const nodeGlow = (color: string, boost = false, dark = false) => {
+  if (dark) {
+    return boost
+      ? `drop-shadow(0 0 3px ${color}3a) drop-shadow(0 0 9px ${color}22)`
+      : `drop-shadow(0 0 2px ${color}24) drop-shadow(0 0 6px ${color}14)`;
+  }
+  return boost
     ? `drop-shadow(0 0 4px ${color}66) drop-shadow(0 0 12px ${color}3a)`
     : `drop-shadow(0 0 3px ${color}40) drop-shadow(0 0 9px ${color}24)`;
+};
+
+/**
+ * Three radial-gradient stop colors for an opaque bubble of `color`. Light
+ * theme keeps a bright pastel tint; dark theme pulls the color toward the page
+ * background (calmer, less neon) while staying solid/opaque.
+ */
+export const nodeGradientStops = (color: string, theme: Theme): string[] => {
+  const v = theme.palette.vars;
+  if (theme.palette.mode === "dark") {
+    // Mute toward the dark backdrop so the fill is dimmer but still color-coded.
+    const base = mixHex(color, v.baseBackgroundStrong, 0.4);
+    return [
+      lightenHex(base, 0.18),
+      base,
+      mixHex(base, v.baseBackgroundStrong, 0.32),
+    ];
+  }
+  return [
+    lightenHex(color, 0.62),
+    lightenHex(color, 0.42),
+    lightenHex(color, 0.22),
+  ];
+};
 
 /** Blend two #rrggbb hex colors; `amt` 0 → a, 1 → b. */
 export const mixHex = (a: string, b: string, amt: number): string => {
