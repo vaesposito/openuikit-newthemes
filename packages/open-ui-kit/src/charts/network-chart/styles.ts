@@ -63,9 +63,15 @@ export const labelStyle = (theme: Theme) =>
     fill: theme.palette.vars.baseTextStrong,
   }) as const;
 
-/** Drop-shadow bloom for IoC network nodes. */
-export const nodeGlow = (color: string) =>
-  `drop-shadow(0 0 4px ${color}CC) drop-shadow(0 0 12px ${color}77) drop-shadow(0 0 24px ${color}33)`;
+/**
+ * Soft drop-shadow bloom for IoC network nodes. Two gentle layers (not neon):
+ * a tight low-alpha halo plus a wider, very faint glow. `boost` (e.g. on hover)
+ * slightly intensifies it.
+ */
+export const nodeGlow = (color: string, boost = false) =>
+  boost
+    ? `drop-shadow(0 0 4px ${color}66) drop-shadow(0 0 12px ${color}3a)`
+    : `drop-shadow(0 0 3px ${color}40) drop-shadow(0 0 9px ${color}24)`;
 
 /** Blend two #rrggbb hex colors; `amt` 0 → a, 1 → b. */
 export const mixHex = (a: string, b: string, amt: number): string => {
