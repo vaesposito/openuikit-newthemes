@@ -74,6 +74,13 @@ const glassDepth = "0 12px 40px rgba(0, 0, 0, 0.45)"; // soft ambient depth (no 
 const glowPrimary = iocNextVars.glowPrimary as string;
 const glowSecondary = iocNextVars.glowSecondary as string;
 
+// Tables float directly on the glass/aurora — no opaque panel fill. Structure is
+// carried by hairline row dividers; interaction by low-alpha translucent tints.
+const tableDivider = "rgba(255, 255, 255, 0.08)";
+const tableDividerStrong = "rgba(255, 255, 255, 0.12)";
+const tableRowHover = "rgba(255, 255, 255, 0.05)";
+const tableRowSelected = "rgba(255, 255, 255, 0.09)";
+
 const palette: PaletteOptions = {
   mode: "dark",
   primary: {
@@ -97,7 +104,12 @@ const palette: PaletteOptions = {
   negative: redPalette,
   orange: orangePalette,
   grey: greyPalette,
-  vars: iocNextVars,
+  // Pinned/sticky table columns are painted by MRT via mrtTheme.baseBackgroundColor
+  // (`controlBackgroundStickyColumn ?? controlBackgroundMedium`) with !important.
+  // Force it transparent so pinned columns stay glass-through like the rest of the
+  // table. Use rgba(0,0,0,0) (not the "transparent" keyword) so MUI/MRT color
+  // helpers (lighten/darken for hover + selected) can still decompose it.
+  vars: { ...iocNextVars, controlBackgroundStickyColumn: "rgba(0, 0, 0, 0)" },
   text: {
     primary: iocNextTextPrimary,
     secondary: iocNextTextSecondary,
@@ -181,11 +193,72 @@ const iocNextComponentOverrides = {
     },
   },
 
-  // Table cells: transparent so rows read against the glass surface
+  // Tables: fully transparent surface stack so the underlying glass card /
+  // page aurora shows through. No opaque panel fill — legibility comes from
+  // hairline row dividers + translucent hover/selected tints.
+  MuiTableContainer: {
+    styleOverrides: {
+      root: {
+        backgroundColor: "transparent",
+        backgroundImage: "none",
+        boxShadow: "none",
+        backdropFilter: "none",
+        WebkitBackdropFilter: "none",
+      },
+    },
+  },
+
+  MuiTable: {
+    styleOverrides: {
+      root: { backgroundColor: "transparent" },
+    },
+  },
+
+  MuiTableHead: {
+    styleOverrides: {
+      root: { backgroundColor: "transparent" },
+    },
+  },
+
+  MuiTableBody: {
+    styleOverrides: {
+      root: { backgroundColor: "transparent" },
+    },
+  },
+
+  MuiTableRow: {
+    styleOverrides: {
+      root: {
+        backgroundColor: "transparent",
+        // Subtle translucent hover/selected tints (cells are transparent, so the
+        // row tint reads through for both plain MUI and MRT tables).
+        "&:hover": { backgroundColor: tableRowHover },
+        "&.Mui-selected, &[data-selected='true']": {
+          backgroundColor: tableRowSelected,
+          "&:hover": { backgroundColor: tableRowSelected },
+        },
+      },
+      head: { backgroundColor: "transparent" },
+    },
+  },
+
+  // Cells: transparent fill, structure preserved via hairline bottom dividers.
   MuiTableCell: {
     styleOverrides: {
       root: {
         backgroundColor: "transparent !important",
+        backgroundImage: "none",
+        borderBottom: `1px solid ${tableDivider}`,
+        // MRT masks pinned/sticky columns with a ::before pseudo-element painted
+        // `alpha(darken(baseBackgroundColor), 0.97)` (near-opaque). Neutralize just
+        // its fill so pinned columns stay glass-through; the separator boxShadow
+        // (also on ::before) is preserved.
+        "&::before": { backgroundColor: "transparent !important" },
+      },
+      head: {
+        backgroundColor: "transparent !important",
+        borderBottom: `1px solid ${tableDividerStrong}`,
+        "&::before": { backgroundColor: "transparent !important" },
       },
     },
   },
@@ -221,6 +294,15 @@ const iocNextComponentOverrides = {
         backdropFilter: glassBlur,
         WebkitBackdropFilter: glassBlur,
         borderRadius: "16px",
+        // A Paper that wraps a table (e.g. TableContainer / MRT table paper) is
+        // transparent so the table reads against the card/aurora behind it.
+        "&:has(table)": {
+          backgroundColor: "transparent !important",
+          backgroundImage: "none",
+          backdropFilter: "none",
+          WebkitBackdropFilter: "none",
+          boxShadow: "none !important",
+        },
       },
       elevation1: {
         backgroundColor: glassFill,
